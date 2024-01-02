@@ -13,6 +13,7 @@ This article will contain everything I know about receiving weather satellites.
 Hardware terms
 - SDR - Software Defined Radio -> A device used to translate radio waves into digital info
 - LNA - Low Noise Amplifier -> A tool used to amplify radio signals
+- Bias-t/Bias tee -> A device used to inject DC power into the rf line. **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT**
 - Sma -> Type of connector used by most SDRs
 - Balun -> Converts an **Un**balanced signal to a **Bal**anced one and vice versa
 
@@ -39,12 +40,12 @@ Don't worry if you don't understand the below terms, they will be elaborated upo
 # Mistakes and pitfalls
 This is a list of mistakes I made that made me waste a lot of time, make sure to avoid making them.
 
-- **Using old, outdated guides and software** -> What is covered here is very niche, akmost all guides you can find online are heavily outdated giving you abandonware that gives you subpar results or straight up wrong advice. Please make sure that any sources you use are up to date.
+- **Using old, outdated guides and software** -> What is covered here is very niche, akmost all guides you can find online are heavily outdated suggesting you use abandonware that gives you subpar results or straight up giving you wrong advice. Please make sure that any sources you use are up to date.
 - **Doppler tracking APT, LRPT** -> These signals were designed to be thin enough to not need doppler tracking. **DON'T BOTHER DOING IT, IT IS NOT NEEDED.**
-- **Maxxing the gain setting** -> Upping the gain only makes the signal louder up to a certain point, after which it start amplifying the noise floor much more than meaningful signals. Turn it up only until you see the signal isn't getting stronger and the noise floor is rising rapidly.
-- **Turning on automatic gain control** -> AGC was designed for wide broadcasts such as DVB-T (Terrestrial TV) which are much wider than the thin described here, it will not recognize the signals and end up cranking the gain up way higher than needed which raises the SNR significantly
-- **Using an LNA with direct sampling** -> Direct sampling is just piping the whole range to the output at once, meaning that weaker signals will get drowned out incredibly easily
-- **Not using actual connectors and cables** -> On my first few days with an SDR and without a sma cable, I went by the definition of an antenna - An antenna is just a piece of wire - and stuck a wire straight into the sma port. This is by far the dumbest thing I have done. While yes, sticking a wire into the sma port will work, it is extremely dumb and will lead to a plethora of issues. Just get a proper SMA cable, man
+- **Maxxing the gain setting** -> Upping the gain only makes the signal louder up to a certain point, after which it start amplifying the noise floor much more than actual signals. Turn it up only until you see the signal isn't getting stronger and the noise floor is rising rapidly.
+- **Turning on automatic gain control** -> AGC was designed for wide broadcasts such as DVB-T (Terrestrial TV) which are much wider than the comparstively thin signals described in this article. It **won't** recognize the signals and end up cranking the gain up way higher than needed which ends up killing the signal
+- **Using an LNA with direct sampling** -> Direct sampling is just piping the whole DS range to the output at once, meaning that weaker signals will get drowned out by stronger ones incredibly easily. Using an LNA makes strong signals stronger, drowning weak ones out completely.
+- **Not using actual connectors and cables** -> In my first few days with an SDR and without an actual sma cable, I went by the definition of an antenna - An antenna is just a piece of wire - and stuck a wire straight into the sma port. While yes, sticking a wire into the sma port will work, it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, or just end up not working correctly. Just get proper cables, man
 - **Using a cheap LNA with higher frequencies (l-band and above)** -> Cheap LNAs do work, but very poorly and are very often not worth the money spent. Check out the HRPT section for more info.
 
 
