@@ -82,24 +82,24 @@ This is a brief historical overview in case you want to know a bit about the sat
 - The **3 NOAA satellites** are the last remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
 - New satellite launches are of the JPSS constellation, which only have a much harder to receive C band signal that requires a big 'ole dish with a helical antenna and specific hardware to receive (Since most SDRs only go up to 1.7 GHz). No future satellite launches from NOAA are planned to include a VHF antenna.
 
-- These satellites broadcast an *analogue*  **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** signal, which was created in the late 1970s. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
+- These satellites broadcast an *analogue*  **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** signal that has two channels and a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
 
 ---
 
 - As for their Russian counterpart, the **only** satellite currently broadcasting in VHF is **Meteor-M N2-3** (Meteor M2-3 for short) of the **Meteor-M** constellation. It was launched very recently - just in June of 2023. 
 - The satellite series has been plagued with errors, failures and delays. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal not circularily polarized like it is supposed to be as well as making it much weaker than designed. M2-4 is currently set to launch 02-2024.
 
-- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal, which includes **ECC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it is weak.
+- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that has 3 channels and a JPEG-compressed 1km/px quality. It also includes **ECC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it is fairly weak.
 
 
-## Exemplary images
-![An exemplary processed APT image](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/a0a286a7-964f-4fc1-b558-5ce9f4233876)
-*APT image received using a 5 element yagi on 01-01-2024 from NOAA 19, processed using Satdumps `MCIR RAIN` RGB composite. Equalized.*
+## Example processed APT and LRPT images
+
+![A processed APT imag](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/053f658f-1b2b-47d3-a7a7-7f2ba025c285)
+*APT image received using a 5 element yagi on 02-01-2024 from NOAA 18, processed using Satdump with the `WXtoImg HVC N18` RGB composite. Equalized.*
 
 
-
-![An exemplary processed LRPT image](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/3b20bba0-ae3d-4211-8a97-9c4abe58e8d8)
-*LRPT image received using a 5 element yagi on 31-12-2023 from Meteor M2-3, processed using Satdumps `224` RGB composite. Equalized. The length is not to scale with NOAAs broadcast, this was just a poor pass.*
+![A processed LRPT image](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/166b8f65-7ad8-46d6-842a-2d609117c63b)
+*LRPT image received using a 5 element yagi on 02-01-2024 from Meteor M2-3, processed using Satdump with the `224` RGB composite. Equalized.*
 
 
 
@@ -162,8 +162,8 @@ More elements = More directional but higher gain, longer boom length
 4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the copper core of the same coaxial wire\
 **Make sure the cables don't touch or are shorted together in any way, this will make the antenna not work**
 5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (The goal is to create a choked balun)
-![An image of the choked balun I use on my yagi](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/785761ee-3536-44b2-af42-64c03a3e73f6)
-*The choked balun I got on my yagi, I will update this with a better picture when possible.*
+![My yagi setup showcasing the balun and feed](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/7636def4-d519-4b03-81bf-2a21b17047f0)
+*The choked balun and dipole feed I use on my yagi*
 
 
 ## Frequency reference
@@ -227,6 +227,16 @@ If the image was taken from Meteor M2-3 on an evening pass, you need to select C
 - There is grain all over the image!
 Some grain is expected on APT images, you can get rid of it by ticking `Median blur`. If it is present after, either you didn't enable the IF noise reduction when recording or the signal was just too weak.
 
-## L-band HRPT/HRIT reception
+## My setup
+For my SDR I chose the Nooelec Smart SDR v5, solely because someone near me was selling one for fairly cheap and I was not aware of any reputable brands - I thankfully managed to get a genuine one from a reputable brand without really doing any research.
+Initially when starting out with VHF reception, I placed a v dipole in a very high spot (5m) with excellent 360° view, got great recordings with an LNA. After having to tear this setup down and placing it back in a month after, I found out my neigbours started using some kind of a device spewing large amounts of RFI throughout the whole spectrum making the LNA unusable and making me only able to set the gain to 15/50 dB. This made all low passes unusable and high passes grainy, so I ended up scrapping the idea alltogether and just made a directional yagi with 5 elements instead. This has proven to be a great decision, I am now able to get 30 dB of SNR just at a mere 2° elevation, the SNR peaks at 50 dB.
+
+The yagi was made with an old piece of wood I found in my barn and 1.5mm copper wires from scrapped power cables.
+
+![My current yagi antenna](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/be60b9d7-a6fa-4443-b199-5cbc795b4a46)
+*Pictured is the yagi I currently use for receiving VHF broadcasts.*
+
+
+# L-band HRPT/HRIT reception
 
 TODO
