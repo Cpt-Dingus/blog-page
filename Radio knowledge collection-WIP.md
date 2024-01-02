@@ -2,7 +2,7 @@
 
 # Preamble
 
-Before anything, I have to give credit and extreme kudos to the SDR++ Discord. Everyone there has been incredible and has helped me learn basically everything that you'll be able to read here. 
+Before anything, I have to give credit and extreme kudos to the SDR++ and SigIdWiki Discords. Everyone there has been incredible and has helped me learn basically everything that you'll be able to read here. 
 **A lot of the information in guides is from [lego11s articles](https://a-centauri.com/articoli/), check their articles out if you want more awesome and detailed guides.** My goal is to make everything a bit more concise while still staying informative with a sprinkle of what I learned with experience as a complete beginner on top.
 
 The guides here were written specifically to be up to date, since there are several WAY out of date guides out there instructing you to use abandonware and just overall shitty software.
