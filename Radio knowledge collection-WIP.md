@@ -110,7 +110,7 @@ The SDR should be a **reputable brand** if you want optimal performance (E.g. Ai
 
 As for the antenna, you have the choice between:
 - Directional antennas
-- Omnidirectional antennas
+- Omnidirectional antennas  \
 The difference is, that with directional antennas you need to track the satellite by hand, while an omnidirectional antenna doesn't need any tracking.
 
 
