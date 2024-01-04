@@ -132,7 +132,7 @@ That's it. Really.
 
 *This image suggests a wire length of 53.4 cm, while that would work the actual length should be approximately 54.5cm. It also suggests using aluminum rods, while that'd work, copper is about twice as conductive.*
 
-#### 2. Quadrifilar helical antenna
+### 2. Quadrifilar helical antenna
 - Omnidirectional
 - Fairly difficult to build
 - Very good results thanks to its true circular polarization
@@ -143,7 +143,7 @@ I will not be describing how to build it, since the building process is quite in
 ![Sample QFH antenna](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/0f50f247-228b-46b7-961b-bb0bb2327a12)
 *[source](https://okelectronic.wordpress.com/2014/08/20/rtl-sdr-second-attempt/)*
 
-#### 3. Yagi antenna
+### 3. Yagi antenna
 - Directional
 - Fairly easy to make
 - Very good results thanks to its high gain
