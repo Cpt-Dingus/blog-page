@@ -2,14 +2,13 @@ To sign your commits via git, you will need to create and register a GPG key. I 
 
 # Creating a GPG signing key
 
-- To create an RSA4096 key: install gnupg and run `gpg --defautl-new-key-algo rsa4096 --gen-key`
+- To create an RSA4096 key: install gnupg and run `gpg --default-new-key-algo rsa4096 --gen-key`
 
 If you want to create a more granular key (Not RSA4096), use the `gpg --full-generate-key`command instead
 
 > **DISCLAIMER**: GPG will ask you for your name and email address, __these will be listed in every commit you create.__
 
-> If you want to hide your real email, **use the noreply address** found by going to Github.com > Your profile > Settings > Email, it will be cited in both the `Primary email address` field as well as below the `Keep my email address private` checkbox
-> For example my address is 100243410+Cpt-Dingus@users.noreply.github.com
+> If you want to hide your real email, **use the noreply address** found by going to Github.com > Your profile > Settings > Email, it will be cited in both the `Primary email address` field as well as below the `Keep my email address private` checkbox. For example my address is 100243410+Cpt-Dingus@users.noreply.github.com
 
 
 # Adding the GPG key to your github account
