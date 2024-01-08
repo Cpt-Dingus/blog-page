@@ -95,7 +95,7 @@ This is a brief historical overview in case you want to know a bit about the sat
 ## Example processed APT and LRPT images
 
 ![A processed APT imag](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/053f658f-1b2b-47d3-a7a7-7f2ba025c285)
-*APT image received using a 5 element yagi on 02-01-2024 from NOAA 18, processed using Satdump with the `WXtoImg HVC N18` RGB composite. Equalized.*
+*APT image received using a 5 element yagi on 02-01-2024 from NOAA 18, processed using Satdump with the `224` RGB composite. Equalized.*
 
 
 ![A processed LRPT image](https://github.com/Cpt-Dingus/Obsidian-notes/assets/100243410/166b8f65-7ad8-46d6-842a-2d609117c63b)
