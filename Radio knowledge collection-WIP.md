@@ -20,10 +20,10 @@ Hardware terms
 Software terms
 - AGC - Automatic Gain Control -> Automatically sets the gain based on the signal strength
 - SNR - Signal to Noise Ratio -> The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
-- Spectrum -> The slice of the radio spectrum being sampled by your computer
-- FSR or Waterfall -> A visual representation of the spectrum throughout time, most of the time found right below the Spectrum
-- Interference -> Commonly referred to as RFI (Radio Frequency Interference), is unwanted signals produced by erroneous sources
-- Overloading -> Occurs when your gain is set too high andor you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or random spurs of interference throughout your spectrum
+- FSR Spectrum -> The slice of the radio spectrum being sampled by your SDR
+- FSR Waterfall -> A visual representation of the spectrum throughout time, almost always found right below the FSR Spectrum
+- Interference -> Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
+- Overloading -> Occurs when your gain is set too high andor you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
 
 
 - TLE - Two Line Element set -> A format used to list the location of objects orbitting the earth
