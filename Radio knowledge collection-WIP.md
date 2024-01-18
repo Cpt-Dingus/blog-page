@@ -80,7 +80,7 @@ This is a brief historical overview in case you want to know a bit about the sat
 ---
 
 - The **3 NOAA satellites** are the last remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
-- New satellite launches are of the JPSS constellation, which only have a much harder to receive C band signal that requires a big 'ole dish with a helical antenna and specific hardware to receive (Since most SDRs only go up to 1.7 GHz). No future satellite launches from NOAA are planned to include a VHF antenna.
+- New satellite launches are of the JPSS constellation, which only have a much harder to receive C-band signal that requires a big 'ole dish with a helical antenna and specific hardware to receive (Since most SDRs only go up to 1.7 GHz, aka the top of L-band). No future satellite launches from NOAA are planned to include a VHF antenna.
 
 - These satellites broadcast an *analogue*  **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** signal that has two channels and a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
 
