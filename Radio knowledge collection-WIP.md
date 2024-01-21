@@ -3,11 +3,11 @@
 # Preamble
 
 Before anything, I have to give credit and extreme kudos to the SDR++ and SigIdWiki Discords. Everyone there has been incredible and has helped me learn basically everything that you'll be able to read here. 
-**A lot of the information in guides is from [lego11s articles](https://a-centauri.com/articoli/), check their articles out if you want more awesome and detailed guides.** My goal is to make everything a bit more concise while still staying informative with a sprinkle of what I learned with experience as a complete beginner on top.
+**A lot of the information in this article is from [lego11s articles](https://a-centauri.com/articoli/), check their articles out if you want more awesome and detailed guides.**
 
-The guides here were written specifically to be beginner friendly and most importantly up to date, since there are several WAY out of date guides out there instructing you to use abandonware and just overall shitty software.
+The purpose of this article is to write up everything I have learned so far in a beginner friendly way with some wife tales and advice sprinkled on top. More importantly, the guides here were written specifically to be beginner friendly and most importantly up to date, since there are several WAY out of date guides out there instructing you to use abandonware and just overall shitty software. (As of writing this, by far the best source are the aforementioned Lego11s articles, they are updated in a timely manner and contain up to date information.)
 
-This article will contain everything I know about receiving weather satellites.
+This article is focused on the reception of weather satellites.
 
 # Glossary
 Hardware terms
@@ -237,6 +237,43 @@ The yagi was made with an old piece of wood I found in my barn and 1.5mm copper 
 *Pictured is the yagi I currently use for receiving VHF broadcasts.*
 
 
-# L-band HRPT/HRIT reception
+# L-band HRPT/HRIT/LRIT reception
+- This guide will be comparively limited in terms of HRIT/LRIT reception, given that I only have LOS with three geostationary satellites, only one which I actually attempted to receive information from to date. I will update it once I try the rest.
+- L-band reception is much harder when compared to VHF, requiring more expensive equipment and more effort making the antenna as well as requiring a dish with some tracking skills
+- While requiring more dedication, it offers much more interesting things than VHF, for example being able to broadcast 5+ channels of pure and uncompressed 1km/px images as wall as full earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
+- The are much more satellites to receive, being divided into:
+    - Geostationary satellites (10+):
+        > GOES in the US
+        > Elektro-L in Europe
+        > Fengyuns in Asia
+        > Several others; TODO: list \'em out
 
-TODO
+    - Orbitting satellites (8):
+        > 3x NOAA POES
+        > 2x Meteor-M
+        > 2x MetOp
+        > 1x FengYun (Only over China)
+
+
+## The satellites you can receive
+
+Just like VHF, I will talk a bit about the background of the satellites you can receive. Feel free to skip this if you are in here just for info.
+
+---
+**NOAA POES**
+- These are the same as VHF: NOAA 15, 18 and 19.
+- Have an [POES HRPT](TODO) broadcast which transmits 5 AVHRR channels as well as other things
+- The broadcast features a very strong carrier wave making it quite easy to track.
+
+---
+**METEOR-M**
+
+- These are Meteor M2-3 as well as Meteor M2-2
+- Both of these a [Meteor HRPT](TODO) broadcast with no limitations, transmitting 6 MSU-MR channels in addition to 30 MTVZA channels.
+- The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
+
+- You might notice that Meteor M2-2 is listed even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike damaging the power supply (TODO: Find source), making LRPT unoperable. The satellite orbits a bit later than the rest, making you able to receive some HRPT in the noon, unlike APT & LRPT which only have early morning and late evening passes.
+
+---
+**MetOp**
+- There are two functional satellites: MetOp-B and MetOp-C
