@@ -31,8 +31,8 @@ The purpose of this page is to write up everything I have learned so far in a be
 ### Software terms
 - **AGC** - Automatic Gain Control -> Automatically sets the gain based on the signal strength
 - **SNR** - Signal to Noise Ratio -> The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
-- **FSR Spectrum** -> The slice of the radio spectrum being sampled by your SDR
-- **FSR Waterfall** -> A visual representation of the spectrum throughout time, almost always found right below the FSR Spectrum
+- **FFT Spectrum** - Fast Fourier Transform Spectrum -> The slice of the radio spectrum being sampled by your SDR
+- **FFT Waterfall** - Fast Fourier Transform Waterfall -> A visual representation of the spectrum throughout time, almost always found right below the fft Spectrum
 - **Interference** -> Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
 - **Overloading** -> Occurs when your gain is set too high andor you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
 - **TLE** - Two Line Element set -> A format used to list the location of objects orbitting the earth
@@ -46,6 +46,24 @@ Don't worry if you don't understand these yet, they will be explained in more de
 - **LRIT** - Low Rate Information Transmission -> L-band information and telemetry broadcast format
 
 
+
+## Examples of interference and overloading:
+
+### Interference
+
+![An example of interference caused by a cell tower](./Assets/Radio/Interference-example.png)
+
+*Pictured is an SDR being overloaded with interference caused by a very strong cell tower broadcast. On the left is an FM station, the rest of the lines are erroneous.*
+
+### Overloading
+
+![An image of a relatively normal FFT](./Assets/Radio/Normal-fft.png)
+*Pictured is a relatively normal FFT, excluding the lines*
+
+![An image of a FFT suffering from severe overloading](./Assets/Radio/Overloaded-fft.png)
+*After upping the gain, you can see the significant amount of FM overloading present throughout the whole FFT.*
+
+
 # Mistakes and pitfalls
 This is a list of mistakes I made that ended up in wasted time, avoid them for the sake of saving you a headache or two
 
@@ -55,7 +73,7 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 - **Doppler tracking when it is not needed** -> Signals covered here such as APT and HRPT were designed to be thin enough to not need doppler tracking, **DON'T BOTHER DOING IT, IT IS NOT NEEDED.**
 
-- **Blindly maxxing the gain setting** -> Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its position on the FSR).
+- **Blindly maxxing the gain setting** -> Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its position on the fft).
 
 - **Turning on automatic gain control (AGC)** -> AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and end up cranking the gain up way higher than needed which ends up drowning the signal out.
 
@@ -316,55 +334,79 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to wiki)
 - The broadcast features a very strong carrier wave making it quite easy to track.
 
+<break>
+
+- Fun fact: As of 02/2024, NOAA 2 (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal.
+- **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
+
 ---
 **METEOR-M**
 
-- Unlike VHF, two satellites broadcast: Meteor M2-2 and Meteor M2-3
-- Both of these a [Meteor HRPT](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
+- Two Meteor-M satellites broadcast: Meteor M2-2 and Meteor M2-3
+- Both of these have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
 <break>
 
-- You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leavining LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working withuot any issues since. The satellite orbits a bit later than the rest, making you able to receive some HRPT on noon, unlike APT & LRPT which only have early morning and late evening passes.
+> You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leavining LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since. The satellite orbits a bit later than the rest, making you able to receive some HRPT on noon, unlike APT & LRPT which only have early morning and late evening passes.
 
 ---
 **MetOp**
-- There are two functional satellites: MetOp-B and MetOp-C operated by EumetSat, launched in 2013 and 2019 respectively
-- They broadcast a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which, unlike the previous two satellite groups, includes Reed-Solomon ECC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
-- The signal does not have a carrier wave making it bit harder to track, you will have to go by the SNR.
+- There are two functional satellites: MetOp-B and MetOp-C operated by EumetSat, launched in 2013 and 2019 respectively.
+- They have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon ECC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
+- The signal does not have a carrier wave or easily decernable bumps making it bit harder to track, you will have to go by the SNR meter.
 
 ---
 **FengYun**
-- The only satellite broadcasting HRPT is **Fengyun 3C**, it is a fairly special case. It is the last surviving member of the FengYun 3 constellation, due to a severe power supply failure **Only broadcasts when it sees China**. 
-- It broadcasts a FengYun AHRPT signal, which much like MetOp AHRPT has Reed-Solomon ECC, but unlike any other satellite in L-band **it broadcasts a true color channel** (The rest can only do RGB composites). 
+
+- The only satellite broadcasting HRPT is **Fengyun 3C**, it is a fairly special case. It is the last surviving member of the FengYun 3 constellation. Due to a severe power supply failure, **It only broadcasts when it sees China**. 
+- It broadcasts a FengYun AHRPT signal, which much like MetOp AHRPT has Reed-Solomon ECC, but unlike any other satellite in L-band **it broadcasts a true color channel** (The rest can only do RGB composites) - exactly what you would see with your eyes if you stoof right next to the satellite. 
 - Another simmilarity with MetOp is its lacking carrier wave, the signal is also quite wide with a higher symbol rate, we will unpack that in a bit though.
+
+
+---
 
 ### Geostationary
 I will only mention the few relevant to me right now, will add the rest once possible.
 
 
 **Elektro-L**
-- These are Elektro-L N3 and Elektro-L N4 (Elektro-L# for short), Elektro-L2 only broadcasts in X-band after a power supply failure.
-- They broadcast an LRIT (Low Rate Information Transmission) signal with Reed-Solomon ECC containing Full disc images of the earth
+- These are Elektro-L N3 and Elektro-L N4 (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+- They broadcast an LRIT (Low Rate Information Transmission) in addition to a HRIT (High Rate Information Transmission) signal containing full disc images of the earth. It includes Reed-Solomon ECC, meaning you can just get a few dBs of the signal and still get a proper decode.
+
+---
 
 **GOES**
-- TODO
 
-**FengYun 2H**
-- TODO
--S-VISSR, no ECC
+> I will only cover the European EWS-G1 (GOES 13) and EWS-G2 (GOES 15), given that I only have access to these.
+- These broadcast a fairly weak, **Linearly polarized** GVAR signal. GOES 13 only does black and white full disc images, while GOES 15 does colored ones as well. It lacks ECC, meaning you have to get it at a fairly strong strength for a proper decode.
 
+- US: TODO
+
+---
+
+**FengYun**
+> I don't have information about 4A and 4B, **I only have LOS and verified information about FengYun 2H**, will not include anything else to avoid false information.
+
+- The Fengyun 2 and 4 series are the geostationary ones, FengYun 2G, 2H, 4A and 4B transmit an L-band signal.
+
+*FengYun 2H*
+- It broadcasts a **Linearly polarized** (Almost everything else is RHCP) **S-VISSR** signal, which - much like GOES GVAR - lacks ECC meaning you have to get it at a fairly high strength for a proper decode.
+
+**
 
 ## Signal information
 The signals are all different from each other, you can only receive them as long as your SDRs sampling rate is higher than the one for the target satellite
 
-|Signal|Symbol rate|Bandwidth|ECC|Notes|
-|---|---|---|---|---|
-|NOAA POES|0.6 Mbps|2.5 MHz|No|
-|Meteor HRPT|0.6 Mbps|2.5 MHz|No|
-|MetOp AHRPT|4.5 MHz|3.5 Mbps|Yes|Just barely receivable with an RTLSDR, might cause issues
-|FengYun AHRPT|5 MHz|3.9 Mbps|Yes|Not receivable by an RTLSDR
-|Elektro-L LRIT|0.2 MHz|0.128 Kbps|Yes|
-|GOES TODO|TODO|TODO|TODO|TODO|
+|Signal|Symbol rate|Bandwidth|Minimum viable dish size|ECC|Notes|
+|---|---|---|---|---|---|
+|NOAA POES|0.665 Mbps|2.5 MHz|60|No|
+|Meteor HRPT|0.6 Mbps|2.5 MHz|60|No|
+|MetOp AHRPT|3.5 Mbps|4.5 Mbps|XX|Yes|Just barely receivable with an RTLSDR, might cause issues
+|FengYun AHRPT|3.9 Mbps|5 Mbps|XX|Yes|Not receivable by an RTLSDR
+|Elektro-L LRIT|0.128 Mbps|0.2 MHz|90cm**|Yes|
+|Elektro-L HRIT|1 Mbps|2 MHz|150|Yes|
+|GOES 15 GVAR|TODO|TODO|TODO|TODO|
 
-
+\* Unconfirmed: Sources cite 80cm, I got ~15-18 dB on a 90 cm, might be possible with smaller dish\
+\*\* Originally supposed to be receivable with an 80 cm, I could just barely get it with a 90 cm dish. Might be because of the low elevation I get it at (15°).
