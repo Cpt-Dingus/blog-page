@@ -72,7 +72,7 @@ Initially, I believed it was a helix issue, since I put glue all over it disrega
 
 This got me my first official HRPT image: Drumroll please...
 
-![First HRPT image](image.png)
+![First HRPT image](./Assets/Sat-reception-journey/First-HRPT-attempt.png)
 *NOAA 19 HRPT received on 31/12/2023 using a 90cm dish and a generic wideband LNA. Decoded using SatDump, median blur and equalization applied. No idea which composite.*
 
 A terrible image, go figure! At this point I just gave up on trying to get this generic POS to work, instead ordering a SawBird GOES+ off of Amazon.
