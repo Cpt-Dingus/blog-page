@@ -214,10 +214,14 @@ I have to give huge props to the following people and communities who have helpe
 
 - ***@somerandomdragon*** For introducing me to radio as a concept
 - ***@ryzerth*** For helping with a lot of the software setup issues
-- ***@lego11*** For helping with pretty much all of L-band
+- ***@lego11*** For helping with pretty much all of L-band as well as providing incredible [articles](https://www.a-centauri.com/articoli/) that I got info from all throughout
+- ***@simplydooge*** For helping with various issues that have happened since I began this journey
+- ***@ledflighter*** For helping with hardware setups
+- ***@felixtheradioguy*** For helping with antenna technicalities as well as providing aid with geostationary sats
 - ***The [SigIdWiki](https://www.sigidwiki.com/) Discord*** For helping with a lot of electrical issues I have stumbled upon 
 - ***The [SDR++](https://www.sdrpp.org/) Discord*** For helping me throughout this exciting journey with basically everything
 - ***The [SatDump](https://www.satdump.org/) Matrix*** For helping with a bunch of more technical questions
 
+You have all been incredible, are the reason me and many others are able to call this hobby fun. Thank you for everything.
 
 o7
