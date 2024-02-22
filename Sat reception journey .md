@@ -21,15 +21,20 @@ I then proceeded to buy a wideband LNA and actual conenctors (Thank god for the 
 To sum it up, I was several days and euros down with nothing but static in results. The main reason for this was following old guides with inadequate equipment, which continued for a bit.
 
 # First images
-After a bunch of time and research, I finally realized, that using a DVB-T antenna for satellites isn't going to work, with LNA or without. Instead of continuing to indefinitely chase rainbows I finally made a V-dipole antenna, something I should have done in the beginning. Except it was on a two metre long wooden board and hanging from my balcony. This resulted in my true first APT, but given that I only barely heard the carrier wave for a few seconds I don't think it should count.
+After a bunch of time and research, I finally realized, that using a DVB-T antenna for satellites isn't going to work, with LNA or without. Instead of continuing to indefinitely chase rainbows I finally made a V-dipole antenna, something I should have done in the beginning. Except it was on a two meter long wooden board and hanging from my balcony. This resulted in my true first APT:
 
-My primary issue was poor line of sight from my apartment balcony - I could see the satellite just for a very short time while it was overhead, even if everything was set up perfectly and worked right off the bat, I would only be able to get a very short image at the best. After a bit of thought, I realized, that I could use some old materials from our decrepit shed at my cottage as a stand for a very tall V-dipole which would have GREAT LOS with the sky. Some zipties and gluing stuff together later, I got this:
+![First APT picture I ever received](./Assets/Sat-reception-journey/First-APT-I-got.png)
+*NOAA 18 received on 12/10/2023 using a V-dipole nailed to a wooden pole sticking outside of my balcony. Decoded using WxToImg.*
+
+The result is about what you'd expect for the first APT I got. 
+
+My primary issue was poor line of sight from my apartment balcony - I could see the satellite for just a very short amount of time while it was directly overhead, even if everything was set up perfectly and worked right off the bat the image would be incredibly short. After a bit of thought I realized, that I could use some old materials from our decrepit shed at my cottage as a stand for a very tall V-dipole which would have GREAT LOS with the sky. Some zipties and gluing stuff together later, I got this:
 
 ![The original V-dipole fixture](./Assets/Sat-reception-journey/Original-V-Dipole-fixture.png)
 *The original V-dipole fixture I had at my cottage.*
 
-![First APT from NOAA 15](./Assets/Sat-reception-journey/First-APT-N15.png)
-*NOAA 15 received on 13/10/2023 @ 7 PM. Received using a V-dipole. Decoded using SatDump. (Allignment algorhythm couldn't handle the scan motor issues, is the reason the middle of the image is cut up.)*
+![First actually good APT](./Assets/Sat-reception-journey/First-good-APT-N15.png)
+*NOAA 15 received on 13/10/2023 @ 7 PM. Received using a V-dipole. Decoded using SatDump. (Alignment algorithm couldn't handle the scan motor issues, is the reason the middle of the image is cut up.)*
 
 What at a first look is a horrendous image showing no useful information remains one of the best APT transmissions I have gotten when considering the length and cleanliness. How a V-Dipole managed to get no nulls is beyond me. 
 
@@ -37,7 +42,7 @@ NOAA 15 was having some *major* scan motor issues at that time, causing the glit
 
 I managed to get a few other satellites just after, most notably Noaa 19 passing right after NOAA 15:
 
-![Second APT ever, from NOAA 19](./Assets/Sat-reception-journey/Seconod-APT-N19.png)
+![Second actually good APT](./Assets/Sat-reception-journey/Second-good-APT-N19.png)
 *NOAA 19 received on 13/10/2023 @ 7 PM using a V-Dipole. Decoded using SatDump.*
 
 After all this time and effort, finally a worthy image. It's at about this time, that I had joined the SDR++ and SigIdWiki Discord servers. They told me how god awful and outdated my software setup was, which they were 100% right for doing so. After downloading SatDump and SDR++, everything became *way more streamlined* with the results significantly improving.
