@@ -183,7 +183,7 @@ After doing all of this, I decided it was time to move on from the 90 cm dish - 
 After receiving the dish, remaking my helix once again and mounting my hrpt setup to it, I managed to get a much stronger Elektro-L LRIT broadcast (8 dB compared to just 3 dB prior), HRPT went up to 20 dB from 15 dB. It is definitely needed for what's to come (:
 
 ![New helical feed](/Assets/Sat-reception-journey/New-helical-feed.png)
-*A picture of te new helical feed, with a much higher production quality*
+*A picture of the new helical feed, with a much higher production quality*
 
 ![My current HRPT setup](./Assets/Sat-reception-journey/Current-HRPT-setup.jpg)
 *My current HRPT setup, all wired up and ready for the next pass*
