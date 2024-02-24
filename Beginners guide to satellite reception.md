@@ -135,7 +135,7 @@ This is a brief historical overview in case you want to know a bit about the sat
 **METEOR-M**
 
 - As for their Russian counterpart, the **only** satellite currently broadcasting in VHF is **Meteor-M N2-3** (Meteor M2-3 for short), a part of the **Meteor-M** constellation. It was launched very recently - just in June of 2023. 
-- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1km/px quality. It also includes **ECC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
+- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1km/px quality. It also includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
 
 <break>
 
@@ -337,14 +337,14 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 ---
 **MetOp**
 - There are two functional satellites: MetOp-B and MetOp-C operated by EumetSat, launched in 2013 and 2019 respectively.
-- They have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon ECC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
+- They have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
 ---
 **FengYun**
 
 - The only satellite broadcasting HRPT is **Fengyun 3C**, it is a fairly special case. It is the last surviving member of the FengYun 3 constellation still broadcasting in the L-band, due to a severe power supply failure **it only broadcasts when it sees China**. 
-- It broadcasts a FengYun AHRPT signal, which - much like MetOp AHRPT - has Reed-Solomon ECC, but unlike any other satellite in L-band **it broadcasts a true color channel** (The rest can only do RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
+- It broadcasts a FengYun AHRPT signal, which - much like MetOp AHRPT - has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts a true color channel** (The rest can only do RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
 - Another simmilarity with MetOp is its lacking carrier wave, meaningyou have to go solely by the SNR as well.
 - The signal is quite wide and has a much higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
@@ -357,14 +357,14 @@ I will only mention the few relevant to me right now, will add the rest once pos
 
 **Elektro-L**
 - These are Elektro-L N3 and Elektro-L N4 (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
-- They broadcast a Low Rate Information Transmission (LRIT) in addition to a High Rate Information Transmission (HRIT) signal containing full disc images of the earth. It includes Reed-Solomon ECC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
+- They broadcast a Low Rate Information Transmission (LRIT) in addition to a High Rate Information Transmission (HRIT) signal containing full disc images of the earth. It includes Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
 
 ---
 
 **GOES**
 
 > I will only cover the European EWS-G2 (GOES 15), given that I only have LOS with this one. The US has several other GOES satellites, their reception is simmilar to Elektro-L LRIT/HRIT.
-- EWS-G2, a retired GOES satellite moved to Europe to replace EWS-G1 (GOES 13) broadcasts a **linearly polarized** GVAR signal. It lacks ECC, meaning you have to get it at a fairly decent strength for a decode witout any grain.
+- EWS-G2, a retired GOES satellite moved to Europe to replace EWS-G1 (GOES 13) broadcasts a **linearly polarized** GVAR signal. It lacks FEC, meaning you have to get it at a fairly decent strength for a decode witout any grain.
 
 ---
 
@@ -374,7 +374,7 @@ I will only mention the few relevant to me right now, will add the rest once pos
 - The Fengyun 2 and 4 series are geostaionary, FengYun 2G, 2H, 4A and 4B currently transmit an L-band signal with imagery.
 
 *FengYun 2H*
-- It broadcasts a **Linearly polarized S-VISSR** signal, which - much like GOES GVAR - lacks ECC meaning you have to get it at a fairly decemt strength to not get grain on the resulting images.
+- It broadcasts a **Linearly polarized S-VISSR** signal, which - much like GOES GVAR - lacks FEC meaning you have to get it at a fairly decemt strength to not get grain on the resulting images.
 
 ## Hardware requirements
 Instead of requiring just an SDR and two wires, L-band requires an actual dish as well as a filtered LNA for decent results.
@@ -401,7 +401,7 @@ Instead of requiring just an SDR and two wires, L-band requires an actual dish a
 ## Signal information
 The signals are all different from one another, you can only receive them as long as your SDRs sampling rate is higher than the one for the target satellite. I will only include things I know for certain, a lot of the transmissions lack credible sources for their specifications.
 
-|Signal|Minimum viable dish size|ECC|Notes|
+|Signal|Minimum viable dish size|FEC|Notes|
 |---|---|---|---|
 |NOAA POES HRPT|60|No|
 |Meteor HRPT|60|No|
