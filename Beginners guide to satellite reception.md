@@ -6,16 +6,14 @@ Before anything, I have to give credit and extreme kudos to the **SDR++ and SigI
 
 **A lot of the information you will be able to find here is from [lego11s articles](https://a-centauri.com/articoli/), check them out if you want more awesome and detailed guides.**
 
-The purpose of this page is to write up everything I have learned so far in a beginner friendly way including guides with old wives tales and advice sprinkled on top. More importantly, what you can read hereis **up to date**. There are several WAY out of date guides and pages out there instructing you to use outdated software, abandonware, offering jank solutions to simple problems.
-
-> As of writing this, by far the best source are the aforementioned Lego11s articles, they are updated in a timely manner and contain up to date information.
+The purpose of this page is to guide complete SDR beginners as well as more experienced folk looking to learn something through getting pretty images from weather satellites. A lot of guides out there are severaly outdated, focus on specific things while omitting important details or at times even nonexistent!
 
 
 # Glossary
-### Hardware terms
-- **SDR** - Software Defined Radio -> A device used to translate radio waves into digital info
+## Hardware terms
+- **SDR** - Software Defined Radio -> A device used to translate radio waves into digital data
 - **LNA** - Low Noise Amplifier -> A tool used to amplify radio signals
-- **Bias-t**/**Bias tee** -> A device used to inject DC power into the rf line. **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT**
+- **Bias-t**/**Bias tee** -> A device used to inject DC power into the RF line (To power devices such as LNAs). **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT!**
 
 <break>
 
@@ -28,16 +26,16 @@ The purpose of this page is to write up everything I have learned so far in a be
 - **Elevation** -> Height of a satellite above the horizon
 
 
-### Software terms
+## Software terms
 - **AGC** - Automatic Gain Control -> Automatically sets the gain based on the signal strength
 - **SNR** - Signal to Noise Ratio -> The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
 - **FFT Spectrum** - Fast Fourier Transform Spectrum -> The slice of the radio spectrum being sampled by your SDR
-- **FFT Waterfall** - Fast Fourier Transform Waterfall -> A visual representation of the spectrum throughout time, almost always found right below the fft Spectrum
+- **FFT Waterfall** - Fast Fourier Transform Waterfall -> A visual representation of the spectrum throughout time, almost always found right below the FFT Spectrum
 - **Interference** -> Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
 - **Overloading** -> Occurs when your gain is set too high andor you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
 - **TLE** - Two Line Element set -> A format used to list the location of objects orbitting the earth
 
-### Data transmission formats
+## Data transmission formats
 Don't worry if you don't understand these yet, they will be explained in more detail later and are here just so you have an idea of what is meant if they are mentioned prior to their full explanation.
 
 - **APT** - Automatic Picture Transmission -> VHF Image broadcast currently used on NOAA satellites
@@ -88,14 +86,14 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 Arguably the by far best choice for **pulling data** off of satellites is [SatDump](https://github.com/SatDump/SatDump/releases)
 
-You can also use SDR++ for recording and then process via SatDump, but that is just extra effort.
+You can also use SDR++ for recording and then process the recordings using SatDump, but that is often just unnecessary extra effort.
 
 > Always download the nightly builds for both of these, since the tools are relatively new and are still being actively developed with new additions basically daily. There are other programs you can use but I won't focus on them for the sake of keeping this simple.
 ---
  To **track satellites** and figure out their future passes (Most are orbiting the Earth after all), you can use these:
 
 Cross-Platform:
-- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, MacOS, Android - SatDump has an inbuilt module you can use for tracking. **Can only track one satellite at a time, doesn't do predictions.**
+- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, MacOS, Android - SatDump has an inbuilt module you can use for tracking. **It can only track one satellite at a time, doesn't do predictions.**
 
 PC:
 - [Gpredict](https://oz9aec.dk/gpredict/) - Windows, Linux, MacOS - A relatively young tool, arguably the best choice for tracking on your computer
@@ -118,12 +116,11 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 # VHF APT/LRPT reception guide (137MHz)
 - Receiving VHF broadcasts is **incredibly easy** -> all that you need is just some wire, an SDR and some patience
 - As of writing this article there are just **4** remaining weather satellites that broadcast in this band
-- While easy to receive, they have a **relatively low quality** (4km/px and 1km/px with jpeg compression) and transmit only 2-3 while broadcasts in higher frequencies which usually transmit 5+ channels of raw 1km/px images
+- While easy to receive, they have a **relatively low quality** (4km/px and 1km/px with jpeg compression) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies which usually transmit 5+ raw, 1km/px channels 
 
 ## The four weather satellites still broadcasting images on VHF
 
 This is a brief historical overview in case you want to know a bit about the satellites you can receive. Feel free to skip this heading if you are just here to receive stuff.
-
 
 **NOAA**
 
