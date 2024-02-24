@@ -86,14 +86,16 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 # Preferred software
 
-Arguably the by far best choice for **pulling data** off of satellites is:
-- [Sdr++](https://github.com/AlexandreRouma/SDRPlusPlus/releases) for recording
-- [SatDump](https://github.com/SatDump/SatDump/releases) for decoding recordings, or doing both (Covered in L-Band guide)
+Arguably the by far best choice for **pulling data** off of satellites is [SatDump](https://github.com/SatDump/SatDump/releases)
 
-> Always download the nightly builds for both of these, since the tools are relatively new and are being actively developed with new additions basically daily. There are other programs you can use but I won't focus on them for the sake of keeping this simple.
+You can also use SDR++ for recording and then process via SatDump, but that is just extra effort.
+
+> Always download the nightly builds for both of these, since the tools are relatively new and are still being actively developed with new additions basically daily. There are other programs you can use but I won't focus on them for the sake of keeping this simple.
 ---
  To **track satellites** and figure out their future passes (Most are orbiting the Earth after all), you can use these:
 
+Cross-Platform:
+- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, MacOS, Android - SatDump has an inbuilt module you can use for tracking. **Can only track one satellite at a time, doesn't do predictions.**
 
 PC:
 - [Gpredict](https://oz9aec.dk/gpredict/) - Windows, Linux, MacOS - A relatively young tool, arguably the best choice for tracking on your computer
@@ -108,16 +110,15 @@ Web:
 
 For IOS there are a few apps but they have severe limitations, using any of the above is heavily encouraged.
 
-> **Make sure you update your TLEs**, not doing so might make your data be outdated or just outright incorrect.
+> **Make sure you update your TLEs**, not doing so might make the satellite locations be outdated or just outright incorrect.
 
-
-I personally use Look4Sat when on the go because of its simplicity and Orbitron when at home, since I just got used to its UI.
+I personally use Gpredict for long term and Look4Sat for short term predictions, the SatDump tracking module during passes.
 
 
 # VHF APT/LRPT reception guide (137MHz)
 - Receiving VHF broadcasts is **incredibly easy** -> all that you need is just some wire, an SDR and some patience
 - As of writing this article there are just **4** remaining weather satellites that broadcast in this band
-- While easy to receive, they have a **lower quality** (4km/px and 1km/px with jpeg compression) and transmit less channels (2-3) than broadcasts in higher frequencies which usually transmit 10+ channels of raw 1km/px images
+- While easy to receive, they have a **relatively low quality** (4km/px and 1km/px with jpeg compression) and transmit only 2-3 while broadcasts in higher frequencies which usually transmit 5+ channels of raw 1km/px images
 
 ## The four weather satellites still broadcasting images on VHF
 
@@ -131,29 +132,28 @@ This is a brief historical overview in case you want to know a bit about the sat
 
 <break>
 
-- New satellite launches are of the JPSS constellation, which only have a much harder to receive C-band signal that requires much more specific hardware to receive (Since most SDRs only go up to 1.7 GHz, aka the top of L-band). No future satellite launches from NOAA are planned to include a VHF antenna.
+- New satellite launches are a part of the JPSS constellation, which only includes a much harder to receive X-band signal that requires much more expensive hardware. No future satellite launches from NOAA are planned to include a VHF antenna.
 
 ---
 **METEOR-M**
 
-- As for their Russian counterpart, the **only** satellite currently broadcasting in VHF is **Meteor-M N2-3** (Meteor M2-3 for short) of the **Meteor-M** constellation. It was launched very recently - just in June of 2023. 
-- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that has 3 channels and a JPEG-compressed 1km/px quality. It also includes **ECC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it is fairly weak.
+- As for their Russian counterpart, the **only** satellite currently broadcasting in VHF is **Meteor-M N2-3** (Meteor M2-3 for short), a part of the **Meteor-M** constellation. It was launched very recently - just in June of 2023. 
+- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1km/px quality. It also includes **ECC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
 
 <break>
 
-- The satellite series has been plagued with errors, failures and delays. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal not circularily polarized like it is supposed to be as well as making it much weaker than designed. M2-4 is currently set to launch 02-2024.
+- This satellite series has been plagued with errors, failures and delays. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal not circularily polarized like it is supposed to be as well as making it much weaker than designed. M2-4 is currently set to launch 02-2024.
 
 ## Example processed APT and LRPT images
-> Note: The images don't have maps on them, it was added in post processing.
+> Note: The images don't have maps on them, they were added in post processing.
 
 
 ![A processed APT image](./Assets/Radio/APT-Sample-image.png)
-*APT image received using a 5 element yagi on 02-01-2024 from NOAA 18, processed using Satdump with the `WXtoImg HVC N18` RGB composite. Equalized.*
+*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied.*
 
 
 ![A processed LRPT image](./Assets/Radio/LRPT-Sample-image.png)
-*LRPT image received using a 5 element yagi on 02-01-2024 from Meteor M2-3, processed using Satdump with the `221` RGB composite. Equalized.*
-
+*Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized.*
 
 
 ## Hardware needed to receive these satellites
@@ -167,7 +167,7 @@ As for the **antenna**, you have the choice between:
 - Directional antennas
 - Omnidirectional antennas
 
-The difference is, that with directional antennas you need to track the satellite by hand, while an omnidirectional antenna doesn't need any tracking.
+The difference between these is, that omnidirectional antennas don't need any tracking to be done (remains stationary throughout the pass) while directional antennas require hand tracking and **can only do one satellite at a time**
 
 
 *Popular antenna types for receiving in this frequency include:*
@@ -204,7 +204,6 @@ I will not be describing how to build it, since the building process is quite in
 - Fairly easy to make
 - Very good results thanks to its high gain
 - Requires manual tracking
-- **Can only do one satellite at a time** (unless they are passing very close to each other)
   
 ![An image describing the parts of a yagi antenna](./Assets/Radio/Yagi-example.png)
 *[Source](https://www.everythingrf.com/community/what-is-a-yagi-antenna)*
@@ -212,13 +211,13 @@ I will not be describing how to build it, since the building process is quite in
 I personally use this type of antenna for VHF passes, since it constantly gets a great SNR (~45-50 with APT) and is quite easy to build albeit requiring a bit more wire. 
 
 To make it:
-1. Get a Boom (Can be anything long and nonconductive, just consider, that you will HAVE to manhandle it later while tracking sats) and find out how many elements fit on it
+1. Get a Boom (Anything long and nonconductive, just consider, that you will HAVE to manhandle it later while tracking sats - don't get a tungsten rod or something) and find out how many elements fit on it
 > More elements = More directional (Harder to track), higher gain (Better signal strength), longer boom length (Bulkier)
 2. Shove appropriate numbers into [this calculator](https://www.steeman.org/Antenna/Yagi-Antenna-Calculator) (For frequency choose 137.5 MHz)
-3. Cut some copper wires, place them onto the boom according to to the values from the calculator
-4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the copper core of the same coaxial wire\
+3. Cut copper wires to length, place them onto the boom according to to the values from the calculator
+4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the core of the same coaxial wire\
 **Make sure the cables don't touch or are short together in any way, this will make the antenna not work**
-5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (The goal is to create a choked balun)
+5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (In essence creating a HF choke)
 
 ![My yagi setup showcasing the balun and feed](./Assets/Radio/My-yagi-dipole-feed.png)
 *The choked balun and dipole feed I use on my yagi*
@@ -226,7 +225,7 @@ To make it:
 
 ## Frequency reference
 
-As of 21.1.2024, the frequencies these satellites broadcast in are as follows:
+As of 24.2.2024, the frequencies these satellites broadcast in are as follows:
 
 |Satellite|Frequency|
 |---|---|
@@ -237,44 +236,39 @@ As of 21.1.2024, the frequencies these satellites broadcast in are as follows:
 
 ## Actually receiving the satellites!
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be
-2. Configure SDR++ as follows:
+2. Open SatDump and navigate to the `Recorder` tab, select your SDR, set the sampling rate to `2.4 Msps` (Or whatever your SDR supports) and hit `Start`
 
-- Rise gain until your noise floor starts to rise more than the target signal, or until before your SDR overloads, whichever comes first. Try not to move it around during the pass, it will lead to the image having sections with a different brightness. In my experience it is stable at around 30 dB gain, it depends on receiving conditions though.
+- Rise the gain until your noise floor starts to rise more than the target signal, or until before your SDR overloads, whichever comes first. Try not to move it around during the pass, it will lead to the image having sections with a different brightness. In my experience it is stable at around 30 dB gain, it depends on receiving conditions though.
+
+3. In the side panel, open the `Processing` menu and do the following:
 
 ### FOR NOAA APT
-- Move your radio to the correct frequency (refer to the frequency chart provided above)
-- Select NFM with a bandwidth of 44000 Hz
-- Tick `IF noise reduction` and select `NOAA APT`
-- Turn the low pass filter on, disable the high pass one if it was enabled
-- Choose `Audio` as the recording type and once the sat goes into view hit `Record`
+- Select the `NOAA APT` pipeline
+- Enable `DC Blocking` and `SDR++ Noise Reduction`
+- Select the proper NOAA satellite
+- Open the frequency menu, select the correct satellite
 
-![Sdr++ APT config](./Assets/Radio/Sdrpp-APT-config.png)
+![A screenshot of the settings mentioned above](./Assets/Radio/APT-SatDump-Settings.png)
 
 ### FOR METEOR-M LRPT
-- Go to module manager, add a `Meteor demodulator`
-- Turn it on, tick `OQPSK`
-- Move it to the correct frequency (As of writing this article, just 137.9 MHz)
-- Hit `Start` n the demodulator tab
+- Select the `METEOR M2-x LRPT 72k` pipeline
+- Enable `DC Blocking`
+- For the frequency choose whichever frequency the satellite is broadcasting in at the time of reception, as of writing this article it is the `Primary` frequency
+> The frequency can change when the satellite conflict switches (Tries to avoid using the same frequency as other satellites in the same band)
 
-3. Move your antenna into place\
-Move slowly and try keeping the signal as loud as possible. You might not get the hang of it on your first try, tracking is a skill you have to learn!
+![A screenshot of the settings mentioned above](./Assets/Radio/LRPT-SatDump-Settings.png)
+
+4. When the satellite comes overhead, press `Start` on the processing window
+
+> When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the waterfall with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
 
 If everything is right, you are now receiving a beeping APT signal or you see four dots on the demodulator if it is LRPT!
 
->The signals are usable when the SNR is over:
-> - ~20 dB for LRPT
-> - ~25 dB for APT
+5. Once you see the signal has completely disappeared and isn't coming back, press `Stop`
 
-4. Once the pass is over, hit `stop` on the recorder or demodulator
+6. SatDump will now begin autoprocessing the results, you can see the progress on the bottom and disable the autoprocessing in the settings if you want to tinker with the images yourself.
 
-## Converting the recording to an image
-1. Open SatDump, in the `Offline processing` tab select:
-- `NOAA APT` and `audio_wav` as the file type, put the recording in the input
-- `Meteor-M2-x 72k LRPT` and `soft` as the file type, put the .s file in the input (NOTE: The symbol rate [72k] might be incorrect depending on the current satellite status, as of 01-01-2024 the correct rate is 72k)
-> You don't have to set the timestamp manually, satdump will figure it out from the recording file.
-
-2. Hit `Start`, satdump will now demodulate andor decode the input file
-3. Once it finishes processing, head to the `Viewer` tab and select the pass you decoded on the top left.
+7. Once it finishes processing, head to the `Viewer` tab and select the pass you decoded on the top left.
 
 You are done! Feel free to play around with the image settings and enhancements, you can figure it out :)
 
@@ -283,32 +277,19 @@ You are done! Feel free to play around with the image settings and enhancements,
 If the image was taken from Meteor M2-3 on an evening pass, you need to select Channel 4 (IR) to see anything - Channels 1 and 2 are visible, during night it is solid black
 
 - There is grain all over the image!\
-Some grain is expected on APT images, you can get rid of it by ticking `Median blur`. If it is present after, you either didn't enable the IF noise reduction when recording or the signal was just too weak. The latter is most common.
-
-- I see a map, but no clouds!\
-This happens when using an RGB overlay such as `MCIR` on an empty recording. SatDump decodes just noise, overlays a map over it. Verify you chose `audio_wav` as the recording type, make sure the recording actually contains the signal without significant noise.
-
-## My setup
-For my SDR I chose the Nooelec Smart SDR v5, solely because someone near me was selling one for fairly cheap and I was not aware of any reputable brands - I thankfully managed to get a genuine one from a reputable brand out of sheer luck.
-
-Initially when starting out with VHF reception, I placed a v dipole in a very high spot (5m) with excellent 360° view, got great recordings with an LNA. After having to tear this setup down because of travelling and placing it back in a month after, I found out my neigbours started using some kind of a device spewing large amounts of RFI throughout the whole spectrum making the LNA unusable and making me only able to set the gain to 15 out of 50 dB. This made all low passes unusable and high passes grainy, so I ended up scrapping the idea alltogether and just made a directional yagi with 5 elements instead. This has proven to be a great decision, I am now able to get 30 dB of SNR just at a mere 2° elevation, the SNR peaks at 50 dB.
-
-The yagi was made with an old piece of wood I found in my barn and 1.5mm copper wires from scrapped power cables. This just proves, that you can make a great antenna out of complete trash!
-
-![My current yagi antenna](./Assets/Radio/My-VHF-yagi.png)
-*The yagi I currently use for receiving VHF broadcasts.*
+Some grain is expected on APT images, you can get rid of it by ticking `Median blur`. If it is present after, you either didn't enable the noise reduction when recording or the signal was just too weak. The latter is most common, happens whenever there is crackling during recording.
 
 
 # L-band HRPT/HRIT/LRIT reception guide (1.7 GHz)
-> This section will be comparively limited in terms of HRIT/LRIT reception, given that I only have LOS with three geostationary satellites, only one which I actually attempted to receive information from to date. I will update it once I try the rest.
-- L-band reception is **harder when compared to VHF**, requiring more **expensive equipment** and more effort making the antenna as well as requiring a **dish** and some half decent tracking skills.
-- While requiring more dedication, it offers much more interesting things than VHF: for example being able to broadcast 5+ channels of pure and uncompressed 1km/px images as wall as full earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
+> This section will be fairly limited in terms of HRIT/LRIT reception, given that I only have LOS with three geostationary satellites. I will update it once I try the rest.
+- L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **specific equipment** and more effort making the antenna as well as requiring a **dish** and some half decent tracking skills.
+- While requiring more dedication, it offers much more interesting things than VHF: for example being able to receive 5+ channels of pure and uncompressed 1km/px images as well as full disc Earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
 
 <break>
 
-- The are severaô more satellites you can receive, they divide into:
+- The are far more satellites you can receive, they divide into:
     - Geostationary satellites (10+):
-        - GOES in the US (Two additional limited GOES in Europe and Asia respectively)
+        - GOES in the US (One additional limited GOES in Europe and Asia respectively)
         - Elektro-L in Europe and Oceania
         - Fengyun in Asia and Oceania
         - Himawari in Asia and Oceania
@@ -321,6 +302,13 @@ The yagi was made with an old piece of wood I found in my barn and 1.5mm copper 
         - 2x MetOp
         - 1x FengYun (Only broadcasts over China)
 
+## Exemplary processed HRPT and xRIT images
+
+![Best HRPT to date](./Assets/Sat-reception-journey/Best-HRPT-yet.png)
+*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. My single best HRPT image to date*
+
+![Latest full disc Earth image I have](./Assets/Sat-reception-journey/Best-Earth-full-disc.png)
+*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite.*
 
 ## The satellites you can receive
 
@@ -336,32 +324,32 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 
 <break>
 
-- Fun fact: As of 02/2024, NOAA 2 (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal.
-- **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
+> Fun fact: As of 02/2024, NOAA 2 (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal. **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
 
 ---
 **METEOR-M**
 
-- Two Meteor-M satellites broadcast: Meteor M2-2 and Meteor M2-3
+- Two Meteor-M satellites broadcast in L-band: Meteor M2-2 and Meteor M2-3
 - Both of these have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
 <break>
 
-> You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leavining LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since. The satellite orbits a bit later than the rest, making you able to receive some HRPT on noon, unlike APT & LRPT which only have early morning and late evening passes.
+> You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaviing LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since. The satellite orbits a bit later than the rest, making you able to receive some HRPT at noon, unlike APT & LRPT which only have early morning and late evening passes.
 
 ---
 **MetOp**
 - There are two functional satellites: MetOp-B and MetOp-C operated by EumetSat, launched in 2013 and 2019 respectively.
 - They have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon ECC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
-- The signal does not have a carrier wave or easily decernable bumps making it bit harder to track, you will have to go by the SNR meter.
+- The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
 ---
 **FengYun**
 
-- The only satellite broadcasting HRPT is **Fengyun 3C**, it is a fairly special case. It is the last surviving member of the FengYun 3 constellation. Due to a severe power supply failure, **It only broadcasts when it sees China**. 
-- It broadcasts a FengYun AHRPT signal, which much like MetOp AHRPT has Reed-Solomon ECC, but unlike any other satellite in L-band **it broadcasts a true color channel** (The rest can only do RGB composites) - exactly what you would see with your eyes if you stoof right next to the satellite. 
-- Another simmilarity with MetOp is its lacking carrier wave, the signal is also quite wide with a higher symbol rate, we will unpack that in a bit though.
+- The only satellite broadcasting HRPT is **Fengyun 3C**, it is a fairly special case. It is the last surviving member of the FengYun 3 constellation still broadcasting in the L-band, due to a severe power supply failure **it only broadcasts when it sees China**. 
+- It broadcasts a FengYun AHRPT signal, which - much like MetOp AHRPT - has Reed-Solomon ECC, but unlike any other satellite in L-band **it broadcasts a true color channel** (The rest can only do RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
+- Another simmilarity with MetOp is its lacking carrier wave, meaningyou have to go solely by the SNR as well.
+- The signal is quite wide and has a much higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
 
 ---
@@ -372,41 +360,58 @@ I will only mention the few relevant to me right now, will add the rest once pos
 
 **Elektro-L**
 - These are Elektro-L N3 and Elektro-L N4 (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
-- They broadcast an LRIT (Low Rate Information Transmission) in addition to a HRIT (High Rate Information Transmission) signal containing full disc images of the earth. It includes Reed-Solomon ECC, meaning you can just get a few dBs of the signal and still get a proper decode.
+- They broadcast a Low Rate Information Transmission (LRIT) in addition to a High Rate Information Transmission (HRIT) signal containing full disc images of the earth. It includes Reed-Solomon ECC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
 
 ---
 
 **GOES**
 
-> I will only cover the European EWS-G1 (GOES 13) and EWS-G2 (GOES 15), given that I only have access to these.
-- These broadcast a fairly weak, **Linearly polarized** GVAR signal. GOES 13 only does black and white full disc images, while GOES 15 does colored ones as well. It lacks ECC, meaning you have to get it at a fairly strong strength for a proper decode.
-
-- US: TODO
+> I will only cover the European EWS-G2 (GOES 15), given that I only have LOS with this one. The US has several other GOES satellites, their reception is simmilar to Elektro-L LRIT/HRIT.
+- EWS-G2, a retired GOES satellite moved to Europe to replace EWS-G1 (GOES 13) broadcasts a **linearly polarized** GVAR signal. It lacks ECC, meaning you have to get it at a fairly decent strength for a decode witout any grain.
 
 ---
 
 **FengYun**
-> I don't have information about 4A and 4B, **I only have LOS and verified information about FengYun 2H**, will not include anything else to avoid false information.
+> I don't have information about 4A and 4B, **I only have LOS and verified information about FengYun 2H**, will not include anything else to avoid giving false information.
 
-- The Fengyun 2 and 4 series are the geostationary ones, FengYun 2G, 2H, 4A and 4B transmit an L-band signal.
+- The Fengyun 2 and 4 series are geostaionary, FengYun 2G, 2H, 4A and 4B currently transmit an L-band signal with imagery.
 
 *FengYun 2H*
-- It broadcasts a **Linearly polarized** (Almost everything else is RHCP) **S-VISSR** signal, which - much like GOES GVAR - lacks ECC meaning you have to get it at a fairly high strength for a proper decode.
+- It broadcasts a **Linearly polarized S-VISSR** signal, which - much like GOES GVAR - lacks ECC meaning you have to get it at a fairly decemt strength to not get grain on the resulting images.
 
-**
+## Hardware requirements
+Instead of requiring just an SDR and two wires, L-band requires an actual dish as well as a filtered LNA for decent results.
+
+### SDR and LNA
+- For the SDR, you need a reputable brand and a decent SDR from them - do not go for the shitty blue/plastic SDRs, they won't work properly.
+- For the filtered LNA, the only one that doesn't cost a leg and actually works is the $45 [Nooelec SawBird GOES+](https://www.nooelec.com/store/sawbird-plus-goes-302.html) - a filtered double LNA
+> ---- WARNING: THE LNA BACKFEEDS DC, CAN FRY YOUR SDR WHEN POWERED EXTERNALLY!!! Power it using USB **ONLY with a DC block between it and your SDR** or - much more preferably - using a **Bias-t** ----
+
+### Dish
+
+- For the dish, your regular old 80 cm TV dish will work for pretty much everything. A bigger one will require finer tracking skills albeit offering a stronger signal.
+- You can use both a prime focus or an offset dish, the former just requiring less turns on the helix.
+
+### Feed
+
+- The dish is only a half of the job though, you will need to DIY the feed yourself - it sounds much harder than it actually is though.
+- The preferred and most forgiving feed you can make is a **Helical antenna**, which will be placed on the mounting arm of the dish
+
+
+## Build and reception
+- For these, there is no point in me writing it out: Lego has these covered in his incredible [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide), a much more solid and complete source for this stuff.
 
 ## Signal information
-The signals are all different from each other, you can only receive them as long as your SDRs sampling rate is higher than the one for the target satellite
+The signals are all different from one another, you can only receive them as long as your SDRs sampling rate is higher than the one for the target satellite. I will only include things I know for certain, a lot of the transmissions lack credible sources for their specifications.
 
-|Signal|Symbol rate|Bandwidth|Minimum viable dish size|ECC|Notes|
-|---|---|---|---|---|---|
-|NOAA POES|0.665 Mbps|2.5 MHz|60|No|
-|Meteor HRPT|0.6 Mbps|2.5 MHz|60|No|
-|MetOp AHRPT|3.5 Mbps|4.5 Mbps|XX|Yes|Just barely receivable with an RTLSDR, might cause issues
-|FengYun AHRPT|3.9 Mbps|5 Mbps|XX|Yes|Not receivable by an RTLSDR
-|Elektro-L LRIT|0.128 Mbps|0.2 MHz|90cm**|Yes|
-|Elektro-L HRIT|1 Mbps|2 MHz|150|Yes|
-|GOES 15 GVAR|TODO|TODO|TODO|TODO|
+|Signal|Minimum viable dish size|ECC|Notes|
+|---|---|---|---|
+|NOAA POES HRPT|60|No|
+|Meteor HRPT|60|No|
+|MetOp AHRPT|XX|Yes|Just barely receivable with an RTLSDR, might cause issues
+|FengYun AHRPT|XX|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
+|Elektro-L LRIT|90cm*|Yes|
+|Elektro-L HRIT|150|Yes|
+|GOES 15 GVAR|150|No|
 
-\* Unconfirmed: Sources cite 80cm, I got ~15-18 dB on a 90 cm, might be possible with smaller dish\
-\*\* Originally supposed to be receivable with an 80 cm, I could just barely get it with a 90 cm dish. Might be because of the low elevation I get it at (15°).
+\* Originally supposed to be receivable with an 80 cm, I could just barely get it with a 90 cm dish at 3 dB. This is enough for a decode, but is very poor. Might be because of the low elevation I see the sat at (15°).
