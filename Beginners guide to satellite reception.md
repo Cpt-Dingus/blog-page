@@ -451,7 +451,7 @@ Unlike orbitting satellites which use (A)HRPT, geostationary ones use different 
 |FengYun 4|HRIT|1681 MHz|Linear|???|Yes|XX:30
 |GOES|GVAR|1685.7 MHz|Linear|125 cm|No|Constantly
 
-\* During XX:28 - XX:30 the sensor rolls back, his presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
+\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. 
 
@@ -534,7 +534,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |Goes GVAR|7 dB|No|
 
 
-\* You read that rght, you can get these even at 0 dB! As long as you see spikes on the FFT and there are frames being decoded, you are getting an image! It WILL have a lot of grain, which should be manageable with `Median blur`
+\* You read that right, you can get these even at 0 dB! As long as you see spikes on the FFT and there are frames being decoded, you are getting an image! It WILL have a lot of grain, which should be manageable with `Median blur`
 
 ### Pass rating scale
 This scale is not official or mentioned anywhere, I just created it to be able to gauge how good each HRPT satellite pass was. Some people use SNR to gauge the pass quality, but I personally prefer using AVHRR frames. These dictate how long the AVHRR image is, is the only keasurement unit consistent across most weather satellites.
