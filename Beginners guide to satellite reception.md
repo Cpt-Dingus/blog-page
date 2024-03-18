@@ -415,12 +415,12 @@ I will only mention the few relevant to me right now, will add the rest once pos
 |MetOp AHRPT|XX|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
 |FengYun AHRPT|XX|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
 
-You can only receive signals with a SDR that has a sampling rate **AT THE VERY LEAST EQUAL TO** or greater than the symbol rate. Having it be very close to the sampling rate
+You can only receive signals with a SDR that has a sampling rate **AT THE VERY LEAST EQUAL TO** or greater than the symbol rate. Not having enough overhead can cause issues, such as a poor SNR. The most ideal sampling rate is twice the symbol rate, you don't see a major benefit beyond trhat.
 
 ## Receiving geostationary satellites
 > I will cover the satellites relevant to me, the rest of the world is pretty much the same thing wth just a different pipeline and schedule though.
 - Receiving these is extremely simple, the hardest part is just timing the receiving sessions.
-- Doesn't require tracking (It's on the tin -geo**stationary**
+- Doesn't require tracking (It's on the tin - geo**stationary**
 - Provides full disc images of the earth
 
 ### Transmission types
