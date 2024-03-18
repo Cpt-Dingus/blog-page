@@ -36,7 +36,7 @@ As of 18/3/2024, Meteor-M N°2-4 is currently cleaning its MSU-MR instrument by 
 - **FFT Waterfall** - Fast Fourier Transform Waterfall -> A visual representation of the spectrum throughout time, almost always found right below the FFT Spectrum
 - **FEC** - Forward Error Correction -> Error correcting code, most often Reed-Solomon
 - **Interference** -> Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
-- **Overloading** -> Occurs when your gain is set too high andor you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
+- **Overloading** -> Occurs when your gain is set too high and/or you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
 - **TLE** - Two Line Element set -> A format used to list the location of objects orbitting the earth
 
 ## Data transmission formats
@@ -337,7 +337,7 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to wiki)
 - The broadcast features a very strong carrier wave making it quite easy to track.
 
-<break>
+![NOAA HRPT screenshot from SatDump](./Assets/Radio/NOAA-HRPT.png)
 
 > Fun fact: As of 02/2024, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal. **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
 
@@ -348,7 +348,7 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
-<break>
+![Meteor HRPT screenshot from SatDump](./Assets/Radio/Meteor-HRPT.png)
 
 > You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since. The satellite orbits a bit later than the rest, making you able to receive some HRPT at noon, unlike APT & LRPT which only have early morning and late evening passes.
 
@@ -358,6 +358,8 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
+![MetOp AHRPT screenshot from SatDump](./Assets/Radio/MetOp-AHRPT.png)
+
 ---
 **FengYun**
 
@@ -365,6 +367,7 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
 - The signal has a much higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
+![FengYun AHRPT screenshot from SatDump](./Assets/Radio/FengYun-AHRPT.png)
 
 ---
 
@@ -391,6 +394,8 @@ I will only mention the few relevant to me right now, will add the rest once pos
 - The older satellites (2H and 2G) broadcast a **linearly polarized S-VISSR** signal in addition to a **__dead__ LRIT containing filler data**. They broadcast S-VISSR nonstop, except for when they are broadcasting the dead LRIT signal. The timeslots are further defined below.
 - The two newer satellites (4A and 4B) broadcast a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal is a fairly poor quality, HRIT only includes a single infrared channel.
 
+
+## Hardware requirements
 
 ### Dish
 
@@ -446,7 +451,7 @@ Unlike orbitting satellites which use (A)HRPT, geostationary ones use different 
 |FengYun 4|HRIT|1681 MHz|Linear|???|Yes|XX:30
 |GOES|GVAR|1685.7 MHz|Linear|125 cm|No|Constantly
 
-\* During XX:28 - XX:30 the sensor rolls back, his presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causes the second image to be cut in half at about 57%.
+\* During XX:28 - XX:30 the sensor rolls back, his presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. 
 
@@ -473,9 +478,9 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 
 7. You are now done! Feel free to play aroud with the results using 3rd party tools.
 
-### Common issues
+## Common issues
 
-#### MetOp donut shaped constellation
+### MetOp donut shaped constellation
 
 ![A screenshot of SatDump showing this issue](./Assets/Radio/Meteor-donut-constellation.png)
 
@@ -506,7 +511,7 @@ When decoding MetOp AHRPT on RTL-SDRs, you might notice that even while threre i
 
 If you continue to get a donut shaped constellation even after making the adjustments, you'll likely just need a bettter SDR or a machine that supports the 2.88/3.2 Msps sampling rate
 
-#### S-VISSR has missing lines
+### S-VISSR has missing lines
 
 Images transmitted by the FengYun 2 series very often have missing lines, this is because of corrupted transport packets received from the satellite. If you get missing lines on your image, try [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector). 
 
