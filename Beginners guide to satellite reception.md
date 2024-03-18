@@ -8,6 +8,9 @@ Before anything, I have to give credit and extreme kudos to the **SDR++ and SigI
 
 The purpose of this page is to guide complete SDR beginners as well as more experienced folk looking to learn something through getting pretty images from weather satellites. A lot of guides out there are severaly outdated, focus on specific things while omitting important details or at times even nonexistent!
 
+# Temporary notice
+As of 18/3/2024, Meteor-M N°2-4 is currently cleaning its MSU-MR instrument by heating it up. Its broadcasts are disabled until further notice from Roscosmos.
+
 
 # Glossary
 ## Hardware terms
@@ -111,7 +114,6 @@ PC:
 Mobile:
 - [Look4Sat](https://play.google.com/store/apps/details?id=com.rtbishop.look4sat&hl=en&gl=US) - Android - Provides everything essential in a simple UI.
 
-> Warning! As of 03/2024, Look4Sat has been **INCORRECT** with passes due to leap day! Download the weather TLE from Celestrak manually and apply it yourself, or use another program for tracking.
 
 There are a few apps for IOS but they have severe limitations, using any of the above is heavily encouraged.
 
@@ -331,19 +333,19 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 ---
 **NOAA POES**
 
-- These are the same as VHF: NOAA 15, 18 and 19.
+- These are the same as VHF: **NOAA 15, 18 and 19**.
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to wiki)
 - The broadcast features a very strong carrier wave making it quite easy to track.
 
 <break>
 
-> Fun fact: As of 02/2024, NOAA 2 (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal. **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
+> Fun fact: As of 02/2024, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal. **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
 
 ---
 **METEOR-M**
 
-- 3 satellites currently broadcast in L-band: Meteor M2-2, Meteor M2-3, and Meteor M2-4
-- Both of these have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
+- 3 satellites currently broadcast in L-band: **Meteor M2-2, Meteor M2-3,** and **Meteor M2-4**
+- Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
 <break>
@@ -352,17 +354,16 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 
 ---
 **MetOp**
-- There are two functional satellites: MetOp-B and MetOp-C operated by EumetSat, launched in 2013 and 2019 respectively.
-- They have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
+- There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
+- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
 ---
 **FengYun**
 
-- The only satellite broadcasting HRPT is **Fengyun 3C**, it is a fairly special case. It is the last surviving member of the FengYun 3 constellation still broadcasting in the L-band, due to a severe power supply failure **it only broadcasts when it sees China**. 
-- It broadcasts a FengYun AHRPT signal, which - much like MetOp AHRPT - has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
-- Another simmilarity with MetOp is its lacking carrier wave, meaning you have to go solely by the SNR as well.
-- The signal is quite wide and has a much higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
+- The only satellite broadcasting in the L-band is **Fengyun 3C**. It is the last surviving member of the FengYun 3 constellation to have an L-band antenna, but due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within the chinese border). 
+- It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
+- The signal has a much higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
 
 ---
@@ -372,7 +373,7 @@ I will only mention the few relevant to me right now, will add the rest once pos
 
 ---
 **Elektro-L**
-- These are Elektro-L N3 and Elektro-L N4 (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+- These are **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast a Low Rate Information Transmission (LRIT) as well as a High Rate Information Transmission (HRIT) signal containing full disc images of the earth. LRIT broadcasts the 3 visible channels as well as two infrared channels. HRIT broadcasts 5 additional channels. It includes Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
 
 ---
@@ -380,14 +381,15 @@ I will only mention the few relevant to me right now, will add the rest once pos
 **GOES**
 
 > I will only cover the European EWS-G2 (GOES 15), given that I only have LOS with this one. The US has several other GOES satellites, their reception is simmilar to Elektro-L LRIT/HRIT.
-- EWS-G2, a retired GOES satellite moved to Europe to replace EWS-G1 (GOES 13) broadcasts a **linearly polarized** GVAR signal. It lacks FEC, meaning you have to get it at a fairly decent strength for a decode witout any grain.
+- **EWS-G2 (GOES 15)**, a retired GOES satellite moved to Europe to replace EWS-G1 (GOES 13), broadcasts a **linearly polarized** GVAR signal. It lacks FEC, meaning you have to get it at a fairly decent strength for a decode witout any grain. A full disc image is transmitted every 3 hours.
 
 ---
 
 **FengYun**
-> I don't have information about 4A and 4B, **I only have LOS and verified information about FengYun 2H**, will not include anything else to avoid giving false information.
 
-- The Fengyun 2 and 4 series are geostaionary, FengYun 2G, 2H, 4A and 4B currently transmit an L-band signal with imagery.
+- There are **4** satellites broadcasting in the L-band: FengYun 2H, 2G, 4A and 4B.
+- The older satellites (2H and 2G) broadcast a **linearly polarized S-VISSR** signal in addition to a **__dead__ LRIT containing filler data**. They broadcast S-VISSR nonstop, except for when they are broadcasting the dead LRIT signal. The timeslots are further defined below.
+- The two newer satellites (4A and 4B) broadcast a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal is a fairly poor quality, HRIT only includes a single infrared channel.
 
 
 ### Dish
@@ -406,13 +408,14 @@ I will only mention the few relevant to me right now, will add the rest once pos
 
 ## Signal information
 
-|Signal|Minimum viable dish size|FEC|Notes|
-|---|---|---|---|
-|NOAA POES HRPT|60|No|
-|Meteor HRPT|60|No|
-|MetOp AHRPT|XX|Yes|Just barely receivable with an RTLSDR, might cause issues
-|FengYun AHRPT|XX|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
+|Signal|Minimum dish size|Symbol rate (Per second)|FEC|Notes|
+|---|---|---|---|---|
+|NOAA POES HRPT|60|665.6 KSym|No|
+|Meteor HRPT|60|665.6 KSym|No|
+|MetOp AHRPT|XX|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
+|FengYun AHRPT|XX|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
 
+You can only receive signals with a SDR that has a sampling rate **AT THE VERY LEAST EQUAL TO** or greater than the symbol rate. Having it be very close to the sampling rate
 
 ## Receiving geostationary satellites
 > I will cover the satellites relevant to me, the rest of the world is pretty much the same thing wth just a different pipeline and schedule though.
@@ -431,13 +434,17 @@ Unlike orbitting satellites which use (A)HRPT, geostationary ones use different 
 ### Signal information
 > Only the ones relevant to Europe are listed! There are others not mentioned here.
 
+> The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or with a bigger dish if it's low in the sky
+
 |Satellite series|Signal type|Frequency|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|
 |Elektro-L|LRIT|1691.5 MHz|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
-|Elektro-L|HRIT|1691.5 MHz|RHCP|150 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
-|Elektro-L|GGAK|1693 MHz|RHCP|80 cm|N/A|Constantly, can be used to verify your setup.
-|Fengyun 2|S-VISSR|1687.5 MHz|Linear|125 cm|No|XX:00 - XX:28 and XX:30-XX:48\*
-|GOES|GVAR|1685.7 MHz|Linear|150 cm|No|Constantly
+|Elektro-L|HRIT|1691.5 MHz|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
+|Elektro-L|GGAK|1693 MHz|RHCP|80 cm|N/A|Constantly, can be used to verify your setup is functional
+|Fengyun 2|S-VISSR|1687.5 MHz|Linear|100 cm|No|XX:00 - XX:28 and XX:30-XX:48\*
+|FengYun 4|LRIT|1697 MHz|Linear|???|Yes|TODO
+|FengYun 4|HRIT|1681 MHz|Linear|???|Yes|XX:30
+|GOES|GVAR|1685.7 MHz|Linear|125 cm|No|Constantly
 
 \* During XX:28 - XX:30 the sensor rolls back, his presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causes the second image to be cut in half at about 57%.
 
@@ -451,7 +458,9 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 3. Start the appropriate pipeline:
 - Elektro LRIT: `Elektro-L LRIT` 
 - Elektro HRIT: `Elektro-L HRIT`
-- S-VISSR: `FengYun 2 S-VISSR` 
+- FY S-VISSR: `FengYun 2 S-VISSR` 
+- FY LRIT: `FengYun 4 LRIT`
+- FY HRIT: `FengYun 4[A/B] HRIT`
 - GOES GVAR: `GOES GVAR`
 
 4. The broadcast will show up as a bump that occasionally jumps up and down, you should be seeing a few decibels of signal, SYNC and green Reed-Solomon numbers when applicable.
@@ -467,17 +476,42 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 ### Common issues
 
 #### MetOp donut shaped constellation
+
+![A screenshot of SatDump showing this issue](./Assets/Radio/Meteor-donut-constellation.png)
+
 When decoding MetOp AHRPT on RTL-SDRs, you might notice that even while threre is a decent signal (Several dB), you still have `NOSYNC` indicated on the Vitterbi and have a donut shaped constellation. This happens, when the MetOp pipeline doens't see enough of the broadcast for a decode. To fix this, you have a few options:
 - Make sure you are using 2.56 Msps (2.88 if it's stable)
 - Move the frequency around by a few kHz
 - Lower the MetOp pipeline bandwidth:
 1. Open the SatDump folder (On android you need to download a debuggable APK, then run `adb run-as org.SatDump.SatDump`)
-2. Open the pipeline for MetOp
-3. Locate the `Pipeline bandwidth` option and set it to .05
+2. Open `Pipelines/MetOp.json`
+3. Locate the `ppl_bw` option and set it to 0.002
+
+```jsonc
+{
+    "metop_ahrpt": {
+        ...
+        "work": {
+            "baseband": {},
+            "soft": {
+                "psk_demod": {
+                    "constellation": "qpsk",
+                    "symbolrate": 2333333,
+                    "rrc_alpha": 0.5,
+                    "pll_bw": 0.003 // Set this to 0.002
+                }
+            },
+        ...
+```
 
 If you continue to get a donut shaped constellation even after making the adjustments, you'll likely just need a bettter SDR or a machine that supports the 2.88/3.2 Msps sampling rate
 
-## Reception tips and  notes
+#### S-VISSR has missing lines
+
+Images transmitted by the FengYun 2 series very often have missing lines, this is because of corrupted transport packets received from the satellite. If you get missing lines on your image, try [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector). 
+
+
+## Reception tips and notes
 
 ### Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
@@ -490,6 +524,8 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |FengYun AHRPT|7 dB|Yes|
 |Elektro-L xRIT|3dB|Yes|
 |FengYun S-VISSR|8 dB|No|
+|FengYun LRIT|TODO|Yes|
+|FengYun HRIT|TODO|Yes|
 |Goes GVAR|7 dB|No|
 
 
