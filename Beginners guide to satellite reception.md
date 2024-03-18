@@ -37,7 +37,7 @@ As of 18/3/2024, Meteor-M N°2-4 is currently cleaning its MSU-MR instrument by 
 - **FEC** - Forward Error Correction -> Error correcting code, most often Reed-Solomon
 - **Interference** -> Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
 - **Overloading** -> Occurs when your gain is set too high and/or you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
-- **TLE** - Two Line Element set -> A format used to list the location of objects orbitting the earth
+- **TLE** - Two Line Element set -> A format used to list the location of objects orbiting the earth
 
 ## Data transmission formats
 Don't worry if you don't understand these yet, they will be explained in more detail later and are here just so you have an idea of what is meant if they are mentioned prior to their full explanation.
@@ -311,7 +311,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
         - Geo-Kompsat in Asia and Oceania
         - Insat in India
 
-    - Orbitting satellites (8):
+    - orbiting satellites (8):
         - 3x NOAA POES
         - 2x Meteor-M
         - 2x MetOp
@@ -329,7 +329,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 
 Just like VHF, I will talk a bit about the background of the satellites you can receive. Feel free to skip this heading if you are just here to receive stuff.
 
-### Orbitting
+### orbiting
 ---
 **NOAA POES**
 
@@ -429,7 +429,7 @@ You can only receive signals with a SDR that has a sampling rate **AT THE VERY L
 - Provides full disc images of the earth
 
 ### Transmission types
-Unlike orbitting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in broadcasted this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
+Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in broadcasted this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
 
 - HRIT - Hgh Rate Information Transmission -> A higher quality broadcast of data, often harder to receive
 - GOES GVAR - Goes Variable - Only broadcasts a set amount of data
