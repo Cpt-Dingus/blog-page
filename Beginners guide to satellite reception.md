@@ -306,7 +306,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 <break>
 
 - The are far more satellites you can receive, they divide into:
-    - Geostationary satellites (10+):
+    - Geostationary satellites (9):
         - GOES in the US (One additional limited GOES in Europe and Asia)
         - Elektro-L in Europe, Asia and Oceania
         - Fengyun in Asia and Oceania
