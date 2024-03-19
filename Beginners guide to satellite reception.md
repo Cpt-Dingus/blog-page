@@ -15,40 +15,40 @@ The purpose of this page is to guide complete SDR beginners as well as more expe
 
 # Glossary
 ## Hardware terms
-- **SDR** - Software Defined Radio -> A device used to translate radio waves into digital data
-- **LNA** - Low Noise Amplifier -> A tool used to amplify radio signals
-- **Bias-t**/**Bias tee** -> A device used to inject DC power into the RF line (To power devices such as LNAs). **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT!**
+- **SDR** - Software Defined Radio → A device used to translate radio waves into digital data
+- **LNA** - Low Noise Amplifier → A tool used to amplify radio signals
+- **Bias-t**/**Bias tee** → A device used to inject DC power into the RF line (To power devices such as LNAs). **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT!**
 
 <break>
 
-- **Sma** -> Type of connector used by most SDRs
-- **Balun** -> Converts a **Bal** signal to an **Un**balanced one and vice versa
+- **Sma** → Type of connector used by most SDRs
+- **Balun** → Converts a **Bal**anced signal to an **Un**balanced one and vice versa
 
 
 ### Abstract terms
 
-- **Pass** -> Refers to the time when you can see a satellite passing overhead, used with orbiting satellites
-- **Elevation** -> Height of a satellite above the horizon
-- **AOS** - Acquisition Of Signal -> The moment where you start geting a signal from a satellite
-- **LOS** - Line Of Sight / Loss Of Signal -> Depending on the context this abbreviation used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite.
+- **Pass** → Refers to the time when you can see a satellite passing overhead, used with orbiting satellites
+- **Elevation** → Height of a satellite above the horizon
+- **AOS** - Acquisition Of Signal → The moment where you start geting a signal from a satellite
+- **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite.
 
 ## Software terms
-- **AGC** - Automatic Gain Control -> Automatically sets the gain based on the signal strength
-- **SNR** - Signal to Noise Ratio -> The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
-- **FFT Spectrum** - Fast Fourier Transform Spectrum -> The slice of the radio spectrum being sampled by your SDR
-- **FFT Waterfall** - Fast Fourier Transform Waterfall -> A visual representation of the spectrum throughout time, almost always found right below the FFT Spectrum
-- **FEC** - Forward Error Correction -> Error correcting code, most often Reed-Solomon
-- **Interference** -> Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
-- **Overloading** -> Occurs when your gain is set too high and/or you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
-- **TLE** - Two Line Element set -> A format used to list the location of objects orbiting the earth
+- **AGC** - Automatic Gain Control → Automatically sets the gain based on the signal strength
+- **SNR** - Signal to Noise Ratio → The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
+- **FFT Spectrum** - Fast Fourier Transform Spectrum → The slice of the radio spectrum being sampled by your SDR
+- **FFT Waterfall** - Fast Fourier Transform Waterfall → A visual representation of the spectrum throughout time, almost always found right below the FFT Spectrum
+- **FEC** - Forward Error Correction → Error correcting code, most often Reed-Solomon
+- **Interference** → Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
+- **Overloading** → Occurs when your gain is set too high and/or you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
+- **TLE** - Two Line Element set → A format used to list the location of objects orbiting the earth
 
 ## Data transmission formats
 Don't worry if you don't understand these yet, they will be explained in more detail later and are here just so you have an idea of what is meant if they are mentioned prior to their full explanation.
 
-- **APT** - Automatic Picture Transmission -> VHF Image broadcast currently used on NOAA satellites
-- **LRPT** - Low Rate Picture Transmission -> VHF Image broadcast currently used on Meteor-M satellites
-- **HRPT** - High Rate Picture Transmission -> L-band high quality image and telemetry broadcast format
-- **LRIT** - Low Rate Information Transmission -> L-band information and telemetry broadcast format
+- **APT** - Automatic Picture Transmission → VHF Image broadcast currently used on NOAA satellites
+- **LRPT** - Low Rate Picture Transmission → VHF Image broadcast currently used on Meteor-M satellites
+- **HRPT** - High Rate Picture Transmission → L-band high quality image and telemetry broadcast format
+- **LRIT** - Low Rate Information Transmission → L-band information and telemetry broadcast format
 
 
 
@@ -72,21 +72,21 @@ Don't worry if you don't understand these yet, they will be explained in more de
 # Mistakes and pitfalls
 This is a list of mistakes I made that ended up in wasted time, avoid them for the sake of saving you a headache or two
 
-- **Using old, outdated guides and software** -> Radio is very niche, almost all guides you can find online are heavily outdated giving you bad advice and suggesting deprecated software, leading to confusion and subpar results. Please make sure that any sources you use are up to date.
+- **Using old, outdated guides and software** → Radio is very niche, almost all guides you can find online are heavily outdated giving you bad advice and suggesting deprecated software, leading to confusion and subpar results. Please make sure that any sources you use are up to date.
 
-- **Compass tracking with directional antennas** -> Go by signal strength, NOT by elevation and azimuth. Use apps to find the time and general direction of the satellite, don't go measuring exact compass readings. Find the signal when it is weak, move slow and with purpose to get it to be as strong as possible.
+- **Compass tracking with directional antennas** → Go by signal strength, NOT by elevation and azimuth. Use apps to find the time and general direction of the satellite, don't go measuring exact compass readings. Find the signal when it is weak, move slow and with purpose to get it to be as strong as possible.
 
-- **Doppler tracking when it is not needed** -> Signals covered here such as APT and HRPT were designed to be thin enough to not need doppler tracking, **DON'T BOTHER DOING IT, IT IS NOT NEEDED.**
+- **Doppler tracking when it is not needed** → Signals covered here such as APT and HRPT were designed to be thin enough to not need doppler tracking, **DON'T BOTHER DOING IT, IT IS NOT NEEDED.**
 
-- **Blindly maxxing the gain setting** -> Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its position on the fft).
+- **Blindly maxxing the gain setting** → Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its position on the fft).
 
-- **Turning on automatic gain control (AGC)** -> AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and end up cranking the gain up way higher than needed which ends up drowning the signal out.
+- **Turning on automatic gain control (AGC)** → AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and end up cranking the gain up way higher than needed which ends up drowning the signal out.
 
-- **Using an LNA with direct sampling** -> Direct sampling is just piping the whole target frequency range to the SDR at once, meaning that weaker signals will get drowned out by stronger ones incredibly easily. Using an LNA makes strong signals stronger, drowning weak ones out completely.
+- **Using an LNA with direct sampling** → Direct sampling is just piping the whole target frequency range to the SDR at once, meaning that weaker signals will get drowned out by stronger ones incredibly easily. Using an LNA makes strong signals stronger, drowning weak ones out completely.
 
-- **Not using actual connectors and cables** -> In my first few days with an SDR, lacking an actual sma cable, I went by the definition of an antenna - "An antenna is just a piece of wire" - and stuck a wire straight into the sma port. While yes, it works, it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working correctly. Just get proper cables, man
+- **Not using actual connectors and cables** → In my first few days with an SDR, lacking an actual sma cable, I went by the definition of an antenna - "An antenna is just a piece of wire" - and stuck a wire straight into the sma port. While yes, it works, it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working correctly. Just get proper cables, man
 
-- **Using a cheap LNA with higher frequencies (L-band and above)** -> Cheap LNAs do work, but very poorly and are very often not worth the money spent. Check out the HRPT section for more info.
+- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs do work, but very poorly and are very often not worth the money spent. Check out the HRPT section for more info.
 
 
 # RTL-SDR specific things
@@ -126,7 +126,7 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 
 
 # VHF APT/LRPT reception guide (137MHz)
-- Receiving VHF broadcasts is **incredibly easy** -> all that you need is just some wire, an SDR and some patience
+- Receiving VHF broadcasts is **incredibly easy** → all that you need is just some wire, an SDR and some patience
 - As of writing this article there are currently **5** weather satellites that broadcast in this band
 - While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with jpeg compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies which usually transmit 5+ raw, 1 km/px channels 
 
@@ -426,10 +426,10 @@ You can only receive signals with an SDR that has a sampling rate equal to or gr
 ## Transmission types
 Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in broadcasted this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
 
-- HRIT - Hgh Rate Information Transmission -> A higher quality broadcast of data, often harder to receive
+- HRIT - Hgh Rate Information Transmission → A higher quality broadcast of data, often harder to receive
 - GOES GVAR - Goes Variable - Only broadcasts a set amount of data
-- S-VISSR - Stretched Visible and Infrared Spin Scan Radiometer -> A fairly outdated broadcast of images from FengYun satellites
-- GGAK/CDA -> Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless.
+- S-VISSR - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
+- GGAK/CDA → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless.
 
 ## Detailed satellite information
 
@@ -591,8 +591,8 @@ If you continue to get a donut shaped constellation even after making the adjust
 *You can see the spikes on the vitterbi, on a video you'd see `NOSYNC` constantly popping up*
 
 Two things can cause this issue:
-- **The signal is too weak** -> Up the gain if possible or get a better dish.
-- **You are dropping samples** -> Disable battery optimization, enable the `High power` power plan, close other apps/programs, lower the sampling rate. 
+- **The signal is too weak** → Up the gain if possible or get a better dish.
+- **You are dropping samples** → Disable battery optimization, enable the `High power` power plan, close other apps/programs, lower the sampling rate. 
 
 # Reception tips and notes
 
@@ -648,19 +648,19 @@ The theoretical limit for these is about 6000, I have managed to get a 5650 fram
 
 Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities by making the signal weaker than it can be. To correctly adjust it, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples::
 
-1) **A lot of dots are hitting the edge** -> Gain too high
+1) **A lot of dots are hitting the edge** → Gain too high
 
 ![An image of the debug eye showing this condition](./Assets/Radio/Debug-Gain-too-high.png) <br>
 
 - On the left is what you might see if the gain is set slightly too high, lower it by a few dB to get the full signal strength.
 - On the right is a more extreme example, where the gain is set much higher than needed resulting in the SDR severely overloading. If you see anything like this, your signal signal strength is being hurt by too high gain. You needto lower it by a lot.
 
-2) **There's only a small dot or circle in the middle** -> Gain too low
+2) **There's only a small dot or circle in the middle** → Gain too low
 
 ![An image of the debug eye showing this condition](./Assets/Radio/Debug-Gain-too-low.png) <br>
 A small dot means that you should up the gain, if you are already maxxed out you might need to purchase an LNA.
 
-3) **A circle is present, the dots aren't hitting the edges** -> Gain just right
+3) **A circle is present, the dots aren't hitting the edges** → Gain just right
 
 ![An image of the debug eye showing this condition](./Assets/Radio/Debug-gain-just-right.png) <br>
 
