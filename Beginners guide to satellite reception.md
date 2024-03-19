@@ -312,7 +312,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
         - Fengyun in Asia and Oceania
         - Geo-Kompsat in Asia and Oceania
 
-    - orbiting satellites (8):
+    - Orbiting satellites (8):
         - 3x NOAA POES
         - 2x Meteor-M
         - 2x MetOp
