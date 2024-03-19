@@ -128,9 +128,9 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 # VHF APT/LRPT reception guide (137MHz)
 - Receiving VHF broadcasts is **incredibly easy** → all that you need is just some wire, an SDR and some patience
 - As of writing this article there are currently **5** weather satellites that broadcast in this band
-- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with jpeg compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies which usually transmit 5+ raw, 1 km/px channels 
+- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with jpeg compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
 
-## The four weather satellites still broadcasting images on VHF
+## Detailed satellite information
 
 This is a brief historical overview in case you want to know a bit about the satellites you can receive. Feel free to skip this heading if you are just here to receive stuff.
 
