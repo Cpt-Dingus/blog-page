@@ -371,10 +371,50 @@ Just like VHF, I will talk a bit about the background of the satellites you can 
 
 ---
 
-### Geostationary
-I will only mention the few relevant to me right now, will add the rest once possible.
 
----
+## Hardware requirements
+
+### Dish
+
+- You can use either a prime focus or an offset dish, the former just requiring less turns on the helix or a different feed for better performance alltogether.
+- The bigger the dish, the harder it is to track but the higher gain you have - the stronger the signals will be. An 80 cm offset is a great starter dish, given its lightness and wide availability - people give these away all the time after switching to terrestrial television.
+
+### Feed
+
+- The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
+- The preferred and most forgiving feed you can make is a **Helical antenna**, a siple wire spun into a helix plased on a 13x13 cm plate.
+
+
+## Build and reception
+- For these, there is no point in me writing it out: Lego has these covered in his incredible [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide), a much more solid and complete source for this stuff. Anything further up will just be expanding upon the article.
+
+## Signal information
+
+|Signal|Minimum dish size|Symbol rate (Per second)|FEC|Notes|
+|---|---|---|---|---|
+|NOAA POES HRPT|60|665.6 KSym|No|
+|Meteor HRPT|60|665.6 KSym|No|
+|MetOp AHRPT|XX|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
+|FengYun AHRPT|XX|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
+
+You can only receive signals with an SDR that has a sampling rate equal to or greater than the symbol rate. Not having enough overhead will make the signal weaker as well as causing issues such as a donut constellation (Described in the `Common issues` section. The ideal sampling rate is at least twice the symbol rate, anything less than that wil have lower and lower SNR and anything higher has basically no benefit.
+
+## Receiving geostationary satellites
+> I will cover the satellites relevant to me, the rest of the world is pretty much the same thing wth just a different pipeline and schedule though.
+- Receiving these is extremely simple, the hardest part is just timing the receiving sessions.
+- Doesn't require tracking, since the satellites don't move (It's on the tin - geo**stationary**
+- Provides full disc images of the earth
+
+### Transmission types
+Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in broadcasted this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
+
+- HRIT - Hgh Rate Information Transmission -> A higher quality broadcast of data, often harder to receive
+- GOES GVAR - Goes Variable - Only broadcasts a set amount of data
+- S-VISSR - Stretched Visible and Infrared Spin Scan Radiometer -> A fairly outdated broadcast of images from FengYun satellites
+- GGAK/CDA -> Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless.
+
+### Satellite information
+
 **Elektro-L**
 - These are **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast a Low Rate Information Transmission (LRIT) as well as a High Rate Information Transmission (HRIT) signal containing full disc images of the earth. LRIT broadcasts the 3 visible channels as well as two infrared channels. HRIT broadcasts 5 additional channels. It includes Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
@@ -391,61 +431,20 @@ I will only mention the few relevant to me right now, will add the rest once pos
 **FengYun**
 
 - There are **4** satellites broadcasting in the L-band: FengYun 2H, 2G, 4A and 4B.
-- The older satellites (2H and 2G) broadcast a **linearly polarized S-VISSR** signal in addition to a **__dead__ LRIT containing filler data**. They broadcast S-VISSR nonstop, except for when they are broadcasting the dead LRIT signal. The timeslots are further defined below.
-- The two newer satellites (4A and 4B) broadcast a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal is a fairly poor quality, HRIT only includes a single infrared channel.
-
-
-## Hardware requirements
-
-### Dish
-
-- You can use both a prime focus or an offset dish, the former just requiring less turns on the helix.
-- The bigger the dish, the harder it is to track but the higher gain you have - the stronger the signals will be. 
-
-### Feed
-
-- The dish is only a half of the job though, you will need to DIY the feed yourself - it sounds much harder than it actually is though.
-- The preferred and most forgiving feed you can make is a **Helical antenna**, which will be placed on the mounting arm of the dish
-
-
-## Build and reception
-- For these, there is no point in me writing it out: Lego has these covered in his incredible [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide), a much more solid and complete source for this stuff. Anything further up will just be expanding upon the article.
-
-## Signal information
-
-|Signal|Minimum dish size|Symbol rate (Per second)|FEC|Notes|
-|---|---|---|---|---|
-|NOAA POES HRPT|60|665.6 KSym|No|
-|Meteor HRPT|60|665.6 KSym|No|
-|MetOp AHRPT|XX|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
-|FengYun AHRPT|XX|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
-
-You can only receive signals with a SDR that has a sampling rate **AT THE VERY LEAST EQUAL TO** or greater than the symbol rate. Not having enough overhead can cause issues, such as a poor SNR. The most ideal sampling rate is twice the symbol rate, you don't see a major benefit beyond trhat.
-
-## Receiving geostationary satellites
-> I will cover the satellites relevant to me, the rest of the world is pretty much the same thing wth just a different pipeline and schedule though.
-- Receiving these is extremely simple, the hardest part is just timing the receiving sessions.
-- Doesn't require tracking (It's on the tin - geo**stationary**
-- Provides full disc images of the earth
-
-### Transmission types
-Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in broadcasted this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
-
-- HRIT - Hgh Rate Information Transmission -> A higher quality broadcast of data, often harder to receive
-- GOES GVAR - Goes Variable - Only broadcasts a set amount of data
-- GGAK/CDA -> Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless.
+- The older satellites (2H and 2G) broadcast a **linearly polarized S-VISSR** signal in addition to a **__dead__ LRIT containing filler data**. They broadcast S-VISSR nonstop, except for when they are broadcasting the dead LRIT signal. The timeslots are described in the signal information table.
+- The two newer satellites (4A and 4B) broadcast a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal is a fairly poor quality, HRIT only includes a single unencrypted infrared channel.
 
 
 ### Signal information
 > Only the ones relevant to Europe are listed! There are others not mentioned here.
 
-> The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or with a bigger dish if it's low in the sky
+> The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky
 
 |Satellite series|Signal type|Frequency|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|
 |Elektro-L|LRIT|1691.5 MHz|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
 |Elektro-L|HRIT|1691.5 MHz|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
-|Elektro-L|GGAK|1693 MHz|RHCP|80 cm|N/A|Constantly, can be used to verify your setup is functional
+|Elektro-L|GGAK|1693 MHz|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
 |Fengyun 2|S-VISSR|1687.5 MHz|Linear|100 cm|No|XX:00 - XX:28 and XX:30-XX:48\*
 |FengYun 4|LRIT|1697 MHz|Linear|???|Yes|TODO
 |FengYun 4|HRIT|1681 MHz|Linear|???|Yes|XX:30
