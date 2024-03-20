@@ -494,9 +494,8 @@ All of these include FEC, you should be able to properly decode them even when t
 
 
 ## Signal information
-> Only the ones relevant to Europe are listed! There are others not mentioned here.
 
-> The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky
+The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky
 
 |Satellite series|Signal type|Frequency|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|
