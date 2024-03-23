@@ -1,32 +1,32 @@
 # Preamble
-This file will describe the journey I took while falling down the radio rabbit hole - the highs and lows and everything inbetween. Why you would want to read this? I got no bloody idea, I guess it might be fun figuring the modern radio experience out for some. Worst case, this page acts as an archive of what I have done.
+This file will describe the journey I took while falling down the radio rabbit hole - the highs and lows and everything inbetween. Why you would want to read this? I got no bloody idea, I guess it might be fun seeing, what the modern radio reception experience is like. Worst case, this page acts as an archive of what I have done.
 
 # Initial exposure
-I initially got introduced to radio as a concept beyond AM/FM broadcasts you listen to on car rides with an incredibly interesting [presentation](https://www.youtube.com/watch?v=gMwciWchH3Q) regarding Software Defined Radio on YouTube back in 06/2023. My interest was immediately piqued, SDR looked like a fun thing to delve into! Pulling data straight off of devices that cost millions of dollars to maintain that have been up there since before I was born was something I couldn't wrap my head around. 
+I initially got introduced to radio as a concept beyond AM/FM broadcasts you listen to on car rides with an incredibly interesting [presentation](https://www.youtube.com/watch?v=gMwciWchH3Q) regarding Software Defined Radio on YouTube back in 06/2023. My interest was immediately piqued, SDR looked like a fun thing to delve into! Pulling data straight off of devices that cost millions of dollars to maintain that have been flying several hundred kilometers aove us since long before I was born was something I couldn't wrap my head around. 
 
-I didn't give it much thought, because resources for learning anything about this niche hobby are incredibly limited. It took me several months to find people knowledgeable in this field that were willing to help.
+I didn't give it much thought, because resources for learning anything about this niche are incredibly limited. It took me several months to find people knowledgeable in this field that were willing to help.
 
 # Early interest
-While just idling on Discord back in 09/2023, I saw someone post a picture of an APT broadcast, a black and white image pulled from a satellite that instantly made me rememmber the presentation I watched months ago, as it described that very same thing. After a bit of contemplation I messaged them, `somerandomdragon`, with the usual questions - How, What, and How much?
+While just idling on Discord back in 09/2023, I saw someone post a picture of an APT broadcast, a black and white image pulled from a satellite that instantly made me rememmber the presentation I watched months ago - this was it! After a bit of contemplation I messaged them, `somerandomdragon`, with the usual questions - How, What, and How much does it cost to set up?
 
-Being able to talk to an actual person about this was a gamechanger, he helped ime with the most basic concepts - what an SDR is, what the received images are and how it is possible to receive them in practice etc. This led me to buy a Nooelec Smart SDR V5,the SDR I use to this day. I bought it for dirt cheap from a second hand market (I believe the person selling it runs a shop or something of that matter, given that it was packaged professionally). What amazes me is, that I managed to get an SDR - a very niche hobby -, near me, from a reputable brand, and all without much research!
+Being able to talk to an actual person about this was a gamechanger, he helped ime with the most basic concepts - what an SDR is, what the received images are and how it is possible to receive them in practice etc. This led me to buy a Nooelec Smart SDR V5, the SDR I used for the better part of 6 months. I bought it for dirt cheap from a second hand market (I believe the person selling it runs a shop or something of that matter, given that it was packaged professionally). What amazes me is, that I managed to not only find an SDR being sold near me, but that it was from a reputable brand.
 
 The SDR has proven to be reliable and - as will be explained later - maybe even rare.
 
 # Rough beginnings
-At first, I went by the definition of what an antenna is - "Any conductive wire" - and stuck a wire right into the SMA port with the second end wrapped around the core of my flats old, hardwired DVB-T antennas coaxial cable. I will spare you the images of this setup for the sake of saving your sanity, long story short it didn't work and in retrospect remains to be one of the dumbest things I have done due to the danger of sticking stuff into the fragile port.
+At first, I went by the definition of what an antenna is - "Anything conductive" - and stuck a wire right into the SMA port with the second end wrapped around the core of my flats old, hardwired DVB-T antennas coaxial cable. I will spare you the images of this setup for the sake of saving your sanity, long story short it didn't work and in retrospect remains to be one of the dumbest things I have done due to the danger of sticking stuff into the fragile port.
 
-I then proceeded to buy a wideband LNA and actual conenctors (Thank god for the latter) in hopes of being able to use my DVB-T antenna for this stuff, that went about as well as you can expect.
+Thinking the signals were there but were just too weak, I proceeded to buy a wideband LNA and actual conenctors (Thank god for the latter) in hopes of being able to use my DVB-T antenna for this stuff, not knowing the DVB-T antennas balun had rusted to hell making it pretty much useless.
 
-To sum it up, I was several days and euros down with nothing but static in results. The main reason for this was following old guides with inadequate equipment, which continued for a bit.
+By now I was several days and euros down with nothing but static in results. The main reason for this was following old guides with inadequate equipment, which continued for a bit.
 
 # First images
-After a bunch of time and research, I finally realized, that using a DVB-T antenna for satellites isn't going to work, with LNA or without. Instead of continuing to indefinitely chase rainbows I finally made a V-dipole antenna, something I should have done in the beginning. Except it was on a two meter long wooden board and hanging from my balcony. This resulted in my true first APT:
+After a bunch of time and research, I finally realized, that using a DVB-T antenna for satellites isn't going to work - with LNA or without. Instead of chasing geese I finally made a V-dipole antenna, something I should have done in the beginning. Except instead of holding it like a normal person it was on a two meter long wooden board and hanging from my balcony. This resulted in my true first APT:
 
 ![First APT picture I ever received](./Assets/Sat-reception-journey/First-APT-I-got.png)
-*NOAA 18 received on 12/10/2023 using a V-dipole nailed to a wooden pole sticking outside of my balcony. Decoded using WxToImg.*
+*NOAA 18 received on 12/10/2023 using a V-dipole nailed to a wooden board sticking outside of my balcony. Decoded using WxToImg.*
 
-The result is about what you'd expect for the first APT I got. 
+The result is about what you'd expect for the first APT one gets. 
 
 My primary issue was poor line of sight from my apartment balcony - I could see the satellite for just a very short amount of time while it was directly overhead, even if everything was set up perfectly and worked right off the bat the image would be incredibly short. After a bit of thought I realized, that I could use some old materials from our decrepit shed at my cottage as a stand for a very tall V-dipole which would have GREAT LOS with the sky. Some zipties and gluing stuff together later, I got this:
 
@@ -36,55 +36,56 @@ My primary issue was poor line of sight from my apartment balcony - I could see 
 ![First actually good APT](./Assets/Sat-reception-journey/First-good-APT-N15.png)
 *NOAA 15 received on 13/10/2023 @ 7 PM. Received using a V-dipole. Decoded using SatDump. (Alignment algorithm couldn't handle the scan motor issues, is the reason the middle of the image is cut up.)*
 
-What at a first look is a horrendous image showing no useful information remains one of the best APT transmissions I have gotten when considering the length and cleanliness. How a V-Dipole managed to get no nulls is beyond me. 
 
-NOAA 15 was having some *major* scan motor issues at that time, causing the glitching present instead of actual imagery. The satellite has recovered since. and remains to be the oldest satellite still transmitting an APT broadcast.
+What at a first look is a poor black and white image barekly containing any decernible imagery remains one of the best APT transmissions I have gotten when considering the length and cleanliness. How a V-Dipole managed to get no nulls is beyond me. 
 
-I managed to get a few other satellites just after, most notably Noaa 19 passing right after NOAA 15:
+NOAA 15 was having some *major* scan motor issues at that time, causing the glitching present instead of actual imagery. The satellite has recovered and remains to be the oldest satellite still transmitting an APT broadcast.
+
+I managed to get a few other satellites just after, most notably NOAA 19 passing shortly after NOAA 15:
 
 ![Second actually good APT](./Assets/Sat-reception-journey/Second-good-APT-N19.png)
 *NOAA 19 received on 13/10/2023 @ 7 PM using a V-Dipole. Decoded using SatDump.*
 
-After all this time and effort, finally a worthy image. It's at about this time, that I had joined the SDR++ and SigIdWiki Discord servers. They told me how god awful and outdated my software setup was, which they were 100% right for doing so. After downloading SatDump and SDR++, everything became *way more streamlined* with the results significantly improving.
+After all this time and effort, finally a great image. It's at about this time, that I had joined the SDR++ and SigIdWiki Discord servers. They told me how god awful and outdated my software setup was, which they were 100% right for doing so - I was following a guide from 2007 until then. After downloading SatDump and SDR++, everything became *way more streamlined* with the results improving significantly.
 
-I ended up spending a lot of time outside in the late evenings during this initial weekend, sitting in a lawn chair with a headlamp looking like a complete madman trying to pull pictures off of tincans flying 600 km above me. Try explaining THAT to your parents!
+During this initial weekend, I spent the late nights sitting in a lawn chair with a headlamp looking like a complete madman trying to pull pictures off of tincans flying 600 km above me. Try explaining THAT to your parents!
 
 
 # First portable images
-After the weekend was over I took the antenna down (So it wouldn't get struck with lightning or something, it was basically a big lightning rod connected to my laptop) and went back home. After some thinking and discussion with the others, I made my first potable V-dipole, two copper wires wired up properly... except nailed to a wooden board *\<facepalms\>*.
+After the weekend was over I took the antenna down (So it wouldn't get struck with lightning or something, it was basically a big lightning rod with a pretty cable run along it) and went back home. After some thinking and discussion with the others, I made my first potable V-dipole, two copper wires wired up properly... except nailed to a wooden board *\<facepalms\>*.
 
-The results were filled with static, absolutely useless for any real usage.
+The results were filled with static, were absolutley useless even with some heavy median blur.
 
-After removing the wires from the bloody wooden board and instead just holding the cables by the electrical terminal like a normal person, I got some half decent albeit not great images.
+After removing the wires from the bloody wooden board and instead just holding the cables by the electrical terminal like a normal person, I got some not great but not terrible images.
 
 ![Portable APT result](./Assets/Sat-reception-journey/Portable-APT.png)
 *NOAA 18 received on 25/10/2023 using a V-Dipole. Processed using SatDump.*
 
-I also tried buying an FM filter which would allow me to use an LNA at home without my SDR overloading, JUST before the first pass begun I could see that the noise floor changed significantly when I put pressure on the SMA port, after inspecting it more closely I realized that it had basically no solder on it and had nowhere near enough solder to keep the sma ports in place. After returning home I added some solder to the sma pins, went out again - no biggie, I will still get some great passe- 
+I also tried buying an FM filter which would allow me to use an LNA at home without my SDR overloading, JUST before the first pass began I could see that the noise floor changed significantly when I put pressure on the SMA port, after inspecting it more closely I realized that it had basically no solder on the SMA port making the core pin lift off. After returning home I added some solder to the sma pins, went out again - no biggie, I was still goint to get some great passe- 
 
-The whole sma port snapped right off. There wasn't a lot of pressure put on it, it was just this fragile. I tried to solder the port back on and succeeded! It was still unstable for some reason though...
+The whole sma port snapped right off. I didn't put a lot of pressure put on it, it was just incredibly fragile. I tried to solder the port back on and succeeded! After going out for the last set of the days passes I found, that it was still unstable for some reason...
 
-As it turns out, the central inductors of the filter were snapped in half - all 3 of them! This made the filter basically became a fancy paperweight. I *tried* to repair these but my clone of a bad soldering iron with awful soldering skills just made half of the components to fall off the filter. At this point I just gave up, threw it out.
+As it turned out upon a closer inspection, the central inductors - the parts that actually filter the signal - were snapped, all 3 of them! This made the filter became nothing more than a fancy paperweight. I *tried* to repair these but my clone of a bad soldering iron with awful soldering skills just made half of the other components fall off the filter. Resoldering the 10 resistors that fell off was too masochistic for me, I just threw it out.
 
 # What's next?
 Having received APT and knowing that LRPT was out of reach due to Meteor-M N2-3 being a bloody cripple (Its VHF antenna hasn't deployed properly, making the signal much weaker than intended), I felt like I have conquered VHF. I didn't do much for the next two months, but boy oh boy did December get busy.
 
 # Growing ambitions
-After doing APT, the next logical step was doing HRPT - a much harder to receive broadcast in L-band that contained much higher resolution images as well as far more interesting stuff. This seemed infeasible, given the additional equipment and skills needed... so I went and did it anyways.
+The next logical step after VHF was doing HRPT in the L band - a much harder to receive broadcast in that contains high resolution images broadcasted by many more satellites. I would need to give the hobby much more effort and expensive equipment... so I went and gave it a shot.
 
-Initially, I thought the old generic wideband LNA was going to be good enough to get SOMETHING at the very least, given that I had an above average sized dish (90cm) (Barely above average, that being 80 cm. Not like I was aware of that at that time). This, as everyone was warning me, turned out to be false.
+Initially, I thought the old generic wideband LNA was going to be good enough to get at least get SOMETHING, given that I had an above average sized dish (90cm) (Barely above average, that being 80 cm. Not like I was aware of that at that time). This, as everyone was warning me on every step of the way, turned out to be false.
 
 # First L-band attempts
-My first setup was just plain jank galore. Awful helix, LNA and SDR sticking out the rear like a sore thumb all hanging on a tiny SMA port (This came back to bite me in me arse later down the road), piss poor soldering job and god awful tracking skills got me what I deserved: disappointment.
+My first setup was jank galore - awful helix, LNA and SDR sticking out the rear with the whole setup hanging on a tiny SMA port (This came back to bite me in me arse later down the road), piss poor soldering job and god awful tracking skills got me what I deserved: disappointment.
 
 ![A picture of the jankiest helix you have ever seen](./Assets/Sat-reception-journey/God-awful-first-helix.png)
 
-It felt like the signal was just out of reach; I could even see the carrier wave! (Spoiler: It wasn't. It was actually far, FAR out of reach.)
+It felt like the signal was just out of reach - I could even see the carrier wave! (Spoiler: It wasn't. It was actually far, FAR out of reach.)
 
 ![Dissapointing SatDump showing barely a hint of a signal](./Assets/Sat-reception-journey/HRPT-disappointment-ss.png)
-*Pictured is SatDump, on the awfully set up FFT you can see the barely visible carrier and spikes indicative of the BPSK HRPT broadcast I so craved to get.*
+*Pictured is SatDump, on the awfully set up FFT you can see the barely visible carrier and spikes indicative of the BPSK HRPT broadcast I was attempting to get.*
 
-I initially believed it was a helix issue, which it partially was - I put glue all over it disregarding the fact **it was the secondary reflector that should remain as clear as possible to be as effective as possible**. After putting a lighter to a knife and melting some of the hot glue off, redoing the solder job and mounting the SMA port to the reflector properly using an SMA nut (Thanks for the suggestion, Ryzerth), the signal grew strong enough that I even managed to get a few frames!
+I initially believed it was a helix issue, which it partially was - I put glue all over it disregarding the fact **it was the secondary reflector that should remain as clear as possible to be as effective as possible**. After heating up a knife and melting some of the hot glue off, redoing the solder job and mounting the SMA port to the reflector properly using an SMA nut (Thanks for the suggestion, Ryzerth), the signal grew strong enough that I even managed to get a few frames!
 
 ![A newer image of the FFT, now showing a much stronger albeit still useless HRPT signal](./Assets/Sat-reception-journey/New-helix-who-this.png)
 
@@ -93,7 +94,7 @@ This got me my first official HRPT image: Drumroll please...
 ![First HRPT image](./Assets/Sat-reception-journey/First-HRPT-attempt.png)
 *NOAA 19 HRPT received on 31/12/2023 using a 90cm dish and a generic wideband LNA. Decoded using SatDump, median blur and equalization applied. No idea which composite.*
 
-A terrible image, go figure! It is fairly short, because it was the only attempt I had at using this setup, and it was cut short because it started raining like crazy all of a sudden. I couldn't retry later because of issues I will describe in a bit. 
+A terrible image, who would have thought! It is fairly short, because it was the only attempt I had at using this setup and it was cut short because it started raining like crazy all of a sudden. I couldn't retry later because of issues I will describe in a bit. 
 
 **At this point I gave up on trying to get this generic POS to work, instead ordering a SawBird GOES+ off of Amazon.**
 
