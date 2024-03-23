@@ -9,19 +9,19 @@ Before anything, I have to give credit and extreme kudos to the **SDR++, SigIdWi
 
 **A lot of the information you will be able to find here is from [lego11s articles](https://a-centauri.com/articoli/), check them out if you want more very well written and detailed guides.**
 
-The purpose of this page is to guide complete SDR beginners as well as more experienced folk looking to learn something through getting pretty images from weather satellites. A lot of guides out there are severaly outdated, focus on specific things while omitting important details or provide simply false information, PLEASE make sure the sources you use are valid.
-
+The purpose of this article is to guide complete radio beginners as well as more experienced folk looking to learn something about getting pretty images from weather satellites. A lot of guides out there are severely outdated, focus on specific things while omitting important details or provide simply false information, PLEASE make sure the sources you use are valid.
 
 
 # Glossary
-## Hardware terms
+
+### Hardware terms
 - **SDR** - Software Defined Radio → A device used to translate radio waves into digital data
 - **LNA** - Low Noise Amplifier → A tool used to amplify radio signals
 - **Bias-t**/**Bias tee** → A device used to inject DC power into the RF line (To power devices such as LNAs). **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT!**
 
 <break>
 
-- **Sma** → Type of connector used by most SDRs
+- **SMA** → Type of connector used by most SDRs
 - **Balun** → Converts a **Bal**anced signal to an **Un**balanced one and vice versa
 
 
@@ -29,10 +29,10 @@ The purpose of this page is to guide complete SDR beginners as well as more expe
 
 - **Pass** → Refers to the time when you can see a satellite passing overhead, used with orbiting satellites
 - **Elevation** → Height of a satellite above the horizon
-- **AOS** - Acquisition Of Signal → The moment where you start geting a signal from a satellite
-- **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite.
+- **AOS** - Acquisition Of Signal → The moment when you start geting a signal from a satellite
+- **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation is used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite.
 
-## Software terms
+###  Software terms
 - **AGC** - Automatic Gain Control → Automatically sets the gain based on the signal strength
 - **SNR** - Signal to Noise Ratio → The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
 - **FFT Spectrum** - Fast Fourier Transform Spectrum → The slice of the radio spectrum being sampled by your SDR
@@ -49,7 +49,6 @@ Don't worry if you don't understand these yet, they will be explained in more de
 - **LRPT** - Low Rate Picture Transmission → VHF Image broadcast currently used on Meteor-M satellites
 - **HRPT** - High Rate Picture Transmission → L-band high quality image and telemetry broadcast format
 - **LRIT** - Low Rate Information Transmission → L-band information and telemetry broadcast format
-
 
 
 ## Examples of interference and overloading:
@@ -74,25 +73,25 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 - **Using old, outdated guides and software** → Radio is very niche, almost all guides you can find online are heavily outdated giving you bad advice and suggesting deprecated software, leading to confusion and subpar results. Please make sure that any sources you use are up to date.
 
-- **Compass tracking with directional antennas** → Go by signal strength, NOT by elevation and azimuth. Use apps to find the time and general direction of the satellite, don't go measuring exact compass readings. Find the signal when it is weak, move slow and with purpose to get it to be as strong as possible.
+- **Compass tracking with directional antennas** → Go by signal strength, NOT by elevation and azimuth. Use apps to find the time and general direction of the satellite, don't go measuring exact compass readings. Find the signal when it is weak, move slow and with purpose to get it and remain to be as strong as possible.
 
 - **Doppler tracking when it is not needed** → Signals covered here such as APT and HRPT were designed to be thin enough to not need doppler tracking, **DON'T BOTHER DOING IT, IT IS NOT NEEDED.**
 
-- **Blindly maxxing the gain setting** → Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its position on the fft).
+- **Blindly maxxing the gain setting** → Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its height on the fft).
 
-- **Turning on automatic gain control (AGC)** → AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and end up cranking the gain up way higher than needed which ends up drowning the signal out.
+- **Turning on automatic gain control (AGC)** → AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and end up cranking the gain up much higher than needed which ends up drowning the signal out.
 
 - **Using an LNA with direct sampling** → Direct sampling is just piping the whole target frequency range to the SDR at once, meaning that weaker signals will get drowned out by stronger ones incredibly easily. Using an LNA makes strong signals stronger, drowning weak ones out completely.
 
-- **Not using actual connectors and cables** → In my first few days with an SDR, lacking an actual sma cable, I went by the definition of an antenna - "An antenna is just a piece of wire" - and stuck a wire straight into the sma port. While yes, it works, it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working correctly. Just get proper cables, man
+- **Not using actual connectors and cables** → While sticking a wire into your SMA port works in theory - an antenna is just anything conductive after all - it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working correctly.
 
-- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs do work, but very poorly and are very often not worth the money spent. Check out the HRPT section for more info.
+- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs often have a very high gain which also makes them very prone to overloading. Because of this, higher bands exclusively use **filtered** LNAs (Low gain LNA > Filter > High gain LNA). The filter makes sure, that the LNA only amplifies the target signals and nothing else outside of the target range.
 
 
 # RTL-SDR specific things
-These apply to all SDRs using RTL chipsets.
+These apply to SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
-- The maximum stable sampling rate is **2.56 Msps!** Using anything higher can lead to sample drops if you don't have one of the few incredibly specific usb controllers with which the RTL chipset can pull 3.2 Msps without dropping samples. 2.88 Msps has worked for me before, but is still iffy - you can test if works on your setup by running `rtl_test -s 2.88e6` and seeing if any data is lost after a few minutes
+- The maximum stable sampling rate is **2.56 Msps!** Using anything higher can lead to sample drops if you don't have one of the few incredibly specific usb controllers with which the RTL chipset can pull 3.2 Msps without dropping samples. You can test if higher sampling rates such as 2.88 Msps work on your setup by running `rtl_test -s 2.88e6` and seeing if any data is lost after a few minutes.
 - When direct sampling for HF, use the Q branch
 - RTL-SDR Blog V4 needs specific drivers to work with most software, the installation steps are described on their [quick start page](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
@@ -100,9 +99,10 @@ These apply to all SDRs using RTL chipsets.
 # Preferred software
 Arguably the by far best program for **pulling data** off of satellites is [SatDump](https://github.com/SatDump/SatDump/releases)
 
-You can also use SDR++ for recording and then process the recordings using SatDump, but that is often just unnecessary extra effort.
+You can also use SDR++ for recording and then process the recordings using SatDump, but that is often just unnecessary extra effort. The only exception to this is troubleshooting your setup - having an audio recording is always helpful.
 
-> Always download the nightly builds of SDR** and SatDump, update them frequently. The tools are relatively new and are still being actively developed and have new additions on a daily basis. There are other programs you can use but I won't focus on them for the sake of keeping this guide concise.
+> Always download the nightly builds of SDR** and SatDump, update them frequently. These programs are relatively new and are being actively developed and have new additions on a daily basis. There are other programs you can use but I won't focus on them for the sake of keeping this guide concise.
+
 ---
  To **track satellites** and figure out their future passes (Most are orbiting the Earth after all), you can use these:
 
@@ -132,22 +132,20 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 
 ## Detailed satellite information
 
-This is a brief historical overview in case you want to know a bit about the satellites you can receive. Feel free to skip this heading if you are just here to receive stuff.
-
 **NOAA**
 
 - These are the last **3** remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
-- These satellites broadcast an *analogue*  **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** signal that has two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
+- These satellites broadcasts an *analogue*  **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** signal that has two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
 
 <break>
 
-- New satellite launches are a part of the JPSS constellation, which only includes a much harder to receive X-band signal that requires much more expensive hardware. No future satellite launches from NOAA are planned to include a VHF antenna.
+- New satellite launches are a part of the JPSS constellation, which only includes an incomparably harder to receive X-band signal that requires much more expensive hardware. No future satellite launches from NOAA are planned to include a VHF antenna.
 
 ---
 **METEOR-M**
 
 - As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and ~~**Meteor-M N°2-4**~~ *(Refer to temporary notice on top of page)* (Meteor M2-x for short), a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
-- Meteor-M satellites broadcast a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
+- These satellites broadcasts a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
 
 <break>
 
@@ -156,7 +154,7 @@ This is a brief historical overview in case you want to know a bit about the sat
 
 ## Broadcast issues
 
-- NOAA 15 has had several major hiccups with its scan motor current spiking due to it grinding through debris, causing a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A major spike could lead to a complete motor stall, from which recovery is highly unlikely. As of writing this article (03/2024) the satellite has mostly recovered and is broadcasting fine.
+- NOAA 15 has had several major hiccups with its scan motor current spiking due to it grinding through debris, causing a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A major spike could lead to a complete motor stall, from which recovery is highly unlikely. As of writing this article (03/2024) the satellite has completely recovered and is broadcasting fine.
 - NOAA 18 has had a configuration error present ever since management was transferred to Parons tech, making it broadcast a visible channel during the night instead of an infrared one. This presents itself as half of the image being black.
 - Meteor-M N°2-3 has an incorrectly deployed VHF antenna, meaning the signal is weaker than intended and might unexpectedly drop from time to time.
 
@@ -177,21 +175,22 @@ This is a brief historical overview in case you want to know a bit about the sat
 
 You will need an SDR and an antenna, **no other special equipment is required for VHF**.
 
+> NOTE: You also need the appropriate cables and adapters to connect antennas to your SDR, make sure to order these in advance. An example is a coaxial cable and an F female to SMA male adapter.
+
 The SDR should be a **reputable brand** if you want optimal performance (E.g. AirSpy, RTLSDR Blog, Nooelec...). 
-> In simpler terms; avoid aliexpress chinesium sdrs. They CAN work, but expect worse results.
+> In simpler terms; avoid the blue chinesium sdrs. They CAN work, but expect worse results.
 
 As for the **antenna**, you have the choice between:
 - Directional antennas
 - Omnidirectional antennas
 
-The difference between these is, that omnidirectional antennas don't need any tracking to be done (remains stationary throughout the pass) while directional antennas require hand tracking and **can only do one satellite at a time**
+The difference between these is, that omnidirectional antennas don't need any tracking to be done (remain stationary throughout the pass) while directional antennas require hand tracking and **can only do one satellite at a time**
 
-
-*Popular antenna types for receiving in this frequency include:*
+Popular antenna types for receiving in this frequency include:
 ### 1. V dipole antenna
 - Omnidirectional
 - Very easy to make, very portable
-- Fair results, has some nulls due to its inconsistent polarization
+- Fair results, has some nulls due to its inconsistent radiation pattern
 - Arguably the best for beginners
 - When using, point directly north/south & move about 50 cm from the ground (Personal tip: Play around with it and figure out when the signal is the strongest, stick with what works!)
   
@@ -201,28 +200,27 @@ To build it:
 3. Put the two wires into the holes and spread them 120° apart making a V shape.
 That's it. Really.
 
-![A visual guide on how the antenna should look](./Assets/Radio/V-Dipole-guide.png)
-
+![A visual guide on how the antenna should look](./Assets/Radio/V-Dipole-guide.png) <br>
 *This image suggests a wire length of 53.4 cm, while that would work the actual length should be approximately 54.5cm. It also suggests using aluminum rods, while that'd work, copper is about twice as conductive (will lead to better results).*
 
 ### 2. Quadrifilar helical antenna (QFH)
 - Omnidirectional
 - Fairly difficult to build
-- Very good results thanks to its true circular polarization
+- Very good results thanks to its true circular polarization and consistent radiation pattern
 - Best choice for permanent fixtures
   
 I will not be describing how to build it, since the building process is quite involved. There are plenty of guides out there, if I ever get around to building one I will link it here.
 
-![Sample QFH antenna](./Assets/Radio/QFH-guide.png)
+![Sample QFH antenna](./Assets/Radio/QFH-guide.png) <br>
 *[Source](https://okelectronic.wordpress.com/2014/08/20/rtl-sdr-second-attempt/)*
 
-### 3. Yagi antenna
+### 3. Yagi-Uda antenna
 - Directional
 - Fairly easy to make
 - Very good results thanks to its high gain
 - Requires manual tracking
   
-![An image describing the parts of a yagi antenna](./Assets/Radio/Yagi-example.png)
+![An image describing the parts of a yagi antenna](./Assets/Radio/Yagi-example.png) <br>
 *[Source](https://www.everythingrf.com/community/what-is-a-yagi-antenna)*
 
 I personally use this type of antenna for VHF passes, since it constantly gets a great SNR (~45-50 with APT) and is quite easy to build albeit requiring a bit more wire. 
@@ -232,7 +230,7 @@ To make it:
 > More elements = More directional (Harder to track), higher gain (Better signal strength), longer boom length (Bulkier)
 2. Shove appropriate numbers into [this calculator](https://www.steeman.org/Antenna/Yagi-Antenna-Calculator) (For frequency choose 137.5 MHz)
 3. Cut copper wires to length, place them onto the boom according to to the values from the calculator
-4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the core of the same coaxial wire\
+4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the core of the same wire\
 **Make sure the cables don't touch or are short together in any way, this will make the antenna not work**
 5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (In essence creating a HF choke)
 
@@ -242,7 +240,7 @@ To make it:
 
 ## Frequency reference
 
-As of 24.2.2024, the frequencies these satellites broadcast in are as follows:
+As of 03/2024, the frequencies these satellites broadcast in are as follows:
 
 |Satellite|Frequency|
 |---|---|
@@ -256,7 +254,7 @@ As of 24.2.2024, the frequencies these satellites broadcast in are as follows:
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be
 2. Open SatDump and navigate to the `Recorder` tab, select your SDR, set the sampling rate to `2.4 Msps` (Or whatever your SDR supports) and hit `Start`
 
-- Rise the gain until your noise floor starts to rise more than the target signal, or until before your SDR overloads, whichever comes first. Try not to move it around during the pass, it will lead to the image having sections with a different brightness. In my experience it is stable at around 30 dB gain, it depends on receiving conditions though.
+- Rise the gain until your noise floor starts to rise more than the target signal, or until your SDR overloads, whichever comes first. Try not to move it around during the pass, it will lead to the image having sections with a different brightness.
 
 3. In the side panel, open the `Processing` menu and do the following:
 
@@ -276,17 +274,17 @@ As of 24.2.2024, the frequencies these satellites broadcast in are as follows:
 
 ![A screenshot of the settings mentioned above](./Assets/Radio/LRPT-SatDump-Settings.png)
 
-4. When the satellite comes overhead, press `Start` on the processing window
+4. When the satellite comes into view, press `Start` on the processing window
 
-> When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the waterfall with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
+> When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the FFT along with the sound (Try to avoid crackling) with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
 
-If everything is right, you are now receiving a beeping APT signal or you see four dots on the demodulator if it is LRPT!
+If everything is right, you are now receiving a beeping APT signal or you see four dots on the demodulator in case of LRPT!
 
-5. Once you see the signal has completely disappeared and isn't coming back, press `Stop`
+5. Once you see the signal has completely disappeared and isn't coming back, press `Stop` on the pipeline
 
-6. SatDump will now begin autoprocessing the results, you can see the progress on the bottom (You can disable the autoprocessing in the settings if you want to tinker with the images yourself and don't want SatDup creating automatic images)
+6. SatDump will now begin autoprocessing the results, you can see the progress on the bottom (You can disable the autoprocessing in the settings if you want to tinker with the images yourself and don't want SatDump creating automatic images)
 
-7. Once it finishes processing, head to the `Viewer` tab and select the pass you decoded on the top left.
+7. Once it finishes processing, head to the `Viewer` tab and select the pass you decoded on the top left
 
 You are done! Feel free to play around with the image settings and enhancements, you can figure it out :)
 
@@ -298,9 +296,8 @@ If the image is from LRPT on an evening pass, you need to select Channel 4 (IR) 
 Some grain is expected on APT images, you can get rid of it by ticking `Median blur`. If it is present after, you either didn't enable the noise reduction when recording or the signal was just too weak. The latter is most common, grain appears whenever there is crackling during recording.
 
 
-# L-band HRPT/HRIT/LRIT reception guide (1.7 GHz)
-> This section will be fairly limited in terms of HRIT/LRIT reception, given that I only have LOS with three geostationary satellites.
-- L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **expensive equipment** and more effort making the antenna as well as requiring a **dish** and some half decent tracking skills.
+# L-band HRPT reception guide (1.7 GHz)
+- L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **expensive equipment** and more effort making the antenna as well as a **dish** paired with some half decent tracking skills.
 - While requiring more dedication, it offers much more interesting things than VHF: for example being able to receive 5+ channels of pure and uncompressed 1km/px images as well as full disc Earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
 
 <break>
@@ -312,18 +309,18 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
         - Fengyun in Asia and Oceania
         - Geo-Kompsat in Asia and Oceania
 
-    - Orbiting satellites (8):
+    - Orbiting satellites (9):
         - 3x NOAA POES
-        - 2x Meteor-M
+        - 3x Meteor-M
         - 2x MetOp
-        - 1x FengYun (Only broadcasts in sight China)
+        - 1x FengYun (Only broadcasts when in sight of China)
 
 ## Exemplary processed HRPT and xRIT images
 
-![Best HRPT to date](./Assets/Sat-reception-journey/Best-HRPT-yet.png)
-*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. My single best HRPT image to date*
+![NOAA 19 HRPT image](./Assets/Sat-reception-journey/Best-HRPT-yet.png)
+*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized.*
 
-![Latest full disc Earth image I have](./Assets/Sat-reception-journey/Best-Earth-full-disc.png)
+![Elektro-L3 LRIT image](./Assets/Sat-reception-journey/Best-Earth-full-disc.png)
 *Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite.*
 
 ## Detailed satellite information
@@ -335,13 +332,13 @@ This section will describe the satellites that you can receive as well as their 
 **NOAA POES**
 
 - These are the same as VHF: **NOAA 15, 18 and 19**.
-- Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to wiki)
+- Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
 - The broadcast features a very strong carrier wave making it quite easy to track.
 
 ![NOAA HRPT screenshot from SatDump](./Assets/Radio/NOAA-HRPT.png)
 *NOAA 19 HRPT*
 
-> Fun fact: As of 02/2024, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life broadcasting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) signal. **It includes no actual data** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
+> Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
 
 ---
 **METEOR-M**
@@ -353,12 +350,12 @@ This section will describe the satellites that you can receive as well as their 
 ![Meteor HRPT screenshot from SatDump](./Assets/Radio/Meteor-HRPT.png)
 *Meteor-M N°2-2 HRPT*
 
-> You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since. The satellite orbits a bit later than the rest, making you able to receive some HRPT at noon, unlike APT & LRPT which only have early morning and late evening passes.
+> You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.
 
 ---
 **MetOp**
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
-- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains much more information and instrument data, including 5 AVHRR channels.
+- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
 ![MetOp AHRPT screenshot from SatDump](./Assets/Radio/MetOp-AHRPT.png)
@@ -369,7 +366,7 @@ This section will describe the satellites that you can receive as well as their 
 
 - The only satellite broadcasting in the L-band is **Fengyun 3C**. It is the last surviving member of the FengYun 3 constellation to have an L-band antenna, but due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within the chinese border). 
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
-- The signal has a much higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
+- The signal has a higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
 ![FengYun AHRPT screenshot from SatDump](./Assets/Radio/FengYun-AHRPT.png)
 *FengYun 3C AHRPT*
@@ -378,6 +375,17 @@ This section will describe the satellites that you can receive as well as their 
 
 
 ## Hardware requirements
+
+### SDR
+
+- Any SDR able to sample 1650-1710 MHz will work, just make sure its sampling rate is good enough to receive these satellites.
+
+### LNA
+
+- L-band radio waves are very weak and disspiate too quickly to be usable with just your SDR - an LNA connected directly to the feed is imperative.
+- The only viable option that doesn't cost a liver is the [Sawbird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception. 
+
+> Do not waste your money on cheap wideband LNAs, **they will NOT work.**
 
 ### Dish
 
@@ -402,15 +410,15 @@ For these, there is no point in me writing it out: Lego has these covered in his
 |---|---|---|---|---|
 |NOAA POES HRPT|60|665.6 KSym|No|
 |Meteor HRPT|60|665.6 KSym|No|
-|MetOp AHRPT|XX|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
-|FengYun AHRPT|XX|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
+|MetOp AHRPT|60|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
+|FengYun AHRPT|80|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
 
-You can only receive signals with an SDR that has a sampling rate equal to or greater than the symbol rate. Not having enough overhead will make the signal weaker as well as causing issues such as a donut constellation (Described in the `Common issues` section). The ideal sampling rate is at least twice the symbol rate, anything less than that wil have lower and lower SNR and anything higher has basically no benefit.
+You can only receive signals with an SDR that has a sampling rate equal to or greater than the symbol rate. Not having enough overhead will make the signal weaker as well as causing issues such as a donut constellation (Described in the `Common issues` section). The ideal sampling rate is at least twice the symbol rate, anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
 ## Frequency reference
 |Satellite|Frequency|Notes|
 |---|---|---|
-|NOAA 15|1702.5 MHz|Very weak||
+|NOAA 15|1702.5 MHz|Very weak, don't bother|
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
 |Meteor M2-2, M2-3, ~~M2-4~~|1700 MHz|Refer to temporary notice on top of page|
@@ -418,18 +426,19 @@ You can only receive signals with an SDR that has a sampling rate equal to or gr
 |FengYun 3C|1701.4 MHz||
 
 
-# Receiving geostationary L-band satellites
-- Receiving these is extremely simple, the hardest part is just timing the receiving sessions.
-- Doesn't require tracking, since the satellites don't move (It's on the tin - geo**stationary**
-- Provides full disc images of the earth
+# L-band geostationary satellite reception guide
+- Receiving these is extremely simple, the hardest part is arguably just getting a suitable dish and LOS
+- Doesn't require tracking, since the satellites don't move (It's on the tin - geo**stationary**)
+- Provides full disc images of the earth and/or regional crops
 
 ## Transmission types
-Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in broadcasted this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
+Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
 
-- HRIT - Hgh Rate Information Transmission → A higher quality broadcast of data, often harder to receive
-- GOES GVAR - Goes Variable - Only broadcasts a set amount of data
-- S-VISSR - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
-- GGAK/CDA → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless.
+- **HRIT** - High Rate Information Transmission → A faster broadcast of data which usually has a higher quality than LRIT, is often harder to receive
+- **S-VISSR** - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
+- **GVAR** - Goes Variable → Only broadcasts a set amount of data
+- **GRB** - Goes ReBroadcast → A very high quality broadcast from american GOES satellites 
+- **GGAK**/**CDA** → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
 
 ## Detailed satellite information
 
@@ -450,7 +459,7 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use different f
     - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s.
     - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery.
 
-All of these include FEC, you should be able to properly decode them even when the signal is quite weak.
+All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak.
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
@@ -468,7 +477,7 @@ All of these include FEC, you should be able to properly decode them even when t
 
 *FengYun 2 series*
 - **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for VIS channels and 5 km/px for the IR channels. 
-- This signal is very prone to transport packet corruption because of lacking FEC, resulting images are very likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
+- This signal is very prone to transport packet corruption because of lacking FEC, resulting images are likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
 
 ![S-VISSR screenshot from SatDump](./Assets/Radio/FengYun-SVISSR.png)
 *FengYun 2H S-VISSR*
@@ -478,7 +487,7 @@ All of these include FEC, you should be able to properly decode them even when t
 
 > As of 03/2024, FengYun 4B is currently commisioning and hasn't started broadcasting LRIT and HRIT yet. 
 
-![FengYun LRIT screenshot from SatDump](./Assets/Radio/FengYun-LRIT.png)
+![FengYun LRIT screenshot from SatDump](./Assets/Radio/FengYun-LRIT.png) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
 
 > TODO: HRIT FFT
@@ -497,22 +506,22 @@ All of these include FEC, you should be able to properly decode them even when t
 
 The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky
 
-|Satellite series|Signal type|Frequency|Polarization|Minimum dish size|FEC|Transmits...
-|---|---|---|---|---|---|---|
-|Elektro-L|LRIT|1691.5 MHz|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
-|Elektro-L|HRIT|1691.5 MHz|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
-|Elektro-L|GGAK|1693 MHz|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
-|GOES|GVAR|1685.7 MHz|Linear|125 cm|No|Constantly
-|GOES|GRB\*|1681.6 MHz|Circular|180 cm|Yes|Constantly
-|GOES|LRIT|TODO
-|GOES|HRIT|1694.1 MHz|Linear|80 cm|Yes|Constantly
-|Fengyun 2|S-VISSR|1687.5 MHz|Linear|100 cm|No|XX:00 - XX:28 and XX:30-XX:48\*\*
-|FengYun 4|LRIT|1697 MHz|Linear|???|Yes|TODO
-|FengYun 4|HRIT|1681 MHz|Linear|???|Yes|XX:30
-|GEO-KOMPSAT|LRIT|1692.14 MHz|Linear|60 cm|Yes|Every 10 minutes
-|GEO-KOMPSAT|HRIT|1695.4 MHz|Linear|175 cm|Yes|Every 10 minutes
+|Satellite series|Signal type|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
+|---|---|---|---|---|---|---|---|
+|Elektro-L|LRIT|1691.5 MHz|294 KSym/s|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
+|Elektro-L|HRIT|1691.5 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
+|Elektro-L|GGAK|1693 MHz|5 Ksym/s|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
+|GOES|CDA|1693 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
+|GOES|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm|No|Constantly
+|GOES|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
+|GOES|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
+|Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|100 cm|No|XX:00 - XX:28 and XX:30-XX:48\*\*
+|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|TODO
+|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|XX:30
+|GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Every 10 minutes
+|GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Every 10 minutes
 
-\* Not receivable with RTL or Airspy SDRs, requires at least 9 Msps. <br>
+\* RHCP+LHCP <br>
 \*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. 
@@ -539,7 +548,7 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 |GEO-KOMPSAT LRIT|GK-2A LRIT|
 |GEO-KOMPSAT HRIT|GK-2A HRIT|
 
-4. The broadcast will show up as a bump that occasionally jumps up and down, you should be seeing a few decibels of signal, SYNC and green Reed-Solomon numbers when applicable.
+4. The broadcast will show up as a bump that occasionally jumps up and down, you should be seeing a few decibels of signal, `SYNCED` and green Reed-Solomon numbers when applicable.
 
 ![A screenshot of SatDump taken while receiving Elektro-L LRIT](./Assets/Radio/Lrit-SatDump.png)
 
@@ -584,13 +593,19 @@ When decoding MetOp AHRPT on RTL-SDRs, you might notice that even while threre i
 
 If you continue to get a donut shaped constellation even after making the adjustments, you'll likely just need a bettter SDR or a machine that supports the 2.88/3.2 Msps sampling rate.
 
-## Severe vitterbi spikes when decoding signals with FEC with no/cut up image output
+## SPS is invalid error when starting pipelines
+
+![SatDump screenshot showing this issue](./Assets/Radio/Low-sampling-rate.png)
+
+This error appears when your sampling rate is lower, than the signals symbol rate. Set your sampling rate to **at least** equal the symbol rate, preferebly more than that to get overhead. If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
+
+## No/cut up image output with severe vitterbi spikes when decoding signals with FEC
 
 ![A screenshot of SatDump showing this usse](./Assets/Radio/Vitterbi-spikes.png)
 *You can see the spikes on the vitterbi, on a video you'd see `NOSYNC` constantly popping up*
 
 Two things can cause this issue:
-- **The signal is too weak** → Up the gain if possible or get a better dish.
+- **The signal is too weak** → Make sure your gain is set properly or get a bigger dish.
 - **You are dropping samples** → Disable battery optimization, enable the `High power` power plan, close other apps/programs, lower the sampling rate. 
 
 # Reception tips and notes
@@ -609,7 +624,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |Elektro-L xRIT|3dB|Yes|
 |Goes GVAR|8 dB|No|
 |GOES GRB|TODO|Yes|
-|GOES HRIT|TODO|Yes|
+|GOES HRIT|4 dB|Yes|
 |FengYun 2 S-VISSR|6 dB\*\*|No|
 |FengYun 4 LRIT|TODO|Yes|
 |FengYun 4 HRIT|TODO|Yes|
@@ -617,13 +632,12 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |GEO-KOMPSAT HRIT|TODO|Yes|
 
 
-
 \* You read that right, you can get these even at 0 dB! As long as you see the signal and there are frames being decoded or the deframer is synced, you are getting an image! It will have a lot of grain, but that is manageable by using the `Median blur` option when viewing the resulting image
 
 \*\* You will likely still get missing lines, make sure to use HRPTEgors corrector when near the minimum SNR.
 
 ### Pass rating scale
-This scale is not official or mentioned anywhere, I just created it to be able to gauge how good each HRPT satellite pass was. Some people use SNR to gauge the pass quality, but I personally prefer using AVHRR frames. These dictate how long the received image is, is fairly consistent thanks to almost all orbitting satellites using the AVHRR/3 instrument for imaging (Except FengYun 3C, which uses VIRR).
+This scale is not official or mentioned anywhere, I just created it to be able to gauge how good each **HRPT** satellite pass was. Some people use SNR to gauge the pass quality, but I personally prefer using AVHRR frames. These dictate how long the received image is, is fairly consistent thanks to 8/9 orbitting L-band satellites using the AVHRR/3 instrument for imaging (Except FengYun 3C, which uses VIRR).
 
 You can see the frame count in SatDump after hitting `Stop` on the pipeline and going to the `Offline processing` tab while it's still decoding, or by reprocessing the cadu at a later date in the same tab. Alternatively, you can view the dimensions of the raw AVHRR image, the height will be the amount of frames (lines) you received.
 
@@ -645,7 +659,7 @@ The theoretical limit for these is about 6000, I have managed to get a 5650 fram
 
 ### Correctly adjusting your gain
 
-Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities by making the signal weaker than it can be. To correctly adjust it, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples::
+Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities by making the signal weaker than it should be. To correctly adjust it, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples:
 
 1) **A lot of dots are hitting the edge** → Gain too high
 
@@ -669,4 +683,4 @@ A small dot means that you should up the gain, if you are already maxxed out you
 
 ---
 
-Have fun and go get some pretty space pictures!
+Have fun and go get some pretty pictures!
