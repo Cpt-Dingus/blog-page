@@ -630,7 +630,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |Signal|Minimum SNR|FEC|
 |---|---|---|
 |NOAA APT|20 dB|No|
-|Meteor LRPT|2.5 dB|
+|Meteor LRPT|2.5 dB|Yes|
 |NOAA HRPT|0 dB\*|No|
 |Meteor-M HRPT|0 dB\*|No|
 |MetOp AHRPT|4 dB|Yes|
