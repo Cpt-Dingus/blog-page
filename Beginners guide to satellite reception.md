@@ -373,7 +373,6 @@ This section will describe the satellites that you can receive as well as their 
 
 ---
 
-
 ## Hardware requirements
 
 ### SDR
@@ -399,21 +398,18 @@ An 80 cm offset is a great starter dish, given its lightness and wide availabili
 - The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
 - The preferred and most forgiving feed you can make is a **Helical antenna**, a simple wire spun into a helical shape placed on a 13x13 cm plate.
 
-
 ## Build and reception
 
 For these, there is no point in me writing it out: Lego has these covered in his incredible [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide), a much more solid and complete source for HRPT reception. Anything further will just be expanding upon his article.
 
 ## Signal information
 
-|Signal|Minimum dish size|Symbol rate (Per second)|FEC|Notes|
+|Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
-|NOAA POES HRPT|60|665.6 KSym|No|
-|Meteor HRPT|60|665.6 KSym|No|
-|MetOp AHRPT|60|2.33 Msym|Yes|Just barely receivable with an RTLSDR, might cause issues
-|FengYun AHRPT|80|2.80 MSym|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
-
-You can only receive signals with an SDR that has a sampling rate equal to or greater than the symbol rate. Not having enough overhead will make the signal weaker as well as causing issues such as a donut constellation (Described in the `Common issues` section). The ideal sampling rate is at least twice the symbol rate, anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
+|NOAA POES HRPT|60|665.6 KSym/s|No|
+|Meteor HRPT|60|665.6 KSym/s|No|
+|MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause issues
+|FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
 
 ## Frequency reference
 |Satellite|Frequency|Notes|
@@ -425,14 +421,19 @@ You can only receive signals with an SDR that has a sampling rate equal to or gr
 |Metop B, C|1701.3 MHz||
 |FengYun 3C|1701.4 MHz||
 
+## Symbol and sampling rate relation
 
-# L-band geostationary satellite reception guide
+You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described in the `Common issues` section). Overhead is also **needed** because of **doppler shifting** and the **SDR's reference inaccuracy**. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), **the ideal sampling rate is twice the symbol rate** - anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
+
+
+# L-band geostationary satellite (LRIT/HRIT/etc.) reception guide
 - Receiving these is extremely simple, the hardest part is arguably just getting a suitable dish and LOS
+- Geostationary satellites are much weaker than orbitting satellites because of their very high altitudes, small dishes often don't cut it anymore. Refer to the signal table for more info.
 - Doesn't require tracking, since the satellites don't move (It's on the tin - geo**stationary**)
 - Provides full disc images of the earth and/or regional crops
 
 ## Transmission types
-Unlike orbiting satellites which use (A)HRPT, geostationary ones use different formats able to carry more than just images - the most common type that we are interested in this band being **LRIT** (Low Rate Information Transmission). You can also find other types such as:
+Unlike orbiting satellites which use (A)HRPT, geostationary ones use various formats able to carry more than just images - the most common type that we are interested in being **LRIT** (Low Rate Information Transmission). You can also find other types in the L band such as:
 
 - **HRIT** - High Rate Information Transmission → A faster broadcast of data which usually has a higher quality than LRIT, is often harder to receive
 - **S-VISSR** - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
@@ -508,8 +509,8 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 
 |Satellite series|Signal type|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
-|Elektro-L|LRIT|1691.5 MHz|294 KSym/s|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
-|Elektro-L|HRIT|1691.5 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
+|Elektro-L|LRIT|1691 MHz|294 KSym/s|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
+|Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
 |Elektro-L|GGAK|1693 MHz|5 Ksym/s|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
 |GOES|CDA|1693 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |GOES|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm|No|Constantly
@@ -526,6 +527,10 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. 
 
+
+## Symbol and sampling rate relation
+
+You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described in the `Common issues` section). Overhead is also needed because of doppler shifting and the SDR's reference inaccuracy. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), the ideal sampling rate is twice the symbol rate -  anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
 ## Actually receiving the satellites!
 
@@ -560,19 +565,26 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 
 # Common issues
 
-## MetOp donut shaped constellation
+## Donut shaped constellation with NOSYNC on the vitterbi
 
 ![A screenshot of SatDump showing this issue](./Assets/Radio/Meteor-donut-constellation.png)
-*Both demodulators are not showing the correct constellation of four dots in each corner, instead showing a donut shape*
+*Both demodulators are showing a donut shape instead of the correct QPSK modulation (four dots in each corner).*
 
-When decoding MetOp AHRPT on RTL-SDRs, you might notice that even while threre is a decent signal (Several dB), you still have `NOSYNC` indicated on the Vitterbi and have a donut shaped constellation. This happens, when the MetOp pipeline doens't see enough of the broadcast for a decode. To fix this, you have a few options:
-- Make sure you are using 2.56 Msps (2.88 if it's stable)
+When decoding signals with symbol rates close to your sampling rate (Such as MetOp AHRPT on RTLSDRs), you might notice that, even while you're getting a strong signal, you still have `NOSYNC` indicated on the Vitterbi and have a donut shaped constellation on the demodulator. This happens, when the reference for the signal is way out of frequency making the pipeline and in term its demodulator not be able to lock onto it. 
+
+To fix this, you have a few options:
+- Make sure you are using your SDR's maximum stable sampling rate
 - Move the frequency around by a few kHz
-- Lower the MetOp pipeline bandwidth:
-1. Open the SatDump folder (On android you need to download a debuggable APK, then run `adb run-as org.SatDump.SatDump`)
-2. Open `Pipelines/MetOp.json`
-3. Locate the `ppl_bw` option and set it to 0.002
+- Lower the pipelines pipelines bandwidth:
+1. Open the SatDump folder (On android you need to download a debuggable APK, then run `adb run-as org.satdump.SatDump`)
+2. Open `./Pipelines/<Pipeline>.json`
+3. Locate the `ppl_bw` option and set it to <TODO>
 
+> NOTE: I don't think this TODO will be done, it requires a bunch of match and radio concepts I do not understand yet, just try lowering it by a bit. You can get a baseband recording to trial and error with.
+
+> In case of MetOp AHRPT you should adjust set the pll bandwidth to 0.002. 
+
+For example with MetOp AHRPT:
 ```jsonc
 {
     "metop_ahrpt": {
@@ -584,20 +596,22 @@ When decoding MetOp AHRPT on RTL-SDRs, you might notice that even while threre i
                     "constellation": "qpsk",
                     "symbolrate": 2333333,
                     "rrc_alpha": 0.5,
-                    "pll_bw": 0.003 // Set this to 0.002
+                    "pll_bw": 0.003 // For MetOp, set this to 0.002
                 }
             },
         ...
 ```
-4. Receive MetOp satellites as usual
+4. Try receiving the signal as usual
 
-If you continue to get a donut shaped constellation even after making the adjustments, you'll likely just need a bettter SDR or a machine that supports the 2.88/3.2 Msps sampling rate.
+If you continue to get a donut shaped constellation even after making the adjustments, you'll need an SDR capable of higher sampling rates.
 
 ## SPS is invalid error when starting pipelines
 
 ![SatDump screenshot showing this issue](./Assets/Radio/Low-sampling-rate.png)
 
-This error appears when your sampling rate is lower, than the signals symbol rate. Set your sampling rate to **at least** equal the symbol rate, preferebly more than that to get overhead. If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
+This error appears when your sampling rate is lower than the signals symbol rate. Set your sampling rate to be at least roughly 1.2x the symbol rate (to gain some overhead). If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
+
+> Note that with orbitting satellites you NEED additional overhead due to doppler shifting. With geostationary satellites you can push close to the minimum thanks to the signal not experiencing doppler shifting.
 
 ## No/cut up image output with severe vitterbi spikes when decoding signals with FEC
 
