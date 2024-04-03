@@ -1,8 +1,5 @@
 [//]: # (NOTE: I have explicitly requested permission from lego11 to use his guides as a refernece, he said he's cool with it. I owe that man half the shit I know)
 
-# Temporary notice
-**--- As of 18/3/2024, Meteor-M N°2-4 is currently cleaning its MSU-MR instrument by heating it up. Its broadcasts are disabled until further notice from Roscosmos. ---**
-
 # Preamble
 
 Before anything, I have to give credit and extreme kudos to the **SDR++, SigIdWiki and Dereksgc Discords**. Everyone there has been incredible and has helped me learn basically everything that you'll be able to read here. 
@@ -144,12 +141,12 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 ---
 **METEOR-M**
 
-- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and ~~**Meteor-M N°2-4**~~ *(Refer to temporary notice on top of page)* (Meteor M2-x for short), a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
+- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x for short), a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
 - These satellites broadcasts a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
 
 <break>
 
-- This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. M2-4 has succesfully launched on leap day in 2024, ~~is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.~~ *(Refer to temporary notice on top of page)*
+- This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
 
 
 ## Broadcast issues
@@ -248,7 +245,7 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 |NOAA 18|137.9125 MHz|
 |NOAA 19|137.1 MHz|
 |Meteor M2-3|137.9 MHz|
-|Meteor M2-4|~~137.1 MHz~~ *(Refer to temporary notice on top of page)*|
+|Meteor M2-4|137.1 MHz|
 
 ## Actually receiving the satellites!
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be
@@ -343,7 +340,7 @@ This section will describe the satellites that you can receive as well as their 
 ---
 **METEOR-M**
 
-- 3 satellites currently broadcast in L-band: **Meteor M2-2, Meteor M2-3,** and ~~**Meteor M2-4**~~ *(Refer to temporary notice on top of page)*
+- 3 satellites currently broadcast in L-band: **Meteor M2-2, Meteor M2-3,** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
@@ -417,7 +414,7 @@ For these, there is no point in me writing it out: Lego has these covered in his
 |NOAA 15|1702.5 MHz|Very weak, don't bother|
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
-|Meteor M2-2, M2-3, ~~M2-4~~|1700 MHz|Refer to temporary notice on top of page|
+|Meteor M2-2, M2-3, M2-4|1700 MHz||
 |Metop B, C|1701.3 MHz||
 |FengYun 3C|1701.4 MHz||
 
