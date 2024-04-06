@@ -445,7 +445,7 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 - They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. LRIT broadcasts all (3) visible channels as well as two infrared channels. HRIT broadcasts 5 additional channels. It includes Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](./Assets/Radio/Elektro-LRIT-HRIT.png)
-*Elektro LRIT on left, Elektro HRIT on right*
+*Elektro-L N°3 LRIT on left, Elektro HRIT on right*
 
 ---
 
@@ -461,7 +461,10 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
-> TODO: FFT for these signals
+![GOES CDA and HRIT signal screenshots from SatDump](./Assets/Radio/GOES-CDA-HRIT.png)
+*GOES 18 CDA on the left, HRIT on the right. CC: phantomsgost on Discord*
+
+> TODO: GRB FFT
 
 *European*
 - **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved to Europe to replace EWS-G1 (GOES 13) and now only broadcasts a **linearly polarized** GVAR signal. It lacks FEC, meaning you have to get it at a fairly decent strength for a decode witout any grain. A full disc image is transmitted every 3 hours.
@@ -481,7 +484,9 @@ All of these include FEC, meaning you should be able to properly decode them eve
 *FengYun 2H S-VISSR*
 
 *FengYun 4 series*
-- **Fengyun 4A** currently broadcasts a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal is a fairly poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+- ~~**Fengyun 4A** currently broadcasts a **linearly polarized LRIT** and **HRIT** signal.~~ The LRIT signal is a fairly poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+
+> NOTE: As of 04/2024, FengYun 4A has recently been moved to 87°E, L-band emissions haven't been detected since. The future of the satellite is currently unknown.
 
 > As of 03/2024, FengYun 4B is currently commisioning and hasn't started broadcasting LRIT and HRIT yet. 
 
@@ -493,7 +498,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ---
 
 **GEO-KOMPSAT**
-- **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 0.5-2 km/px quality. The broadcasts are encrypted, but the decryption key has been shared by the operators.
+- **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 0.5-2 km/px quality. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
 
 ![Geokompsat LRIT and HRIT screenshots from SatDump](./Assets/Radio/GK-LRIT-HRIT.png)
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
