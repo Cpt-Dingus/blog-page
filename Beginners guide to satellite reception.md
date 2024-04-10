@@ -245,7 +245,7 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 |NOAA 18|137.9125 MHz|
 |NOAA 19|137.1 MHz|
 |Meteor M2-3|137.9 MHz|
-|Meteor M2-4|137.1 MHz|
+|Meteor M2-4|137.9 MHz|
 
 ## Actually receiving the satellites!
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be
@@ -264,10 +264,13 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 ![A screenshot of the settings mentioned above](./Assets/Radio/APT-SatDump-Settings.png)
 
 ### FOR METEOR-M LRPT
-- Select the `METEOR M2-x LRPT 72k` pipeline
+- Select the appropriate pipeline:
+    - `METEOR M2-x LRPT 72k` for Meteor M2-3
+    - `METEOR M2-x LRPT 80k` for Meteor M2-4
 - Enable `DC Blocking`
-- For the frequency choose `Primary` for 137.9 MHz and `Backup` for 137.1 MHz
-> The frequency can change when the satellite conflict switches (Tries to avoid using the same frequency as other satellites in the same band)
+- Select the appropriate frequency:
+     - `Primary` for 137.9 MHz
+     - `Backup` for 137.1 MHz
 
 ![A screenshot of the settings mentioned above](./Assets/Radio/LRPT-SatDump-Settings.png)
 
