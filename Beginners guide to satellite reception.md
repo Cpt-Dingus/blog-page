@@ -147,6 +147,7 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 <break>
 
 - This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
+- Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are alliiioiii possible in the near future. 
 
 
 ## Broadcast issues
@@ -264,9 +265,10 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 ![A screenshot of the settings mentioned above](./Assets/Radio/APT-SatDump-Settings.png)
 
 ### FOR METEOR-M LRPT
+> Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future.
 - Select the appropriate pipeline:
-    - `METEOR M2-x LRPT 72k` for Meteor M2-3
-    - `METEOR M2-x LRPT 80k` for Meteor M2-4
+    - `METEOR M2-x LRPT 72k` for Meteor M2-3 and Meteor M2-4
+    - `METEOR M2-x LRPT 80k` for \<x\>
 - Enable `DC Blocking`
 - Select the appropriate frequency:
      - `Primary` for 137.9 MHz
@@ -295,6 +297,10 @@ If the image is from LRPT on an evening pass, you need to select Channel 4 (IR) 
 - There is grain all over the image!\
 Some grain is expected on APT images, you can get rid of it by ticking `Median blur`. If it is present after, you either didn't enable the noise reduction when recording or the signal was just too weak. The latter is most common, grain appears whenever there is crackling during recording.
 
+- I saw the LRPT signal but got no SNR or SYNC!\
+  - If you received Meteor M2-4, the satellite might have switched the bitrate between this guide's latest commit and your RX. At the moment, it's best to use [SDR++](https://www.sdrpp.org/)'s meteor demodulator module then piping the generated .soft file through both LRPT pipelines (for 72k and 80k, in case it switched the bitrate again)
+  - SatDump also currently has an issue with locking onto 80k bitrate LRPT broadcasts, the signal has to get fairly strong to get a proper lock. 
+  - If neither of the above apply, the signal was likely just too weak.
 
 # L-band HRPT reception guide (1.7 GHz)
 - L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **expensive equipment** and more effort making the antenna as well as a **dish** paired with some half decent tracking skills.
@@ -487,11 +493,9 @@ All of these include FEC, meaning you should be able to properly decode them eve
 *FengYun 2H S-VISSR*
 
 *FengYun 4 series*
-- ~~**Fengyun 4A** currently broadcasts a **linearly polarized LRIT** and **HRIT** signal.~~ The LRIT signal is a fairly poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+- **Fengyun 4B** currently broadcasts a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
 
 > NOTE: As of 04/2024, FengYun 4A has recently been moved to 87°E, L-band emissions haven't been detected since. The future of the satellite is currently unknown.
-
-> As of 03/2024, FengYun 4B is currently commisioning and hasn't started broadcasting LRIT and HRIT yet. 
 
 ![FengYun LRIT screenshot from SatDump](./Assets/Radio/FengYun-LRIT.png) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
@@ -554,7 +558,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 |GOES HRIT|GOES-R HRIT|
 |FengYun 2 S-VISSR|FengYun-2 S-VISSR|
 |FengYun 4 LRIT|FengYun-4[A/B] LRIT|
-|FengYun 4 HRIT|FengYun-4A HRIT -II/III|
+|~~FengYun 4 HRIT~~|~~FengYun-4A HRIT -II/III~~|
 |GEO-KOMPSAT LRIT|GK-2A LRIT|
 |GEO-KOMPSAT HRIT|GK-2A HRIT|
 
