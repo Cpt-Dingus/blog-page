@@ -281,6 +281,8 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 > When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the FFT along with the sound (Try to avoid crackling) with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
 
 If everything is right, you are now receiving a beeping APT signal or you see four dots on the demodulator in case of LRPT!
+![SatDump screenshot mid LRPT pass](./Assets/Radio/LRPT-SatDump.png) <br>
+*SatDump mid LRPT decode. See the `SYNCED` vitterbi and deframer.*
 
 5. Once you see the signal has completely disappeared and isn't coming back, press `Stop` on the pipeline
 
@@ -289,6 +291,25 @@ If everything is right, you are now receiving a beeping APT signal or you see fo
 7. Once it finishes processing, head to the `Viewer` tab and select the pass you decoded on the top left
 
 You are done! Feel free to play around with the image settings and enhancements, you can figure it out :)
+
+## Alternative LRPT setup (SDR++)
+As of 04/2024, Meteor M2-4 is still in testing and has been switching bitrates arbitrarily. It is currently recommended to use [SDR++](https://www.sdrpp.org/) to record the LRPT pass and SatDump's `Offline processing` tab to later decode it.
+
+1. Open SDR++ and start the radio
+
+2. Open the Module manager and configure as follows:
+![SDR++ config for receiving LRPT](./Assets/Radio/SDRpp-LRPT-config.png)
+
+3. Open SatDump, move to the `Offline processing` tab and configure appropriately:
+![SatDump config for decoding LRPT](./Assets/Radio/LRPT-Offline-proccessing.png)
+
+> **Make sure to select `soft` as the input level!**
+
+4. Move the deomdulator to the correct frequency
+
+5. Hit `Start`
+
+Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` pipeline.
 
 ## Common issues
 - The image is solid black!\
@@ -486,11 +507,14 @@ All of these include FEC, meaning you should be able to properly decode them eve
 **FengYun**
 
 *FengYun 2 series*
-- **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for VIS channels and 5 km/px for the IR channels. 
+- **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for VIS channels and 5 km/px for the IR channels.
 - This signal is very prone to transport packet corruption because of lacking FEC, resulting images are likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
 
-![S-VISSR screenshot from SatDump](./Assets/Radio/FengYun-SVISSR.png)
+![S-VISSR screenshot from SatDump](./Assets/Radio/FengYun-SVISSR.png) <br>
 *FengYun 2H S-VISSR*
+
+![Gif of S-VISSR doing what's described below](./Assets/Radio/S-VISSR_Rollback.gif) <br>
+*S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 *FengYun 4 series*
 - **Fengyun 4B** currently broadcasts a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
