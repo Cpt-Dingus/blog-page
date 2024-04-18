@@ -265,10 +265,10 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 ![A screenshot of the settings mentioned above](./Assets/Radio/APT-SatDump-Settings.png)
 
 ### FOR METEOR-M LRPT
-> Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future.
+> Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. I update this page as soon as I get information about a switch.
 - Select the appropriate pipeline:
-    - `METEOR M2-x LRPT 72k` for Meteor M2-3 and Meteor M2-4
-    - `METEOR M2-x LRPT 80k` for \<x\>
+    - `METEOR M2-x LRPT 72k` for Meteor M2-3
+    - `METEOR M2-x LRPT 80k` for Meteor M2-4
 - Enable `DC Blocking`
 - Select the appropriate frequency:
      - `Primary` for 137.9 MHz
