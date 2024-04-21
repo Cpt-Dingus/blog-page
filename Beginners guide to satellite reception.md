@@ -550,14 +550,15 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm|No|Constantly
 |GOES|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
 |GOES|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
-|Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|100 cm|No|XX:00 - XX:28 and XX:30-XX:48\*\*
+|Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|90 cm\*\*|No|XX:00 - XX:28 and XX:30-XX:48\*\*\*
 |FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|TODO
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|XX:30
 |GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Every 10 minutes
 
 \* RHCP+LHCP <br>
-\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
+\*\* Only with the corrector, image will be cut up beyond recognition otherwise. <br>
+\*\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. 
 
@@ -612,7 +613,7 @@ To fix this, you have a few options:
 - Lower the pipelines pipelines bandwidth:
 1. Open the SatDump folder (On android you need to download a debuggable APK, then run `adb run-as org.satdump.SatDump`)
 2. Open `./Pipelines/<Pipeline>.json`
-3. Locate the `ppl_bw` option and set it to <TODO>
+3. Locate the `ppl_bw` option and set it to \<TODO\>
 
 > NOTE: I don't think this TODO will be done, it requires a bunch of match and radio concepts I do not understand yet, just try lowering it by a bit. You can get a baseband recording to trial and error with.
 
