@@ -270,6 +270,7 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
     - `METEOR M2-x LRPT 72k` for Meteor M2-3
     - `METEOR M2-x LRPT 80k` for Meteor M2-4
 - Enable `DC Blocking`
+- (Optional, preferred) Enable `Fill missing data`
 - Select the appropriate frequency:
      - `Primary` for 137.9 MHz
      - `Backup` for 137.1 MHz
