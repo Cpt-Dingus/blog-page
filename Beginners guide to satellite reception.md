@@ -59,10 +59,10 @@ Don't worry if you don't understand these yet, they will be explained in more de
 ### Overloading
 
 ![An image of a relatively normal FFT](./Assets/Radio/Normal-fft.png)
-*Pictured is a relatively normal FFT, excluding the lines*
+*Pictured is a relatively normal FFT, excluding the lines mentioned above*
 
 ![An image of a FFT suffering from severe overloading](./Assets/Radio/Overloaded-fft.png)
-*After upping the gain, you can see the significant amount of FM overloading present throughout the whole FFT.*
+*After upping the gain, you can see the significant amount of FM overloading present throughout the whole FFT showing as "ghost" signals - signals that are not actually where your SDR is showing them to be.*
 
 
 # Mistakes and pitfalls
@@ -82,7 +82,7 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 - **Not using actual connectors and cables** → While sticking a wire into your SMA port works in theory - an antenna is just anything conductive after all - it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working correctly.
 
-- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs often have a very high gain which also makes them very prone to overloading. Because of this, higher bands exclusively use **filtered** LNAs (Low gain LNA > Filter > High gain LNA). The filter makes sure, that the LNA only amplifies the target signals and nothing else outside of the target range.
+- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs often have a very high gain which makes them prone to overloading. Because of this, higher bands exclusively use **filtered** LNAs (Low gain LNA > Filter > High gain LNA). The filter makes sure, that the LNA only amplifies the target signals and nothing else.
 
 
 # RTL-SDR specific things
@@ -94,17 +94,19 @@ These apply to SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 # Preferred software
-Arguably the by far best program for **pulling data** off of satellites is [SatDump](https://github.com/SatDump/SatDump/releases)
+Arguably the best program for **pulling data** off of satellites is [SatDump](https://github.com/SatDump/SatDump/releases)
 
-You can also use SDR++ for recording and then process the recordings using SatDump, but that is often just unnecessary extra effort. The only exception to this is troubleshooting your setup - having an audio recording is always helpful.
+You can also use [SDR++](https://www.sdrpp.org/) for **recording** and then process the recordings using SatDump, but unless explicitly needed it's often just unnecessary extra effort.
 
-> Always download the nightly builds of SDR** and SatDump, update them frequently. These programs are relatively new and are being actively developed and have new additions on a daily basis. There are other programs you can use but I won't focus on them for the sake of keeping this guide concise.
+> Always download the nightly builds of SatDump and SDR++, make sure to frequently update them. Both of these are relatively young programs that are being actively developed with new additions on a daily basis. 
+
+There are other programs you can use but I won't focus on them for the sake of keeping this guide concise.
 
 ---
  To **track satellites** and figure out their future passes (Most are orbiting the Earth after all), you can use these:
 
 Cross-Platform:
-- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, MacOS, Android - SatDump has an inbuilt module you can use for tracking. **It can only track one satellite at a time, doesn't do predictions.**
+- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, MacOS, Android - SatDump has an inbuilt module you can use for tracking found in the `Recording` tab. **It can only track one satellite at a time, doesn't do long term predictions.**
 - [N2YO](https://n2yo.com/) - Web - Does the job, however lacks the polish of other apps
 
 PC:
@@ -119,20 +121,24 @@ There are a few apps for IOS but they have severe limitations, using any of the 
 
 > **Make sure you update your TLEs**, not doing so might make the satellite locations be outdated or just outright incorrect.
 
-I personally use Gpredict for long term and Look4Sat for short term predictions, the SatDump tracking module during passes.
+I personally use Orbitron for long term and Look4Sat for short term predictions, the SatDump tracking module when live processing passes.
 
 
 # VHF APT/LRPT reception guide (137MHz)
-- Receiving VHF broadcasts is **incredibly easy** → all that you need is just some wire, an SDR and some patience
+- Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR and some patience
 - As of writing this article there are currently **5** weather satellites that broadcast in this band
-- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with jpeg compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
+- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
 
 ## Detailed satellite information
 
 **NOAA**
 
 - These are the last **3** remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
-- These satellites broadcasts an *analogue*  **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** signal that has two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
+- Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
+
+<break>
+
+- During day these transmit one visible and one infrared channel, during night they switch to two infrared channels.
 
 <break>
 
@@ -141,20 +147,29 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 ---
 **METEOR-M**
 
-- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x for short), a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
-- These satellites broadcasts a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** signal that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
+- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
+- These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
 
 <break>
 
-- This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
-- Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are alliiioiii possible in the near future. 
+- These transmit any 3 channels the operators choose, as of 04/2024:
+
+|Satellite|Channel numbers|Channel types|
+|---|---|---|
+|M2-3|1, 2, 4 |2×Visible, 1×Infrared|
+|M2-4|1, 2, 3|3×Visible|
+
+<break>
+
+- This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its **LRPT antenna didn't fully extend**, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
+- Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. 
 
 
 ## Broadcast issues
 
-- NOAA 15 has had several major hiccups with its scan motor current spiking due to it grinding through debris, causing a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A major spike could lead to a complete motor stall, from which recovery is highly unlikely. As of writing this article (03/2024) the satellite has completely recovered and is broadcasting fine.
+- NOAA 15 has had several major hiccups with its scan motor current spiking due to it grinding through debris. The spike caused a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. As of 04/2024 the satellite has completely recovered and is broadcasting fine.
 - NOAA 18 has had a configuration error present ever since management was transferred to Parons tech, making it broadcast a visible channel during the night instead of an infrared one. This presents itself as half of the image being black.
-- Meteor-M N°2-3 has an incorrectly deployed VHF antenna, meaning the signal is weaker than intended and might unexpectedly drop from time to time.
+- Meteor-M N°2-3 has an incorrectly deployed VHF antenna, making the signal weaker than intended and unexpectedly experience drops from time to time.
 
 
 ## Example processed APT and LRPT images
@@ -173,7 +188,7 @@ I personally use Gpredict for long term and Look4Sat for short term predictions,
 
 You will need an SDR and an antenna, **no other special equipment is required for VHF**.
 
-> NOTE: You also need the appropriate cables and adapters to connect antennas to your SDR, make sure to order these in advance. An example is a coaxial cable and an F female to SMA male adapter.
+> NOTE: You also need the appropriate cables and adapters to connect antenna to your SDR, make sure to order these in advance. An example is a coaxial cable and an F female to SMA male adapter.
 
 The SDR should be a **reputable brand** if you want optimal performance (E.g. AirSpy, RTLSDR Blog, Nooelec...). 
 > In simpler terms; avoid the blue chinesium sdrs. They CAN work, but expect worse results.
@@ -182,9 +197,10 @@ As for the **antenna**, you have the choice between:
 - Directional antennas
 - Omnidirectional antennas
 
-The difference between these is, that omnidirectional antennas don't need any tracking to be done (remain stationary throughout the pass) while directional antennas require hand tracking and **can only do one satellite at a time**
+The difference between these is, that omnidirectional antennas don't need any tracking to be performed (remain stationary throughout the pass) while directional antennas require hand tracking and **can only do one satellite at a time**
 
-Popular antenna types for receiving in this frequency include:
+Popular antenna types for receiving signals in this band include:
+
 ### 1. V dipole antenna
 - Omnidirectional
 - Very easy to make, very portable
@@ -251,7 +267,6 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 ## Actually receiving the satellites!
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be
 2. Open SatDump and navigate to the `Recorder` tab, select your SDR, set the sampling rate to `2.4 Msps` (Or whatever your SDR supports) and hit `Start`
-
 - Rise the gain until your noise floor starts to rise more than the target signal, or until your SDR overloads, whichever comes first. Try not to move it around during the pass, it will lead to the image having sections with a different brightness.
 
 3. In the side panel, open the `Processing` menu and do the following:
@@ -294,7 +309,7 @@ If everything is right, you are now receiving a beeping APT signal or you see fo
 You are done! Feel free to play around with the image settings and enhancements, you can figure it out :)
 
 ## Alternative LRPT setup (SDR++)
-As of 04/2024, Meteor M2-4 is still in testing and has been switching bitrates arbitrarily. It is currently recommended to use [SDR++](https://www.sdrpp.org/) to record the LRPT pass and SatDump's `Offline processing` tab to later decode it.
+As of 04/2024, Meteor M2-4 is still in testing and has lately been seen switching bitrates arbitrarily. It is currently recommended to use [SDR++](https://www.sdrpp.org/) to record the LRPT pass and SatDump's `Offline processing` tab to later decode it.
 
 1. Open SDR++ and start the radio
 
@@ -325,7 +340,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
   - If neither of the above apply, the signal was likely just too weak.
 
 # L-band HRPT reception guide (1.7 GHz)
-- L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **expensive equipment** and more effort making the antenna as well as a **dish** paired with some half decent tracking skills.
+- L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **specialized equipment** as well as a **dish** paired with some half decent tracking skills.
 - While requiring more dedication, it offers much more interesting things than VHF: for example being able to receive 5+ channels of pure and uncompressed 1km/px images as well as full disc Earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
 
 <break>
@@ -352,8 +367,6 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 *Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite.*
 
 ## Detailed satellite information
-
-This section will describe the satellites that you can receive as well as their respective signals.
 
 ---
 
@@ -467,16 +480,16 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 - **S-VISSR** - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
 - **GVAR** - Goes Variable → Only broadcasts a set amount of data
 - **GRB** - Goes ReBroadcast → A very high quality broadcast from american GOES satellites 
-- **GGAK**/**CDA** → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
-
+- **GGAK** - Heliogeophysical Instrument Complex → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
+- **SD** - Sensor Data → Raw data broadcast from GOES-N satellites
 ## Detailed satellite information
 
 **Elektro-L**
-- These are **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short). Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+- **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. LRIT broadcasts all (3) visible channels as well as two infrared channels. HRIT broadcasts 5 additional channels. It includes Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](./Assets/Radio/Elektro-LRIT-HRIT.png)
-*Elektro-L N°3 LRIT on left, Elektro HRIT on right*
+*Elektro-L N°3 LRIT on left, HRIT on right*
 
 ---
 
@@ -484,24 +497,33 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 
 *American*
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
-    - **CDA** - Space weather, can be used to check your setup. Decoded but doesn't hold anything interesting.
-    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s.
+    - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
     - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery.
+    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s.
 
 All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak.
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
-![GOES CDA and HRIT signal screenshots from SatDump](./Assets/Radio/GOES-CDA-HRIT.png)
-*GOES 18 CDA on the left, HRIT on the right. CC: phantomsgost on Discord*
+![GOES CDA Telemetry and HRIT signal screenshots from SatDump](./Assets/Radio/GOES-CDA-HRIT.png)
+*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsgost on Discord*
 
 > TODO: GRB FFT
 
-*European*
-- **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved to Europe to replace EWS-G1 (GOES 13) and now only broadcasts a **linearly polarized** GVAR signal. It lacks FEC, meaning you have to get it at a fairly decent strength for a decode witout any grain. A full disc image is transmitted every 3 hours.
+*Rest of the world*
+- **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved over the Indian ocean to replace EWS-G1 (GOES 13) and now broadcasts a few relatively weak signals:
+    - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
+    - **GVAR** - A relatively weak broadcast that contains very high resolution data. 
+    - **SD** - Broadcasts raw instrument data, separates into two downlinks on the same frequency:
+        - **Raw imager data**
+        - **Raw sensor data**
+
 
 ![GOES GVAR screenshot from SatDump](./Assets/Radio/GOES-GVAR.png)
 *GOES 15 GVAR*
+
+![GOES SD screenshots from SDR#](./Assets/Radio/GOES-SD.png)
+*GOES 13 SD, both the imager and sounder downlinks are visible. CC: dereksgc on Discord*
 
 ---
 
@@ -536,7 +558,6 @@ All of these include FEC, meaning you should be able to properly decode them eve
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
 
 
-
 ## Signal information
 
 The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky
@@ -546,10 +567,13 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |Elektro-L|LRIT|1691 MHz|294 KSym/s|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
 |Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
 |Elektro-L|GGAK|1693 MHz|5 Ksym/s|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
-|GOES|CDA|1693 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|GOES|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm|No|Constantly
-|GOES|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
-|GOES|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
+|GOES-R|CDA Telemetry|1693 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
+|GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
+|GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
+|GOES-N|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
+|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm|No|Full disc image every 3 hours, regional crops the rest of the time.
+|GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
+|GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm (TBD)|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|90 cm\*\*|No|XX:00 - XX:28 and XX:30-XX:48\*\*\*
 |FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|TODO
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|XX:30
@@ -567,6 +591,7 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 
 You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described in the `Common issues` section). Overhead is also needed because of doppler shifting and the SDR's reference inaccuracy. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), the ideal sampling rate is twice the symbol rate -  anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
+
 ## Actually receiving the satellites!
 
 1. Aim your dish using whatever broadcast the satellite has for alignment, or using a dish tracking app (Less accurate). Alternatively, locate the rough area of where the satellite should be in the sky, start the correct pipeline and when the broadcast starts quickly try to find where the signal is the strongest. You usually have a few seconds to find it, which is more than enough in most cases.
@@ -579,9 +604,11 @@ You can only receive these signals with an SDR that has a sampling rate at least
 |---|---|
 |Elektro LRIT|Elektro-L LRIT|
 |Elektro HRIT|Elektro-L HRIT|
-|GOES GVAR|GOES GVAR|
-|GOES GRB|GOES-R GRB|
 |GOES HRIT|GOES-R HRIT|
+|GOES GRB|GOES-R GRB|
+|GOES GVAR|GOES GVAR|
+|GOES Imager SD|GOES-N Sensor Data|
+|GOES Sounder SD| GOES-N Sounder SD
 |FengYun 2 S-VISSR|FengYun-2 S-VISSR|
 |FengYun 4 LRIT|FengYun-4[A/B] LRIT|
 |~~FengYun 4 HRIT~~|~~FengYun-4A HRIT -II/III~~|
