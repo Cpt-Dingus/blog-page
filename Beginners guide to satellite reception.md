@@ -327,18 +327,6 @@ As of 04/2024, Meteor M2-4 is still in testing and has lately been seen switchin
 
 Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` pipeline.
 
-## Common issues
-- The image is solid black!\
-If the image is from LRPT on an evening pass, you need to select Channel 4 (IR) to see anything - Channels 1 and 2 are visible, during night it is solid black.
-
-- There is grain all over the image!\
-Some grain is expected on APT images, you can get rid of it by ticking `Median blur`. If it is present after, you either didn't enable the noise reduction when recording or the signal was just too weak. The latter is most common, grain appears whenever there is crackling during recording.
-
-- I saw the LRPT signal but got no SNR or SYNC!\
-  - If you received Meteor M2-4, the satellite might have switched the bitrate between this guide's latest commit and your RX. At the moment, it's best to use [SDR++](https://www.sdrpp.org/)'s meteor demodulator module then piping the generated .soft file through both LRPT pipelines (for 72k and 80k, in case it switched the bitrate again)
-  - SatDump also currently has an issue with locking onto 80k bitrate LRPT broadcasts, the signal has to get fairly strong to get a proper lock. 
-  - If neither of the above apply, the signal was likely just too weak.
-
 # L-band HRPT reception guide (1.7 GHz)
 - L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **specialized equipment** as well as a **dish** paired with some half decent tracking skills.
 - While requiring more dedication, it offers much more interesting things than VHF: for example being able to receive 5+ channels of pure and uncompressed 1km/px images as well as full disc Earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
@@ -482,11 +470,15 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 - **GRB** - Goes ReBroadcast → A very high quality broadcast from american GOES satellites 
 - **GGAK** - Heliogeophysical Instrument Complex → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
 - **SD** - Sensor Data → Raw data broadcast from GOES-N satellites
+
 ## Detailed satellite information
 
 **Elektro-L**
 - **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
-- They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. LRIT broadcasts all (3) visible channels as well as two infrared channels. HRIT broadcasts 5 additional channels. It includes Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
+- They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. Both of these include Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
+- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 far less consistent.
+
+> Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](./Assets/Radio/Elektro-LRIT-HRIT.png)
 *Elektro-L N°3 LRIT on left, HRIT on right*
@@ -540,14 +532,18 @@ All of these include FEC, meaning you should be able to properly decode them eve
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 *FengYun 4 series*
-- **Fengyun 4B** currently broadcasts a **linearly polarized LRIT** and **HRIT** signal. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+- **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** ~~and **HRIT** signal. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.~~
 
-> NOTE: As of 04/2024, FengYun 4A has recently been moved to 87°E, L-band emissions haven't been detected since. The future of the satellite is currently unknown.
+> NOTE: As of 04/2024, FengYun 4A has recently started broadcasting its LRIT signal, but no products have been decoded so far. FengYun 4B is still commisioning, has only transmitted old FY 4A imagery so far.
+
+> Both HRIT broadcasts are currently disabled.
+
 
 ![FengYun LRIT screenshot from SatDump](./Assets/Radio/FengYun-LRIT.png) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
 
-> TODO: HRIT FFT
+![FengYun HRIT screenshot from SatDump](./Assets/Radio/FengYun-HRIT.png) <br>
+*FengYun 4A HRIT, CC: drew0781 on Discord*
 
 ---
 
@@ -560,7 +556,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 ## Signal information
 
-The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky
+The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
 
 |Satellite series|Signal type|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
@@ -575,16 +571,16 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
 |GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm (TBD)|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|90 cm\*\*|No|XX:00 - XX:28 and XX:30-XX:48\*\*\*
-|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|TODO
-|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|XX:30
-|GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Every 10 minutes
-|GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Every 10 minutes
+|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
+|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
+|GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Constantly, image every 10 minutes
+|GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
 
 \* RHCP+LHCP <br>
 \*\* Only with the corrector, image will be cut up beyond recognition otherwise. <br>
 \*\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
 
-You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. 
+You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. A linear feed even as simple as a cantenna will perform better.
 
 
 ## Symbol and sampling rate relation
@@ -627,7 +623,28 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 # Common issues
 
-## Donut shaped constellation with NOSYNC on the vitterbi
+## VHF
+
+### There is a map but no clouds are present
+You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just grain (no actual signal was decoded), all you are left with is the predefined map.
+
+### The image is solid black
+If the image is from LRPT on an evening pass, you need to select Channel 4 (IR) to see anything - Channels 1 and 2 are visible, during night it is solid black.
+
+### There is grain all over the resulting image
+Some grain is expected on APT images, you can get rid of it by ticking `Median blur` in the `Viewer` tab. If it is present after, either:
+- The noise reduction wasn't enabled when recording
+- The signal was just too weak (had crackling present while recording)
+
+### I saw an LRPT signal but got no SNR andor NOSYNC on the vitterbi
+- If you received Meteor M2-4, the satellite might have switched the bitrate between this guide's latest commit and your RX. At the moment, it's best to:
+    - Make a baseband recording, decode it after the pass
+    - Record the pass using [SDR++](https://www.sdrpp.org/)'s meteor demodulator module then piping the generated .soft file through both LRPT pipelines (for 72k and 80k, in case it switched the bitrate again)
+- SatDump also recently had an update where the PLL bandwidth was upped to `0.002`, which has been causing issues with locking onto the signal. Follow the `Donut shaped constellation` section below, set the LRPT PLL bandwidths inside `Meteor-M.json` to `0.0012`.
+
+## L-band
+
+### Donut shaped constellation with NOSYNC on the vitterbi
 
 ![A screenshot of SatDump showing this issue](./Assets/Radio/Meteor-donut-constellation.png)
 *Both demodulators are showing a donut shape instead of the correct QPSK modulation (four dots in each corner).*
@@ -642,7 +659,7 @@ To fix this, you have a few options:
 2. Open `./Pipelines/<Pipeline>.json`
 3. Locate the `ppl_bw` option and set it to \<TODO\>
 
-> NOTE: I don't think this TODO will be done, it requires a bunch of match and radio concepts I do not understand yet, just try lowering it by a bit. You can get a baseband recording to trial and error with.
+> NOTE: I don't think this TODO will be done, it requires a bunch of math and deeper understanding of radio concepts, the most I can recommend is gradually decreasing it and using a baseband recording to trial and error with.
 
 > In case of MetOp AHRPT you should adjust set the pll bandwidth to 0.002. 
 
@@ -667,7 +684,7 @@ For example with MetOp AHRPT:
 
 If you continue to get a donut shaped constellation even after making the adjustments, you'll need an SDR capable of higher sampling rates.
 
-## SPS is invalid error when starting pipelines
+### SPS is invalid error when starting pipelines
 
 ![SatDump screenshot showing this issue](./Assets/Radio/Low-sampling-rate.png)
 
@@ -675,7 +692,7 @@ This error appears when your sampling rate is lower than the signals symbol rate
 
 > Note that with orbitting satellites you NEED additional overhead due to doppler shifting. With geostationary satellites you can push close to the minimum thanks to the signal not experiencing doppler shifting.
 
-## No/cut up image output with severe vitterbi spikes when decoding signals with FEC
+### No/cut up image output with severe vitterbi spikes when decoding signals with FEC
 
 ![A screenshot of SatDump showing this usse](./Assets/Radio/Vitterbi-spikes.png)
 *You can see the spikes on the vitterbi, on a video you'd see `NOSYNC` constantly popping up*
@@ -686,7 +703,7 @@ Two things can cause this issue:
 
 # Reception tips and notes
 
-### Minimum SNR for a good decode
+## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
 |Signal|Minimum SNR|FEC|
@@ -704,16 +721,16 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |FengYun 2 S-VISSR|6 dB\*\*|No|
 |FengYun 4 LRIT|TODO|Yes|
 |FengYun 4 HRIT|TODO|Yes|
-|GEO-KOMPSAT LRIT|TODO|Yes|
-|GEO-KOMPSAT HRIT|TODO|Yes|
+|GEO-KOMPSAT LRIT|4 dB|Yes|
+|GEO-KOMPSAT HRIT|4 dB|Yes|
 
 
 \* You read that right, you can get these even at 0 dB! As long as you see the signal and there are frames being decoded or the deframer is synced, you are getting an image! It will have a lot of grain, but that is manageable by using the `Median blur` option when viewing the resulting image
 
 \*\* You will likely still get missing lines, make sure to use HRPTEgors corrector when near the minimum SNR.
 
-### Pass rating scale
-This scale is not official or mentioned anywhere, I just created it to be able to gauge how good each **HRPT** satellite pass was. Some people use SNR to gauge the pass quality, but I personally prefer using AVHRR frames. These dictate how long the received image is, is fairly consistent thanks to 8/9 orbitting L-band satellites using the AVHRR/3 instrument for imaging (Except FengYun 3C, which uses VIRR).
+## Pass rating scale
+This scale is not official or mentioned anywhere, I just created it to be able to gauge how good each **HRPT** satellite pass was. Which metric to use is debatable, but I personally prefer AVHRR frames. These dictate how long the received image is in lines (pixels), is fairly consistent thanks to 8/9 orbitting L-band satellites using the AVHRR/3 instrument for imaging (Except FengYun 3C, which uses VIRR).
 
 You can see the frame count in SatDump after hitting `Stop` on the pipeline and going to the `Offline processing` tab while it's still decoding, or by reprocessing the cadu at a later date in the same tab. Alternatively, you can view the dimensions of the raw AVHRR image, the height will be the amount of frames (lines) you received.
 
@@ -728,12 +745,10 @@ You can see the frame count in SatDump after hitting `Stop` on the pipeline and 
 |5000-5500|Almost perfect|
 |>5500|Perfect|
 
-The theoretical limit for these is about 6000, I have managed to get a 5650 frames from a 0° - 2.5° pass.
+The theoretical limit for these is about 6000, I have managed to get 5650 frames from a 0° - 2.5° pass.
 
 
-
-
-### Correctly adjusting your gain
+## Correctly adjusting your gain
 
 Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities by making the signal weaker than it should be. To correctly adjust it, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples:
 
