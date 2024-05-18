@@ -59,7 +59,7 @@ Don't worry if you don't understand these yet, they will be explained in more de
 
 ### Interference
 
-![An example of interference caused by a cell tower](/assets/images/Radio//Interference-example.png)
+![An example of interference caused by a cell tower](../../..//assets/images/Radio//Interference-example.png)
 
 *Pictured is an SDR being overloaded with interference caused by a very strong cell tower broadcast. On the left is an FM station, the rest of the lines are erroneous.*
 
