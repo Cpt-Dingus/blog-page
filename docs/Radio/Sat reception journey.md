@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Git commit signing
+title: Satellite reception journey
 nav_order: 2
 parent: Radio
 ---
