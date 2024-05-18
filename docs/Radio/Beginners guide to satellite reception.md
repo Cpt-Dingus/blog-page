@@ -506,7 +506,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
 ![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.png)
-*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsgost on Discord*
+*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phanthomsgost on Discord*
 
 > TODO: GRB FFT
 
