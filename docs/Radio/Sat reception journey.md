@@ -32,19 +32,19 @@ After a lot more research and failed attempts I finally decided to make a proper
 
 This resulted in my true first APT:
 
-![First APT picture I ever received](../.../assets/images/Sat-reception-journey/First-APT-I-got.png)
+![First APT picture I ever received](../../assets/images/Sat-reception-journey/First-APT-I-got.png)
 *NOAA 18 received on 12/10/2023 using a V-dipole nailed to a wooden board sticking outside of my balcony. Decoded using WxToImg.*
 
 The result is about what you'd expect for a first APT reception.
 
 The setup I had should have worked in theory, but I had two major issues - there is a cell tower just a few hundred meters away overloading my SDR to hell and back, I could only see the satellite for a very short amount of time while it was directly overhead. After a bit of thought I realized, that I could use some old materials from our decrepit shed at my cottage as a stand for a very tall V-dipole fixture which would have GREAT LOS with the sky. Some zipties and gluing stuff together later, I concocted this:
 
-![The original V-dipole fixture](../.../assets/images/Sat-reception-journey/Original-V-Dipole-fixture.png)
+![The original V-dipole fixture](../../assets/images/Sat-reception-journey/Original-V-Dipole-fixture.png)
 *The original V-dipole fixture I had at my cottage.*
 
 As janky as it looks, it worked very well and allowed me to get some great APT images:
 
-![First actually good APT](../.../assets/images/Sat-reception-journey/First-good-APT-N15.png)
+![First actually good APT](../../assets/images/Sat-reception-journey/First-good-APT-N15.png)
 *NOAA 15 received on 13/10/2023 using a V-dipole. Decoded using SatDump. (Alignment algorithm couldn't handle the scan motor issues, is the reason the middle of the image is cut up.)*
 
 What at first looks like black and white image barely containing any decernible imagery remains one of the best APT transmissions I have gotten when considering the length and cleanliness. How a V-Dipole managed to get no nulls is beyond me. 
@@ -53,7 +53,7 @@ What at first looks like black and white image barely containing any decernible 
 
 I managed to get a few other satellites just after, most notably NOAA 19 passing shortly after NOAA 15:
 
-![Second actually good APT](../.../assets/images/Sat-reception-journey/Second-good-APT-N19.png)
+![Second actually good APT](../../assets/images/Sat-reception-journey/Second-good-APT-N19.png)
 *NOAA 19 received on 13/10/2023 using a V-Dipole. Decoded using SatDump.*
 
 After all this time and effort, I finally had imagery I considered worthy. It's at about this time, that I had joined the SDR++ and SigIdWiki Discord servers. They told me how god awful and outdated my software setup was, which I am still incredibly grateful for - I was following a guide from 2007 until that point. After downloading SatDump and SDR++, everything became *incomparably more streamlined* with the results showing a bunch of improvements.
@@ -68,7 +68,7 @@ The results were filled with static, were absolutely useless even with heavy med
 
 After removing the wires from the bloody wooden board and finally just holding the cables by the electrical terminal, I got some not great but not terrible images.
 
-![Portable APT result](../.../assets/images/Sat-reception-journey/Portable-APT.png)
+![Portable APT result](../../assets/images/Sat-reception-journey/Portable-APT.png)
 *NOAA 18 received on 25/10/2023 using a V-Dipole. Processed using SatDump. Left side is black due to NOAA 18's config error.*
 
 I also tried buying an FM filter which would allow me to use an LNA at home without my SDR overloading, **RIGHT** before the first pass began, I could see that the noise floor significantly raised when I put pressure on the SMA port, after inspecting it more closely I realized that it had basically no solder on the SMA port with the core pin hanging in the air. After returning home and adding some solder to get a good contact, I went out again - no matter, I was still goint to get some great passe- 
@@ -88,20 +88,20 @@ I had initially hoped, that the generic wideband LNA was going to be good enough
 # First L-band attempts
 My first setup was jank galore - awful helix, LNA and SDR sticking out the rear with the whole setup hanging on a tiny SMA port (This came back to bite me in me arse later down the road), piss poor soldering job, glue drizzled all over the reflector and god awful tracking skills. All of these combined to give me what I deserved: disappointment.
 
-![A picture of the jankiest helix you have ever seen](../.../assets/images/Sat-reception-journey/God-awful-first-helix.png)
+![A picture of the jankiest helix you have ever seen](../../assets/images/Sat-reception-journey/God-awful-first-helix.png)
 
 It felt like the signal was just out of reach - I could even see the carrier wave! (Spoiler: It wasn't. It was actually far, FAR out of reach.)
 
-![Dissapointing SatDump screenshot showing barely a hint of a signal](../.../assets/images/Sat-reception-journey/HRPT-disappointment-ss.png)
+![Dissapointing SatDump screenshot showing barely a hint of a signal](../../assets/images/Sat-reception-journey/HRPT-disappointment-ss.png)
 *Pictured is SatDump, on the awfully set up FFT you can see the barely visible carrier and spikes of the BPSK HRPT broadcast I was attempting to get.*
 
 I initially believed it was a helix issue, which it partially was - I put glue all over it completely disregarding, that **the reflector should remain as clear as possible to be as effective as possible**. After heating up a knife and melting some of the hot glue off, redoing the solder job and mounting the SMA port to the reflector properly using an SMA nut (Thanks for the suggestion, Ryzerth), the signal grew strong enough to even get a few frames!
 
-![A newer SatDump screenshot, now showing a much stronger albeit still useless HRPT signal](../.../assets/images/Sat-reception-journey/New-helix-who-this.png)
+![A newer SatDump screenshot, now showing a much stronger albeit still useless HRPT signal](../../assets/images/Sat-reception-journey/New-helix-who-this.png)
 
 This got me my first official HRPT image: Drumroll please...
 
-![First HRPT image](../.../assets/images/Sat-reception-journey/First-HRPT-attempt.png)
+![First HRPT image](../../assets/images/Sat-reception-journey/First-HRPT-attempt.png)
 *NOAA 19 HRPT received on 31/12/2023 using a 90cm dish and a generic wideband LNA. Decoded using SatDump with the `543b` RGB composite. Median blur and equalization applied.*
 
 A terrible image, **who would have thought!** It is fairly short, because it was the only attempt I had at using this setup and it was cut short because it started raining cats and dogs all of a sudden. I couldn't retry later because of issues I will describe in a bit. 
@@ -132,14 +132,14 @@ Unlike then, this time I could make it with **much more precision** and **space 
 
 I then created this beauty:
 
-![My first proper yagi-uda](../.../assets/images/Radio/My-VHF-yagi.png)
+![My first proper yagi-uda](../../assets/images/Radio/My-VHF-yagi.png)
 
 What it doesn't make up in looks it makes up for tenfold in performance - I managed to get the **best** APT and LRPT to date, the antenna providing some stunning results:
 
-![A processed APT image](../.../assets/images/Radio/APT-Sample-image.png)
+![A processed APT image](../../assets/images/Radio/APT-Sample-image.png)
 *APT image received using a 5 element yagi on 02-01-2024 from NOAA 18, processed using Satdump with the `HVC` RGB composite. Equalized.*
 
-![A processed LRPT image](../.../assets/images/Radio/LRPT-Sample-image.png)
+![A processed LRPT image](../../assets/images/Radio/LRPT-Sample-image.png)
 *LRPT image received using a 5 element yagi on 02-01-2024 from Meteor M2-3, processed using Satdump with the `221` RGB composite. Equalized.*
 
 
@@ -150,7 +150,7 @@ My father called me over after half an hour of swearing coming from my room with
 
 After going outside, the LNA worked for a total of five minutes before breaking off again, at this point I was THIS close to giving up and giving it the Cardi B treatment - but I had to at least give the soldering a shot myself first! By some miracle, I actually managed to solder the SMA port back on properly, even having it allign with the case perfectly! However at the same time, the SawBird had arrived and I shifted my attention to it and my L-band setup, stowing the working (for now) LNA for later use.
 
-![The sloppy patch job I had to do on the LNA](../.../assets/images/Sat-reception-journey/LNA-patch-job.png)
+![The sloppy patch job I had to do on the LNA](../../assets/images/Sat-reception-journey/LNA-patch-job.png)
 *The somehow fully functional setup. The picture has a lot of leftover flux on it that I didn't remove yet.*
 
 The LNA's story doesn't end on a happy note though. The diode that my father accidentally broke off? Yeah, that turned out to be the ESD protection. After using it in late february at home for some weak FM reception, the LNA suddenly stopped working. After checking it with a multimeter, I found the LNA chip to have failed and be shorted to ground. This was likely caused by ESD discharge from the long coax run I was using. Damn.
@@ -159,31 +159,31 @@ The LNA's story doesn't end on a happy note though. The diode that my father acc
 # L-Band second attempt
 After the SawBird arrived, it was time for action. Whipping my old setup out with the remade helix, I connected a short SMA wire to the helix and my new SawBird to it, something that at the time seemed sensible to - as I learned the hard way - not strain the LNA's SMA port too much by having it hang in the air. 
 
-![My initial SawBird setup](../.../assets/images/Sat-reception-journey/Initial-sawbird-setup.png)
+![My initial SawBird setup](../../assets/images/Sat-reception-journey/Initial-sawbird-setup.png)
 
 I initially thought I was about to get the stunning images that HRPT promised, but as it turned out...
 
-![SatDump image showing a relatively weak Meteor-M HRPT broadcast](../.../assets/images/Sat-reception-journey/Initial-Sawbird-SatDump-ss.png)
+![SatDump image showing a relatively weak Meteor-M HRPT broadcast](../../assets/images/Sat-reception-journey/Initial-Sawbird-SatDump-ss.png)
 *You can see that I was actually getting a few dBs this time, MUCH better than before! The signal was still far too weak for a good decode though.*
 
-![Very cut up HRPT composite](../.../assets/images/Sat-reception-journey/Initial-Sawbird-image.png)
+![Very cut up HRPT composite](../../assets/images/Sat-reception-journey/Initial-Sawbird-image.png)
 *Meteor M2-3 received on 12/1/2024 using a 90cm dish, a SawBird GOES+. Processed using SatDump with the `654` RGB composite.*
 
 Absolutely terrible. I was supposed to be getting gorgeous high res images, not this cut up junk! What was I doing wrong?! Pass after pass I got the same disappointing results, just as I was losing hope thinking this was as good as it gets I did the bold thing of **removing the cable and connecting the LNA directly to the helix.**
 
 The first pass after, lo and behold:
 
-![SatDump screenshot showing a very strong NOAA HRPT broadcast](../.../assets/images/Sat-reception-journey/First-great-HRPT-SatDump.png)
+![SatDump screenshot showing a very strong NOAA HRPT broadcast](../../assets/images/Sat-reception-journey/First-great-HRPT-SatDump.png)
 *16 dB! This is more than enough for a gorgeous image and decode, an incomparable improvement!*
 
-![HRPT composite](../.../assets/images/Sat-reception-journey/First-great-HRPT.png)
+![HRPT composite](../../assets/images/Sat-reception-journey/First-great-HRPT.png)
 *NOAA 18 recieved on 13/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Equalized.*
 
 Gorgeous image after gorgeous image, this is where my HRPT journey truly started.
 
 # Golden age of HRPT
 
-![Best HRPT to date](../.../assets/images/Sat-reception-journey/Best-HRPT-yet.png)
+![Best HRPT to date](../../assets/images/Sat-reception-journey/Best-HRPT-yet.png)
 *NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. My single best HRPT image to date*
 
 The last thing I intended to try was receiving geostationary satellites, this turned out to be fairly difficult on the 90 cm dish, as the signals are very weak and the only relevant geostationary satellites are very low over the horizon. The only real satllite I could have tried was Elektro-L3, which I did:
@@ -202,12 +202,12 @@ After receiving the dish (Which was a whole endeavour on its own), remaking my h
 ![New helical feed](/assets/images/Sat-reception-journey/New-helical-feed.png) <br>
 *A picture of the new helical feed, with a much higher production quality. Soldering job still had room for improvement.*
 
-![Picture of my HRPT setup](../.../assets/images/Sat-reception-journey/Current-HRPT-setup.jpg)
+![Picture of my HRPT setup](../../assets/images/Sat-reception-journey/Current-HRPT-setup.jpg)
 *My HRPT setup at that time*
 
 As for the results:
 
-![Latest full disc Earth image I have](../.../assets/images/Sat-reception-journey/Best-Earth-full-disc.png)
+![Latest full disc Earth image I have](../../assets/images/Sat-reception-journey/Best-Earth-full-disc.png)
 *Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. Fun fact: This was taken in the middle of a rainstorm with a plastic bag over the SDR and an umbrella over my head. It was just as clunky as you expect.*
 
 # S-band dreams

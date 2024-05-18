@@ -65,10 +65,10 @@ Don't worry if you don't understand these yet, they will be explained in more de
 
 ### Overloading
 
-![An image of a relatively normal FFT](../.../assets/images/Radio/Normal-fft.png)
+![An image of a relatively normal FFT](../../assets/images/Radio/Normal-fft.png)
 *Pictured is a relatively normal FFT, excluding the lines mentioned above*
 
-![An image of a FFT suffering from severe overloading](../.../assets/images/Radio/Overloaded-fft.png)
+![An image of a FFT suffering from severe overloading](../../assets/images/Radio/Overloaded-fft.png)
 *After upping the gain, you can see the significant amount of FM overloading present throughout the whole FFT showing as "ghost" signals - signals that are not actually where your SDR is showing them to be.*
 
 
@@ -183,11 +183,11 @@ I personally use Orbitron for long term and Look4Sat for short term predictions,
 > Note: The images don't have maps on them, they were added in post processing.
 
 
-![A processed APT image](../.../assets/images/Radio/APT-Sample-image.png)
+![A processed APT image](../../assets/images/Radio/APT-Sample-image.png)
 *NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied.*
 
 
-![A processed LRPT image](../.../assets/images/Radio/LRPT-Sample-image.png)
+![A processed LRPT image](../../assets/images/Radio/LRPT-Sample-image.png)
 *Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized.*
 
 
@@ -221,7 +221,7 @@ To build it:
 3. Put the two wires into the holes and spread them 120° apart making a V shape.
 That's it. Really.
 
-![A visual guide on how the antenna should look](../.../assets/images/Radio/V-Dipole-guide.png) <br>
+![A visual guide on how the antenna should look](../../assets/images/Radio/V-Dipole-guide.png) <br>
 *This image suggests a wire length of 53.4 cm, while that would work the actual length should be approximately 54.5cm. It also suggests using aluminum rods, while that'd work, copper is about twice as conductive (will lead to better results).*
 
 ### 2. Quadrifilar helical antenna (QFH)
@@ -232,7 +232,7 @@ That's it. Really.
   
 I will not be describing how to build it, since the building process is quite involved. There are plenty of guides out there, if I ever get around to building one I will link it here.
 
-![Sample QFH antenna](../.../assets/images/Radio/QFH-guide.png) <br>
+![Sample QFH antenna](../../assets/images/Radio/QFH-guide.png) <br>
 *[Source](https://okelectronic.wordpress.com/2014/08/20/rtl-sdr-second-attempt/)*
 
 ### 3. Yagi-Uda antenna
@@ -241,7 +241,7 @@ I will not be describing how to build it, since the building process is quite in
 - Very good results thanks to its high gain
 - Requires manual tracking
   
-![An image describing the parts of a yagi antenna](../.../assets/images/Radio/Yagi-example.png) <br>
+![An image describing the parts of a yagi antenna](../../assets/images/Radio/Yagi-example.png) <br>
 *[Source](https://www.everythingrf.com/community/what-is-a-yagi-antenna)*
 
 I personally use this type of antenna for VHF passes, since it constantly gets a great SNR (~45-50 with APT) and is quite easy to build albeit requiring a bit more wire. 
@@ -255,7 +255,7 @@ To make it:
 **Make sure the cables don't touch or are short together in any way, this will make the antenna not work**
 5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (In essence creating a HF choke)
 
-![My yagi setup showcasing the balun and feed](../.../assets/images/Radio/My-yagi-dipole-feed.png)
+![My yagi setup showcasing the balun and feed](../../assets/images/Radio/My-yagi-dipole-feed.png)
 *The choked balun and dipole feed I use on my yagi*
 
 
@@ -284,7 +284,7 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 - Select the proper NOAA satellite
 - Open the frequency menu, select the correct satellite
 
-![A screenshot of the settings mentioned above](../.../assets/images/Radio/APT-SatDump-Settings.png)
+![A screenshot of the settings mentioned above](../../assets/images/Radio/APT-SatDump-Settings.png)
 
 ### FOR METEOR-M LRPT
 > Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. I update this page as soon as I get information about a switch.
@@ -297,14 +297,14 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
      - `Primary` for 137.9 MHz
      - `Backup` for 137.1 MHz
 
-![A screenshot of the settings mentioned above](../.../assets/images/Radio/LRPT-SatDump-Settings.png)
+![A screenshot of the settings mentioned above](../../assets/images/Radio/LRPT-SatDump-Settings.png)
 
 4. When the satellite comes into view, press `Start` on the processing window
 
 > When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the FFT along with the sound (Try to avoid crackling) with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
 
 If everything is right, you are now receiving a beeping APT signal or you see four dots on the demodulator in case of LRPT!
-![SatDump screenshot mid LRPT pass](../.../assets/images/Radio/LRPT-SatDump.png) <br>
+![SatDump screenshot mid LRPT pass](../../assets/images/Radio/LRPT-SatDump.png) <br>
 *SatDump mid LRPT decode. See the `SYNCED` vitterbi and deframer.*
 
 5. Once you see the signal has completely disappeared and isn't coming back, press `Stop` on the pipeline
@@ -321,10 +321,10 @@ As of 04/2024, Meteor M2-4 is still in testing and has lately been seen switchin
 1. Open SDR++ and start the radio
 
 2. Open the Module manager and configure as follows:
-![SDR++ config for receiving LRPT](../.../assets/images/Radio/SDRpp-LRPT-config.png)
+![SDR++ config for receiving LRPT](../../assets/images/Radio/SDRpp-LRPT-config.png)
 
 3. Open SatDump, move to the `Offline processing` tab and configure appropriately:
-![SatDump config for decoding LRPT](../.../assets/images/Radio/LRPT-Offline-proccessing.png)
+![SatDump config for decoding LRPT](../../assets/images/Radio/LRPT-Offline-proccessing.png)
 
 > **Make sure to select `soft` as the input level!**
 
@@ -355,10 +355,10 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ## Exemplary processed HRPT and xRIT images
 
-![NOAA 19 HRPT image](../.../assets/images/Sat-reception-journey/Best-HRPT-yet.png)
+![NOAA 19 HRPT image](../../assets/images/Sat-reception-journey/Best-HRPT-yet.png)
 *NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized.*
 
-![Elektro-L3 LRIT image](../.../assets/images/Sat-reception-journey/Best-Earth-full-disc.png)
+![Elektro-L3 LRIT image](../../assets/images/Sat-reception-journey/Best-Earth-full-disc.png)
 *Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite.*
 
 ## Detailed satellite information
@@ -371,7 +371,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
 - The broadcast features a very strong carrier wave making it quite easy to track.
 
-![NOAA HRPT screenshot from SatDump](../.../assets/images/Radio/NOAA-HRPT.png)
+![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.png)
 *NOAA 19 HRPT*
 
 > Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
@@ -383,7 +383,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
-![Meteor HRPT screenshot from SatDump](../.../assets/images/Radio/Meteor-HRPT.png)
+![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.png)
 *Meteor-M N°2-2 HRPT*
 
 > You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.
@@ -394,7 +394,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
-![MetOp AHRPT screenshot from SatDump](../.../assets/images/Radio/MetOp-AHRPT.png)
+![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.png)
 *MetOp B AHRPT*
 
 ---
@@ -404,7 +404,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
 - The signal has a higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
-![FengYun AHRPT screenshot from SatDump](../.../assets/images/Radio/FengYun-AHRPT.png)
+![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.png)
 *FengYun 3C AHRPT*
 
 ---
@@ -487,7 +487,7 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 
 > Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
 
-![Elektro-L LRIT and HRIT signal screenshots from SatDump](../.../assets/images/Radio/Elektro-LRIT-HRIT.png)
+![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.png)
 *Elektro-L N°3 LRIT on left, HRIT on right*
 
 ---
@@ -504,7 +504,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
-![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../.../assets/images/Radio/GOES-CDA-HRIT.png)
+![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.png)
 *GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsgost on Discord*
 
 > TODO: GRB FFT
@@ -518,10 +518,10 @@ All of these include FEC, meaning you should be able to properly decode them eve
         - **Raw sensor data**
 
 
-![GOES GVAR screenshot from SatDump](../.../assets/images/Radio/GOES-GVAR.png)
+![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.png)
 *GOES 15 GVAR*
 
-![GOES SD screenshots from SDR#](../.../assets/images/Radio/GOES-SD.png)
+![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.png)
 *GOES 13 SD, both the imager and sounder downlinks are visible. CC: dereksgc on Discord*
 
 ---
@@ -532,10 +532,10 @@ All of these include FEC, meaning you should be able to properly decode them eve
 - **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for VIS channels and 5 km/px for the IR channels.
 - This signal is very prone to transport packet corruption because of lacking FEC, resulting images are likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
 
-![S-VISSR screenshot from SatDump](../.../assets/images/Radio/FengYun-SVISSR.png) <br>
+![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.png) <br>
 *FengYun 2H S-VISSR*
 
-![Gif of S-VISSR doing what's described below](../.../assets/images/Radio/S-VISSR_Rollback.gif) <br>
+![Gif of S-VISSR doing what's described below](../../assets/images/Radio/S-VISSR_Rollback.gif) <br>
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 *FengYun 4 series*
@@ -546,10 +546,10 @@ All of these include FEC, meaning you should be able to properly decode them eve
 > Both HRIT broadcasts are currently disabled.
 
 
-![FengYun LRIT screenshot from SatDump](../.../assets/images/Radio/FengYun-LRIT.png) <br>
+![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.png) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
 
-![FengYun HRIT screenshot from SatDump](../.../assets/images/Radio/FengYun-HRIT.png) <br>
+![FengYun HRIT screenshot from SatDump](../../assets/images/Radio/FengYun-HRIT.png) <br>
 *FengYun 4A HRIT, CC: drew0781 on Discord*
 
 ---
@@ -557,7 +557,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 **GEO-KOMPSAT**
 - **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 0.5-2 km/px quality. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
 
-![Geokompsat LRIT and HRIT screenshots from SatDump](../.../assets/images/Radio/GK-LRIT-HRIT.png)
+![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.png)
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
 
 
@@ -620,7 +620,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 4. The broadcast will show up as a bump that occasionally jumps up and down, you should be seeing a few decibels of signal, `SYNCED` and green Reed-Solomon numbers when applicable.
 
-![A screenshot of SatDump taken while receiving Elektro-L LRIT](../.../assets/images/Radio/Lrit-SatDump.png)
+![A screenshot of SatDump taken while receiving Elektro-L LRIT](../../assets/images/Radio/Lrit-SatDump.png)
 
 5. After the transmission stops or you are satisfied with the results, hit `Stop` on the pipeline
 
@@ -653,7 +653,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 
 ### Donut shaped constellation with NOSYNC on the vitterbi
 
-![A screenshot of SatDump showing this issue](../.../assets/images/Radio/Meteor-donut-constellation.png)
+![A screenshot of SatDump showing this issue](../../assets/images/Radio/Meteor-donut-constellation.png)
 *Both demodulators are showing a donut shape instead of the correct QPSK modulation (four dots in each corner).*
 
 When decoding signals with symbol rates close to your sampling rate (Such as MetOp AHRPT on RTLSDRs), you might notice that, even while you're getting a strong signal, you still have `NOSYNC` indicated on the Vitterbi and have a donut shaped constellation on the demodulator. This happens, when the reference for the signal is way out of frequency making the pipeline and in term its demodulator not be able to lock onto it. 
@@ -693,7 +693,7 @@ If you continue to get a donut shaped constellation even after making the adjust
 
 ### SPS is invalid error when starting pipelines
 
-![SatDump screenshot showing this issue](../.../assets/images/Radio/Low-sampling-rate.png)
+![SatDump screenshot showing this issue](../../assets/images/Radio/Low-sampling-rate.png)
 
 This error appears when your sampling rate is lower than the signals symbol rate. Set your sampling rate to be at least roughly 1.2x the symbol rate (to gain some overhead). If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
 
@@ -701,7 +701,7 @@ This error appears when your sampling rate is lower than the signals symbol rate
 
 ### No/cut up image output with severe vitterbi spikes when decoding signals with FEC
 
-![A screenshot of SatDump showing this usse](../.../assets/images/Radio/Vitterbi-spikes.png)
+![A screenshot of SatDump showing this usse](../../assets/images/Radio/Vitterbi-spikes.png)
 *You can see the spikes on the vitterbi, on a video you'd see `NOSYNC` constantly popping up*
 
 Two things can cause this issue:
@@ -761,19 +761,19 @@ Correctly adjusting your gain is **extremely important**, as setting it incorrec
 
 1) **A lot of dots are hitting the edge** → Gain too high
 
-![An image of the debug eye showing this condition](../.../assets/images/Radio/Debug-Gain-too-high.png) <br>
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-high.png) <br>
 
 - On the left is what you might see if the gain is set slightly too high, lower it by a few dB to get the full signal strength.
 - On the right is a more extreme example, where the gain is set much higher than needed resulting in the SDR severely overloading. If you see anything like this, your signal signal strength is being hurt by too high gain. You needto lower it by a lot.
 
 2) **There's only a small dot or circle in the middle** → Gain too low
 
-![An image of the debug eye showing this condition](../.../assets/images/Radio/Debug-Gain-too-low.png) <br>
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-low.png) <br>
 A small dot means that you should up the gain, if you are already maxxed out you might need to purchase an LNA.
 
 3) **A circle is present, the dots aren't hitting the edges** → Gain just right
 
-![An image of the debug eye showing this condition](../.../assets/images/Radio/Debug-gain-just-right.png) <br>
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-gain-just-right.png) <br>
 
 - What you see on the left is ideal gain with no signals on the FFT
 - What you see on the right is ideal gain with signals on the FFT
