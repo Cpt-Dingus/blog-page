@@ -477,6 +477,7 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 - **GRB** - Goes ReBroadcast → A very high quality broadcast from american GOES satellites 
 - **GGAK** - Heliogeophysical Instrument Complex → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
 - **SD** - Sensor Data → Raw data broadcast from GOES-N satellites
+- **PGS** - Primary GroundStation → The nickname given to the raw data downlink from MSG satellites
 
 ## Detailed satellite information
 
@@ -529,8 +530,10 @@ All of these include FEC, meaning you should be able to properly decode them eve
 **FengYun**
 
 *FengYun 2 series*
-- **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for VIS channels and 5 km/px for the IR channels.
+- **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
 - This signal is very prone to transport packet corruption because of lacking FEC, resulting images are likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
+
+> These satellites also broadcast an incredibly weak **CDAS** signal, it's almost completely undocumented owing to it's weak & wide nature.
 
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.png) <br>
 *FengYun 2H S-VISSR*
@@ -560,12 +563,31 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.png)
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
 
+---
+
+**Meteosat Second Generation (MSG)**
+- **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 2x VIS at a 1.6 km/px quality, and 9x IR at a 4.8 km/px quality.
+- This is the second weakest signal behind FengYun 2 CDAS, requiring a massive 4 metre dish paired with a VLNA for a decode.
+- The SEVIRI instrument has three operating modes:
+    - HRV - High Resolution Visible - A crop of Europe and a crop of the bottom hemisphere is transmitted every 15 minutes, these move with sunlight as pictured below <br>
+![Meteosat HRV crpops](../../assets/images/Radio/Meteosat-HRV-mode.gif)<br>
+*HRV crops, [source](https://user.eumetsat.int/resources/user-guides/msg-high-rate-seviri-level-1-5-data-guide#ID-HRV-SEVIRI-scan-modes)*
+
+    - RSS - Rapid Scan Service - The top third of the Earth is transmitted every 5 minutes
+    - FES - Full Earth Scan - The whole earth is scanned every 15 mintues, only enabled during eclipse sason
+
+
+> These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
+
+![Meteosat PGS screenshot from SatDump](../../assets/images/Radio/Meteosat-PGS.png)
+*Meteosat 9 PGS, CC: that_zbychu on Discord. The thin spikes present aren't a part of the signal.*
+
 
 ## Signal information
 
 The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
 
-|Satellite series|Signal type|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
+|Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
 |Elektro-L|LRIT|1691 MHz|294 KSym/s|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
 |Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
@@ -574,7 +596,7 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
 |GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
 |GOES-N|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm|No|Full disc image every 3 hours, regional crops the rest of the time.
+|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|150 cm|No|Full disc image every 3 hours, regional crops the rest of the time.
 |GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
 |GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm (TBD)|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|90 cm\*\*|No|XX:00 - XX:28 and XX:30-XX:48\*\*\*
@@ -582,10 +604,13 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
 |GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
+|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|400cm\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
 
 \* RHCP+LHCP <br>
 \*\* Only with the corrector, image will be cut up beyond recognition otherwise. <br>
-\*\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
+\*\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%. <br>
+\*\*\*\* Only using a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
+
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. A linear feed even as simple as a cantenna will perform better.
 
@@ -617,6 +642,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 |~~FengYun 4 HRIT~~|~~FengYun-4A HRIT -II/III~~|
 |GEO-KOMPSAT LRIT|GK-2A LRIT|
 |GEO-KOMPSAT HRIT|GK-2A HRIT|
+|MSG PGS|MSG Raw Data| 
 
 4. The broadcast will show up as a bump that occasionally jumps up and down, you should be seeing a few decibels of signal, `SYNCED` and green Reed-Solomon numbers when applicable.
 
