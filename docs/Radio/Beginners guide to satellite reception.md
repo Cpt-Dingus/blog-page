@@ -78,9 +78,10 @@ Don't worry if you don't understand these yet, they will be explained in more de
 *After upping the gain, you can see several new bumps appearing on the FFT, these aren't actually there and are only showing up because of your SDR being overloaded by another strong signal - in this case the FM station on 107.1 MHz.*
 
 You can tell overloading apart from real signals with two methods:
+
 1) **By tuning around and seeing if the signal moves consistently with the direction you tuned in:**
 ![Video of an FFT being tuned around with a normal signal in the middle](../../assets/images/Radio/Real_signal_on_FFT.gif) <br>
-*This is a real FM station broadcasting on 107.1 MHz, you can see it moving consistently with the tuning direction. We can disregard the small overloading bump on the right for the sake of demonstration.* <br>
+*This is a real FM station broadcasting on 107.1 MHz, you can see it moving consistently with the tuning direction. We can disregard the small overloading bump on the right for the sake of the demonstration.* <br>
 ![Video of an FFT being tuned around with a lot of overloading present](../../assets/images/Radio/Overloading_signal_on_FFT.gif) <br>
 *After upping the gain, you can see still see the original station at 107.1 MHz, but now in addition to several bumps that don't move consistently when tuning around (Move right when tuning left and vice versa).*
 
