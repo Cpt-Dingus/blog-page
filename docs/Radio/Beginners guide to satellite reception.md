@@ -5,6 +5,12 @@ nav_order: 2
 parent: Radio
 ---
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 [//]: # (NOTE: I have explicitly requested permission from lego11 to use his guides as a refernece, he said he's cool with it. I owe that man half the shit I know)
 
 # Preamble
@@ -28,13 +34,13 @@ The purpose of this article is to guide complete radio beginners as well as more
 - **SMA** → Type of connector used by most SDRs
 - **Balun** → Converts a **Bal**anced signal to an **Un**balanced one and vice versa
 
-
 ### Abstract terms
 
 - **Pass** → Refers to the time when you can see a satellite passing overhead, used with orbiting satellites
 - **Elevation** → Height of a satellite above the horizon
 - **AOS** - Acquisition Of Signal → The moment when you start geting a signal from a satellite
-- **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation is used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite.
+- **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation is used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite
+- **LEO** - Low Earth Orbit → Refers to objects orbitting the earth at an altitude of less than 2000 km
 
 ###  Software terms
 - **AGC** - Automatic Gain Control → Automatically sets the gain based on the signal strength
@@ -61,15 +67,26 @@ Don't worry if you don't understand these yet, they will be explained in more de
 
 ![An example of interference caused by a cell tower](../../assets/images/Radio/Interference-example.png)
 
-*Pictured is an SDR being overloaded with interference caused by a very strong cell tower broadcast. On the left is an FM station, the rest of the lines are erroneous.*
+*Pictured is an SDR being overloaded with interference caused by a very strong cell tower broadcast. On the left is an FM station broadcasting at 103.9 MHz, the highlighted lines are all interference.*
 
 ### Overloading
 
-![An image of a relatively normal FFT](../../assets/images/Radio/Normal-fft.png)
-*Pictured is a relatively normal FFT, excluding the lines mentioned above*
+![An image of a relatively normal FFT](../../assets/images/Radio/Normal-FFT.png)
+*Pictured is a relatively normal FFT containing a strong FM station at 107.1 MHz. There is a small bump caused by overloading present on 107.8 MHz, interference spikes mentioned above, we can disregard both of these for now.*
 
-![An image of a FFT suffering from severe overloading](../../assets/images/Radio/Overloaded-fft.png)
-*After upping the gain, you can see the significant amount of FM overloading present throughout the whole FFT showing as "ghost" signals - signals that are not actually where your SDR is showing them to be.*
+![An image of a FFT suffering from severe overloading](../../assets/images/Radio/Overloaded-FFT.png)
+*After upping the gain, you can see several new bumps appearing on the FFT, these aren't actually there and are only showing up because of your SDR being overloaded by another strong signal - in this case the FM station on 107.1 MHz.*
+
+You can tell overloading apart from real signals with two methods:
+1) **By tuning around and seeing if the signal moves consistently with the direction you tuned in:**
+![Video of an FFT being tuned around with a normal signal in the middle](../../assets/images/Radio/Real_signal_on_FFT.gif) <br>
+*This is a real FM station broadcasting on 107.1 MHz, you can see it moving consistently with the tuning direction. We can disregard the small overloading bump on the right for the sake of demonstration.* <br>
+![Video of an FFT being tuned around with a lot of overloading present](../../assets/images/Radio/Overloading_signal_on_FFT.gif) <br>
+*After upping the gain, you can see still see the original station at 107.1 MHz, but now in addition to several bumps that don't move consistently when tuning around (Move right when tuning left and vice versa).*
+
+2) **By lowering the gain and seeing if any signals suddenly disappear**
+![Video of an FFT with the gain slowly being lowered](../../assets/images/Radio/Overloading_check.gif) <br>
+*You can see the strong overloading suddenly disappear when the gain is lowered*
 
 
 # Mistakes and pitfalls
@@ -131,6 +148,87 @@ There are a few apps for IOS but they have severe limitations, using any of the 
 I personally use Orbitron for long term and Look4Sat for short term predictions, the SatDump tracking module when live processing passes.
 
 
+# Colors of received imagery
+
+After receiving these satellites and checking the resulting images, you will notice, that they are all black and white even though the images you see online are all colorful. The colored images are created by processing the raw channels into RGB composites - applying different channels to different colors. You will quickly find the term `False Color` being thrown around. But how can color be false? To understand why this is the case, we have to look at some color theory and instrument descriptions:
+
+## How is color perceived?
+
+Our eyes sense different colors by sensing different wavelengths that objects reflect using three types of cone cells:
+- Short → 380 - 540 nm, corresponds to **Blue**
+- Medium → 440 - 670 nm, corresponds to **Green**
+- Long → 500 - 690 nm, corresponds to **Red**
+
+![Color spectrum showing the S, M and L wavelengths](../../assets/images/Radio/Color-spectrum.png)
+
+Satellites work simmilar to our eyes with one exception: instead of having different cones for different wavelengths they have different **channels**. 
+
+> Why are they black and white when we see color? Because we are looking at individual channels (Equivalent of only one type of cones) instead of a mix of channels as perceived by our eyes.
+
+## Why is it called false color?
+
+**True color** is the name given to images that represents natural colors - it's all the colors a human eye can see ranging from ~400-700 nm. We can't see electromagnatic waves that have a lower or higher wavelength.
+
+Due to technological contraints and a focus on usability, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrared bands. 
+
+As an example, these are the channels present on the AVHRR/3 instrument flown on MetOp and NOAA POES satellites:
+
+|Channel number|Wavelength|Description|
+|---|---|---|
+|1|580-680 nm|Visible|
+|2|725-1000 nm|Near infrared|
+|3A|1580-1640 nm|Near infrared|
+|3B|3550-3930 nm|Middle infrared|
+|4|10300-11300 nm|Thermal infrared|
+|5|11500-12500 nm|Thermal infrared|
+
+> Earlier satellites from NOAA used AVHRR/2 which lacked channel 3A and AVHRR/1, which lacked channels 3A and 5.
+
+As you might see, we only have two channels covering the visible spectrum, meaning we can't get the the full color spectrum from the data the sensor collects - **True color isn't possible on AVHRR/3.**
+
+But how do we get colored composites if we can't see the actual RGB wavelengths? We can assign arbitrary wavelengths to the R, G, and B channels, this results in a **False color composite**. These are useful in some cases, such as highlighting things that might not be visible in the true color spectrum. *They also look nicer.* 
+
+Let's take the `221` RGB composite as an example, it assigns channel 2 (centered at 630 nm) to the red and green output channels, and channel 1 (centered at 862 nm) to the blue output channel. This does not represent the actual RGB color wavelengths, **hence it isn't true color**.
+
+![Example of the 221 composite](../../assets/images/Radio/221-composite.png)
+*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized.*
+
+Of course there are much more complex composites such as the `NOAA Natrual Color Composite` which applies channels using the following formulas:
+
+|Color|Formula|
+|---|---|
+|Red|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
+|Green|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
+|Blue|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch1 * 2.2 - 0.15`|
+
+You can play with the different composites and see what looks best.
+
+
+## Do any satellites broadcast true color?
+
+Yes! New satellites very often have cfhannels that individually sample R, G, and B wavelengths! For example, here are the channels of the VIRR instrument flown on Fengyun 3A-C satellites:
+
+|Channel number|Wavelength|Description|
+|---|---|---|
+|<u><b>1</b></u>|<u><b>580-680 nm</b></u>|<u><b>Visible</b></u>|
+|2|840-890 nm|Near infrared|
+|3|3550-3930 nm|Middle infrared|
+|4|10300-11300 nm|Thermal infrared|
+|5|11500-12500 nm|Thermal infrared|
+|6|1550-1640 nm|Short wave infrared|
+|<u><b>7</b></u>|<u><b>430-480 nm</b></u>|<u><b>Visible</b></u>|
+|8|480-530 nm|Visible|
+|<u><b>9</b></u>|<u><b>530-580 nm</b></u>|<u><b>Visible</b></u>|
+|10|1325-1395 nm|Near infrared|
+
+Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes them viable for a **true color composite**! In this case, the composite is `197` - 1 to red, 9 to green, and 7 to blue.
+
+![A true color image from FengYun 3C](../../assets/images/Radio/True-color-composite.png)
+*FengYun 3C received on 29/03-2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` (True color) RGB composite. Median blur applied, equalized.*
+
+## Important note
+A satellite can only broadcast so many channels at once due to speed and bandwidth constraints, this is especially apparent in the lower bands such as VHF. Both exemplary images were received in the L band, where almost all channels are transmitted 24/7.
+
 # VHF APT/LRPT reception guide (137MHz)
 - Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR and some patience
 - As of writing this article there are currently **5** weather satellites that broadcast in this band
@@ -138,7 +236,7 @@ I personally use Orbitron for long term and Look4Sat for short term predictions,
 
 ## Detailed satellite information
 
-**NOAA**
+### NOAA
 
 - These are the last **3** remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
 - Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
@@ -151,15 +249,15 @@ I personally use Orbitron for long term and Look4Sat for short term predictions,
 
 - New satellite launches are a part of the JPSS constellation, which only includes an incomparably harder to receive X-band signal that requires much more expensive hardware. No future satellite launches from NOAA are planned to include a VHF antenna.
 
----
-**METEOR-M**
+
+### METEOR-M
 
 - As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
 - These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
 
 <br>
 
-- These transmit any 3 channels the operators choose, as of 04/2024:
+- These transmit any 3 channels the operators choose, as of 05/2024:
 
 |Satellite|Channel numbers|Channel types|
 |---|---|---|
@@ -175,7 +273,7 @@ I personally use Orbitron for long term and Look4Sat for short term predictions,
 ## Broadcast issues
 
 - NOAA 15 has had several major hiccups with its scan motor current spiking due to it grinding through debris. The spike caused a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. As of 04/2024 the satellite has completely recovered and is broadcasting fine.
-- NOAA 18 has had a configuration error present ever since management was transferred to Parons tech, making it broadcast a visible channel during the night instead of an infrared one. This presents itself as half of the image being black.
+- NOAA 18 has had a configuration error present ever since management was transferred to Parsons tech, making it broadcast a visible channel during the night instead of an infrared one. This presents itself as half of the image being black.
 - Meteor-M N°2-3 has an incorrectly deployed VHF antenna, making the signal weaker than intended and unexpectedly experience drops from time to time.
 
 
@@ -363,9 +461,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ## Detailed satellite information
 
----
-
-**NOAA POES**
+### NOAA POES
 
 - These are the same as VHF: **NOAA 15, 18 and 19**.
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
@@ -376,8 +472,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 > Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
 
----
-**METEOR-M**
+### METEOR-M
 
 - 3 satellites currently broadcast in L-band: **Meteor M2-2, Meteor M2-3,** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
@@ -388,8 +483,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 > You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.
 
----
-**MetOp**
+### MetOp
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
@@ -397,8 +491,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.png)
 *MetOp B AHRPT*
 
----
-**FengYun**
+### FengYun 3
 
 - The only satellite broadcasting in the L-band is **Fengyun 3C**. It is the last surviving member of the FengYun 3 constellation to have an L-band antenna, but due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within the chinese border). 
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
@@ -407,7 +500,6 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.png)
 *FengYun 3C AHRPT*
 
----
 
 ## Hardware requirements
 
@@ -448,6 +540,7 @@ For these, there is no point in me writing it out: Lego has these covered in his
 |FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
 
 ## Frequency reference
+
 |Satellite|Frequency|Notes|
 |---|---|---|
 |NOAA 15|1702.5 MHz|Very weak, don't bother|
@@ -481,7 +574,7 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 
 ## Detailed satellite information
 
-**Elektro-L**
+### Elektro-L
 - **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. Both of these include Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 far less consistent.
@@ -491,11 +584,9 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.png)
 *Elektro-L N°3 LRIT on left, HRIT on right*
 
----
+### GOES
 
-**GOES**
-
-*American*
+#### American
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
     - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery.
@@ -510,7 +601,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > TODO: GRB FFT
 
-*Rest of the world*
+#### Rest of the world
 - **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved over the Indian ocean to replace EWS-G1 (GOES 13) and now broadcasts a few relatively weak signals:
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
     - **GVAR** - A relatively weak broadcast that contains very high resolution data. 
@@ -525,11 +616,9 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.png)
 *GOES 13 SD, both the imager and sounder downlinks are visible. CC: dereksgc on Discord*
 
----
+### FengYun
 
-**FengYun**
-
-*FengYun 2 series*
+#### FengYun 2 series
 - **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
 - This signal is very prone to transport packet corruption because of lacking FEC, resulting images are likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
 
@@ -541,7 +630,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ![Gif of S-VISSR doing what's described below](../../assets/images/Radio/S-VISSR_Rollback.gif) <br>
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
-*FengYun 4 series*
+#### FengYun 4 series
 - **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** ~~and **HRIT** signal. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.~~
 
 > NOTE: As of 04/2024, FengYun 4A has recently started broadcasting its LRIT signal, but no products have been decoded so far. FengYun 4B is still commisioning, has only transmitted old FY 4A imagery so far.
@@ -555,17 +644,15 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ![FengYun HRIT screenshot from SatDump](../../assets/images/Radio/FengYun-HRIT.png) <br>
 *FengYun 4A HRIT, CC: drew0781 on Discord*
 
----
 
-**GEO-KOMPSAT**
+### GEO-KOMPSAT
 - **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 0.5-2 km/px quality. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
 
 ![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.png)
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
 
----
 
-**Meteosat Second Generation (MSG)**
+### Meteosat Second Generation (MSG)
 - **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 2x VIS at a 1.6 km/px quality, and 9x IR at a 4.8 km/px quality.
 - This is the second weakest signal behind FengYun 2 CDAS, requiring a massive 4 metre dish paired with a VLNA for a decode.
 - The SEVIRI instrument has three operating modes:
@@ -586,6 +673,8 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ## Signal information
 
 The minimum dish size heavily depends on the satellites elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
+
+> **Scroll to the side! Haven't figured the table overflow yet**
 
 |Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
@@ -736,6 +825,29 @@ Two things can cause this issue:
 
 # Reception tips and notes
 
+## Correctly adjusting your gain
+
+Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities by making the signal weaker than it should be. To correctly adjust it, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples:
+
+1) **A lot of dots are hitting the edge** → Gain too high
+
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-high.png) <br>
+
+- On the left is what you might see if the gain is set slightly too high, lower it by a few dB to get the full signal strength.
+- On the right is a more extreme example, where the gain is set much higher than needed resulting in the SDR severely overloading. If you see anything like this, your signal signal strength is being hurt by too high gain. You needto lower it by a lot.
+
+2) **There's only a small dot or circle in the middle** → Gain too low
+
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-low.png) <br>
+A small dot means that you should up the gain, if you are already maxxed out you might need to purchase an LNA.
+
+3) **A circle is present, the dots aren't hitting the edges** → Gain just right
+
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-gain-just-right.png) <br>
+
+- What you see on the left is ideal gain with no signals on the FFT
+- What you see on the right is ideal gain with signals on the FFT
+
 ## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
@@ -762,12 +874,28 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
 \*\* You will likely still get missing lines, make sure to use HRPTEgors corrector when near the minimum SNR.
 
+
+## Why does the horizon appear as a straight line during skew tests?
+
+If you received Meteor M2-4 in the few months following its launch, you might have captured one of its skew tests! While perforing these, the imager turns a perfect 90° to its side.
+
+![Meteor M2-4 skew test picture](../../assets/images/Radio/MSU-Skew-test.png)
+*Meteor M2-4 received on 21/04/2024 using a V-dipole. Processed using SatDump with the `221` RGB composite. Equalized.*
+
+You might be puzzled to see that the horizon appears as a perfectly straight line. Does this suggest that the Earth is flat? Not at all!
+
+
+The key to understanding this phenomenon lies in how weather satellites transmit this data. HRPT is a **direct broadcast**, meaning it sends the image line-by-line rather than capturing and transmitting an entire, instantaneous picture. This process is akin to how a scanner works, scanning each line individually.
+
+Thanks to the satellite itself always pointing straight down and the nature of the line by line broadcast, no curvature is present on the resulting image. Sorry flat earthers!
+
+
 ## Pass rating scale
-This scale is not official or mentioned anywhere, I just created it to be able to gauge how good each **HRPT** satellite pass was. Which metric to use is debatable, but I personally prefer AVHRR frames. These dictate how long the received image is in lines (pixels), is fairly consistent thanks to 8/9 orbitting L-band satellites using the AVHRR/3 instrument for imaging (Except FengYun 3C, which uses VIRR).
+This scale is not official or perfect, I just created it to be able to gauge how good each **HRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometres of the ground track you received from the satellite. Most L band LEO satellites have a resolution of 1km/px, meaning you can use the resulting image height as a rough metric (The earth isn't a perfect sphere, the satellite's altitude changes).
 
-You can see the frame count in SatDump after hitting `Stop` on the pipeline and going to the `Offline processing` tab while it's still decoding, or by reprocessing the cadu at a later date in the same tab. Alternatively, you can view the dimensions of the raw AVHRR image, the height will be the amount of frames (lines) you received.
+For example: An NOAA AVHRR image received from HRPT has a 2,048 × 4,750 px resolution. This means, that the resulting image has approximately 4,750 km of the satellite's ground track.
 
-|AVHRR frame count|Pass quality|
+|Kilometres tracked|Pass quality|
 |---|---|
 |<250|Very poor|
 |250-1000|Poor|
@@ -778,32 +906,7 @@ You can see the frame count in SatDump after hitting `Stop` on the pipeline and 
 |5000-5500|Almost perfect|
 |>5500|Perfect|
 
-The theoretical limit for these is about 6000, I have managed to get 5650 frames from a 0° - 2.5° pass.
-
-
-## Correctly adjusting your gain
-
-Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities by making the signal weaker than it should be. To correctly adjust it, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples:
-
-1) **A lot of dots are hitting the edge** → Gain too high
-
-![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-high.png) <br>
-
-- On the left is what you might see if the gain is set slightly too high, lower it by a few dB to get the full signal strength.
-- On the right is a more extreme example, where the gain is set much higher than needed resulting in the SDR severely overloading. If you see anything like this, your signal signal strength is being hurt by too high gain. You needto lower it by a lot.
-
-2) **There's only a small dot or circle in the middle** → Gain too low
-
-![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-low.png) <br>
-A small dot means that you should up the gain, if you are already maxxed out you might need to purchase an LNA.
-
-3) **A circle is present, the dots aren't hitting the edges** → Gain just right
-
-![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-gain-just-right.png) <br>
-
-- What you see on the left is ideal gain with no signals on the FFT
-- What you see on the right is ideal gain with signals on the FFT
-
+The theoretical limit for this is about 6000 km.
 
 ---
 
