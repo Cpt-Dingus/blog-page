@@ -15,21 +15,66 @@ parent: Radio
 
 # Preamble
 
-Before anything, I have to give credit and extreme kudos to the **SDR++, SigIdWiki and Dereksgc Discords**. Everyone there has been incredible and has helped me learn basically everything that you'll be able to read here. 
+Before anything, I have to start with some credits:
+- ***[Lego11's articles](https://a-centauri.com/articoli/)***
+- ***The [Dereksgc](https://discord.gg/b375hYqUxh) Discord***
+- ***The [SDR++](https://www.sdrpp.org/) Discord***
 
-**A lot of the information you will be able to find here is from [lego11s articles](https://a-centauri.com/articoli/), check them out if you want more very well written and detailed guides.**
+I learned almost everything you can read here from the places linked above, I can't express enough gratitude towards everyone who helped me start out with this niche hobby. If you are ever curious about this topic and wish to learn more, be sure to visit these, the people you can meet are incredible.
 
-The purpose of this article is to guide complete radio beginners as well as more experienced folk looking to learn something about getting pretty images from weather satellites. A lot of guides out there are severely outdated, focus on specific things while omitting important details or provide simply false information, PLEASE make sure the sources you use are valid.
+# Introduction
+
+While you definitely know about staellites, did you know you can receive imagery straight off of them with a steup even as simple as two wires in the shape of a V? This guide will show you how the broadcasts work, how to receive them in practice.
+
+## How can I receive satellite imagery?
+
+You are already familliar with the way they transmit data - they use the same method as your regular old FM station, **radio waves**! Of course you aren't able to just tune to a frequency on your car radio and start getting images, this is because it lacks the hardware & software to decode and process satellite signals.
+
+To receive these, you can use a **Software Defined Radio** [SDR]. This is a device, that - unlike conventional radios - *uses software to perform radio-signal processing*. You usually plug these into a computer and use software like [SDR++](https://www.sdrpp.org/) to operate them.
+
+> If you ever used a DVB-T tuner, it might have even had SDR capability - some RTL chipsets come with an SDR mode!
+
+Actually receiving the satellites is also much less daunting than it might seem! In essence doing so is no different than receiving an FM station, it only happens with different hardware and at a different frequency... with the transmitter flying 800 km above your head. The most difficult part is gaining knowledge about this hobby, which this guide intends to cover.
+
+## Why should I do this?
+
+There is no set reason for trying satellite reception - you can do it for research (The satellites send much more data than just imagery after all), to kill boredom or just to share the images with your friends!
+
+## What does this guide cover?
+
+To understand the scope of this guide, we'll have to take a look at the different radio bands - frequency ranges. The higher the frequency, the harder the signal is to receive. Broadcasts differ a lot between individual bands, ranging from requiring simple two wire antennas to year long endavours. *Looking at you, X band!*
+
+> Note: You might see a cheap Ku band LNB (Low noise block for TV reception) and think the band must be easier to receive than others, but it really isn't! TV LNBs are just massproduced to the point, where they have become dirt cheap. Without these, it would take hundreds of dollars to receive this band, much like X.
+
+The standard that is most often used with satellite reception is the one from IEEE. The bands are as follows:
+
+|Band|Frequency range|Name meaning|
+|---|---|---
+|HF|3-30 MHz|**H**igh **f**requency|
+|VHF|30-300 MHz|**V**ery **h**igh **f**requency|
+|UHF|300-3000 MHz|**U**ltra **h**igh **f**requency|
+|L|1-2 GHz|**L**ong wave|
+|S|2-4 GHz|**S**hort wave|
+|C|4-8 GHz|**C**ompromise [between S and X]|
+|X|8-12 GHz|E**x**otic|
+|Ku|12-18 GHz|**K**urz-**u**nder ['Kurz'='Short' in German]|
+|...|...|...|
+
+> Note: The name meanings were taken from the [Wikipedia page for the Radio Spectrum](https://en.wikipedia.org/wiki/Radio_spectrum)
+
+We will initially look at the **VHF satellite band (137 MHz)**, which contains a few satellites broadcasting images at relatively low qualities (4 km/px and compressed 1 km/px). After that, you will be able to find information about both and low-earth-orbitting and geostationary satellites broadcasting in the **L satellite band (~1.7 GHz)** which requires more effort but offers much more interesting data, including full disc Earth imagery!
 
 
 # Glossary
+
+If you aren't familiar with radio, a lot of these terms might sound foreign to you. This is a list of everything you might encounter while doing this hobby:
 
 ### Hardware terms
 - **SDR** - Software Defined Radio → A device used to translate radio waves into digital data
 - **LNA** - Low Noise Amplifier → A tool used to amplify radio signals
 - **Bias-t**/**Bias tee** → A device used to inject DC power into the RF line (To power devices such as LNAs). **DO NOT PLUG IT IN AIMING AT YOUR SDR, IT WILL KILL IT!**
 
-<br>
+---
 
 - **SMA** → Type of connector used by most SDRs
 - **Balun** → Converts a **Bal**anced signal to an **Un**balanced one and vice versa
@@ -40,14 +85,22 @@ The purpose of this article is to guide complete radio beginners as well as more
 - **Elevation** → Height of a satellite above the horizon
 - **AOS** - Acquisition Of Signal → The moment when you start geting a signal from a satellite
 - **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation is used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite
+
+---
+
 - **LEO** - Low Earth Orbit → Refers to objects orbitting the earth at an altitude of less than 2000 km
+
+---
+
+- ***RX*** → Shorthand for "Receive"
+- ***TX*** → Shorthand for "Transmit"
 
 ###  Software terms
 - **AGC** - Automatic Gain Control → Automatically sets the gain based on the signal strength
 - **SNR** - Signal to Noise Ratio → The difference in dB between the noise floor and the signal peak, ergo how strong the signal is
 - **FFT Spectrum** - Fast Fourier Transform Spectrum → The slice of the radio spectrum being sampled by your SDR
 - **FFT Waterfall** - Fast Fourier Transform Waterfall → A visual representation of the spectrum throughout time, almost always found right below the FFT Spectrum
-- **FEC** - Forward Error Correction → Error correcting code, most often Reed-Solomon
+- **FEC** - Forward Error Correction → Code that tried to fix corrupted data, most common type is [Reed-Solomon](https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction)
 - **Interference** → Commonly referred to as RFI (Radio Frequency Interference), is an umbrella term for unwanted signals produced by erroneous sources such as cheap power supplies, HDMI cables and devices such as laptops (USB RFI @ 480 MHz)
 - **Overloading** → Occurs when your gain is set too high and/or you are near a very strong broadcast. Presents as your noise floor jumping/being unstable or spurs of interference throughout your spectrum.
 - **TLE** - Two Line Element set → A format used to list the location of objects orbiting the earth
@@ -79,15 +132,15 @@ Don't worry if you don't understand these yet, they will be explained in more de
 
 You can tell overloading apart from real signals with two methods:
 
-1) **By tuning around and seeing if the signal moves consistently with the direction you tuned in:**
+1) **By tuning around and seeing if the signal moves consistently with the direction you tuned in:** <br>
 ![Video of an FFT being tuned around with a normal signal in the middle](../../assets/images/Radio/Real_signal_on_FFT.gif) <br>
 *This is a real FM station broadcasting on 107.1 MHz, you can see it moving consistently with the tuning direction. We can disregard the small overloading bump on the right for the sake of the demonstration.* <br>
 ![Video of an FFT being tuned around with a lot of overloading present](../../assets/images/Radio/Overloading_signal_on_FFT.gif) <br>
 *After upping the gain, you can see still see the original station at 107.1 MHz, but now in addition to several bumps that don't move consistently when tuning around (Move right when tuning left and vice versa).*
 
-2) **By lowering the gain and seeing if any signals suddenly disappear**
+2) **By lowering the gain and seeing if any signals abruptly disappear**
 ![Video of an FFT with the gain slowly being lowered](../../assets/images/Radio/Overloading_check.gif) <br>
-*You can see the strong overloading suddenly disappear when the gain is lowered*
+*You can see the strong overloading abruptly disappear when the gain is lowered, unlike the FM station which remains visible*
 
 
 # Mistakes and pitfalls
@@ -192,7 +245,7 @@ But how do we get colored composites if we can't see the actual RGB wavelengths?
 Let's take the `221` RGB composite as an example, it assigns channel 2 (centered at 630 nm) to the red and green output channels, and channel 1 (centered at 862 nm) to the blue output channel. This does not represent the actual RGB color wavelengths, **hence it isn't true color**.
 
 ![Example of the 221 false color composite](../../assets/images/Radio/compressed/False-color-COMPRESSED.jpg)
-*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied.*
+*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
 Of course there are much more complex composites such as the `NOAA Natrual Color Composite` which applies channels using the following formulas:
 
@@ -225,15 +278,23 @@ Yes! New satellites very often have cfhannels that individually sample R, G, and
 Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes them viable for a **true color composite**! In this case, the composite is `197` - 1 to red, 9 to green, and 7 to blue.
 
 ![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
-*FengYun 3C received on 29/03-2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` (True color) RGB composite. Median blur applied, equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied.*
+*FengYun 3C received on 29/03-2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
-## Important note
-A satellite can only broadcast so many channels at once due to speed and bandwidth constraints, this is especially apparent in the lower bands such as VHF. Both exemplary images were received in the L band, where almost all channels are transmitted 24/7.
 
 # VHF APT/LRPT reception guide (137MHz)
 - Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR and some patience
 - As of writing this article there are currently **5** weather satellites that broadcast in this band
 - While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
+
+## Example processed APT and LRPT images
+> Note: The raw images don't have maps on them, they were added in post processing.
+
+![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
+*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
+
+
+![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
+*Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
 
 ## Detailed satellite information
 
@@ -262,32 +323,21 @@ A satellite can only broadcast so many channels at once due to speed and bandwid
 
 |Satellite|Channel numbers|Channel types|
 |---|---|---|
-|M2-3|1, 2, 4 |2×Visible, 1×Infrared|
+|M2-3|1, 2, 4|2×Visible, 1×Infrared|
 |M2-4|1, 2, 3|3×Visible|
 
 <br>
 
-- This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its **LRPT antenna didn't fully extend**, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
+- This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its **LRPT antenna didn't fully extend**, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. 
+- As a long awaited change of luck, M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
 - Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. 
 
 
-## Broadcast issues
+## Broadcast issue quick reference
 
-- NOAA 15 has had several major hiccups with its scan motor current spiking due to it grinding through debris. The spike caused a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. As of 04/2024 the satellite has completely recovered and is broadcasting fine.
-- NOAA 18 has had a configuration error present ever since management was transferred to Parsons tech, making it broadcast a visible channel during the night instead of an infrared one. This presents itself as half of the image being black.
-- Meteor-M N°2-3 has an incorrectly deployed VHF antenna, making the signal weaker than intended and unexpectedly experience drops from time to time.
-
-
-## Example processed APT and LRPT images
-> Note: The images don't have maps on them, they were added in post processing.
-
-
-![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
-*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
-
-
-![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
-*Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
+- **NOAA 15** has had several major hiccups with its scan motor current spiking due to it grinding through debris. The spike caused a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. **The satellite has completely recovered and is broadcasting fine**.
+- **NOAA 18** has had a configuration error present ever since management was transferred to Parsons tech, making it broadcast a visible channel during the night instead of an infrared one. **This presents itself as half of the APT image being black during nighttime**.
+- **Meteor-M N°2-3** has an incorrectly deployed VHF antenna, making the **LRPT signal weaker than intended and unexpectedly experience drops from time to time**.
 
 
 ## Hardware needed to receive these satellites
@@ -297,7 +347,7 @@ You will need an SDR and an antenna, **no other special equipment is required fo
 > NOTE: You also need the appropriate cables and adapters to connect antenna to your SDR, make sure to order these in advance. An example is a coaxial cable and an F female to SMA male adapter.
 
 The SDR should be a **reputable brand** if you want optimal performance (E.g. AirSpy, RTLSDR Blog, Nooelec...). 
-> In simpler terms; avoid the blue chinesium sdrs. They CAN work, but expect worse results.
+> In simpler terms; avoid the blue chinesium sdrs. They will work, but you can expect worse results.
 
 As for the **antenna**, you have the choice between:
 - Directional antennas
@@ -455,10 +505,10 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ## Exemplary processed HRPT and xRIT images
 
 ![NOAA 19 HRPT image](../../assets/images/Radio/compressed/Best-HRPT-yet-COMPRESSED.jpg)
-*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-HRPT-yet.png) for the full resolution image.*
+*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. 30% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-HRPT-yet.png) for the full resolution image.*
 
 ![Elektro-L3 LRIT image](../../assets/images/Radio/compressed/Best-Earth-full-disc-COMPRESSED.jpg)
-*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-Earth-full-disc.png) for the full resolution image.*
+*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-Earth-full-disc.png) for the full resolution image.*
 
 ## Detailed satellite information
 
@@ -881,7 +931,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 If you received Meteor M2-4 in the few months following its launch, you might have captured one of its skew tests! While perforing these, the imager turns a perfect 90° to its side.
 
 ![Meteor M2-4 skew test picture](../../assets/images/Radio/compressed/MSU-Skew-test-COMPRESSED.jpg)
-*Meteor M2-4 received on 21/04/2024 using a V-dipole. Processed using SatDump with the `221` RGB composite. Equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied.*
+*Meteor M2-4 received on 21/04/2024 using a V-dipole. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
 You might be puzzled to see that the horizon appears as a perfectly straight line. Does this suggest that the Earth is flat? Not at all!
 
@@ -909,6 +959,19 @@ For example: An NOAA AVHRR image received from HRPT has a 2,048 × 4,750 px reso
 
 The theoretical limit for this is about 6000 km.
 
+# Epilogue
+
+While I have covered pretty much everything you can do in the VHF and L bands when it comes to satellite imagery, there is still plenty to explore! The next logical step after the L-band is S-band, a band requiring some different strategies for reception (Such as modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter. Or, if you ~~are insane~~ have a lot of time and money on your hands, you can also delve in to the X band! It requires incomparably more dedication, is not recommended for beginners, but offers infinite possibilities - it's what the industry uses right now!
+
+With the S band you can get excited for full orbit NOAA as well as sun images, while in the X band you can safely expect picture qualities as good as 80m/px!
+
+## Further reading
+
+- [Weather prediction from the data you receive](https://www.a-centauri.com/articoli/weather-predictions-from-satellite-data)
+- [Lego11's definitive S-band guide](https://www.a-centauri.com/articoli/the-definitive-s-band-satellite-guide)
+- [Lego11's X-band introduction](https://www.a-centauri.com/articoli/an-x-band-primer)
+
+
 ---
 
-Have fun and go get some pretty pictures!
+I hope you had fun reading this article, now go get some pretty pictures!
