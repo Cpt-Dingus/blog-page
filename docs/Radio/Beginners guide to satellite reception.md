@@ -961,9 +961,9 @@ The theoretical limit for this is about 6000 km.
 
 # Epilogue
 
-While I have covered pretty much everything you can do in the VHF and L bands when it comes to satellite imagery, there is still plenty to explore! The next logical step after the L-band is S-band, a band requiring some different strategies for reception (Such as modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter. Or, if you ~~are insane~~ have a lot of time and money on your hands, you can also delve in to the X band! It requires incomparably more dedication, is not recommended for beginners, but offers infinite possibilities - it's what the industry uses right now!
+While I have covered pretty much everything you can do in the VHF and L bands when it comes to satellite imagery, there is still plenty to explore! The next logical step after the L-band is S-band, a band requiring some different strategies for reception (Such as modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter). Or, if you ~~are insane~~ have a lot of time and money on your hands, the X band! It requires incomparably more dedication, is not recommended for beginners, but offers pretty much infinite possibilities - it's what the industry uses right now!
 
-With the S band you can get excited for full orbit NOAA as well as sun images, while in the X band you can safely expect picture qualities as good as 80m/px!
+With the S band you can get excited for full orbit NOAA as well as sun images, while in the X band you can expect picture qualities as high as 80m/px!
 
 ## Further reading
 
