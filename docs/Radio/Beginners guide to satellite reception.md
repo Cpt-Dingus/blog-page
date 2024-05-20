@@ -71,10 +71,10 @@ Don't worry if you don't understand these yet, they will be explained in more de
 
 ### Overloading
 
-![An image of a relatively normal FFT](../../assets/images/Radio/Normal-FFT.png)
+![An image of a relatively normal FFT](../../assets/images/Radio/Normal-FFT.jpg)
 *Pictured is a relatively normal FFT containing a strong FM station at 107.1 MHz. There is a small bump caused by overloading present on 107.8 MHz, interference spikes mentioned above, we can disregard both of these for now.*
 
-![An image of a FFT suffering from severe overloading](../../assets/images/Radio/Overloaded-FFT.png)
+![An image of a FFT suffering from severe overloading](../../assets/images/Radio/Overloaded-FFT.jpg)
 *After upping the gain, you can see several new bumps appearing on the FFT, these aren't actually there and are only showing up because of your SDR being overloaded by another strong signal - in this case the FM station on 107.1 MHz.*
 
 You can tell overloading apart from real signals with two methods:
@@ -168,7 +168,7 @@ Satellites work simmilar to our eyes with one exception: instead of having diffe
 
 ## Why is it called false color?
 
-**True color** is the name given to images that represents natural colors - it's all the colors a human eye can see ranging from ~400-700 nm. We can't see electromagnatic waves that have a lower or higher wavelength.
+To learn what false color is, we first have to learn about true color. **True color** is the name given to images that represent natural colors - all the colors a human eye can see ranging from ~400-700 nm. We can't see electromagnatic waves that have a lower or higher wavelength.
 
 Due to technological contraints and a focus on usability, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrared bands. 
 
@@ -191,8 +191,8 @@ But how do we get colored composites if we can't see the actual RGB wavelengths?
 
 Let's take the `221` RGB composite as an example, it assigns channel 2 (centered at 630 nm) to the red and green output channels, and channel 1 (centered at 862 nm) to the blue output channel. This does not represent the actual RGB color wavelengths, **hence it isn't true color**.
 
-![Example of the 221 composite](../../assets/images/Radio/221-composite.png)
-*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized.*
+![Example of the 221 false color composite](../../assets/images/Radio/compressed/False-color-COMPRESSED.jpg)
+*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied.*
 
 Of course there are much more complex composites such as the `NOAA Natrual Color Composite` which applies channels using the following formulas:
 
@@ -224,8 +224,8 @@ Yes! New satellites very often have cfhannels that individually sample R, G, and
 
 Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes them viable for a **true color composite**! In this case, the composite is `197` - 1 to red, 9 to green, and 7 to blue.
 
-![A true color image from FengYun 3C](../../assets/images/Radio/True-color-composite.png)
-*FengYun 3C received on 29/03-2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` (True color) RGB composite. Median blur applied, equalized.*
+![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
+*FengYun 3C received on 29/03-2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` (True color) RGB composite. Median blur applied, equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied.*
 
 ## Important note
 A satellite can only broadcast so many channels at once due to speed and bandwidth constraints, this is especially apparent in the lower bands such as VHF. Both exemplary images were received in the L band, where almost all channels are transmitted 24/7.
@@ -282,12 +282,12 @@ A satellite can only broadcast so many channels at once due to speed and bandwid
 > Note: The images don't have maps on them, they were added in post processing.
 
 
-![A processed APT image](../../assets/images/Radio/APT-Sample-image.png)
-*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied.*
+![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
+*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
 
 
-![A processed LRPT image](../../assets/images/Radio/LRPT-Sample-image.png)
-*Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized.*
+![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
+*Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
 
 
 ## Hardware needed to receive these satellites
@@ -354,7 +354,7 @@ To make it:
 **Make sure the cables don't touch or are short together in any way, this will make the antenna not work**
 5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (In essence creating a HF choke)
 
-![My yagi setup showcasing the balun and feed](../../assets/images/Radio/My-yagi-dipole-feed.png)
+![My yagi setup showcasing the balun and feed](../../assets/images/Radio/My-yagi-dipole-feed.jpg)
 *The choked balun and dipole feed I use on my yagi*
 
 
@@ -403,7 +403,7 @@ As of 03/2024, the frequencies these satellites broadcast in are as follows:
 > When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the FFT along with the sound (Try to avoid crackling) with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
 
 If everything is right, you are now receiving a beeping APT signal or you see four dots on the demodulator in case of LRPT!
-![SatDump screenshot mid LRPT pass](../../assets/images/Radio/LRPT-SatDump.png) <br>
+![SatDump screenshot mid LRPT pass](../../assets/images/Radio/LRPT-SatDump.jpg) <br>
 *SatDump mid LRPT decode. See the `SYNCED` vitterbi and deframer.*
 
 5. Once you see the signal has completely disappeared and isn't coming back, press `Stop` on the pipeline
@@ -454,11 +454,11 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ## Exemplary processed HRPT and xRIT images
 
-![NOAA 19 HRPT image](../../assets/images/Sat-reception-journey/Best-HRPT-yet.png)
-*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized.*
+![NOAA 19 HRPT image](../../assets/images/Radio/compressed/Best-HRPT-yet-COMPRESSED.jpg)
+*NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-HRPT-yet.png) for the full resolution image.*
 
-![Elektro-L3 LRIT image](../../assets/images/Sat-reception-journey/Best-Earth-full-disc.png)
-*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite.*
+![Elektro-L3 LRIT image](../../assets/images/Radio/compressed/Best-Earth-full-disc-COMPRESSED.jpg)
+*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. 65% lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-Earth-full-disc.png) for the full resolution image.*
 
 ## Detailed satellite information
 
@@ -468,7 +468,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
 - The broadcast features a very strong carrier wave making it quite easy to track.
 
-![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.png)
+![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.jpg)
 *NOAA 19 HRPT*
 
 > Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
@@ -479,7 +479,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
-![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.png)
+![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
 
 > You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.
@@ -489,7 +489,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
 
-![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.png)
+![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.jpg)
 *MetOp B AHRPT*
 
 ### FengYun 3
@@ -498,7 +498,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
 - The signal has a higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
 
-![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.png)
+![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.jpg)
 *FengYun 3C AHRPT*
 
 
@@ -582,7 +582,7 @@ Unlike orbiting satellites which use (A)HRPT, geostationary ones use various for
 
 > Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
 
-![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.png)
+![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
 *Elektro-L N°3 LRIT on left, HRIT on right*
 
 ### GOES
@@ -597,7 +597,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
-![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.png)
+![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.jpg)
 *GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phanthomsgost on Discord*
 
 > TODO: GRB FFT
@@ -611,10 +611,10 @@ All of these include FEC, meaning you should be able to properly decode them eve
         - **Raw sensor data**
 
 
-![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.png)
+![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg)
 *GOES 15 GVAR*
 
-![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.png)
+![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg)
 *GOES 13 SD, both the imager and sounder downlinks are visible. CC: dereksgc on Discord*
 
 ### FengYun
@@ -625,7 +625,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > These satellites also broadcast an incredibly weak **CDAS** signal, it's almost completely undocumented owing to it's weak & wide nature.
 
-![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.png) <br>
+![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
 *FengYun 2H S-VISSR*
 
 ![Gif of S-VISSR doing what's described below](../../assets/images/Radio/S-VISSR_Rollback.gif) <br>
@@ -642,14 +642,14 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.png) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
 
-![FengYun HRIT screenshot from SatDump](../../assets/images/Radio/FengYun-HRIT.png) <br>
+![FengYun HRIT screenshot from SatDump](../../assets/images/Radio/FengYun-HRIT.jpg) <br>
 *FengYun 4A HRIT, CC: drew0781 on Discord*
 
 
 ### GEO-KOMPSAT
 - **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 0.5-2 km/px quality. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
 
-![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.png)
+![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.jpg)
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
 
 
@@ -667,7 +667,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
 
-![Meteosat PGS screenshot from SatDump](../../assets/images/Radio/Meteosat-PGS.png)
+![Meteosat PGS screenshot from SatDump](../../assets/images/Radio/Meteosat-PGS.jpg)
 *Meteosat 9 PGS, CC: that_zbychu on Discord. The thin spikes present aren't a part of the signal.*
 
 
@@ -736,7 +736,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 4. The broadcast will show up as a bump that occasionally jumps up and down, you should be seeing a few decibels of signal, `SYNCED` and green Reed-Solomon numbers when applicable.
 
-![A screenshot of SatDump taken while receiving Elektro-L LRIT](../../assets/images/Radio/Lrit-SatDump.png)
+![A screenshot of SatDump taken while receiving Elektro-L LRIT](../../assets/images/Radio/Lrit-SatDump.jpg)
 
 5. After the transmission stops or you are satisfied with the results, hit `Stop` on the pipeline
 
@@ -769,7 +769,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 
 ### Donut shaped constellation with NOSYNC on the vitterbi
 
-![A screenshot of SatDump showing this issue](../../assets/images/Radio/Meteor-donut-constellation.png)
+![A screenshot of SatDump showing this issue](../../assets/images/Radio/Meteor-donut-constellation.jpg)
 *Both demodulators are showing a donut shape instead of the correct QPSK modulation (four dots in each corner).*
 
 When decoding signals with symbol rates close to your sampling rate (Such as MetOp AHRPT on RTLSDRs), you might notice that, even while you're getting a strong signal, you still have `NOSYNC` indicated on the Vitterbi and have a donut shaped constellation on the demodulator. This happens, when the reference for the signal is way out of frequency making the pipeline and in term its demodulator not be able to lock onto it. 
@@ -880,8 +880,8 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
 If you received Meteor M2-4 in the few months following its launch, you might have captured one of its skew tests! While perforing these, the imager turns a perfect 90° to its side.
 
-![Meteor M2-4 skew test picture](../../assets/images/Radio/MSU-Skew-test.png)
-*Meteor M2-4 received on 21/04/2024 using a V-dipole. Processed using SatDump with the `221` RGB composite. Equalized.*
+![Meteor M2-4 skew test picture](../../assets/images/Radio/compressed/MSU-Skew-test-COMPRESSED.jpg)
+*Meteor M2-4 received on 21/04/2024 using a V-dipole. Processed using SatDump with the `221` RGB composite. Equalized. 65% lossy JPEG compression with 0.05 gaussian blur applied.*
 
 You might be puzzled to see that the horizon appears as a perfectly straight line. Does this suggest that the Earth is flat? Not at all!
 
