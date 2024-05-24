@@ -24,25 +24,25 @@ I learned almost everything you can read here from the places linked above, I ca
 
 # Introduction
 
-While you definitely know about staellites, did you know you can receive imagery straight off of them with a steup even as simple as two wires in the shape of a V? This guide will show you how the broadcasts work, how to receive them in practice.
+While you definitely know about staellites, did you know you can receive imagery straight off of them with a steup even as simple as two wires in the shape of a V? The purpose of this guide is to show you how the broadcasts work, how you can receive them in practice.
 
 ## How can I receive satellite imagery?
 
 You are already familliar with the way they transmit data - they use the same method as your regular old FM station, **radio waves**! Of course you aren't able to just tune to a frequency on your car radio and start getting images, this is because it lacks the hardware & software to decode and process satellite signals.
 
-To receive these, you can use a **Software Defined Radio** [SDR]. This is a device, that - unlike conventional radios - *uses software to perform radio-signal processing*. You usually plug these into a computer and use software like [SDR++](https://www.sdrpp.org/) to operate them.
+To receive satellite signals *(among other things, an SDR has a wide range!)*, you can use a **Software Defined Radio** [SDR]. This is a device, that - unlike conventional radios - *uses **software** to perform radio-signal processing*. You usually plug these into a computer and use software like [SDR++](https://www.sdrpp.org/) to operate them.
 
 > If you ever used a DVB-T tuner, it might have even had SDR capability - some RTL chipsets come with an SDR mode!
 
-Actually receiving the satellites is also much less daunting than it might seem! In essence doing so is no different than receiving an FM station, it only happens with different hardware and at a different frequency... with the transmitter flying 800 km above your head. The most difficult part is gaining knowledge about this hobby, which this guide intends to cover.
+The actual reception process is also much less daunting than it might seem! In essence doing so is no different than receiving an FM station, it only happens with different hardware and at a different frequency... with the transmitter flying 800 km above your head. The most difficult part is gaining knowledge about this hobby, which is the purpose of this guide.
 
 ## Why should I do this?
 
-There is no set reason for trying satellite reception - you can do it for research (The satellites send much more data than just imagery after all), to kill boredom or just to share the images with your friends!
+There is no set reason for trying this niche hobby out - you can do it for **research** (The satellites send much more data than just imagery after all), to **kill boredom** or just to **share the images with your friends**!
 
-## What does this guide cover?
+## What is covered by this guide?
 
-To understand the scope of this guide, we'll have to take a look at the different radio bands - frequency ranges. The higher the frequency, the harder the signal is to receive. Broadcasts differ a lot between individual bands, ranging from requiring simple two wire antennas to year long endavours. *Looking at you, X band!*
+To understand the scope of this guide, we'll first have to take a look at the different radio bands - frequency ranges. The higher the frequency, the harder the signal is to receive. Broadcasts differ a lot between individual bands, ranging from requiring simple two wire antennas to year long endavours that require welding and a ton of individual research. *Looking at you, X band!*
 
 > Note: You might see a cheap Ku band LNB (Low noise block for TV reception) and think the band must be easier to receive than others, but it really isn't! TV LNBs are just massproduced to the point, where they have become dirt cheap. Without these, it would take hundreds of dollars to receive this band, much like X.
 
@@ -67,7 +67,7 @@ We will initially look at the **VHF satellite band (137 MHz)**, which contains a
 
 # Glossary
 
-If you aren't familiar with radio, a lot of these terms might sound foreign to you. This is a list of everything you might encounter while doing this hobby:
+Understanding the terminology used in satellite reception is essential, especially if you aren't familiar with radio. Below, you can find a list of new terms you are likely to encounter while doing this hobby:
 
 ### Hardware terms
 - **SDR** - Software Defined Radio → A device used to translate radio waves into digital data
@@ -83,6 +83,7 @@ If you aren't familiar with radio, a lot of these terms might sound foreign to y
 
 - **Pass** → Refers to the time when you can see a satellite passing overhead, used with orbiting satellites
 - **Elevation** → Height of a satellite above the horizon
+- **Azimuth** → Compass heading
 - **AOS** - Acquisition Of Signal → The moment when you start geting a signal from a satellite
 - **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation is used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite
 
@@ -111,7 +112,7 @@ Don't worry if you don't understand these yet, they will be explained in more de
 - **APT** - Automatic Picture Transmission → VHF Image broadcast currently used on NOAA satellites
 - **LRPT** - Low Rate Picture Transmission → VHF Image broadcast currently used on Meteor-M satellites
 - **HRPT** - High Rate Picture Transmission → L-band high quality image and telemetry broadcast format
-- **LRIT** - Low Rate Information Transmission → L-band information and telemetry broadcast format
+- **xRIT** (**LRIT**/**HRIT**) - Low/High Rate Information Transmission → L-band information and telemetry broadcast format
 
 
 ## Examples of interference and overloading:
@@ -204,7 +205,7 @@ I personally use Orbitron for long term and Look4Sat for short term predictions,
 
 # Colors of received imagery
 
-After receiving these satellites and checking the resulting images, you will notice, that they are all black and white even though the images you see online are all colorful. The colored images are created by processing the raw channels into RGB composites - applying different channels to different colors. You will quickly find the term `False Color` being thrown around. But how can color be false? To understand why this is the case, we have to look at some color theory and instrument descriptions:
+After receiving these satellites and checking the resulting images, you will notice, that they are all black and white even though the images you see online are colorful. The colored images are created by processing the raw channels into RGB composites - applying different channels to different colors. You will quickly find the term `False Color` being thrown around, but how can color be false? To understand why this is the case, we have to look at some color theory and instrument descriptions:
 
 ## How is color perceived?
 
@@ -223,7 +224,7 @@ Satellites work simmilar to our eyes with one exception: instead of having diffe
 
 To learn what false color is, we first have to learn about true color. **True color** is the name given to images that represent natural colors - all the colors a human eye can see ranging from ~400-700 nm. We can't see electromagnatic waves that have a lower or higher wavelength.
 
-Due to technological contraints and a focus on usability, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrared bands. 
+Due to technological contraints and a focus on usability, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrareds. 
 
 As an example, these are the channels present on the AVHRR/3 instrument flown on MetOp and NOAA POES satellites:
 
@@ -238,9 +239,9 @@ As an example, these are the channels present on the AVHRR/3 instrument flown on
 
 > Earlier satellites from NOAA used AVHRR/2 which lacked channel 3A and AVHRR/1, which lacked channels 3A and 5.
 
-As you might see, we only have two channels covering the visible spectrum, meaning we can't get the the full color spectrum from the data the sensor collects - **True color isn't possible on AVHRR/3.**
+As you might see, we only have two channels covering the visible spectrum (Ch2 partly covers it), meaning we can't get the actual colors the sensor could have seen from the data it collects - **True color isn't possible on AVHRR/3.**
 
-But how do we get colored composites if we can't see the actual RGB wavelengths? We can assign arbitrary wavelengths to the R, G, and B channels, this results in a **False color composite**. These are useful in some cases, such as highlighting things that might not be visible in the true color spectrum. *They also look nicer.* 
+But how do we get colored composites if we can't see the actual RGB wavelengths? We can assign arbitrary wavelengths to the R, G, and B channels, this results in a **False color composite**. These are useful in cases, such as highlighting things that might not be visible in the true color spectrum. *They also look nicer.* 
 
 Let's take the `221` RGB composite as an example, it assigns channel 2 (centered at 630 nm) to the red and green output channels, and channel 1 (centered at 862 nm) to the blue output channel. This does not represent the actual RGB color wavelengths, **hence it isn't true color**.
 
@@ -255,7 +256,7 @@ Of course there are much more complex composites such as the `NOAA Natrual Color
 |Green|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
 |Blue|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch1 * 2.2 - 0.15`|
 
-You can play with the different composites and see what looks best.
+You can play with the different composites and see what looks the best for your use case.
 
 
 ## Do any satellites broadcast true color?
@@ -282,9 +283,11 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 
 
 # VHF APT/LRPT reception guide (137MHz)
-- Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR and some patience
-- As of writing this article there are currently **5** weather satellites that broadcast in this band
-- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels (Images) while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
+Now that we have gone over the terminology and science behind these satellites, we can finally move to the actual reception process!
+
+- Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR, and some patience
+- As of writing this article, there are **5** weather satellites currently broadcasting in this band
+- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
 
 ## Example processed APT and LRPT images
 > Note: The raw images don't have maps on them, they were added in post processing.
@@ -301,7 +304,7 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 ### NOAA
 
 - These are the last **3** remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
-- Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get static grain on output images.
+- Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4km/px quality. Its analogue nature means, that if the signal has even just a bit of noise, you will get grain on the output images.
 
 <br>
 
@@ -314,8 +317,8 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 
 ### METEOR-M
 
-- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
-- These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if the signal is fairly weak.
+- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x or just M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
+- These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it's fairly weak.
 
 <br>
 
@@ -330,14 +333,14 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 
 - This satellite series has been plagued with accidents, faults, and delays. Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, and M2-2 got hit by a micrometeor making it unable to broadcast LRPT. M2-3 is sadly no exception: its **LRPT antenna didn't fully extend**, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be. 
 - As a long awaited change of luck, M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
-- Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. 
+> Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. 
 
 
 ## Broadcast issue quick reference
 
 - **NOAA 15** has had several major hiccups with its scan motor current spiking due to it grinding through debris. The spike caused a loss of synchronization between the scan motor and the processor presenting as major glitches appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. **The satellite has completely recovered and is broadcasting fine**.
-- **NOAA 18** has had a configuration error present ever since management was transferred to Parsons tech, making it broadcast a visible channel during the night instead of an infrared one. **This presents itself as half of the APT image being black during nighttime**.
-- **Meteor-M N°2-3** has an incorrectly deployed VHF antenna, making the **LRPT signal weaker than intended and unexpectedly experience drops from time to time**.
+- **NOAA 18** has had a configuration error present ever since management was transferred to Parsons tech, making it broadcast a visible channel on APT during the night instead of an infrared one. **This presents itself as half of the APT image being black during nighttime**.
+- **Meteor-M N°2-3** has an incorrectly deployed VHF antenna, making the **LRPT signal weaker than intended and unexpectedly experience drops at certain elevations**.
 
 
 ## Hardware needed to receive these satellites
@@ -347,7 +350,7 @@ You will need an SDR and an antenna, **no other special equipment is required fo
 > NOTE: You also need the appropriate cables and adapters to connect antenna to your SDR, make sure to order these in advance. An example is a coaxial cable and an F female to SMA male adapter.
 
 The SDR should be a **reputable brand** if you want optimal performance (E.g. AirSpy, RTLSDR Blog, Nooelec...). 
-> In simpler terms; avoid the blue chinesium sdrs. They will work, but you can expect worse results.
+> In simpler terms; avoid generic sdrs. They will work, but you can expect worse results.
 
 As for the **antenna**, you have the choice between:
 - Directional antennas
@@ -485,30 +488,19 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 # L-band HRPT reception guide (1.7 GHz)
 - L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **specialized equipment** as well as a **dish** paired with some half decent tracking skills.
-- While requiring more dedication, it offers much more interesting things than VHF: for example being able to receive 5+ channels of pure and uncompressed 1km/px images as well as full disc Earth images using geostationary satellites broadcasting HRIT/LRIT (or other alternatives)
+- Offers much more interesting things than VHF such as being able to receive 5+ pure and uncompressed 1km/px channels as well as full disc Earth imagery with geostationary satellites broadcasting xRIT or another alternative.
+- This heading describes LEO satellite reception, you can find Geostationary reception [here](#geostationary-reception)
+- The are **9** LEO satellites currently broadcasting imagery in this band:
 
-<br>
+    - 3x NOAA POES
+    - 3x Meteor-M
+    - 2x MetOp
+    - 1x FengYun (Only broadcasts when in sight of China)
 
-- The are far more satellites you can receive, they divide into:
-    - Geostationary satellites (9):
-        - GOES in the US (One additional limited GOES in Europe and Asia)
-        - Elektro-L in Europe, Asia and Oceania
-        - Fengyun in Asia and Oceania
-        - Geo-Kompsat in Asia and Oceania
-
-    - Orbiting satellites (9):
-        - 3x NOAA POES
-        - 3x Meteor-M
-        - 2x MetOp
-        - 1x FengYun (Only broadcasts when in sight of China)
-
-## Exemplary processed HRPT and xRIT images
+## Example processed HRPT image
 
 ![NOAA 19 HRPT image](../../assets/images/Radio/compressed/Best-HRPT-yet-COMPRESSED.jpg)
 *NOAA 19 received on 14/1/2024 using a 90 cm dish and a SawBird GOES+. Processed using SatDump with the `NOAA Natural Color` RGB composite. Median blur applied, equalized. 30% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-HRPT-yet.png) for the full resolution image.*
-
-![Elektro-L3 LRIT image](../../assets/images/Radio/compressed/Best-Earth-full-disc-COMPRESSED.jpg)
-*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-Earth-full-disc.png) for the full resolution image.*
 
 ## Detailed satellite information
 
@@ -606,34 +598,36 @@ For these, there is no point in me writing it out: Lego has these covered in his
 You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described in the `Common issues` section). Overhead is also **needed** because of **doppler shifting** and the **SDR's reference inaccuracy**. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), **the ideal sampling rate is twice the symbol rate** - anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
 
-# L-band geostationary satellite (LRIT/HRIT/etc.) reception guide
+# L-band geostationary satellite (LRIT/HRIT/etc.) reception guide {#geostationary-reception}
 - Receiving these is extremely simple, the hardest part is arguably just getting a suitable dish and LOS
 - Geostationary satellites are much weaker than orbitting satellites because of their very high altitudes, small dishes often don't cut it anymore. Refer to the signal table for more info.
 - Doesn't require tracking, since the satellites don't move (It's on the tin - geo**stationary**)
 - Provides full disc images of the earth and/or regional crops
 
-## Transmission types
-Unlike orbiting satellites which use (A)HRPT, geostationary ones use various formats able to carry more than just images - the most common type that we are interested in being **LRIT** (Low Rate Information Transmission). You can also find other types in the L band such as:
+- There are **10** geostationary satellites broadcasting imagery in this band:
+    - 2x GOES in the US (One additional limited GOES in Europe and Asia)
+    - 2x Elektro-L in Europe, Asia and Oceania
+    - 4x Fengyun in Asia and Oceania
+    - 1x Geo-Kompsat in Asia and Oceania
 
-- **HRIT** - High Rate Information Transmission → A faster broadcast of data which usually has a higher quality than LRIT, is often harder to receive
+## Example processed xRIT image
+
+![Elektro-L3 full disc Earth image](../../assets/images/Radio/compressed/Best-Earth-full-disc-COMPRESSED.jpg)
+*Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-Earth-full-disc.png) for the full resolution image.*
+
+## Transmission types
+Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellites use various formats able to carry more than just images. These include:
+
+- **LRIT** - Low Rate Information Transmission → A relatively slow broadcast in comparison to HRIT, usually has a lower quality but is easier to receive (is stronger)
+- **HRIT** - High Rate Information Transmission → A broadcast of data which usually has a higher quality than LRIT, but is harder to receive (is weaker)
 - **S-VISSR** - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
-- **GVAR** - Goes Variable → Only broadcasts a set amount of data
-- **GRB** - Goes ReBroadcast → A very high quality broadcast from american GOES satellites 
+- **GVAR** - Goes Variable → A broadcast used in older GOES-N satellites, is able to broadcast anything the operators choose
+- **GRB** - Goes ReBroadcast → A very high quality broadcast from GOES-R satellites 
 - **GGAK** - Heliogeophysical Instrument Complex → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
 - **SD** - Sensor Data → Raw data broadcast from GOES-N satellites
 - **PGS** - Primary GroundStation → The nickname given to the raw data downlink from MSG satellites
 
 ## Detailed satellite information
-
-### Elektro-L
-- **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
-- They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. Both of these include Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
-- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 far less consistent.
-
-> Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
-
-![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
-*Elektro-L N°3 LRIT on left, HRIT on right*
 
 ### GOES
 
@@ -666,6 +660,18 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 ![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg)
 *GOES 13 SD, both the imager and sounder downlinks are visible. CC: dereksgc on Discord*
+
+
+### Elektro-L
+- **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+- They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. Both of these include Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
+- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 far less consistent.
+
+> Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
+
+![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
+*Elektro-L N°3 LRIT on left, HRIT on right*
+
 
 ### FengYun
 
@@ -936,7 +942,7 @@ If you received Meteor M2-4 in the few months following its launch, you might ha
 You might be puzzled to see that the horizon appears as a perfectly straight line. Does this suggest that the Earth is flat? Not at all!
 
 
-The key to understanding this phenomenon lies in how weather satellites transmit this data. HRPT is a **direct broadcast**, meaning it sends the image line-by-line rather than capturing and transmitting an entire, instantaneous picture. This process is akin to how a scanner works, scanning each line individually.
+The key to understanding this phenomenon lies in how weather satellites transmit this data. LRPT and HRPT are **direct broadcasts**, meaning they sends the image line-by-line rather than capturing and transmitting an entire, instantaneous picture. This process is akin to how a scanner works, scanning each line individually.
 
 Thanks to the satellite itself always pointing straight down and the nature of the line by line broadcast, no curvature is present on the resulting image. Sorry flat earthers!
 
@@ -961,9 +967,11 @@ The theoretical limit for this is about 6000 km.
 
 # Epilogue
 
-While I have covered pretty much everything you can do in the VHF and L bands when it comes to satellite imagery, there is still plenty to explore! The next logical step after the L-band is S-band, a band requiring some different strategies for reception (Such as modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter). Or, if you ~~are insane~~ have a lot of time and money on your hands, the X band! It requires incomparably more dedication, is not recommended for beginners, but offers pretty much infinite possibilities - it's what the industry uses right now!
+While this guide covers pretty much everything you can do in the VHF and L bands when it comes to satellite imagery, there is still plenty to explore!
 
-With the S band you can get excited for full orbit NOAA as well as sun images, while in the X band you can expect picture qualities as high as 80m/px!
+The next logical step after the L-band is the S-band, which requires some different strategies for reception (Such as modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter). It contains full orbit NOAA POES imagery via GAC as well as sun imagery thanks to PROBA-2 and Hinode.
+
+Alternatively, if you ~~are insane~~ have a lot of time and money on your hands, you can receive the X-band! It requires incomparably more dedication and is not recommended for beginners, but offers pretty much infinite possibilities - it's what the industry uses right now! With this band, the .5km/px quality is prevalent, but you can expect imagery with a quality as high as 60m/px with Meteor-M KMSS!
 
 ## Further reading
 
