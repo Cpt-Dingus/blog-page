@@ -826,7 +826,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 
 ## L-band
 
-### Donut shaped constellation with NOSYNC on the viterbi {bad_constellation}
+### Donut shaped constellation with NOSYNC on the viterbi {#bad_constellation}
 
 ![A screenshot of SatDump showing this issue](../../assets/images/Radio/Meteor-donut-constellation.jpg)
 *Both demodulators are showing a donut shape instead of the correct QPSK modulation (four dots in each corner).*
