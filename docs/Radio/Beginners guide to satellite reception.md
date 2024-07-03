@@ -656,7 +656,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
     - **SD** - Broadcasts raw instrument data, separates into two downlinks on the same frequency:
         - **Raw imager data**
         - **Raw sensor data**
-
+- This signal is very prone to corruption because of lacking FEC, which often causes lines to be severely misplaced in the resulting imagery. I have created a corrector to make the imagery more presentable even at low SNRs, you can view it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
 
 ![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg)
 *GOES 15 GVAR*
@@ -680,7 +680,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 #### FengYun 2 series
 - **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
-- This signal is very prone to transport packet corruption because of lacking FEC, resulting images are likely to have grain as well as missing lines on it. These can be addressed by applying median blur via 3rd party tools and using [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline respectively.
+- This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline to remedy this.
 
 > These satellites also broadcast an incredibly weak **CDAS** signal, it's almost completely undocumented owing to it's weak & wide nature.
 
@@ -736,7 +736,7 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 
 > **Scroll to the side! Haven't figured the table overflow yet**
 
-|Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
+|Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits imagery...
 |---|---|---|---|---|---|---|---|
 |Elektro-L|LRIT|1691 MHz|294 KSym/s|RHCP|90 cm|Yes|Every 3 hours from midnight UTC at XX:42 ecluding 06:42
 |Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
@@ -745,9 +745,9 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
 |GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
 |GOES-N|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|150 cm|No|Full disc image every 3 hours, regional crops the rest of the time.
+|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|150 cm**|No|Full disc image every 3 hours, regional crops the rest of the time.
 |GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
-|GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm (TBD)|No|Constantly
+|GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|90 cm\*\*|No|XX:00 - XX:28 and XX:30-XX:48\*\*\*
 |FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
@@ -756,7 +756,7 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|400cm\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
 
 \* RHCP+LHCP <br>
-\*\* Only with the corrector, image will be cut up beyond recognition otherwise. <br>
+\*\* Only with the corrector, the image will otherwise have a lot of missing lines. <br>
 \*\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%. <br>
 \*\*\*\* Only using a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
 
@@ -911,6 +911,8 @@ A small dot means that you should up the gain, if you are already maxxed out you
 ## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
+> Note: A good decode is defined as recognizable imagery.
+
 |Signal|Minimum SNR|FEC|
 |---|---|---|
 |NOAA APT|20 dB|No|
@@ -924,7 +926,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |GOES GRB|TODO|Yes|
 |GOES HRIT|4 dB|Yes|
 |FengYun 2 S-VISSR|6 dB\*\*|No|
-|FengYun 4 LRIT|TODO|Yes|
+|FengYun 4 LRIT|3 dB|Yes|
 |FengYun 4 HRIT|TODO|Yes|
 |GEO-KOMPSAT LRIT|4 dB|Yes|
 |GEO-KOMPSAT HRIT|4 dB|Yes|
