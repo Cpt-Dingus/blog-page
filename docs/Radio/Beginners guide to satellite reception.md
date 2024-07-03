@@ -582,7 +582,7 @@ For these, there is no point in me writing it out: Lego has these covered in his
 |---|---|---|---|---|
 |NOAA POES HRPT|60|665.6 KSym/s|No|
 |Meteor HRPT|60|665.6 KSym/s|No|
-|MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause issues
+|MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
 |FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
 
 ## Frequency reference
@@ -826,7 +826,7 @@ Some grain is expected on APT images, you can get rid of it by ticking `Median b
 
 ## L-band
 
-### Donut shaped constellation with NOSYNC on the viterbi
+### Donut shaped constellation with NOSYNC on the viterbi {bad_constellation}
 
 ![A screenshot of SatDump showing this issue](../../assets/images/Radio/Meteor-donut-constellation.jpg)
 *Both demodulators are showing a donut shape instead of the correct QPSK modulation (four dots in each corner).*
@@ -874,7 +874,7 @@ This error appears when your sampling rate is lower than the signals symbol rate
 
 > Note that with orbitting satellites you NEED additional overhead due to doppler shifting. With geostationary satellites you can push close to the minimum thanks to the signal not experiencing doppler shifting.
 
-### No/cut up image output with severe viterbi spikes when decoding signals with FEC
+### No/cut up image output with spikes on the vitterbi when decoding signals with FEC
 
 ![A screenshot of SatDump showing this usse](../../assets/images/Radio/Viterbi-spikes.png)
 *You can see the spikes on the viterbi, on a video you'd see `NOSYNC` constantly popping up*
