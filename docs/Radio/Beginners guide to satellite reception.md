@@ -323,7 +323,7 @@ Now that we have gone over the terminology and science behind these satellites, 
 
 |Satellite|Channel numbers|Channel types|
 |---|---|---|
-|M2-3|1, 2, 4|2×Visible, 1×Infrared|
+|M2-3|1, 2, 3|3×Visible|
 |M2-4|1, 2, 3|3×Visible|
 
 <br>
@@ -475,7 +475,7 @@ As of the latest commit, Meteor M2-4 is still in testing and has lately been see
 1. Open SDR++ and start the radio
 
 2. Open the Module manager and configure as follows:
-![SDR++ config for receiving LRPT](../../assets/images/Radio/SDRpp-LRPT-config.png)
+![SDR++ config for receiving LRPT](../../assets/images/Radio/SDRpp-LRPT-config.jpg)
 
 3. Open SatDump, move to the `Offline processing` tab and configure appropriately:
 ![SatDump config for decoding LRPT](../../assets/images/Radio/LRPT-Offline-proccessing.png)
@@ -814,7 +814,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just grain (no actual signal was decoded), all you are left with is the predefined map.
 
 ### The image is solid black
-If the image is from LRPT on an evening pass, you need to select Channel 4 (IR) to see anything - Channels 1 and 2 are visible, during night it is solid black.
+If the image is from LRPT operating on 124 mode on an evening pass, you need to select Channel 4 (IR) to see anything - Channels 1 and 2 are visible, during night it is solid black. If you got 123 LRPT, you won't be able to see any imagery, as all channels are visible light only.
 
 ### There is grain all over the resulting image
 Some grain is expected on APT images, you can get rid of it by ticking `Median blur` in the `Viewer` tab. If it is present after, either:
