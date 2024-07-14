@@ -162,11 +162,10 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 - **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs often have a very high gain which makes them prone to overloading. Because of this, higher bands exclusively use **filtered** LNAs (Low gain LNA > Filter > High gain LNA). The filter makes sure, that the LNA only amplifies the target signals and nothing else.
 
 
-# RTL-SDR specific things
-These apply to SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
+# RTL-SDR specific information
+These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 - The maximum stable sampling rate is **2.56 Msps!** Using anything higher can lead to sample drops if you don't have one of the few incredibly specific usb controllers with which the RTL chipset can pull 3.2 Msps without dropping samples. You can test if higher sampling rates such as 2.88 Msps work on your setup by running `rtl_test -s 2.88e6` and seeing if any data is lost after a few minutes.
-- When direct sampling for HF, use the Q branch
 - RTL-SDR Blog V4 needs specific drivers to work with most software, the installation steps are described on their [quick start page](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
 
@@ -277,7 +276,7 @@ Yes! New satellites very often have cfhannels that individually sample R, G, and
 Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes them viable for a **true color composite**! In this case, the composite is `197` - 1 to red, 9 to green, and 7 to blue.
 
 ![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
-*FengYun 3C received on 29/03-2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
+*FengYun 3C received on 29/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
 
 # VHF APT/LRPT reception guide (137MHz)
@@ -295,7 +294,7 @@ Now that we have gone over the terminology and science behind these satellites, 
 
 
 ![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
-*Meteor M2-3 LRPT received on 02-01-2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
+*Meteor M2-3 LRPT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
 
 ## Detailed satellite information
 
@@ -512,6 +511,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - These are the same as VHF: **NOAA 15, 18 and 19**.
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
 - The broadcast features a very strong carrier wave making it quite easy to track.
+- NOAA 15's old age has taken a toll on its systems, it only uses a backup antenna with drastically reduced power making the signal **very weak**.
 
 ![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.jpg)
 *NOAA 19 HRPT*
@@ -578,6 +578,7 @@ For these, there is no point in me writing it out: Lego has these covered in his
 
 ## Signal information
 
+All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization.
 |Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
 |NOAA POES HRPT|60|665.6 KSym/s|No|
@@ -589,7 +590,7 @@ For these, there is no point in me writing it out: Lego has these covered in his
 
 |Satellite|Frequency|Notes|
 |---|---|---|
-|NOAA 15|1702.5 MHz|**Very weak, don't bother**|
+|NOAA 15|1702.5 MHz|**Very weak**|
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
 |Meteor M2-2, M2-3, M2-4|1700 MHz||
@@ -608,12 +609,13 @@ You can only receive these signals with an SDR that has a sampling rate at least
 - Provides full disc images of the earth and/or regional crops
 
 - There are **10** geostationary satellites broadcasting imagery in this band:
-    - 2x GOES in the US (One additional limited GOES in Europe and Asia)
+    - 2x GOES in the US
+    - 1x EWS-G in Europe and Asia (Retired GOES)
     - 2x Elektro-L in Europe, Asia and Oceania
     - 4x Fengyun in Asia and Oceania
     - 1x Geo-Kompsat in Asia and Oceania
 
-## Example processed xRIT image
+## Example processed geostationary image
 
 ![Elektro-L3 full disc Earth image](../../assets/images/Radio/compressed/Best-Earth-full-disc-COMPRESSED.jpg)
 *Elektro-L N3 LRIT received on 11/2/2024 using a 125 cm dish and a SawBird GOES+. Decoded using SatDump. Pictured is the autogenerated `NC` (Natural Color) composite. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Sat-reception-journey/Best-Earth-full-disc.png) for the full resolution image.*
@@ -634,7 +636,6 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 ### GOES
 
-#### American
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
     - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery.
@@ -649,26 +650,27 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 > TODO: GRB FFT
 
-#### Rest of the world
+### EWS-G
 - **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved over the Indian ocean to replace EWS-G1 (GOES 13) and now broadcasts a few relatively weak signals:
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
     - **GVAR** - A relatively weak broadcast that contains very high resolution data. 
     - **SD** - Broadcasts raw instrument data, separates into two downlinks on the same frequency:
         - **Raw imager data**
-        - **Raw sensor data**
+        - **Raw sounder data**
 - This signal is very prone to corruption because of lacking FEC, which often causes lines to be severely misplaced in the resulting imagery. I have created a corrector to make the imagery more presentable even at low SNRs, you can view it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
+- The sounder is disabled: The raw sounder downlink is empty, GVAR produces empty sounder images.
 
 ![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg)
 *GOES 15 GVAR*
 
 ![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg)
-*GOES 13 SD, both the imager and sounder downlinks are visible. CC: dereksgc on Discord*
+*GOES 13 SD: sounder SD is the thin spike in the middle, everything else is the imager SD. CC: dereksgc on Discord*
 
 
 ### Elektro-L
 - **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. Both of these include Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
-- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 far less consistent.
+- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 is too consistent.
 
 > Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
 
@@ -681,6 +683,7 @@ All of these include FEC, meaning you should be able to properly decode them eve
 #### FengYun 2 series
 - **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
 - This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline to remedy this.
+- During XX:48-XX:00 the satellites broadcast empty LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%.
 
 > These satellites also broadcast an incredibly weak **CDAS** signal, it's almost completely undocumented owing to it's weak & wide nature.
 
@@ -757,7 +760,7 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 
 \* RHCP+LHCP <br>
 \*\* Only with the corrector, the image will otherwise have a lot of missing lines. <br>
-\*\*\* During XX:28 - XX:30 the sensor rolls back, this presents itself as a very strong carrier wave in place of S-VISSR. During XX:48-XX:00 the satellite broadcasts dead (filler) LRIT on 1690.5 MHz, causing the second image to be cut in half at about 57%. <br>
+\*\*\* FengYun 2G only transmits the second XX:30 image every 1:30 UTC and every 4 hours after.<br>
 \*\*\*\* Only using a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
 
 
