@@ -228,7 +228,7 @@ After playing around with L & S bands and even having pipe dreams of doing X-ban
 
 > 2.88 Msps somehow worked on my tablet and remained completely stable, was the mode I used the most often.
 
-Looking at my options, they were extremely limited - good SDRs at the 100€ price bracket with high sampling rates were very sparse. The only SDRs I found able to pull more than the measly 2.88 Msps of the RTL820T chipset were:
+Looking at my options, they were extremely limited - good SDRs at the 100€ price bracket with high sampling rates were very sparse. The only SDRs I found able to pull more than the measly 2.88 Msps of the RTL2832U chipset were:
 - The AirSpy Mini clocking in at 6 Msps, still not enough for most advanced applications (X-band requiring >15 Msps)
 - The MiriSDR, a surprisinmgly capable and cheap SDR (Even though it is quite deaf, requiring an additional LNA) from Aliexpress clocking in at 10 Msps. Close, but still not enough.
 - The one and only... HackRf clone. 
