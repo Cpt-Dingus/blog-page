@@ -220,7 +220,7 @@ As for the results:
 # S-band dreams
 Having basically conquered L-band, the next viable thing I could try was the S-band - 2.2 GHz. Requiring the purchase of an MMDS with a suitable frequency range and modifying it to be usable for satellite reception, it was by no means going to be an easy task.
 
-In an stroke of false luck, after looking around for a while, I managed to find a person selling an MMDS with a suitable range -> 2.1 - 2.3 GHz. Not only was this MMDS in the range of LTE/GSM, it was also a just a chinese clone. This would come to bite me in my arse later down the road.
+In an stroke of false luck, after looking around for a while, I managed to find a person selling an MMDS with a suitable range -> 2.1 - 2.3 GHz. I instantly jumped on the offer, not knowing, that this MMDS in the range of LTE/GSM all the while being a chinese clone. This would come to bite me in my arse later down the road.
 
 
 # More money down the rabbit hole
