@@ -532,14 +532,17 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### METEOR-M
 
-- 3 satellites currently broadcast in L-band: **Meteor M2-2, Meteor M2-3,** and **Meteor M2-4**
+- 3 satellites currently broadcast in L-band: **~~Meteor M2-2~~, Meteor M2-3,** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
 
-> You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.
+> NOTE: As of the latest commit (30/7/2024), Meteor-M N°2-2 has inexplainably stopped broadcasting in the L and X bands. The last known succesful reception was on the 25th, the satellite's status is currently unknown.
+
+> ~~You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.~~
+
 
 ### MetOp
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
