@@ -388,7 +388,8 @@ That's it. Really.
 - Fairly difficult to build
 - Very good results thanks to its true circular polarization and consistent radiation pattern
 - Best choice for permanent fixtures
-  
+- ***Make sure to use the correct polarization, that being RHCP!!!***  
+
 I will not be describing how to build it, since the building process is quite involved. There are plenty of guides out there, if I ever get around to building one I will link it here.
 
 ![Sample QFH antenna](../../assets/images/Radio/QFH-guide.png) <br>
@@ -539,7 +540,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
 
-> NOTE: As of the latest commit (30/7/2024), Meteor-M N°2-2 has inexplainably stopped broadcasting in the L and X bands. The last known succesful reception was on the 25th, the satellite's status is currently unknown.
+> NOTE: As of the latest commit (30/7/2024), Meteor-M N°2-2 has inexplainably stopped broadcasting in the L and X bands. The last known succesful reception was on the 24th, the satellite's status is currently unknown.
 
 > ~~You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.~~
 
