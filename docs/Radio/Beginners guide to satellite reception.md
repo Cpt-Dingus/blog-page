@@ -320,6 +320,9 @@ Now that we have gone over the terminology and science behind these satellites, 
 - As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x or just M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
 - These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it's fairly weak.
 
+> Reception note: M2-3 LRPT fades a lot when at lower elevations.
+
+
 <br>
 
 - These transmit any 3 channels the operators choose, as of the latest commit:
@@ -331,11 +334,10 @@ Now that we have gone over the terminology and science behind these satellites, 
 
 <br>
 
-- This satellite series has been plagued with accidents, faults, and delays: Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, M2-2 got hit by a micrometeor making it unable to broadcast LRPT, **M2-3's LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be**. 
-- As a long awaited change of luck, M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. No issues have been detected with the satellite so far.
-> Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future. 
+- This satellite series has been plagued with accidents, faults, and delays: Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, M2-2 got hit by a micrometeor making it unable to broadcast LRPT, **M2-3's LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be**.
+- As a long awaited change of luck, M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. Its JPEG compressor has had a few hiccups presenting as a lot of artefacting in its imagery, but it has always recovered after the satellite restarted it a few orbits later.
 
-
+> Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future.
 ![Meteor LRPT screenshot from SatDump](../../assets/images/Radio/Meteor-LRPT.jpg)
 *Meteor M2-4 LRPT. Spike on the left isn't a part of the signal.*
 
@@ -388,7 +390,7 @@ That's it. Really.
 - Fairly difficult to build
 - Very good results thanks to its true circular polarization and consistent radiation pattern
 - Best choice for permanent fixtures
-- ***Make sure to use the correct polarization, that being RHCP!!!***  
+- ***Make sure to build it with the correct polarization, that being RHCP!!!***
 
 I will not be describing how to build it, since the building process is quite involved. There are plenty of guides out there, if I ever get around to building one I will link it here.
 
@@ -523,8 +525,10 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 - These are the same as VHF: **NOAA 15, 18 and 19**.
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
-- The broadcast features a very strong carrier wave making it quite easy to track.
-- NOAA 15's old age has taken a toll on its systems, it only uses a backup antenna with drastically reduced power making the signal **very weak**.
+- The broadcast features a very strong carrier wave making it very easy to track.
+
+> Reception note: NOAA 15's old age has taken a toll on its systems, it only uses a backup antenna with a drastically reduced irradiation power making the signal fade a lot, be significantly weaker than intended. Reception is still possible, but requires completely clear LOS with the satellite, more precise tracking than other satellites described here.
+
 
 ![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.jpg)
 *NOAA 19 HRPT*
@@ -535,7 +539,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 - 3 satellites currently broadcast in L-band: **~~Meteor M2-2~~, Meteor M2-3,** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
-- The broadcast, much like POES HRPT, has a very strong carrier wave making it very easy to track.
+- This broadcast, much like POES HRPT, has a very strong carrier wave making it easy to track.
 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
@@ -548,16 +552,18 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ### MetOp
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
-- The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, you will have to go by the SNR meter.
+- The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
 
 ![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.jpg)
 *MetOp B AHRPT*
 
 ### FengYun 3
 
-- The only satellite broadcasting in the L-band is **Fengyun 3C**. It is the last surviving member of the FengYun 3 constellation to have an L-band antenna, but due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within the chinese border). 
-- It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. Much like MetOp AHRPT, it has Reed-Solomon FEC, but unlike any other satellite in L-band **it broadcasts true color** (The rest can only do false color RGB composites) - exactly what you would see with your eyes if you stood right next to the satellite. 
-- The signal has a higher symbol rate in comparison to the rest of the satellites mentioned here, meaning you can not use a standard RTL-SDR dongle to receive it.
+- The only satellite from this constellation still broadcasting in the L-band is **Fengyun 3C**. Due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within Chinese territory). 
+- It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. The broadcast has Reed-Solomon FEC, but unlike any other satellite in the L-band **it broadcasts channels required for true color** - exactly what you would see with your eyes if you stood right next to the satellite.
+- The signal has a relatively high simbol rate, can't be decoded with a standard RTLSDR dongle.
+
+> Reception note: The signal becomes a strong carrier wave once the satellite turns it off. The signal might cut out a bit sooner or later than it gaind/lodes LOS with Chinese territory, it does not follow the rule to the tee.
 
 ![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.jpg)
 *FengYun 3C AHRPT*
@@ -572,23 +578,28 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ### LNA
 
 - L-band radio waves are very weak and disspiate too quickly to be usable with just your SDR - an LNA connected directly to the feed is imperative.
-- The only viable option that doesn't cost a liver is the [Sawbird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception. 
+- The only viable commercial option that doesn't cost a liver is the [Sawbird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception. 
 
-> Do not waste your money on cheap wideband LNAs, **they will NOT work.**
+> Do not waste your money on cheap wideband LNAs, **they will NOT work well enough to get satisfactory results.**
 
 ### Dish
 
-- You can use either a prime focus or an offset dish, the former just requiring less turns on the helix or a [patch feed](http://sat.cc.ua/page3.html) for better performance alltogether.
+- A prime focus, offset, or grid dish are all usable for L band reception, with some slight adjustments between them;
+- PF dishes require less turns on the helix or a [patch feed](http://sat.cc.ua/page3.html) for better performance alltogether
+- Wifi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more.
+![Image showing the two reflector rotations for S and L bands](TODO)
+*Credit: lego11*
+
 - The bigger the dish, the harder it is to track but the higher gain you have - the stronger the signals will be. 
 
-An 80 cm offset is a great starter dish, given its lightness and wide availability - people give these away all the time after switching to terrestrial television.
+Even an 80 cm offset is a great starter dish, given its lightness and wide availability - people give these away all the time after switching to terrestrial television. Check your local marketplaces, you ought to find something!
 
 > NOTE: On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations.
 
 ### Feed
 
 - The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
-- The preferred and most forgiving feed you can make is a **Helical antenna**, a simple wire spun into a helical shape placed on a 13x13 cm plate.
+- The preferred and most forgiving circularily polarized feed you can make is a **Helical antenna**, a simple wire spun into a helical shape placed on a (minimally) 13x13cm conductive plate.
 
 ## Build and reception
 
@@ -596,7 +607,7 @@ For these, there is no point in me writing it out: Lego has these covered in his
 
 ## Correctly adjusting your gain {#correct-gain}
 
-Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities due to overloading which damages the signal's symbols. **Setting your gain beyond the SDR's saturation point only gives an illusion of a stronger signal, does NOT make it stronger, even if the SNR meter indicates otherwise!** You can see this by looking at the constellation while upping the gain, it deforms but does not grow clearer.
+Correctly adjusting your gain is **extremely important**, as setting it incorrectly can severely hurt your reception capabilities either due to the signal being weaker than it can be, or by overloading your SDR which damages the signal's symbols. **Setting your gain beyond the SDR's saturation point only gives an illusion of a stronger signal, does NOT make it stronger, even if the SNR meter indicates otherwise!** You can see this by looking at the constellation while upping the gain, it deforms but does not grow clearer.
 
 To ensure it's set correctly, use the "Magic eye" found in the `Debug` menu in the `Recording` tab and refer to the folllowing examples:
 
@@ -623,12 +634,13 @@ A small dot means that you should up the gain, if you are already maxxed out you
 ## Signal information
 
 All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization.
+
 |Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
 |NOAA POES HRPT|60|665.6 KSym/s|No|
 |Meteor HRPT|60|665.6 KSym/s|No|
 |MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
-|FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 4 Msps
+|FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 3.4 Msps
 
 ## Frequency reference
 
@@ -637,13 +649,13 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |NOAA 15|1702.5 MHz|**Very weak**|
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
-|Meteor M2-2, M2-3, M2-4|1700 MHz||
+|~~Meteor M2-2~~, M2-3, M2-4|1700 MHz||
 |Metop B, C|1701.3 MHz||
 |FengYun 3C|1701.4 MHz||
 
 ## Symbol and sampling rate relation
 
-You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described in the `Common issues` section). Overhead is also **needed** because of **doppler shifting** and the **SDR's reference inaccuracy**. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), **the ideal sampling rate is twice the symbol rate** - anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
+You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described [here](#bad_constellation)). Overhead is also **needed** because of **doppler shifting** and the **SDR's reference inaccuracy**. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), **the ideal sampling rate is twice the symbol rate** - anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
 
 # L-band geostationary satellite (LRIT/HRIT/etc.) reception guide {#geostationary-reception}
@@ -669,12 +681,7 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 - **LRIT** - Low Rate Information Transmission → A relatively slow broadcast in comparison to HRIT, usually has a lower quality but is easier to receive (is stronger)
 - **HRIT** - High Rate Information Transmission → A broadcast of data which usually has a higher quality than LRIT, but is harder to receive (is weaker)
-- **S-VISSR** - Stretched Visible and Infrared Spin Scan Radiometer → A fairly outdated broadcast of images from FengYun satellites
-- **GVAR** - Goes Variable → A broadcast used in older GOES-N satellites, is able to broadcast anything the operators choose
-- **GRB** - Goes ReBroadcast → A very high quality broadcast from GOES-R satellites 
-- **GGAK** - Heliogeophysical Instrument Complex → Broadcasts space weather information, these have been decoded but the information they hold is pretty much useless
-- **SD** - Sensor Data → Raw data broadcast from GOES-N satellites
-- **PGS** - Primary GroundStation → The nickname given to the raw data downlink from MSG satellites
+- Several others, see below
 
 ## Detailed satellite information
 
@@ -682,27 +689,33 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
-    - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery.
-    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s.
+    - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
+    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s. Also broadcasts the satellites' SUVI (sun imaging) instruments.
 
-All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak.
+- All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak. HRIT has notably good FEC, able to get clean imagery eben out of 1 dB!
+
+
+> GOES 19 has recently launched, is in the process of replacing GOES 16. It is expected to start broadcasting imagery soon.
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
 ![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.jpg)
-*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsghost on Discord*
+*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsghost on Discord
 
 > TODO: GRB FFT
 
 ### EWS-G
+
 - **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved over the Indian ocean to replace EWS-G1 (GOES 13) and now broadcasts a few relatively weak signals:
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
-    - **GVAR** - A relatively weak broadcast that contains very high resolution data. 
+    - **GVAR** - A relatively weak broadcast that contains all 5 imagery channels at a 1 km/px quality for the singular VIS channel and 4km/px for the other IR channels.
     - **SD** - Broadcasts raw instrument data, separates into two downlinks on the same frequency:
         - **Raw imager data**
         - **Raw sounder data**
-- This signal is very prone to corruption because of lacking FEC, which often causes lines to be severely misplaced in the resulting imagery. I have created a corrector to make the imagery more presentable even at low SNRs, you can view it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
+- GVAR is very prone to corruption because of lacking FEC, which often causes lines to be misplaced in the resulting imagery. I have created a corrector to make the imagery more presentable even at low SNRs, you can view it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
 - The sounder is disabled: The raw sounder downlink is empty, GVAR produces empty sounder images.
+
+> Reception note: The satellite normally does regional crops, as they can be scanned faster than full disc images. It still transmits a full disc image every 3 hours.
 
 ![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg)
 *GOES 15 GVAR*
@@ -712,11 +725,14 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 
 ### Elektro-L
-- **Elektro-L N3** and **Elektro-L N4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
-- They broadcast a **Low Rate Information Transmission (LRIT)** as well as a **High Rate Information Transmission (HRIT)** signal containing full disc images of the earth. Both of these include Reed-Solomon FEC, meaning you can get just a few dBs of the signal and still get a proper decode without any grain.
-- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 is too consistent.
+- **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+- They broadcast a **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just about 3 dB.
+- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 broadcasts channels too inconsistently to be specified here.
 
-> Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
+> Reception notes:
+> - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason for why imagery is broadcasted like this is unknown.
+> - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from FengYun 2H. It might interfere with LRIT reception, in which case you should point slightly farther from 2H.
+> - Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
 *Elektro-L N°3 LRIT on left, HRIT on right*
@@ -725,11 +741,11 @@ All of these include FEC, meaning you should be able to properly decode them eve
 ### FengYun
 
 #### FengYun 2 series
-- **FengYun 2H**, and **2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
+- **FengYun 2H**, and **FwngYun 2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
 - This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline to remedy this.
 - FengYun 2H broadcasts dead (empty) LRIT every hour (except 5:30Z and every 6 hours onwards) on 1690.5 MHz, this leads to the second image being cut at about 57%.
 
-> These satellites also broadcast an incredibly weak **CDAS** signal, it's almost completely undocumented owing to it's weak & wide nature.
+> These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to it's weak & wide nature.
 
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
 *FengYun 2H S-VISSR*
@@ -738,9 +754,9 @@ All of these include FEC, meaning you should be able to properly decode them eve
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 #### FengYun 4 series
-- **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** ~~and **HRIT** signal. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.~~
+- **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** ~~and **HRIT** signal~~. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px)~~, HRIT only transmits a single unencrypted infrared channel~~.
 
-> NOTE: As of 04/2024, FengYun 4A has recently started broadcasting its LRIT signal, but no products have been decoded so far. FengYun 4B is still commisioning, has only transmitted old FY 4A imagery so far.
+> NOTE: As of the latest commit (04/2024), FengYun 4A has recently started broadcasting its LRIT signal, but no products have been decoded so far. FengYun 4B is still commisioning, has only transmitted old FY 4A imagery so far.
 
 > Both HRIT broadcasts are currently disabled.
 
@@ -761,14 +777,16 @@ All of these include FEC, meaning you should be able to properly decode them eve
 
 ### Meteosat Second Generation (MSG)
 - **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 2x VIS at a 1.6 km/px quality, and 9x IR at a 4.8 km/px quality.
-- This is the second weakest signal behind FengYun 2 CDAS, requiring a massive 4 metre dish paired with a VLNA for a decode.
+- This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring a massive 3 metre dish paired with a VLNA for a decode.
 - The SEVIRI instrument has three operating modes:
     - HRV - High Resolution Visible - A crop of Europe and a crop of the bottom hemisphere is transmitted every 15 minutes, these move with sunlight as pictured below <br>
-![Meteosat HRV crpops](../../assets/images/Radio/Meteosat-HRV-mode.gif)<br>
+![Meteosat HRV crops](../../assets/images/Radio/Meteosat-HRV-mode.gif)<br>
 *HRV crops, [source](https://user.eumetsat.int/resources/user-guides/msg-high-rate-seviri-level-1-5-data-guide#ID-HRV-SEVIRI-scan-modes)*
 
     - RSS - Rapid Scan Service - The top third of the Earth is transmitted every 5 minutes
     - FES - Full Earth Scan - The whole earth is scanned every 15 mintues, only enabled during eclipse sason
+
+> Reception note: The minimal dish size is speculative, but it has been received using a 3 metre dish and custom aplifier before.
 
 
 > These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
@@ -800,12 +818,12 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
 |GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
-|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|400cm\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
+|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300cm\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
 
 \* Half the data sent over RHCP, the other half over LHCP <br>
 \*\* Only with the respective corrector, the image will otherwise be severely cut up. <br>
 \*\*\* **FengYun 2H:** 5:30-5:58 UTC and every 6 hours after, XX:30-XX:48 at all other times &pls  **FengYun 2G:** 01:30-01:58 UTC and every 4 hours after <br>
-\*\*\*\* Only using a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
+\*\*\*\* Only using a custom LNA such as a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
 
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. A linear feed even as simple as a cantenna will perform better.
@@ -813,14 +831,14 @@ You might have noticed, that some signals are **linearly polarized** instead of 
 
 ## Symbol and sampling rate relation
 
-You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described in the `Common issues` section). Overhead is also needed because of doppler shifting and the SDR's reference inaccuracy. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), the ideal sampling rate is twice the symbol rate -  anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
+You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described [here](#bad_constellation)). Overhead is also needed because of doppler shifting and the SDR's reference inaccuracy. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), the ideal sampling rate is twice the symbol rate -  anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
 
 ## Actually receiving the satellites!
 
 Don't forget to [set your gain correctly](#correct-gain)!
 
-1. Aim your dish using whatever broadcast the satellite has for alignment, or using a dish tracking app (Less accurate). Alternatively, locate the rough area of where the satellite should be in the sky, start the correct pipeline and when the broadcast starts quickly try to find where the signal is the strongest. You usually have a few seconds to find it, which is more than enough in most cases.
+1. Aim your dish using whatever broadcast the satellite transmits constantly, or using a dish alignment app (Less accurate). Alternatively, locate the rough area of where the satellite should be in the sky, start the correct pipeline and when the broadcast starts quickly try to find where the signal is the strongest. You usually have a few seconds to find it, which is more than enough in most cases.
 
 2. Open SatDump, move to the `Recording tab` following the same setup as for HRPT
 
