@@ -62,7 +62,7 @@ The standard that is most commonly used with satellite reception is the one from
 
 > Note: The name meanings were taken from the [Wikipedia page for the Radio Spectrum](https://en.wikipedia.org/wiki/Radio_spectrum), are not meant to be taken literally.
 
-We will initially look at the **VHF satellite band (137 MHz)**, which contains a few satellites broadcasting images at relatively low qualities (4 km/px and compressed 1 km/px), followed by information about both low-earth-orbitting and geostationary satellites broadcasting in the **L satellite band (~1.7 GHz)** which requires more effort but offers much more interesting data such as full disc Earth imagery at a much higher quality (~1 km/px).
+We will initially look at the **VHF satellite band (137 MHz)**, which contains a few satellites broadcasting images at relatively low qualities (4 km/px and compressed 1 km/px), followed by information about both low-earth-orbitting and geostationary satellites broadcasting in the **L satellite band (~1.7 GHz)** which requires more effort but offers much more interesting data such as full disc Earth imagery at a much higher quality (uncompressed ~1 km/px).
 
 
 # Glossary
@@ -166,6 +166,7 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 - The maximum stable sampling rate is **2.56 Msps!** Using anything higher can lead to sample drops if you don't have one of the few incredibly specific usb controllers with which the RTL chipset can pull 3.2 Msps without dropping samples. You can test if higher sampling rates such as 2.88 Msps work on your setup by running `rtl_test -s 2.88e6` and seeing if any data is lost after a few minutes.
+> Please note, that on some devices even 2.56 drops samples! Run `rtl_test -s 2.56e6` to test, or receive signals with error correction and see if the viterbi is spiking (indicative of sample drops).
 - RTL-SDR Blog V4 needs specific drivers to work with most software, the installation steps are described on their [quick start page](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
 
@@ -197,93 +198,14 @@ There are a few apps for IOS but they have severe limitations, using any of the 
 
 > **Make sure you update your TLEs** every few days, not doing so might make the satellite locations be outdated or just outright incorrect.
 
-I personally use Orbitron for long term and Look4Sat for short term predictions, the SatDump tracking module while live decoding in case I lose track.
-
-
-# Colors of received imagery
-
-After receiving these satellites and checking the resulting images, you will notice, that they are all black and white even though the images you see online are colorful. The colored images are created by processing the raw channels into RGB composites - applying different channels to different colors. You will quickly find the term `False Color` being thrown around, but how can color be false? To understand why this is the case, we have to look at some color theory and instrument descriptions:
-
-## How is color perceived?
-
-Our eyes sense different colors by sensing different wavelengths that objects reflect using three types of cone cells:
-- Short → 380 - 540 nm, corresponds to **Blue**
-- Medium → 440 - 670 nm, corresponds to **Green**
-- Long → 500 - 690 nm, corresponds to **Red**
-
-![Color spectrum showing the S, M and L wavelengths](../../assets/images/Radio/Color-spectrum.png)
-
-Satellites work simmilar to our eyes with one exception: instead of having different cones for different wavelengths they have different **channels**. 
-
-> Why are they black and white when we see color? Because we are looking at individual channels (Equivalent of only one type of cones) instead of a mix of channels as perceived by our eyes.
-
-## Why is it called false color?
-
-To learn what false color is, we first have to learn about true color. **True color** is the name given to images that represent natural colors - all the colors a human eye can see ranging from ~400-700 nm. We can't see electromagnatic waves that have a lower or higher wavelength.
-
-Due to technological contraints and a focus on usability, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrareds.
-
-As an example, these are the channels present on the AVHRR/3 instrument flown on MetOp and NOAA POES satellites:
-
-|Channel number|Wavelength|Description|
-|---|---|---|
-|1|580-680 nm|Visible|
-|2|725-1000 nm|Near infrared|
-|3A|1580-1640 nm|Near infrared|
-|3B|3550-3930 nm|Middle infrared|
-|4|10300-11300 nm|Thermal infrared|
-|5|11500-12500 nm|Thermal infrared|
-
-> Earlier satellites from NOAA used AVHRR/2 which lacked channel 3A and AVHRR/1, which lacked channels 3A and 5.
-
-As you might see, we only have two channels covering the visible spectrum (Ch2 partly covers it), meaning we can't get the actual colors the sensor could have seen from the data it collects - **True color isn't possible on AVHRR/3.**
-
-But how do we get colored composites if we can't see the actual RGB wavelengths? We can assign arbitrary wavelengths to the R, G, and B channels, this results in a **False color composite**. These are useful in cases, such as highlighting things that might not be visible in the true color spectrum. *They also look nicer.* 
-
-Let's take the `221` RGB composite as an example, it assigns channel 2 (centered at 630 nm) to the red and green output channels, and channel 1 (centered at 862 nm) to the blue output channel. This does not represent the actual RGB color wavelengths, **hence it isn't true color**.
-
-![Example of the 221 false color composite](../../assets/images/Radio/compressed/False-color-COMPRESSED.jpg)
-*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
-
-Of course there are much more complex composites such as the `NOAA Natrual Color Composite` which applies channels using the following formulas:
-
-|Color|Formula|
-|---|---|
-|Red|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
-|Green|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
-|Blue|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch1 * 2.2 - 0.15`|
-
-You can play with the different composites and see what looks the best for your use case.
-
-
-## Do any satellites broadcast true color?
-
-Yes! New satellites very often have cfhannels that individually sample R, G, and B wavelengths! For example, here are the channels of the VIRR instrument flown on Fengyun 3 [A/B/C] satellites:
-
-|Channel number|Wavelength|Description|
-|---|---|---|
-|<u><b>1</b></u>|<u><b>580-680 nm</b></u>|<u><b>Visible</b></u>|
-|2|840-890 nm|Near infrared|
-|3|3550-3930 nm|Middle infrared|
-|4|10300-11300 nm|Thermal infrared|
-|5|11500-12500 nm|Thermal infrared|
-|6|1550-1640 nm|Short wave infrared|
-|<u><b>7</b></u>|<u><b>430-480 nm</b></u>|<u><b>Visible</b></u>|
-|8|480-530 nm|Visible|
-|<u><b>9</b></u>|<u><b>530-580 nm</b></u>|<u><b>Visible</b></u>|
-|10|1325-1395 nm|Near infrared|
-
-Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes them viable for a **true color composite**! In this case, the composite is `197` - 1 to red, 9 to green, and 7 to blue.
-
-![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
-*FengYun 3C received on 29/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
+I personally use Orbitron for long term and Look4Sat for short term predictions, the SatDump tracking module while live decoding in case I lose track of the satellite.
 
 
 # VHF APT/LRPT reception guide (137MHz)
-Now that we have gone over the terminology and science behind these satellites, we can finally move to the actual reception process!
+Now that we have gone over the terminology and science behind these satellites, we can finally move on o the actual reception process!
 
 - Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR, and some patience
-- As of writing this article, there are **5** weather satellites currently broadcasting in this band
+- As of writing this article, there are **5** weather satellites currently broadcasting imagery in this band
 - While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
 
 ## Example processed APT and LRPT images
@@ -300,7 +222,7 @@ Now that we have gone over the terminology and science behind these satellites, 
 
 ### NOAA
 
-- These are the last **3** remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19** being launched in 1998, 2005 and 2009 respectively.
+- These are the last **3** remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation, consisting of **NOAA 15, 18 and 19**. These were launched in 1998, 2005, and 2009 respectively.
 - Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
 - Also broadcasts an auxiliary [DSB (Direct Sounder Broadcast)](https://www.sigidwiki.com/wiki/NOAA_Direct_Sounder_Broadcast_(DSB)) signal which contains telemetry, information from the HIRS and SEM instruments. I won't be covering it in this guide, as it's primarily focused on imagery. 
 
@@ -310,14 +232,14 @@ Now that we have gone over the terminology and science behind these satellites, 
 
 <br>
 
-- New satellite launches are a part of the JPSS constellation, which only includes an incomparably harder to receive X-band signal. No future satellite launches from NOAA are planned to include a VHF antenna.
+- New satellite launches are a part of the JPSS constellation, which only include an incomparably harder to receive X-band signal. No future satellite launches from NOAA are planned to include a VHF antenna.
 
 ![NOAA APT screenshot from SatDump](../../assets/images/Radio/NOAA-APT.jpg)
 *NOAA 19 APT, CC: SigIdWiki*
 
 ### METEOR-M
 
-- As for their Russian counterpart, **2** satellites are currently broadcasting in VHF: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x or just M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
+- As for their Russian counterpart, **2** satellites are currently broadcasting imagery in this band: **Meteor-M N°2-3** and **Meteor-M N°2-4** (Meteor M2-x or just M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
 - These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it's fairly weak.
 
 > Reception note: M2-3 LRPT fades a lot when at lower elevations.
@@ -332,14 +254,16 @@ Now that we have gone over the terminology and science behind these satellites, 
 |M2-3|1, 2, 3|3×Visible|
 |M2-4|1, 2, 3|3×Visible|
 
-<br>
+
+![Meteor LRPT screenshot from SatDump](../../assets/images/Radio/Meteor-LRPT.jpg)
+*Meteor M2-4 LRPT. Spike on the left isn't a part of the signal.*
+
+
 
 - This satellite series has been plagued with accidents, faults, and delays: Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, M2-2 got hit by a micrometeor making it unable to broadcast LRPT, **M2-3's LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be**.
 - As a long awaited change of luck, M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. Its JPEG compressor has had a few hiccups presenting as a lot of artefacting in its imagery, but it has always recovered after the satellite restarted it a few orbits later.
 
 > Meteor M2-4 is still in testing, further frequency/bitrate switching, skew tests, testing patterns, and the broadcast being shut off randomly are all possible in the near future.
-![Meteor LRPT screenshot from SatDump](../../assets/images/Radio/Meteor-LRPT.jpg)
-*Meteor M2-4 LRPT. Spike on the left isn't a part of the signal.*
 
 ## Broadcast issue quick reference
 
@@ -355,12 +279,12 @@ You will need an SDR and an antenna, **no other special equipment is required fo
 
 > NOTE: You also need the appropriate cables and adapters to connect antenna to your SDR, make sure to order these in advance. An example is a coaxial cable and an F female to SMA male adapter.
 
----
+### SDR
 
 The SDR should be a **reputable brand** if you want optimal performance (E.g. AirSpy, RTLSDR Blog, Nooelec...). 
 > In simpler terms; avoid generic SDRs. They will work, but you can expect worse results.
 
----
+### Antenna
 
 As for the **antenna**, you have the choice between:
 - **Omnidirectional antennas** - Don't need tracking to be performed (remain stationary throughout the pass)
@@ -390,12 +314,17 @@ That's it. Really.
 - Fairly difficult to build
 - Very good results thanks to its true circular polarization and consistent radiation pattern
 - Best choice for permanent fixtures
-- ***Make sure to build it with the correct polarization, that being RHCP!!!***
-
-I will not be describing how to build it, since the building process is quite involved. There are plenty of guides out there, if I ever get around to building one I will link it here.
 
 ![Sample QFH antenna](../../assets/images/Radio/QFH-guide.png) <br>
 *[Source](https://okelectronic.wordpress.com/2014/08/20/rtl-sdr-second-attempt/)*
+
+A good guide I have followed to make this antenna can be found [here](https://sdr-es.com/construccion-antena-qfh-137/), while being in spanish it offers great information about the dimensions and the installation. [Google translated page](https://sdr--es-com.translate.goog/construccion-antena-qfh-137/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
+
+***WARNING! This antenna has a circular polarization, meaning you <u>HAVE</u> to match it with the satellites', that being RHCP!!!*** (For APT & LRPT)
+![Correct QFH polarization](../../assets/images/Radio/QFH-correct-polarization.jpg)
+*Bottom to top, RHCP is twisted clockwise, while LHCP is twisted counter-clockwise. CC for image: muellermilch.de on Discord*
+
+Using the incorrect circular polarization presents itself as the signal being weak, fading significantly throughout the pass.
 
 ### 3. Yagi-Uda antenna
 - Directional
@@ -403,14 +332,12 @@ I will not be describing how to build it, since the building process is quite in
 - Very good results thanks to its high gain
 - Requires manual tracking
   
-![An image describing the parts of a yagi antenna](../../assets/images/Radio/Yagi-example.png) <br>
-*[Source](https://www.everythingrf.com/community/what-is-a-yagi-antenna)*
-
-I personally use this type of antenna for VHF passes, since it constantly gets a great SNR (~17 dB on LRPT with a 5-element) and is quite easy to build albeit requiring a bit more wire. 
+![An image describing the parts of a yagi antenna](../../assets/images/Radio/Yagi-example.jpg) <br>
+*[Source](https://www.digikey.com.br/pt/blog/the-yagi-antenna)*
 
 To make it:
-1. Get a Boom (Anything long and nonconductive, just consider, that you will HAVE to manhandle it later while tracking sats - don't get a tungsten rod or something) and find out how many elements fit on it
-> More elements = More directional (Harder to track), higher gain (Better signal strength), longer boom length (Bulkier)
+1. Get somethig long and nonconductive, this wll be the base for the yagi and is called a "boom". Afterwards, figure out how many elements fit on it based on its length.
+> More elements make the antenna: More directional (Harder to track), have a higher gain (Better signal strength), have a longer boom length (Bulkier)
 2. Shove appropriate numbers into [this calculator](https://www.steeman.org/Antenna/Yagi-Antenna-Calculator) (For frequency choose 137.5 MHz)
 3. Cut copper wires to length, place them onto the boom according to to the values from the calculator
 4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the core of the same wire\
@@ -422,11 +349,13 @@ To make it:
 
 ### Other choices
 
-This list isn't exhaustive, different antenna types such as [quads](https://en.wikipedia.org/wiki/Quad_antenna) or [turnstiles](https://en.wikipedia.org/wiki/Turnstile_antenna) can also be used.
+This list isn't exhaustive, different antenna types such as (including but not limited to) [quads](https://en.wikipedia.org/wiki/Quad_antenna) or [turnstiles](https://en.wikipedia.org/wiki/Turnstile_antenna) can also be used.
+![Images of a turnstile and a quad antenna](../../assets/images/Radio/Other-vhf-antennas.jpg)
+*Turnstile on the left, [source](https://en.wikipedia.org/wiki/Turnstile_antenna). Quad on the right, [source](http://www.basicomm.com/50mhz-cubical-quad-antenna?ckattempt=1)*
 
 ## Frequency reference
 
-As of the latest commit, the frequencies these satellites broadcast in are as follows:
+As of the latest commit, the frequencies these satellites broadcast at are as follows:
 
 |Satellite|Frequency|
 |---|---|
@@ -438,7 +367,7 @@ As of the latest commit, the frequencies these satellites broadcast in are as fo
 
 ## Actually receiving the satellites!
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be
-2. Open SatDump and navigate to the `Recorder` tab, select your SDR, set the sampling rate to an appropriate value (~1-2 Msps) and hit `Start`
+2. Open SatDump and navigate to the `Recorder` tab, select your SDR, set the sampling rate to an appropriate value (~1-2 Msps for this band) and hit `Start`
 - Rise the gain until your noise floor starts to rise more than the target signal, or until your SDR overloads, whichever comes first. Try not to move it around during the pass, it will lead to the image having sections with a different brightness with APT. Doing so has no effect on LRPT.
 
 3. In the side panel, open the `Processing` menu and do the following:
@@ -505,7 +434,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 # L-band HRPT reception guide (1.7 GHz)
 - L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **specialized equipment** as well as a **dish** paired with some half decent tracking skills.
-- Offers much more interesting things than VHF such as being able to receive 5+ pure and uncompressed 1km/px channels as well as full disc Earth imagery with geostationary satellites broadcasting xRIT or another alternative.
+- Offers much more interesting things than VHF, such as being able to receive 5+ pure and uncompressed 1km/px channels as well as full disc Earth imagery with geostationary satellites broadcasting xRIT or another alternative.
 - This heading describes LEO satellite reception, you can find Geostationary reception [here](#geostationary-reception)
 - The are **9** LEO satellites currently broadcasting imagery in this band:
 
@@ -527,7 +456,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
 - The broadcast features a very strong carrier wave making it very easy to track.
 
-> Reception note: NOAA 15's old age has taken a toll on its systems, it only uses a backup antenna with a drastically reduced irradiation power making the signal fade a lot, be significantly weaker than intended. Reception is still possible, but requires completely clear LOS with the satellite, more precise tracking than other satellites described here.
+> Reception note: NOAA 15's old age has taken a toll on its systems, it only uses a backup antenna with a drastically reduced irradiation power making the signal fade a lot, be significantly weaker than intended. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
 
 
 ![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.jpg)
@@ -544,7 +473,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
 
-> NOTE: As of the latest commit (30/7/2024), Meteor-M N°2-2 has inexplainably stopped broadcasting in the L and X bands. The last known succesful reception was on the 24th, the satellite's status is currently unknown.
+> NOTE: As of the latest commit (30/7/2024), Meteor-M N°2-2 has inexplicably stopped broadcasting in the L and X bands. The last known succesful reception was on the 24th of July, the satellite's status is currently unknown.
 
 > ~~You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.~~
 
@@ -554,16 +483,18 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
 
+> Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut constellation, make sure to follow [this heading](#bad_constellation) to lower the pll bandwidth.
+
 ![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.jpg)
 *MetOp B AHRPT*
 
 ### FengYun 3
 
 - The only satellite from this constellation still broadcasting in the L-band is **Fengyun 3C**. Due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within Chinese territory). 
-- It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruuments. The broadcast has Reed-Solomon FEC, but unlike any other satellite in the L-band **it broadcasts channels required for true color** - exactly what you would see with your eyes if you stood right next to the satellite.
+- It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruments. The broadcast has Reed-Solomon FEC, but unlike any other satellite in the L-band **it broadcasts channels required for true color** - exactly what you would see with your eyes if you stood right next to the satellite.
 - The signal has a relatively high simbol rate, can't be decoded with a standard RTLSDR dongle.
 
-> Reception note: The signal becomes a strong carrier wave once the satellite turns it off. The signal might cut out a bit sooner or later than it gaind/lodes LOS with Chinese territory, it does not follow the rule to the tee.
+> Reception note: The signal becomes a strong carrier wave once the satellite turns it off. The signal might cut out a bit sooner or later than it gains/loses LOS with Chinese territory, it does not follow the rule to the tee.
 
 ![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.jpg)
 *FengYun 3C AHRPT*
@@ -573,26 +504,26 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### SDR
 
-- Any SDR able to sample 1650-1710 MHz will work, just make sure its sampling rate is good enough to receive these satellites.
+- Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is good enough to receive these satellites.
 
 ### LNA
 
 - L-band radio waves are very weak and disspiate too quickly to be usable with just your SDR - an LNA connected directly to the feed is imperative.
-- The only viable commercial option that doesn't cost a liver is the [Sawbird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception. 
+- The only viable commercial option that doesn't cost a liver is the [Sawbird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception.
 
 > Do not waste your money on cheap wideband LNAs, **they will NOT work well enough to get satisfactory results.**
 
 ### Dish
 
-- A prime focus, offset, or grid dish are all usable for L band reception, with some slight adjustments between them;
-- PF dishes require less turns on the helix or a [patch feed](http://sat.cc.ua/page3.html) for better performance alltogether
-- Wifi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more.
-![Image showing the two reflector rotations for S and L bands](TODO)
+- A prime focus, offset, or grid dish are all usable for L band reception, with some slight adjustments between them:
+    - Prime focus dishes require less turns on the helix (compared to an offset) or a [patch feed](http://sat.cc.ua/page3.html) for better performance alltogether
+    - Wifi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more.
+![Image showing the two reflector rotations for S and L bands](../../assets/images/Radio/Grid-reflector.jpg) <br>
 *Credit: lego11*
 
-- The bigger the dish, the harder it is to track but the higher gain you have - the stronger the signals will be. 
+- The bigger the dish, the harder it is to track, but the higher gain you have - the stronger the signals will be. 
 
-Even an 80 cm offset is a great starter dish, given its lightness and wide availability - people give these away all the time after switching to terrestrial television. Check your local marketplaces, you ought to find something!
+An 80 cm offset is a great starter dish, given its lightness and wide availability - people give these away all the time after switching to terrestrial television. Check your local marketplaces, you ought to find something!
 
 > NOTE: On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations.
 
@@ -689,20 +620,20 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
-    - **HRIT** - A stronger and much easier to receive signal transmitting reduced resolution imagery, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
-    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s. Also broadcasts the satellites' SUVI (sun imaging) instruments.
+    - **HRIT** - A strong and very easy to receive signal transmitting reduced resolution imagery, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
+    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s. Also broadcasts the satellites' SUVI (sun imaging) instrument.
 
-- All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak. HRIT has notably good FEC, able to get clean imagery eben out of 1 dB!
-
+- All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak. HRIT has notably good FEC, able to get clean imagery even out of just 1 dB!
 
 > GOES 19 has recently launched, is in the process of replacing GOES 16. It is expected to start broadcasting imagery soon.
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
 ![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.jpg)
-*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsghost on Discord
+*GOES 18 CDA Telemetry on the left, HRIT on the right. CC: phantomsghost on Discord*
 
-> TODO: GRB FFT
+![A more zoomed out view showing all transmissions at once](../../assets/images/Radio/GOES-R-Signals.jpg)
+*A more zoomed out view showing all broadcasts at once. CC: UsRadioGuy*
 
 ### EWS-G
 
@@ -731,8 +662,9 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 > Reception notes:
 > - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason for why imagery is broadcasted like this is unknown.
-> - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from FengYun 2H. It might interfere with LRIT reception, in which case you should point slightly farther from 2H.
+> - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
 > - Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
+> - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK shuold equalt to about 3 dB on HRIT (enough for a decode).
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
 *Elektro-L N°3 LRIT on left, HRIT on right*
@@ -741,7 +673,7 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 ### FengYun
 
 #### FengYun 2 series
-- **FengYun 2H**, and **FwngYun 2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
+- **FengYun 2H**, and **FengYun 2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
 - This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline to remedy this.
 - FengYun 2H broadcasts dead (empty) LRIT every hour (except 5:30Z and every 6 hours onwards) on 1690.5 MHz, this leads to the second image being cut at about 57%.
 
@@ -777,7 +709,7 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 ### Meteosat Second Generation (MSG)
 - **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 2x VIS at a 1.6 km/px quality, and 9x IR at a 4.8 km/px quality.
-- This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring a massive 3 metre dish paired with a VLNA for a decode.
+- This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring a massive 3 metre dish paired with a custom LNA for a decode.
 - The SEVIRI instrument has three operating modes:
     - HRV - High Resolution Visible - A crop of Europe and a crop of the bottom hemisphere is transmitted every 15 minutes, these move with sunlight as pictured below <br>
 ![Meteosat HRV crops](../../assets/images/Radio/Meteosat-HRV-mode.gif)<br>
@@ -904,8 +836,8 @@ When decoding signals with symbol rates close to your sampling rate (Such as Met
 
 To fix this, you have a few options:
 - Make sure you are using your SDR's maximum stable sampling rate
-- Move the frequency around by a few kHz
-- Lower the pipelines pipelines bandwidth:
+- Shift the frequency around by a few kHz
+- Lower the pipeline's pll bandwidth:
 1. Open the SatDump folder (On android you need to download a debuggable APK, then run `adb run-as org.satdump.SatDump`)
 2. Open `./Pipelines/<Pipeline>.json`
 3. Locate the `ppl_bw` option and set it to \<TODO\>
@@ -952,6 +884,85 @@ Two things can cause this issue:
 - **The signal is too weak** → Make sure your gain is set properly or get a bigger dish.
 - **You are dropping samples** → Disable battery optimization, enable the `High power` power plan, close other apps/programs, lower the sampling rate. 
 
+
+# Colors of received imagery
+
+After receiving these satellites and checking the resulting images, you will notice, that they are all black and white even though the images you see online are colorful. The colored images are created by processing the raw channels into RGB composites - applying different channels to different colors. You will quickly find the term `False Color` being thrown around, but how can color be false? To understand why this is the case, we have to look at some color theory and instrument descriptions:
+
+## How is color perceived?
+
+Our eyes sense different colors by sensing different wavelengths that objects reflect using three types of cone cells:
+- Short → 380 - 540 nm, corresponds to **Blue**
+- Medium → 440 - 670 nm, corresponds to **Green**
+- Long → 500 - 690 nm, corresponds to **Red**
+
+![Color spectrum showing the S, M and L wavelengths](../../assets/images/Radio/Color-spectrum.png)
+
+Satellites work simmilar to our eyes with one exception: instead of having different cones for different wavelengths they have different **channels**. 
+
+> Why are they black and white when we see color? Because we are looking at individual channels (Equivalent of only one type of cones) instead of a mix of channels as perceived by our eyes.
+
+## Why is it called false color?
+
+To learn what false color is, we first have to learn about true color. **True color** is the name given to images that represent natural colors - all the colors a human eye can see ranging from ~400-700 nm. We can't see electromagnatic waves that have a lower or higher wavelength.
+
+Due to technological contraints and a focus on usability, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrareds.
+
+As an example, these are the channels present on the AVHRR/3 instrument flown on MetOp and NOAA POES satellites:
+
+|Channel number|Wavelength|Description|
+|---|---|---|
+|1|580-680 nm|Visible|
+|2|725-1000 nm|Near infrared|
+|3A|1580-1640 nm|Near infrared|
+|3B|3550-3930 nm|Middle infrared|
+|4|10300-11300 nm|Thermal infrared|
+|5|11500-12500 nm|Thermal infrared|
+
+> Earlier satellites from NOAA used AVHRR/2 which lacked channel 3A and AVHRR/1, which lacked channels 3A and 5.
+
+As you might see, we only have two channels covering the visible spectrum (Ch2 partly covers it), meaning we can't get the actual colors the sensor could have seen from the data it collects - **True color isn't possible on AVHRR/3.**
+
+But how do we get colored composites if we can't see the actual RGB wavelengths? We can assign arbitrary wavelengths to the R, G, and B channels, this results in a **False color composite**. These are useful in cases, such as highlighting things that might not be visible in the true color spectrum. *They also look nicer.* 
+
+Let's take the `221` RGB composite as an example, it assigns channel 2 (centered at 630 nm) to the red and green output channels, and channel 1 (centered at 862 nm) to the blue output channel. This does not represent the actual RGB color wavelengths, **hence it isn't true color**.
+
+![Example of the 221 false color composite](../../assets/images/Radio/compressed/False-color-COMPRESSED.jpg)
+*A crop of NOAA 18 received on 02/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `221` RGB composite Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
+
+Of course there are much more complex composites such as the `NOAA Natrual Color Composite` which applies channels using the following formulas:
+
+|Color|Formula|
+|---|---|
+|Red|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
+|Green|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch2 * 2.2 - 0.15`|
+|Blue|`ch1 < 0.065 ? (ch4 - 0.7) * 2.66 : ch1 * 2.2 - 0.15`|
+
+You can play with the different composites and see what looks the best for your use case.
+
+
+## Do any satellites broadcast true color?
+
+Yes! New satellites very often have cfhannels that individually sample R, G, and B wavelengths! For example, here are the channels of the VIRR instrument flown on Fengyun 3 [A/B/C] satellites:
+
+|Channel number|Wavelength|Description|
+|---|---|---|
+|<u><b>1</b></u>|<u><b>580-680 nm</b></u>|<u><b>Visible</b></u>|
+|2|840-890 nm|Near infrared|
+|3|3550-3930 nm|Middle infrared|
+|4|10300-11300 nm|Thermal infrared|
+|5|11500-12500 nm|Thermal infrared|
+|6|1550-1640 nm|Short wave infrared|
+|<u><b>7</b></u>|<u><b>430-480 nm</b></u>|<u><b>Visible</b></u>|
+|8|480-530 nm|Visible|
+|<u><b>9</b></u>|<u><b>530-580 nm</b></u>|<u><b>Visible</b></u>|
+|10|1325-1395 nm|Near infrared|
+
+Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes them viable for a **true color composite**! In this case, the composite is `197` - 1 to red, 9 to green, and 7 to blue.
+
+![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
+*FengYun 3C received on 29/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
+
 # Reception tips and fun facts
 
 ## Minimum SNR for a good decode
@@ -967,7 +978,8 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |Meteor-M HRPT|0 dB\*|No|
 |MetOp AHRPT|4 dB|Yes|
 |FengYun AHRPT|7 dB|Yes|
-|Elektro-L xRIT|3dB|Yes|
+|Elektro-L LRIT|2dB|Yes|
+|Elektro-L HRIT|3dB|Yes|
 |Goes GVAR|4 dB|No|
 |GOES GRB|TODO|Yes|
 |GOES HRIT|4 dB|Yes|
