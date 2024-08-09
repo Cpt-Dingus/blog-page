@@ -649,7 +649,7 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 > Reception note: The satellite normally does regional crops, as they can be scanned faster than full disc images. It still transmits a full disc image every 3 hours.
 
 ![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg)
-*GOES 15 GVAR*
+*EWS-G2 (GOES 15) GVAR*
 
 ![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg)
 *GOES 13 SD: sounder SD is the thin spike in the middle, everything else is the imager SD. CC: dereksgc on Discord*
@@ -742,10 +742,10 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
 |GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
 |GOES-N|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|150 cm**|No|Full disc image every 3 hours, regional crops the rest of the time.
+|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every TODO minutes rest of the time.
 |GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
 |GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
-|Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, XX:30 - Variable\*\*\*
+|Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second timeslot variable\*\*\*
 |FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
 |GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Constantly, image every 10 minutes
