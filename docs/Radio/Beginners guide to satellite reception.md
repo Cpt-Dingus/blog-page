@@ -436,10 +436,10 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - L-band reception is the next logical step after VHF, it is **harder to receive** requiring more **specialized equipment** as well as a **dish** paired with some half decent tracking skills.
 - Offers much more interesting things than VHF, such as being able to receive 5+ pure and uncompressed 1km/px channels as well as full disc Earth imagery with geostationary satellites broadcasting xRIT or another alternative.
 - This heading describes LEO satellite reception, you can find Geostationary reception [here](#geostationary-reception)
-- The are **9** LEO satellites currently broadcasting imagery in this band:
+- The are **8** LEO satellites currently broadcasting imagery in this band:
 
     - 3x NOAA POES
-    - 3x Meteor-M
+    - 2x Meteor-M
     - 2x MetOp
     - 1x FengYun (Only broadcasts when in sight of China)
 
@@ -466,14 +466,14 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### METEOR-M
 
-- 3 satellites currently broadcast in L-band: **~~Meteor M2-2~~, Meteor M2-3,** and **Meteor M2-4**
+- 2 satellites currently broadcast in L-band: **Meteor M2-3** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - This broadcast, much like POES HRPT, has a very strong carrier wave making it easy to track.
 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
 
-> NOTE: As of the latest commit (30/7/2024), Meteor-M N°2-2 has inexplicably stopped broadcasting in the L and X bands. The last known succesful reception was on the 24th of July, the satellite's status is currently unknown.
+> NOTE: As of the latest commit, Meteor-M N°2-2 has inexplicably stopped broadcasting in the L and X bands. The last known succesful reception was on the 24th of July 2024, the satellite's status is currently unknown.
 
 > ~~You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.~~
 
