@@ -666,7 +666,7 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 ### Elektro-L
 - **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites broadcasting imagery on the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast a **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just about 3 dB.
-- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels as well as one infrared channel (ch10 is also broadcasted, but is dead). L4 broadcasts channels too inconsistently to be specified here.
+- LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapour channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
 
 > Reception notes:
 > - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason for why imagery is broadcasted like this is unknown.
