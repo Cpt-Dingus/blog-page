@@ -38,7 +38,7 @@ The actual reception process is also not as daunting than it might seem! In esse
 
 ## Why should I do this?
 
-There is no definitive reason for trying this niche hobby out - you can do it for **research** (The satellites send much more data than just imagery after all), to **kill boredom** or just to **share the images with your friends**!
+There is no definitive reason for trying this niche hobby out - you can do it for **research** (The satellites send much more data than just imagery after all), to **kill boredom**, or just to **share the images online** - they are quite pretty after all!
 
 ## What is covered by this guide?
 
@@ -149,26 +149,32 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 - **Using old, outdated guides and software** → Radio is very niche, almost all guides you can find online are heavily outdated giving you bad advice and suggesting deprecated software, leading to confusion and subpar results. Please make sure that any sources you use are up to date.
 
-- **Compass tracking with directional antennas** → Go by signal strength, NOT by elevation and azimuth. Use apps to find the general direction of the satellite, don't go measuring exact compass readings. Find the signal when it is weak, move slow and with purpose to tracl it and remain to be as strong as possible.
+- **Compass tracking with directional antennas** → Go by signal strength, NOT by elevation and azimuth. Use apps to find the general direction of the satellite, move your antenna around until you see the signal. Move slow and with purpose to track it and remain to be as strong as possible.
 
-- **Doppler tracking when it is not needed** → Signals covered here such as APT and HRPT were designed to be thin enough to not need doppler tracking, **DON'T BOTHER DOING IT, IT IS NOT NEEDED.**
+- **Doppler tracking when it is not needed** → Signals covered here such as APT and HRPT were designed to be thin enough to not need doppler tracking, **DON'T BOTHER DOING IT, IT IS NOT NEEDED.** 
 
-- **Blindly maxxing the gain setting** → Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger (Use SNR, NOT its height on the fft).
+- **Blindly maxxing the gain setting** → Upping the gain only makes the signal louder up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This leads to them being drowned out. Turn it up only until you see, that the signal isn't getting any stronger.
 
-- **Always turning on automatic gain control (AGC)** → AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and end up cranking the gain up much higher than needed which may end up drowning the target signal out with noise. It has its uses (suchas when your SDR is still far from overloading with max manual gain), because it can crank the gain higher than manual sliders, but don't default to it.
+- **Always turning on automatic gain control (AGC)** → AGC was designed for much wider broadcasts such as DVB-T (Terrestrial TV) than the signals described in this page. It *won't* recognize the signals and might end up cranking the gain up much higher than needed which may end up drowning the target signal out with noise. It has its uses (such as when your SDR is still far from overloading with max manual gain), because it can crank the gain higher than manual sliders, but don't default to it.
 
-- **Not using actual connectors and cables** → While sticking a wire into your SMA port works in theory - an antenna is just anything conductive after all - it is extremely dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working correctly.
+- **Not using actual connectors and cables** → While sticking a wire into your SMA port works in theory - an antenna is just anything conductive after all - it is very dangerous since it can damage your sma port, electrocute you if you have a bias-t, introduce major signal loss, or just end up not working at all.
 
-- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs often have a very high gain which makes them prone to overloading. Because of this, higher bands exclusively use **filtered** LNAs (Low gain LNA > Filter > High gain LNA). The filter makes sure, that the LNA only amplifies the target signals and nothing else.
+- **Using a cheap LNA with higher frequencies (L-band and above)** → Cheap LNAs often have a very high gain which makes them prone to overload your SDR with junk outside of the target frequency. Because of this, higher bands exclusively use **filtered** LNAs (Low gain LNA > Filter > High gain LNA). The filter makes sure, that the LNA only amplifies the target signals and nothing else, meaning your SDR only gets the target signals.
 
 
-# RTL-SDR specific information
+# SDR specific information
+## RTL-SDR
 These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 - The maximum stable sampling rate is **2.56 Msps!** Using anything higher can lead to sample drops if you don't have one of the few incredibly specific usb controllers with which the RTL chipset can pull 3.2 Msps without dropping samples. You can test if higher sampling rates such as 2.88 Msps work on your setup by running `rtl_test -s 2.88e6` and seeing if any data is lost after a few minutes.
-> Please note, that on some devices even 2.56 drops samples! Run `rtl_test -s 2.56e6` to test, or receive signals with error correction and see if the viterbi is spiking (indicative of sample drops).
+> Please note, that on some devices even 2.56 Msps drops samples! Run `rtl_test -s 2.56e6` to test, or receive signals with error correction and see if the viterbi graph has spikes (indicative of sample drops).
 - RTL-SDR Blog V4 needs specific drivers to work with most software, the installation steps are described on their [quick start page](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
+## HackRF One
+- The HackRF has a fairly outdated design which suffers from heavy phase noise, which results in you having to receive signals stronger than other SDRs to achieve the same quality. This is most apparent with signals that have low symbol rates.
+
+## MiriSDR (MSI.SDR)
+TODO (You can mod it)
 
 # Preferred software
 Arguably the best program for **pulling data** off of satellites is [SatDump](https://github.com/SatDump/SatDump/releases)
@@ -200,6 +206,8 @@ There are a few apps for IOS but they have severe limitations, using any of the 
 
 I personally use Orbitron for long term and Look4Sat for short term predictions, the SatDump tracking module while live decoding in case I lose track of the satellite.
 
+# Familiarizing yourself with the software
+TODO
 
 # VHF APT/LRPT reception guide (137MHz)
 Now that we have gone over the terminology and science behind these satellites, we can finally move on o the actual reception process!
@@ -453,16 +461,16 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ### NOAA POES
 
 - These are the same as VHF: **NOAA 15, 18 and 19**.
-- Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels as well as some more data (Refer to the link)
+- Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
 - The broadcast features a very strong carrier wave making it very easy to track.
 
-> Reception note: NOAA 15's old age has taken a toll on its systems, it only uses a backup antenna with a drastically reduced irradiation power making the signal fade a lot, be significantly weaker than intended. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
+> Reception note: NOAA 15 only uses a damaged emergency antenna, which makes the signal lose a consistent polarization, be much weaker than intended, and experience severe fading throughout the pass. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
 
 
 ![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.jpg)
 *NOAA 19 HRPT*
 
-> Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has recently gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
+> Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50 year old satellite! - has gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familliar sync lines from APT broadcasts.
 
 ### METEOR-M
 
@@ -473,7 +481,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg)
 *Meteor-M N°2-2 HRPT*
 
-> NOTE: As of the latest commit, Meteor-M N°2-2 has inexplicably stopped broadcasting in the L and X bands. The last known succesful reception was on the 24th of July 2024, the satellite's status is currently unknown.
+> NOTE: As of the latest commit, Meteor-M N°2-2 has inexplicably stopped broadcasting imagery in the L and X bands, with the last known succesful reception being on the 24th of July 2024. The C band telemetry broadcast has been received since then, showing the satellite is still in orbit, but no other emissions have been detected. The satellite's future is currently unknown.
 
 > ~~You might notice that Meteor M2-2 is here even though it doesn't broadcast LRPT in the VHF band. This is because of a micrometeor strike causing a leak of thermal transfer gas, leaving LRPT unpoperable due to inadequate cooling ([Source](https://www.rtl-sdr.com/meteor-m-n2-2-has-failed-but-recovery-may-be-possible/)). HRPT has recovered, and has been working without any issues since.~~
 
@@ -494,7 +502,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruments. The broadcast has Reed-Solomon FEC, but unlike any other satellite in the L-band **it broadcasts channels required for true color** - exactly what you would see with your eyes if you stood right next to the satellite.
 - The signal has a relatively high simbol rate, can't be decoded with a standard RTLSDR dongle.
 
-> Reception note: The signal becomes a strong carrier wave once the satellite turns it off. The signal might cut out a bit sooner or later than it gains/loses LOS with Chinese territory, it does not follow the rule to the tee.
+> Reception note: The signal might cut out a bit sooner or later than it gains/loses LOS with Chinese territory, it does not follow the rule to the tee.
 
 ![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.jpg)
 *FengYun 3C AHRPT*
@@ -580,7 +588,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |NOAA 15|1702.5 MHz|**Very weak**|
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
-|~~Meteor M2-2~~, M2-3, M2-4|1700 MHz||
+|Meteor M2-3, M2-4|1700 MHz||
 |Metop B, C|1701.3 MHz||
 |FengYun 3C|1701.4 MHz||
 
@@ -664,10 +672,10 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 > - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason for why imagery is broadcasted like this is unknown.
 > - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
 > - Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
-> - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK shuold equalt to about 3 dB on HRIT (enough for a decode).
+> - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK shuold equal to about 3 dB on HRIT (enough for a decode).
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
-*Elektro-L N°3 LRIT on left, HRIT on right*
+*Elektro-L N°3 LRIT on the top, HRIT on the bottom*
 
 
 ### FengYun
