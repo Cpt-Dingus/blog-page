@@ -628,12 +628,13 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
-    - **HRIT** - A strong and very easy to receive signal transmitting reduced resolution imagery, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
-    - **GRB** - A fairly weak rebroadcast sending incredibly high quality data, has a massive 7.8 Msym/s. Also broadcasts the satellites' SUVI (sun imaging) instrument.
+    - **HRIT** - A strong and very easy to receive signal transmitting TODO, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
+    - **GRB** - A fairly weak rebroadcast sending full quality data (have to confirm), has a massive 7.8 Msym/s. Also broadcasts the satellites' SUVI (sun imaging) instrument. Transmits half the data over RHCP and the other half over LHCP.
 
 - All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak. HRIT has notably good FEC, able to get clean imagery even out of just 1 dB!
 
-> GOES 19 has recently launched, is in the process of replacing GOES 16. It is expected to start broadcasting imagery soon.
+
+> GOES 19 has recently launched, is in the process of replacing GOES 16. It is expected to begin broadcasting imagery soon.
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
@@ -709,7 +710,13 @@ Unlike low-earth-orbitting satellites which use (A)HRPT, geostationary satellite
 
 
 ### GEO-KOMPSAT
-- **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 0.5-2 km/px quality. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
+- **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 4 and 1 km/px quality respectively. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
+- LRIT is notorious for being extremely strong, not even requiring a dish to decode an image.
+
+<br>
+
+- LRIT transmits miscallenous data in addition to a 4 km/px IR channel every 10 minutes
+- HRIT transmits 1x 1 km/px VIS, 3x 4 km/px IR, 1x 4 km/px water vapour every 10 minutes
 
 ![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.jpg)
 *GEO-KOMPSAT-2A LRIT on top, HRIT on bottom. CC: drew0781 on Discord*
@@ -756,14 +763,15 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second timeslot variable\*\*\*
 |FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
-|GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|60 cm|Yes|Constantly, image every 10 minutes
+|GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|None\*\*\*\*|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
-|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300cm\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
+|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300cm\*\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
 
 \* Half the data sent over RHCP, the other half over LHCP <br>
 \*\* Only with the respective corrector, the image will otherwise be severely cut up. <br>
-\*\*\* **FengYun 2H:** 5:30-5:58 UTC and every 6 hours after, XX:30-XX:48 at all other times &pls  **FengYun 2G:** 01:30-01:58 UTC and every 4 hours after <br>
-\*\*\*\* Only using a custom LNA such as a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
+\*\*\* **FengYun 2H:** 5:30-5:58 UTC and every 6 hours after, XX:30-XX:48 at all other times | **FengYun 2G:** 01:30-01:58 UTC and every 4 hours after <br>
+\*\*\*\* LRIT is notoriously strong, just pointing the feed at the satellite is often enough to decode products.
+\*\*\*\*\* Only using a custom LNA such as a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf)
 
 
 You might have noticed, that some signals are **linearly polarized** instead of our familliar **RHCP** (Right Hand Circular Polarization). You **can** receive these signals with a differently polarized feed **at the cost of 3 dB**. A linear feed even as simple as a cantenna will perform better.
@@ -817,21 +825,21 @@ Don't forget to [set your gain correctly](#correct-gain)!
 ## VHF
 
 ### There is a map but no clouds are present
-You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just grain (no actual signal was decoded), all you are left with is the predefined map.
+You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded), all you are left with is the predefined map.
 
 ### The image is solid black
-If the image is from LRPT operating on 124 mode on an evening pass, you need to select Channel 4 (IR) to see anything - Channels 1 and 2 are visible, during night it is solid black. If you got 123 LRPT, you won't be able to see any imagery, as all channels are visible light only.
+If the image is from LRPT on an evening pass, you need to select an infrared channel (4/5/6) to see imagery - Channels 1/2/3 are all visible - during night they are solid black. If it's in 123 mode, you won't be able to see any imagery from this decode. Sorry!
 
 ### There is grain all over the resulting image
 Some grain is expected on APT images, you can get rid of it by ticking `Median blur` in the `Viewer` tab. If it is present after, either:
 - The noise reduction wasn't enabled when recording
-- The signal was just too weak (had crackling present while recording)
+- The signal was too weak (had crackling present while recording)
 
 ### I saw an LRPT signal but got no SNR andor NOSYNC on the viterbi
 - If you received Meteor M2-4, the satellite might have switched the bitrate between this guide's latest commit and your RX. At the moment, it's best to:
     - Make a baseband recording, decode it after the pass
     - Record the pass using [SDR++](https://www.sdrpp.org/)'s meteor demodulator module then piping the generated .soft file through both LRPT pipelines (for 72k and 80k, in case it switched the bitrate again)
-- SatDump also recently had an update where the PLL bandwidth was upped to `0.002`, which has been causing issues with locking onto the signal. Follow the `Donut shaped constellation` section below, set the LRPT PLL bandwidths inside `Meteor-M.json` to `0.0012`.
+- SatDump recently had an update where the PLL bandwidth was upped to `0.002`, which has been causing issues with locking onto the signal. Follow the `Donut shaped constellation` section below, set the LRPT PLL bandwidths inside `Meteor-M.json` to `0.0012`.
 
 ## L-band
 
