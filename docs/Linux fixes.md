@@ -26,8 +26,8 @@ When launching games, you might be able to occasionally hear a popping sound, us
 The solution that worked for me is adding `PULSE_LATENCY_MSEC=60 %command%` as a launch option for the affected app(s). This adds a delay of N miliseconds, which (assumedly) gives pipewire more time to process the audio. 50 should work in most cases, but more might be needed depending on if crackling is still present.
 
 ## Other suggestions
-- Installing the `faudio` package from your package manager
-- Settings a niceness limit
+- Installing the `faudio` package from your distribution's repository
+- Setting a niceness limit
 
 Linux manages resource allocations using a 'niceness' level, this can allegedly cause issues with Wine. To fix it, add `<YOUR-USER-NAME> - nice - 20` to `/etc/security/limits.conf`.
 
@@ -43,6 +43,7 @@ Running Apex legends without any special config has been a miss in my experience
 This is a major hassle even prior to starting the game, when enabled you will see a "Compiling Vulkan shaders" screen which can take as long as several hours to complete! With new drivers, Pre-caching is no longer necessary.
 
 > !!! Below only applies to NVIDIA GPUs, I have not verified whether it works with AMD GPUs !!!
+
 - Set `__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia DXVK_ASYNC=1 prime-run %command%` as the launch options
 
 A prerequisite for this is installing the `nvidia-prime` package from your distribution's repository.
