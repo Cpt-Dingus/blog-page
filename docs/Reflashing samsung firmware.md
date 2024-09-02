@@ -98,9 +98,9 @@ To not trip knox and void your warranty, you MUST install the official binary. S
 
 8. Select every file in Odin (`AP_..` to AP, `BL_..` to BL, `CP_..` to CP, `CSC_..` to CSC) and tick the box next to each one of these. 
 
-> You could also use the `HOME_CSC` file in the CSC field, it won't erase user data but we want a full reflash, so use the standard `CSC_..` file.
+    > You could also use the `HOME_CSC` file in the CSC field, it won't erase user data but we want a full reflash, so use the standard `CSC_..` file.
 
-![Image showing the above loaded into Odin](../assets/images/Samsung-flash/Odin-config.png)
+    ![Image showing the above loaded into Odin](../assets/images/Samsung-flash/Odin-config.png)
 
 9. In the `config` tab, enable `Auto Reboot` and `F. Reset Time`. <u> ***TICK NOTHING ELSE!!!*** </u>
 10. If all files are loaded, your phone is showing up properly, you can hit `Start`.
