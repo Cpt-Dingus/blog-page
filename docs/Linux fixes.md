@@ -29,7 +29,7 @@ The solution that worked for me is adding `PULSE_LATENCY_MSEC=60 %command%` as a
 - Installing the `faudio` package from your distribution's repository
 - Setting a niceness limit
 
-Linux manages resource allocations using a 'niceness' level, this can allegedly cause issues with Wine. To fix it, add `<YOUR-USER-NAME> - nice - 20` to `/etc/security/limits.conf`.
+    Linux manages resource allocations using a 'niceness' level, this can allegedly cause issues with Wine. To fix it, add `<YOUR-USER-NAME> - nice - 20` to `/etc/security/limits.conf`.
 
 
 # Apex legends stuttering
@@ -40,13 +40,13 @@ Running Apex legends without any special config has been a miss in my experience
 
 - Disable shader Pre-caching 
 
-This is a major hassle even prior to starting the game, when enabled you will see a "Compiling Vulkan shaders" screen which can take as long as several hours to complete! With new drivers, Pre-caching is no longer necessary.
+    This is a major hassle even prior to starting the game, when enabled you will see a "Compiling Vulkan shaders" screen which can take as long as several hours to complete! With new drivers, Pre-caching is no longer necessary.
 
 > !!! Below only applies to NVIDIA GPUs, I have not verified whether it works with AMD GPUs !!!
 
 - Set `__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia DXVK_ASYNC=1 prime-run %command%` as the launch options
 
-A prerequisite for this is installing the `nvidia-prime` package from your distribution's repository.
+    A prerequisite for this is installing the `nvidia-prime` package from your distribution's repository.
 
 - Use [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) instead of the stock Proton versions
 
