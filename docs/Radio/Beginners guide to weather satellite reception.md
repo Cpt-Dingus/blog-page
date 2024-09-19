@@ -403,11 +403,11 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - L-band reception is **harder to receive** requiring some **specialized equipment** as well as a **dish** paired with some half decent tracking skills.
 - Offers much more interesting things than VHF, such as being able to receive 5+ pure and uncompressed 1km/px channels as well as full disc Earth imagery with geostationary satellites broadcasting xRIT or another alternative.
 - This heading describes LEO satellite reception, you can find Geostationary reception [here](#geostationary-reception)
-- The are **8** LEO satellites currently broadcasting imagery in this band:
+- The are **9** LEO satellites currently broadcasting imagery in this band:
     - 3x NOAA POES
     - 2x Meteor-M
     - 2x MetOp
-    - ~~1x AWS~~ (planned)
+    - 1x AWS
     - 1x FengYun (Only broadcasts when in sight of China)
 
 ## Example processed HRPT image
@@ -458,8 +458,14 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### Arctic Weather Satellite
 
-- **Arctic Weather Satellite** (AWS for short) was launched very recently - 08/2024, is scheduled to broadcast imagery at a TODO km/px quality.
-- L band receptions have so far been unsuccesful, pending commisioning.
+- **Arctic Weather Satellite** (AWS for short) is a prototype satellite that launched very recently - 08/2024, broadcasts imagery at a TODO km/px quality.
+- Broadcasts a 24/7 DB signal, but is scheduled to dump full orbit imagery to Svalbard.
+- Is a prototype to EPS-STERNA, which is scheduled to be a constellation that fills the gap in Geostationary satellite data present at the poles. These satellites are expected to launch in 2029, have the same imaging instrument.
+
+
+- The L band signal has been received, even already containing DB imagery. The broadcast is off as of the latest commit, likely pending commisioning of the satellite.
+
+> TODO: FFT Screenshot
 
 ### FengYun 3
 
