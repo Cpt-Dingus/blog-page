@@ -458,12 +458,11 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### Arctic Weather Satellite
 
-- **Arctic Weather Satellite** (AWS for short) is a prototype satellite that launched very recently - 08/2024, broadcasts imagery at a TODO km/px quality.
-- Broadcasts a 24/7 DB signal, but is scheduled to dump full orbit imagery to Svalbard.
+- **Arctic Weather Satellite** (AWS for short) is a prototype satellite that launched very recently - 08/2024, broadcasts imagery at a 10-40 km/px quality, depending on the channel.
+- Broadcasts a 24/7 direct broadcast signal, dumps full orbit imagery to Svalbard.
 - Is a prototype to EPS-STERNA, which is scheduled to be a constellation that fills the gap in Geostationary satellite data present at the poles. These satellites are expected to launch in 2029, have the same imaging instrument.
 
-
-- The L band signal has been received, even already containing DB imagery. The broadcast is off as of the latest commit, likely pending commisioning of the satellite.
+> The L band signal has been received, even already containing DB imagery. Dumps are expected to begin soon, pending commisioning.
 
 > TODO: FFT Screenshot
 
@@ -550,6 +549,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |NOAA POES HRPT|60|665.6 KSym/s|No|
 |Meteor HRPT|60|665.6 KSym/s|No|
 |MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
+|AWS DB|60|1.785 Msym/s|Yes|Dump Symbol rate TODO
 |FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 3.4 Msps
 
 ## Frequency reference
@@ -561,6 +561,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |NOAA 19|1698 MHz||
 |Meteor M2-3, M2-4|1700 MHz||
 |Metop B, C|1701.3 MHz||
+|Arctic Weather Satellite|1707 MHz|DB+Dump|
 |FengYun 3C|1701.4 MHz||
 
 ## Symbol and sampling rate relation
