@@ -219,8 +219,8 @@ Now that we have gone over the terminology behind these satellites, we can final
 
 |Satellite|Channel numbers|Channel types|
 |---|---|---|
-|M2-3|1, 2, 3|3×Visible|
-|M2-4|1, 2, 3|3×Visible|
+|M2-3|1, 2, 4|2×Visible, 1x Infrared|
+|M2-4|1, 2, 4|2×Visible, 1x Infrared|
 
 
 ![Meteor LRPT screenshot from SatDump](../../assets/images/Radio/Meteor-LRPT.jpg)
