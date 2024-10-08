@@ -664,34 +664,34 @@ In this case, the satellites transmit a RHCP signal, <u>but using a dish reflect
 
 ### Building
 
-1) Drill a hole exactly 2.75 cm from the center of the ground plane for the SMA port
-2) Drill holes matching up with the flanges of the SMA port, use screws and nuts to secure it in place
-3) Install the support for the helix in a way that:
+1. Drill a hole exactly 2.75 cm from the center of the ground plane for the SMA port
+2. Drill holes matching up with the flanges of the SMA port, use screws and nuts to secure it in place
+3. Install the support for the helix in a way that:
     - Can hold the wire up without it swaying
     - Makes the bottom turn run more or less parallel to the ground plane
     - Has the bottom end of the wire touching the core of the SMA port
 
-    A sample helix, using a a gritty zinc spray painted surface and hot glue as the support. Note how the bottom turn runs parallel to the ground plane.
-
-    ![alt text](../../assets/images/Radio/Sample-helix.jpg)
-4) Solder the helix to the SMA port
+4. Solder the helix to the SMA port
     - Soldering the wire properly is crucial, for best results heat the copper wire up until it melts solder by itself, then heat up the solder and the core of the SMA port to bind them together
 
     > TODO: Picture of the soldering
 
+![A picture of my helix](../../assets/images/Radio/Sample-helix.jpg) <br>
+A sample helix, using a a gritty zinc spray painted surface and hot glue as the support. Note how the bottom turn runs mostly parallel to the ground plane.
+
 
 Congratulations, you now have a helical antenna! You should now check a few things using a multimeter in continuity mode:
 
-1) There **SHOULD** be continuity between the top of the helix and the core of the SMA port
-2) There should **NOT** be continuity between the helix and ground plane, or the frame of the SMA port
+1. There **SHOULD** be continuity between the top of the helix and the core of the SMA port
+2. There should **NOT** be continuity between the helix and ground plane, or the frame of the SMA port
 
 If either of these are wrong, verify that your helix is properly soldered only to the SMA core.
 
 ### Mounting to dish
 
 Now comes the truly DIY part, mounting it to your dish. This wholly depends on your dish and its existing mounting solution, anything should be fine as long as you ensure two things:
-1) That the groundplane isn't greatly covered from the helix side
-2) The bottom of the helix is roughly in the focal point of the dish
+1. That the groundplane isn't greatly covered from the helix side
+2. The bottom of the helix is roughly in the focal point of the dish
 
 > The focal point is exactly where the front part (mouth) of a TV LNB would be
 
@@ -701,10 +701,10 @@ Drilling small holes into the groundplane shouldn't greatly affect reception.
 
 These are minor things to check on existing setups, which can give you a dB or two of SNR. 
 
-1) Use a male SMA connector to be able to connect your amplifier directly to the feed without any additional adapters
-2) Use insulated SMA ports (The core sticks out with a bit of teflon instead of just being a simple pin)
-3) Make sure the ground plane is STRAIGHT
-4) Make sure the spacings are CORRECTLY SIZED using a caliper (if possible)
+1. Use a male SMA connector to be able to connect your amplifier directly to the feed without any additional adapters
+2. Use insulated SMA ports (The core sticks out with a bit of teflon instead of just being a simple pin)
+3. Make sure the ground plane is STRAIGHT
+4. Make sure the spacings are CORRECTLY SIZED using a caliper (if possible)
 
 
 ## Reception
