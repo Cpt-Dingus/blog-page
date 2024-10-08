@@ -171,12 +171,9 @@ This guide will focus on using **SatDump** for all recording and decoding purpos
 
 ## Preparation for the pass
 
-Once you launch SatDump, you will be facing the `Offline processing` tab, this is where you can **decode recordings**. We won't be using this tab very often, since we'll be using the **Live processing** feature, which records and decode signals straight from your SDR as opposed to decpdoog from a saved file. We can find it in the `Recorder` tab.
-
 ### Configuration
 
 Before anything, we need to configure a few things in the `Settings` tab. Make sure to do the following:
-
 
 **General Satdump**
 - Set your location (QTH Longitude, QTH latitude)
@@ -189,9 +186,15 @@ Before anything, we need to configure a few things in the `Settings` tab. Make s
 
 Once these are set, hit the `Save` button on the bottom of your screen. You shouldn't have to reconfigure these again.
 
+### Offline processing vs Recorder
+
+When you launch SatDump, you initially face the `Offline processing` tab. This is where you can **decode <u>recordings</u>** in addition to semi-processed data (raw frames/binary etc.). We won't be using this tab very often, since we'll be using the **Live processing** feature instead. It is able to decode signals straight from your SDR, eliminating the need to make huge recordings prior to decoding signals. We can find it in the `Recorder` tab.
+
+> This tab might seem overwhelming at first, but don't worry; we'll cover it one step at a time.
+
 ### Selecting source
 
-Select the `Recorder` tab on the top of your screen. It will seem overwhelming at first, so let's take it one step at a time. Expand the `Devices` dropdown, this is where you will manage your **source** - where you are getting signals from. SatDump supports several inputs such as baseband recordings and various servers, we will be using an SDR. You can select it as such:
+ Expand the `Devices` dropdown, this is where you will manage your **source** - where you are getting signals from. SatDump supports several inputs such as baseband recordings and various servers, we will be using your SDR. You can select it as such:
 
 1. Reload the source list
 2. Click on the dropdown
@@ -201,7 +204,7 @@ Select the `Recorder` tab on the top of your screen. It will seem overwhelming a
 
 > If your SDR isn't showing up, make sure that it is being recognized by your computer and that the drviers are installed properly.
 
-Once you have selected your SDR, you can select a sampling rate appropriate for the signal you are about to decode; this depends on the symbol rate of the target signal. Your sampling rate should be **at least** roughly twice the symbol rate of the signal. 1 Msps is perfectly adequate for VHF signals described here, while 2.4 Msps is enough for most L band signals. Please note that these two values aren't definitive.
+Once you have selected your SDR, you can select a sampling rate appropriate for the signal you are about to decode; this depends on the symbol rate of the target signal. Your sampling rate should be **at least** roughly twice the symbol rate of the signal. 1 Msps is perfectly adequate for VHF signals described here, while 2.4 Msps is enough for most L band signals. Please note that these two values aren't definitive, higher sampling rates don't hurt the signal as long as you don't begin to [drop samples](#viterbi-spikes).
 
 > I.e. if a signal has 1 Msps, a sampling rate of **at least** 2 Msps is recommended
 
@@ -209,7 +212,7 @@ You can now press `Start`, you should see a blue waterfall appear on the right h
 
 ### UI elements
 
-Now that we have something to look at, we can break the UI down into different sections:
+Now that we have something to look at, we can break the UI down into a few different sections:
 
 ![Screenshot of the SatDump UI](../../assets/images/Radio/SD_UI-elements.png)
 
@@ -234,6 +237,13 @@ Your FFt should be configured properly now, here's an example of the same signal
 
 ![Screenshot of a properly adjusted FFT](../../assets/images/Radio/SD_Adjusted-FFT.png)
 
+## Setting up tracking (optional)
+
+If you set your location properly and your TLEs are up to date, you can use SatDump's `Tracking` dropdown to see the following satellite pass. It allows you to have the satellite's location in a convenient spot, eliminating the need for a second program running next to SatDump. To use it, choose the `Satellites` option and select the target satellite from the dropdown. You will now see a summary of the next pass.
+
+![A screenshot of SatDump's tracking tab](../../assets/images/Radio/SD_Tracking.png) <br>
+*SatDump showing the next NOAA 15 pass*
+
 ## Using pipelines
 
 Now that we can see what is going on in the spectrum, we can prepare and start a **pipeline**! Once a pass is incoming, open the `Processing` dropdown and select the one corresponding to your satellite pass, in this example I will choose `METEOR M2-x LRPT 72k` for Meteor M2-3 LRPT.
@@ -242,17 +252,19 @@ Once you configure it and hit start, a lot of things will pop up which will be d
 
 ![Screenshot of SatDump with the LRPT pipeline](../../assets/images/Radio/SD_Processing.png)
 
-Everything that just appeared is the pipeline doing its job. On the left half of your screen is information about **the signal itself** (How strong it is, where it is, its constellation), while on the right is information from the **decoder** - If we are getting an image, what the BER is etc.
+On the bottom of your screen you can see the pipeline appear, it separates into two primary sections:
+- The left side has information about **the signal itself** - How strong it is, where it is, its constellation 
+- The right side has information about the **decoder** - If we are decoding a data, if error correction is working etc.
 
-Now let's look at everything individually.
+Now let's look at everything individually:
 
 1. **Constellation** - Without going into much detail about radio theory, the constellation is a visualisation of the signal you are receiving. It is helpful when determining issues with your reception, is able to tell much more than just by looking at the signal on the spectrum. It should match the modulation found right above it, in this case OQPSK = 4 dots in each corner. The smaller the dots are, the stronger the signal is.
 2. **SNR** - How strong the signal is expressed in dB. This is just a calculated value, can be wrong! The constellation and BER are the ultimate judges of signal strength.
-3. **Viterbi** - Without going into much radio theory again, the viterbi algorithm shows whether SatDump knows where the error correction bits are. It's not very important besides figuring out when you are [dropping samples](#viterbi-spikes)
+3. **Viterbi** - Without going into much radio theory again, the viterbi algorithm shows whether SatDump knows where the error correction bits are. Is is useful when figuring out how strong a signal is (Lower BER = Cleaner signal), or if you are [dropping samples](#viterbi-spikes)
 4. **Deframer** - The deframer shows, whether SatDump knows where individual frames of data start. If it doesn't know (NOSYNC), SatDump isn't decoding any data, because it has no idea what it is looking at.
 5. **Reed-Solomon** - This describes the forward error correction bits, where: **Green** = "Bit is OK", **Orange** = "Bit had to be recovered", **Red** = "Bit was lost".
 
-Other things might show up here depending on the satellite you are receiving, such as an image or progress bar. Please note that 3/4/5 only show up with signals that have FEC.
+Other things might show up here depending on the satellite you are receiving, such as an image or frame counter. Please note that numbers 3/4/5 only show up with signals that have FEC.
 
 
 ---
@@ -525,7 +537,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### METEOR-M
 
-- 2 satellites currently broadcast in L-band: **Meteor M2-3** and **Meteor M2-4**
+- 2 satellites from this constellation currently broadcast in this band: **Meteor M2-3** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - This broadcast, much like POES HRPT, has a very strong carrier wave making it easy to track.
 
@@ -553,9 +565,8 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - **Arctic Weather Satellite** (AWS for short) is a prototype satellite that launched very recently - 08/2024, broadcasts imagery at a 10-40 km/px quality, depending on the channel.
 - Broadcasts a 24/7 DB signal, dumps full orbit imagery to Svalbard.
 - Is a prototype to EPS-STERNA, which is scheduled to be a satellite constellation that fills the gap in Geostationary satellite data present at the poles. These satellites are expected to launch in 2029, have the same imaging instrument as AWS.
-- Please note that this satellite has launched very recently and is still in commisioning. The signal might be disabled for days at a time without prior notice, or contain erroneous data.
 
-> The L band signal has been received, even already containing DB imagery. Dumps are expected to begin soon, pending commisioning.
+> Please note that this satellite has launched very recently and is still commisioning. The signal might be disabled for days at a time without prior notice, or contain erroneous data.
 
 > TODO: FFT Screenshot
 
@@ -575,7 +586,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### SDR
 
-- Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is good enough to receive the satellites of your choosing.
+- Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is adequate to receive the satellites of your choosing.
 
 ### LNA
 
@@ -635,7 +646,7 @@ A small dot means that you should up the gain, if you are already maxxed out you
 
 ## Signal information
 
-All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization.
+All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization due to a bent antenna.
 
 |Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
@@ -645,7 +656,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |AWS DB|60|1.785 Msym/s|Yes|Dump Symbol rate TODO
 |FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 3.4 Msps
 
-\* Parallel modulated signals - Two 665.6 Ksym/s bumps
+\* Parallel modulated signals - Two 665.6 Ksym/s bumps. SatDump receives both, a sampling rate of at roughly 2.4 Msps is recommended.
 
 ## Frequency reference
 
@@ -744,6 +755,9 @@ The dish is the same as in LEO reception, but the polarization might differ; you
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
 *Elektro-L N°3 LRIT on the top, HRIT on the bottom*
+
+![Elektro-L GGAK signal screenshot from SatDump](../../assets/images/Radio/Elektro-GGAK.jpg)
+*Elektro-L N°3 GGAK*
 
 
 ### FengYun
