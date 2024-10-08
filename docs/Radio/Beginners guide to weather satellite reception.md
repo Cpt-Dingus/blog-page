@@ -200,7 +200,7 @@ When you launch SatDump, you initially face the `Offline processing` tab. This i
 2. Click on the dropdown
 3. Select your SDR
 <br>
-![Screenshot of the SatDump source config](../../assets/images/Radio/SD_Source-selection.png) 
+![Screenshot of the SatDump source config](../../assets/images/Radio/SD_Source-selection.jpg) 
 
 > If your SDR isn't showing up, make sure that it is being recognized by your computer and that the drviers are installed properly.
 
@@ -214,7 +214,7 @@ You can now press `Start`, you should see a blue waterfall appear on the right h
 
 Now that we have something to look at, we can break the UI down into a few different sections:
 
-![Screenshot of the SatDump UI](../../assets/images/Radio/SD_UI-elements.png)
+![Screenshot of the SatDump UI](../../assets/images/Radio/SD_UI-elements.jpg)
 
 1. **FFT spectrum** - This shows the slice of the radio spectrum being sampled by your SDR. The higher a point is, the stronger that part of the spectrum is.
 2. **FFT Waterfall** - This shows how the FFT spectrum has changed overtime using a color gradient. By default blue is the weakest and red is the strongest.
@@ -235,13 +235,13 @@ If we don't adjust the FFT settings, we won't see much happening on it; the defa
 
 Your FFt should be configured properly now, here's an example of the same signal at 1691 MHz as seen above, but with a properly adjusted FFT:
 
-![Screenshot of a properly adjusted FFT](../../assets/images/Radio/SD_Adjusted-FFT.png)
+![Screenshot of a properly adjusted FFT](../../assets/images/Radio/SD_Adjusted-FFT.jpg)
 
 ## Setting up tracking (optional)
 
 If you set your location properly and your TLEs are up to date, you can use SatDump's `Tracking` dropdown to see the following satellite pass. It allows you to have the satellite's location in a convenient spot, eliminating the need for a second program running next to SatDump. To use it, choose the `Satellites` option and select the target satellite from the dropdown. You will now see a summary of the next pass.
 
-![A screenshot of SatDump's tracking tab](../../assets/images/Radio/SD_Tracking.png) <br>
+![A screenshot of SatDump's tracking tab](../../assets/images/Radio/SD_Tracking.jpg) <br>
 *SatDump showing the next NOAA 15 pass*
 
 ## Using pipelines
@@ -250,7 +250,7 @@ Now that we can see what is going on in the spectrum, we can prepare and start a
 
 Once you configure it and hit start, a lot of things will pop up which will be different based on the satellite you are receiving. Let's break it all down:
 
-![Screenshot of SatDump with the LRPT pipeline](../../assets/images/Radio/SD_Processing.png)
+![Screenshot of SatDump with the LRPT pipeline](../../assets/images/Radio/SD_Processing.jpg)
 
 On the bottom of your screen you can see the pipeline appear, it separates into two primary sections:
 - The left side has information about **the signal itself** - How strong it is, where it is, its constellation 
@@ -378,7 +378,7 @@ That's it. Really.
 
 > Note: This antenna can be used for permanent fixtures, but should have a proper ground plane. A good example is a V shaped reflector about 1/4 wl below the dipole.
 
-![A visual guide on how the antenna should look](../../assets/images/Radio/V-Dipole-guide.png) <br>
+![A visual guide on how the antenna should look](../../assets/images/Radio/V-Dipole-guide.jpg) <br>
 *This image suggests a wire length of 53.4 cm, while that would work the actual length should be approximately 54.5cm. It also suggests using aluminum rods, while that'd work, copper is about twice as conductive (will lead to better results).*
 
 ### 2. Quadrifilar helical antenna (QFH)
@@ -387,7 +387,7 @@ That's it. Really.
 - Very good results thanks to its circular polarization and consistent radiation pattern
 - Best choice for permanent fixtures
 
-![Sample QFH antenna](../../assets/images/Radio/QFH-guide.png) <br>
+![Sample QFH antenna](../../assets/images/Radio/QFH-guide.jpg) <br>
 *[Source](https://okelectronic.wordpress.com/2014/08/20/rtl-sdr-second-attempt/)*
 
 A good guide I have followed to make this antenna can be found [here](https://sdr-es.com/construccion-antena-qfh-137/), while being in spanish it offers great information about the dimensions and the installation. [Google translated page](https://sdr--es-com.translate.goog/construccion-antena-qfh-137/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
@@ -450,7 +450,7 @@ As of the latest commit, the frequencies these satellites broadcast at are as fo
     - Select the proper NOAA satellite
     - Open the frequency menu, select the correct satellite
 
-    ![A screenshot of the settings mentioned above](../../assets/images/Radio/APT-SatDump-Settings.png)
+    ![A screenshot of the settings mentioned above](../../assets/images/Radio/APT-SatDump-Settings.jpg)
 
     ### FOR METEOR-M LRPT
     - Select the appropriate pipeline:
@@ -462,7 +462,7 @@ As of the latest commit, the frequencies these satellites broadcast at are as fo
         - `Primary` for 137.9 MHz
         - `Backup` for 137.1 MHz
 
-    ![A screenshot of the settings mentioned above](../../assets/images/Radio/LRPT-SatDump-Settings.png)
+    ![A screenshot of the settings mentioned above](../../assets/images/Radio/LRPT-SatDump-Settings.jpg)
 
 4. When the satellite comes into view, press `Start` on the processing window
 
@@ -495,7 +495,7 @@ As an alternative to directly recording in SatDump, SDR++ can be used to record 
 4. Receive the LRPT signal as usual, once the pass is over hit `Stop`
 
 5. Open SatDump, move to the `Offline processing` tab and configure appropriately:
-    ![SatDump config for decoding LRPT](../../assets/images/Radio/LRPT-Offline-proccessing.png)
+    ![SatDump config for decoding LRPT](../../assets/images/Radio/LRPT-Offline-proccessing.jpg)
 
     > **Make sure to select `soft` as the input level!**
 
@@ -614,9 +614,102 @@ An 80 cm offset is a great starter dish, given its lightness and wide availabili
 - The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
 - The preferred and most forgiving circularily polarized feed you can make is a **Helical antenna**, a simple wire spun into a helical shape placed on a (minimally) 13x13cm conductive plate.
 
-## Build and reception
+## Building the feed
 
-For these, there is no point in me writing it out: Lego has these covered in his incredible [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide), a very solid and complete guide for HRPT reception. Anything further will just be expanding upon his article.
+> Specific values from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
+
+
+### Materials 
+You will need the following materials:
+- Male panel mount SMA port, preferably insulated - [Example](https://www.aliexpress.com/item/1005003803735398.html)
+- Adequately sized screws and nuts for the SMA port
+- A flat and conductive material that has **AT LEAST** a 13 cm diameter (i.e. a computer case side panel). A thin paint layer shouldn't greatly affect signal strength.
+- About a metre of 2.5 mm copper wire
+- If not using a 3d printed scaffold (linked later), a nonconductive material used as a support for the helix
+
+Appropriate tools for this are a soldering station and multimeter
+
+> - Copper wire with different widths can be used, but 2.5 mm is optimal.
+> - The groundplane can be either circular or square (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, might have a minor SNR benefit particularily on offset dishes where the larger ground plane doesn't cover the dish itself.
+
+### Parts of a helical antenna
+
+The helical antenna consists of two primary parts: 
+- **Ground plane** - The conductive surface the helix is laid upon, acts as a secondary reflector (Where the primary one is the dish itself)
+- **Helix** - The spun copper wire
+
+![A helical antenna image](../../assets/images/Radio/Helical-antenna.jpg) <br>
+*R = Ground plane; C = Coaxial feed; S = Helix; B/E = Supports. [Source](https://en.wikipedia.org/wiki/Helical_antenna)*
+
+### Winding the helix
+
+The helix should have the following specifications:
+- Turn spacing: 3 cm
+- Spiral diameter: 5.5 cm
+- Number of turns: 5 (3 on prime focus dishes)
+
+You have two choices for winding the wire:
+- You can wind it manually (Tip: 55 mm PVC pipes are really helpful if you choose this approach)
+- 3d print a [premade stand](https://www.thingiverse.com/thing:4980180) and stick a wire through it. Also acts as a support for the wire. If you choose this approach, use the `1700L_5.5T_0.14S_4D_10-90M.stl` file
+
+### Polarization warning!
+
+> ***This antenna is circularily polarized, meaning you have to match it to the satellites' to be able to receive anything!***
+
+In this case, the satellites transmit a RHCP signal, <u>but using a dish reflects it - you have to create a ***LHCP*** helix!</u>
+
+![Picture showing the different polarizations for the spin direction](../../assets/images/Radio/Helix-polarizations.jpg) <br>
+*Credit: lego11, [source](https://www.a-centauri.com/articoli/easy-hrpt-guide)*
+
+
+### Building
+
+1) Drill a hole exactly 2.75 cm from the center of the ground plane for the SMA port
+2) Drill holes matching up with the flanges of the SMA port, use screws and nuts to secure it in place
+3) Install the support for the helix in a way that:
+    - Can hold the wire up without it swaying
+    - Makes the bottom turn run more or less parallel to the ground plane
+    - Has the bottom end of the wire touching the core of the SMA port
+
+    A sample helix, using a a gritty zinc spray painted surface and hot glue as the support. Note how the bottom turn runs parallel to the ground plane.
+
+    ![alt text](../../assets/images/Radio/Sample-helix.jpg)
+4) Solder the helix to the SMA port
+    - Soldering the wire properly is crucial, for best results heat the copper wire up until it melts solder by itself, then heat up the solder and the core of the SMA port to bind them together
+
+    > TODO: Picture of the soldering
+
+
+Congratulations, you now have a helical antenna! You should now check a few things using a multimeter in continuity mode:
+
+1) There **SHOULD** be continuity between the top of the helix and the core of the SMA port
+2) There should **NOT** be continuity between the helix and ground plane, or the frame of the SMA port
+
+If either of these are wrong, verify that your helix is properly soldered only to the SMA core.
+
+### Mounting to dish
+
+Now comes the truly DIY part, mounting it to your dish. This wholly depends on your dish and its existing mounting solution, anything should be fine as long as you ensure two things:
+1) That the groundplane isn't greatly covered from the helix side
+2) The bottom of the helix is roughly in the focal point of the dish
+
+> The focal point is exactly where the front part (mouth) of a TV LNB would be
+
+Drilling small holes into the groundplane shouldn't greatly affect reception.
+
+### Tips for improved SNR
+
+These are minor things to check on existing setups, which can give you a dB or two of SNR. 
+
+1) Use a male SMA connector to be able to connect your amplifier directly to the feed without any additional adapters
+2) Use insulated SMA ports (The core sticks out with a bit of teflon instead of just being a simple pin)
+3) Make sure the ground plane is STRAIGHT
+4) Make sure the spacings are CORRECTLY SIZED using a caliper (if possible)
+
+
+## Reception
+
+TODO
 
 ## Correctly adjusting your gain {#correct-gain}
 
@@ -626,19 +719,19 @@ To ensure it's set correctly, use the "Magic eye" found in the `Debug` menu in t
 
 1) **A lot of dots are hitting the edge** → Gain too high
 
-![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-high.png) <br>
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-high.jpg) <br>
 
 - On the left is what you might see if the gain is set slightly too high, lower it by a few dB.
 - On the right is a more extreme example, where the gain is set much higher than needed resulting in the SDR severely overloading. If you see anything like this, the signal you are trying to receive is being significantly hurt by too high gain. You need to lower it by quite a bit.
 
 2) **There's only a small dot or circle in the middle** → Gain too low
 
-![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-low.png) <br>
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-low.jpg) <br>
 A small dot means that you should up the gain, if you are already maxxed out you might need to purchase an LNA.
 
 3) **A circle is present, the majority of the dots aren't hitting the edges** → Gain just right
 
-![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-gain-just-right.png) <br>
+![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-gain-just-right.jpg) <br>
 
 - What you see on the left is ideal gain with no signals on the FFT
 - What you see on the right is ideal gain with signals on the FFT
@@ -698,7 +791,9 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 ## Hardware requirements
 
-The dish is the same as in LEO reception, but the polarization might differ; you might need to use a different feed. TODO
+The dish is the same as in LEO reception, but the polarization will differ in most cases; instead of familiar RHCP signals, geostationary satellites often have **linearily polarized** signals. For these, it's best to use a fairly forgiving but bulky [Cantenna](https://3g-aerial.biz/en/online-calculations/antenna-calculations/cantenna-online-calculator) or less forgiving but more compact [Loop feed](http://www.om6aa.eu/Loop_Feed_with_enhanced_performance.pdf)
+
+TODO?
 
 ## Detailed satellite information
 
@@ -741,6 +836,7 @@ The dish is the same as in LEO reception, but the polarization might differ; you
 ![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg)
 *GOES 13 SD: sounder SD is the thin spike in the middle, everything else is the imager SD. CC: dereksgc on Discord*
 
+> TODO: GOES-N CDA FFT, gotta get a good picture of that sucker
 
 ### Elektro-L
 - **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites broadcasting imagery in the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
@@ -772,7 +868,7 @@ The dish is the same as in LEO reception, but the polarization might differ; you
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
 *FengYun 2H S-VISSR*
 
-![Gif of S-VISSR doing what's described below](../../assets/images/Radio/S-VISSR_Rollback.gif) <br>
+![Gif of S-VISSR doing what's described below](../../assets/images/Radio/S-VISSR_Rollback.webp) <br>
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 #### FengYun 4 series
@@ -783,7 +879,7 @@ The dish is the same as in LEO reception, but the polarization might differ; you
 > Both HRIT broadcasts are currently disabled.
 
 
-![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.png) <br>
+![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
 
 ![FengYun HRIT screenshot from SatDump](../../assets/images/Radio/FengYun-HRIT.jpg) <br>
@@ -808,7 +904,7 @@ The dish is the same as in LEO reception, but the polarization might differ; you
 - This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring a massive 3 metre dish paired with a custom LNA for a decode.
 - The SEVIRI instrument has three operating modes:
     - HRV - High Resolution Visible - A crop of Europe and a crop of the bottom hemisphere is transmitted every 15 minutes, these move with sunlight as pictured below <br>
-![Meteosat HRV crops](../../assets/images/Radio/Meteosat-HRV-mode.gif)<br>
+![Meteosat HRV crops](../../assets/images/Radio/Meteosat-HRV-mode.webp)<br>
 *HRV crops, [source](https://user.eumetsat.int/resources/user-guides/msg-high-rate-seviri-level-1-5-data-guide#ID-HRV-SEVIRI-scan-modes)*
 
     - RSS - Rapid Scan Service - The top third of the Earth is transmitted every 5 minutes
@@ -963,7 +1059,7 @@ If you continue to get a donut shaped constellation even after making the adjust
 
 ### SPS is invalid error when starting pipelines
 
-![SatDump screenshot showing this issue](../../assets/images/Radio/Low-sampling-rate.png)
+![SatDump screenshot showing this issue](../../assets/images/Radio/Low-sampling-rate.jpg)
 
 This error appears when your sampling rate is lower than the signals symbol rate. Set your sampling rate to be at least roughly 1.2x the symbol rate (to gain some overhead). If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
 
@@ -971,7 +1067,7 @@ This error appears when your sampling rate is lower than the signals symbol rate
 
 ### No/cut up image output with spikes on the vitterbi when decoding signals with FEC {#viterbi-spikes}
 
-![A screenshot of SatDump showing this usse](../../assets/images/Radio/Viterbi-spikes.png)
+![A screenshot of SatDump showing this usse](../../assets/images/Radio/Viterbi-spikes.jpg)
 *You can see the spikes on the viterbi, on a video you'd see `NOSYNC` constantly popping up*
 
 This predominantly happens when **you are dropping samples**, which happens either when your SDR is unable to sample the radio spectrum as quickly as you set it to, or when your computer is too slow to process all samples quickly enough. To fix this, you can try a few things: 
@@ -994,7 +1090,7 @@ Our eyes sense different colors by sensing different wavelengths that objects re
 - Medium → 440 - 670 nm, corresponds to **Green**
 - Long → 500 - 690 nm, corresponds to **Red**
 
-![Color spectrum showing the S, M and L wavelengths](../../assets/images/Radio/Color-spectrum.png)
+![Color spectrum showing the S, M and L wavelengths](../../assets/images/Radio/Color-spectrum.jpg)
 
 Satellites work simmilar to our eyes with one exception: instead of having different cones for different wavelengths they have different **channels**. 
 
