@@ -990,7 +990,9 @@ Don't forget to [set your gain correctly](#correct-gain)!
 
 5. After the transmission stops or you are satisfied with the results, hit `Stop` on the pipeline
 
-6. As of the latest commit, SatDump **PARTIALLY** supports processing of images received from geostationary satellites: The only two supported satellite series are <u>*GOES, Elektro-L*</u>, but **they will not automatically show up in the `Viewer` tab.** <u>For all satellites</u>, navigate to your live output directory, open the folder of the latest live recording. The images will be in the `IMAGES` folder, for <u>*GOES, Elektro-L*</u>, you can load the `products.cbor` file in SatDump's `Viewer` tab for image processing.
+6. As of the latest commit, SatDump **PARTIALLY** supports processing of images received from geostationary satellites: The only two supported satellite series are <u>*GOES, Elektro-L*</u>, but **they will not automatically show up in the `Viewer` tab.** 
+    - <u>For all satellites</u>, navigate to your live output directory, open the folder of the latest live recording. The images will be in the `IMAGES` folder.
+    - For <u>*GOES, Elektro-L*</u>, you can load the `products.cbor` file in SatDump's `Viewer` tab for image processing.
 
 7. You are now done! Feel free to play around with the results using 3rd party tools or SatDump where applicable.
 
