@@ -616,7 +616,7 @@ An 80 cm offset is a great starter dish, given its lightness and wide availabili
 
 ## Building the feed
 
-> Specific values from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
+> Helix dimensions from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
 
 
 ### Materials 
