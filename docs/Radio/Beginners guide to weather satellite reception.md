@@ -71,7 +71,7 @@ Understanding the terminology used in satellite reception is essential, especial
 ---
 
 - **DB** - Direct Broadcast → A signal that is transmitted constantly, directly from the instruments (Doesn't require uplinking)
-- **Rebroadcast** → A signal that is transmitted down to earth in a different band/time period, processed by the groundstation, then uplinked to the satellite to be rebroadcasted
+- **Rebroadcast** → A signal that is transmitted down to earth in a different band/time period, processed by the groundstation, then uplinked to the satellite to be rebroadcasted. An example is xRIT.
 - **Dump** → A signal that is transmitted to a specific groundstation, has a beginning and end
 
 ---
@@ -552,7 +552,7 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 
 ### MetOp
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
-- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels.
+- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels at a 1.1 km/px quality as well as one IASI Imaging channel at 0.8 km/px.
 - The signal does not have a carrier wave or easily decernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
 
 > Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut constellation, make sure to follow [this heading](#bad_constellation) to lower the pll bandwidth.
@@ -656,7 +656,7 @@ You have two choices for winding the wire:
 
 > ***This antenna is circularily polarized, meaning you have to match it to the satellites' to be able to receive anything!***
 
-In this case, the satellites transmit a RHCP signal, <u>but using a dish reflects it - you have to create a ***LHCP*** helix!</u>
+In this case, the satellites transmit a RHCP signal, <u>but using a dish reflects it - you have to create a <b>LHCP</b> helix!</u>
 
 ![Picture showing the different polarizations for the spin direction](../../assets/images/Radio/Helix-polarizations.jpg) <br>
 *Credit: lego11, [source](https://www.a-centauri.com/articoli/easy-hrpt-guide)*
@@ -844,10 +844,18 @@ TODO?
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapour channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
 
 > Reception notes:
-> - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason for why imagery is broadcasted like this is unknown.
-> - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
-> - Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
-> - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK shuold equal to about 3 dB on HRIT (enough for a decode).
+> - **LRIT**:
+>   - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason for why imagery is broadcasted like this is unknown.
+>   - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
+>   - Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
+> - **GGAK**:
+>   - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
+>   - GGAK gets significantly weaker while an xRIT transmission is in progress.
+>   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
+>       1. Set frequency offset to -50 KHz, shift to 1691.05 MHz
+>       2. Start the pipeline
+>       3. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 KHz or -3 KHz. Shift 3 KHz lower or higher respectively, it should lock thereafter.
+
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
 *Elektro-L N°3 LRIT on the top, HRIT on the bottom*
@@ -872,11 +880,11 @@ TODO?
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 #### FengYun 4 series
-- **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** ~~and **HRIT** signal~~. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px)~~, HRIT only transmits a single unencrypted infrared channel~~.
+- **FengYun 4A** and **FengYun 4B** are currently not broadcasting anything useful. ~~currently broadcast a **linearly polarized LRIT** and **HRIT signal~ The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel~~.
+- This satellite serues has been shrouded in mystery, with both satellites having transmitted xRIT in the past but without any live imagery. These have seemingly since stopped without any acknowledgement from NSMC (Satellite operators).
+- If you have any information about these, please contact me using the information at the bottom of this page.
 
-> NOTE: As of the latest commit, FengYun 4A has recently started broadcasting its LRIT signal, but no products have been decoded so far. FengYun 4B is still commisioning, has only transmitted old FY 4A imagery so far.
-
-> Both HRIT broadcasts are currently disabled.
+> Both HRIT broadcasts are currently disabled. LRIT on 4A is currently disabled. I have been unable to confirm whether 4B LRIT is operational.
 
 
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
@@ -938,7 +946,7 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
 |GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second timeslot variable\*\*\*
-|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
+|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|~~Hourly~~ Currently disabled
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
 |GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|None\*\*\*\*|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
@@ -990,11 +998,11 @@ Don't forget to [set your gain correctly](#correct-gain)!
 
 5. After the transmission stops or you are satisfied with the results, hit `Stop` on the pipeline
 
-6. As of the latest commit, SatDump **PARTIALLY** supports processing of images received from geostationary satellites: The only two supported satellite series are <u>*GOES, Elektro-L*</u>, but **they will not automatically show up in the `Viewer` tab.** 
+6. As of the latest commit, SatDump **PARTIALLY** supports processing of images received from geostationary satellites: The only two relevant supported satellite series are <u><b>GOES, Elektro-L</b></u>, but **they will not automatically show up in the `Viewer` tab.** 
     - <u>For all satellites</u>, navigate to your live output directory, open the folder of the latest live recording. The images will be in the `IMAGES` folder.
-    - For <u>*GOES, Elektro-L*</u>, you can load the `products.cbor` file in SatDump's `Viewer` tab for image processing.
+    - For <u><b>GOES, Elektro-L</b></u>, you can load the `products.cbor` file in SatDump's `Viewer` tab for image processing.
 
-7. You are now done! Feel free to play around with the results using 3rd party tools or SatDump where applicable.
+7. You are now done! You can now play around with the results using 3rd party tools or SatDump where applicable.
 
 # Common issues {#common-issues}
 
@@ -1004,12 +1012,11 @@ Don't forget to [set your gain correctly](#correct-gain)!
 You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded), all you are left with is the predefined map.
 
 ### The image is solid black
-If the image is from LRPT on an evening pass, you need to select an infrared channel (4/5/6) to see imagery - Channels 1/2/3 are all visible - during night they are solid black. If it's in 123 mode, you won't be able to see any imagery from this decode. Sorry!
+If the image is from LRPT on an evening pass, you need to select an infrared channel (4/5/6) to see imagery - Channels 1/2/3 are all visible, so during night they are solid black
+> If the satellite was in 123 mode, you won't be able to see any imagery from this decode. Sorry!
 
 ### There is grain all over the resulting image
-Some grain is expected on APT images, you can get rid of it by ticking `Median blur` in the `Viewer` tab. If it is present after, either:
-- The noise reduction wasn't enabled when recording
-- The signal was too weak (had crackling present while recording)
+APT is an **analogue** transmission format, so what you hear is exactly what you get. If you heard any crackling during the decode, it will have shown up as grain on the resulting image. The most common reason for this is that the signal was simply too weak. This can be remedied by using the `Median blur` option.
 
 ### I saw an LRPT signal but got no SNR andor NOSYNC on the viterbi
 - If you received Meteor M2-4, the satellite might have switched the bitrate between this guide's latest commit and your RX. At the moment, it's best to:
@@ -1050,7 +1057,7 @@ For example with MetOp AHRPT:
                     "constellation": "qpsk",
                     "symbolrate": 2333333,
                     "rrc_alpha": 0.5,
-                    "pll_bw": 0.003 // For MetOp, set this to 0.002
+                    "pll_bw": 0.003 // Adjust this value
                 }
             },
         ...
@@ -1059,13 +1066,6 @@ For example with MetOp AHRPT:
 
 If you continue to get a donut shaped constellation even after making the adjustments, you'll need an SDR capable of higher sampling rates.
 
-### SPS is invalid error when starting pipelines
-
-![SatDump screenshot showing this issue](../../assets/images/Radio/Low-sampling-rate.jpg)
-
-This error appears when your sampling rate is lower than the signals symbol rate. Set your sampling rate to be at least roughly 1.2x the symbol rate (to gain some overhead). If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
-
-> Note that with orbitting satellites you NEED additional overhead due to doppler shifting. With geostationary satellites you can push close to the minimum thanks to the signal not experiencing doppler shifting.
 
 ### No/cut up image output with spikes on the vitterbi when decoding signals with FEC {#viterbi-spikes}
 
@@ -1080,6 +1080,14 @@ This predominantly happens when **you are dropping samples**, which happens eith
 
 If you are still dropping samples after trying these, you might want to try another device, or an OS which isn't resource heavy such as Linux.
 
+
+### SPS is invalid error when starting pipelines
+
+![SatDump screenshot showing this issue](../../assets/images/Radio/Low-sampling-rate.jpg)
+
+This error appears when your sampling rate is lower than the signals symbol rate. Set your sampling rate to be at least roughly 1.2x the symbol rate (to gain some overhead). If not possible, get an SDR capable of sampling at higher rates or don't receive this signal at all.
+
+> Note that with orbitting satellites you NEED additional overhead due to doppler shifting. With geostationary satellites you can push close to the minimum thanks to the signal not experiencing doppler shifting.
 
 # Colors of received imagery
 
@@ -1114,8 +1122,6 @@ As an example, these are the channels present on the AVHRR/3 instrument flown on
 |3B|3550-3930 nm|Middle infrared|
 |4|10300-11300 nm|Thermal infrared|
 |5|11500-12500 nm|Thermal infrared|
-
-> Earlier satellites from NOAA used AVHRR/2 which lacked channel 3A and AVHRR/1, which lacked channels 3A and 5.
 
 As you might see, we only have two channels covering the visible spectrum (Ch2 partly covers it), meaning we can't get the actual colors the sensor could have seen from the data it collects - **True color isn't possible on AVHRR/3.**
 
