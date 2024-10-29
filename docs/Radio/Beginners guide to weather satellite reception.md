@@ -70,12 +70,6 @@ Understanding the terminology used in satellite reception is essential, especial
 
 ---
 
-- **DB** - Direct Broadcast → A signal that is transmitted constantly, directly from the instruments (Doesn't require uplinking)
-- **Rebroadcast** → A signal that is transmitted down to earth in a different band/time period, processed by the groundstation, then uplinked to the satellite to be rebroadcasted. An example is xRIT.
-- **Dump** → A signal that is transmitted to a specific groundstation, has a beginning and end
-
----
-
 - **LEO** - Low Earth Orbit → Refers to objects orbitting the earth at an altitude of less than 2000 km
 
 ---
@@ -95,7 +89,25 @@ Understanding the terminology used in satellite reception is essential, especial
 - **BER** - Bit Error Rate → How many bits were incorrect within one frame of data. Usually expressed in a decimal point (i.e. 0.01 = 1% of data is incorrect).
 - **Signal constellation** → Without going into scientific detail, the Signal constellation is a visualisation of your signal's I and Q branches. The tighter it is, the less bad bits the signal has.
 
+### Data related terms
+
+- **DB** - Direct Broadcast → A signal that is transmitted constantly, directly from the instruments (Doesn't require uplinking)
+- **Rebroadcast** → A signal that is transmitted down to earth in a different band/time period, processed by the groundstation, then uplinked to the satellite to be rebroadcasted. An example is xRIT.
+- **Dump** → A signal that is transmitted to a specific groundstation, has a beginning and end
+
+---
+
+- **VIS** → Shorthand for "Visible channel", describes channels imaging 0.4 to 0.7 µm
+- **IR** → Shorthand for "Infrared channel", describes channels imaging:
+    - **NIR** - Near Infrared → 0.7 to 1.4 μm 
+    - **SWIR** - Short Wave Infrared → 1.4 to 3 μm, is necessary for microphysics composites
+    - **MWIR** - Medium Wave Infrared → 3 to 8 μm 
+    - **LWIR** - Long Wave Infrared →  8 to 15 μm
+- **WV** → Shorthand for "Water Vapour channel", describes channels imaging water vapour in the atmosphere
+
+
 ## Data transmission formats
+
 Don't worry if you don't understand these yet, they will be explained in more detail later and are here just so you have an idea of what is meant if they are mentioned prior to their full explanation.
 
 - **APT** - Automatic Picture Transmission → VHF Image and telemetry broadcast currently used on NOAA satellites
@@ -801,13 +813,21 @@ TODO?
 
 - **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
-    - **HRIT** - A strong and very easy to receive signal transmitting TODO, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
+    - **HRIT** - A strong and very easy to receive signal transmitting imagery at 2 km/px, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
     - **GRB** - A fairly weak rebroadcast sending full quality data (have to confirm), has a massive 7.8 Msym/s. Also broadcasts the satellites' SUVI (sun imaging) instrument. Transmits half the data over RHCP and the other half over LHCP.
 
 - All of these include FEC, meaning you should be able to properly decode them even when the signal is quite weak. HRIT has notably good FEC, able to get clean imagery even out of just 1 dB!
 
+- HRIT transmits:
+    - 1x VIS + 6x IR at 2 km/px every 30 minutes
+    - 1x VIS + 2x IR at 2 km/px every 15 minutes
+    - Unspecified MSG imagery hourly
+    - 1x VIS, 1x IR, 1x WV Himawari hourly
 
-> GOES 19 has recently launched, is in the process of replacing GOES 16. It is expected to begin broadcasting imagery soon.
+- GRB specifically transmits:
+    - TODO
+
+> GOES 19 has launched fairly recently, is currently commisioning with no active L band imagery broadcasts. It is expected to replace GOES 16 in early 2025.
 
 > GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
@@ -880,12 +900,11 @@ TODO?
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 #### FengYun 4 series
-- **FengYun 4A** and **FengYun 4B** are currently not broadcasting anything useful. ~~currently broadcast a **linearly polarized LRIT** and **HRIT signal~ The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel~~.
-- This satellite serues has been shrouded in mystery, with both satellites having transmitted xRIT in the past but without any live imagery. These have seemingly since stopped without any acknowledgement from NSMC (Satellite operators).
-- If you have any information about these, please contact me using the information at the bottom of this page.
+- **FengYun 4A** and ~~**FengYun 4B**~~ currently broadcast a **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+- This satellite series has been shrouded in mystery, with both satellites having transmitted xRIT in the past albeit without any live imagery. These broadcasts have intermittedly stopped without any acknowledgement from NSMC (Satellite operators).
+- **xRIT from Fengyun 4A currently doesn't seem to contain any imagery.**
 
-> Both HRIT broadcasts are currently disabled. LRIT on 4A is currently disabled. I have been unable to confirm whether 4B LRIT is operational.
-
+> I can't confirm the status of FengYun 4B, if you have any information about it please let me know using the contacts at the bottom of this page.
 
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
@@ -941,13 +960,13 @@ The minimum dish size heavily depends on the satellites elevation! You might be 
 |GOES-R|CDA Telemetry|1693 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly
 |GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
-|GOES-N|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|GOES-N|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every TODO minutes rest of the time.
-|GOES-N|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
-|GOES-N|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
+|EWS-G|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
+|EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every TODO minutes rest of the time.
+|EWS-G|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
+|EWS-G|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second timeslot variable\*\*\*
-|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|~~Hourly~~ Currently disabled
-|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|~~Every half an hour~~ Currently disabled
+|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
+|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|Every half an hour
 |GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|None\*\*\*\*|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
 |Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300cm\*\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
@@ -986,7 +1005,7 @@ Don't forget to [set your gain correctly](#correct-gain)!
     |GOES Sounder SD| GOES-N Sounder SD
     |FengYun 2 S-VISSR|FengYun-2 S-VISSR|
     |FengYun 4 LRIT|FengYun-4[A/B] LRIT|
-    |~~FengYun 4 HRIT~~|~~FengYun-4A HRIT -II/III~~|
+    |FengYun 4 HRIT|FengYun-4A HRIT -II/III|
     |GEO-KOMPSAT LRIT|GK-2A LRIT|
     |GEO-KOMPSAT HRIT|GK-2A HRIT|
     |MSG PGS|MSG Raw Data| 
@@ -1165,7 +1184,7 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 ![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
 *FengYun 3C received on 29/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
-# Reception tips and fun facts
+# Miscallenous stuff
 
 ## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
@@ -1182,7 +1201,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |FengYun AHRPT|7 dB|Yes|
 |Elektro-L LRIT|2dB|Yes|
 |Elektro-L HRIT|3dB|Yes|
-|Goes GVAR|4 dB|No|
+|Goes GVAR|4 dB\*\*|No|
 |GOES GRB|TODO|Yes|
 |GOES HRIT|4 dB|Yes|
 |FengYun 2 S-VISSR|3 dB\*\*|No|
