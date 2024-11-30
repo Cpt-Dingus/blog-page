@@ -578,9 +578,17 @@ Your LRPT pass should decode properly. If it doesn't, try the other `M2-x LRPT` 
 - Broadcasts a 24/7 DB signal, dumps full orbit imagery to Svalbard.
 - Is a prototype to EPS-STERNA, which is scheduled to be a satellite constellation that fills the gap in Geostationary satellite data present at the poles. These satellites are expected to launch in 2029, have the same imaging instrument as AWS.
 
-> Please note that this satellite has launched very recently and is still commisioning. The signal might be disabled for days at a time without prior notice, or contain erroneous data.
+> Reception note: The satellite antenna seems to have an inconsistent radiation pattern causing the signal to significantly fluctuate when heading away from you.
 
-> TODO: FFT Screenshot
+- Please note that this satellite has launched very recently and is still commisioning. The signal might be disabled for days at a time without prior notice, or contain erroneous data.
+- As of the latest commit, the satellite dumps to Svalbard on seemingly every pass, the direct broadcast is currently only filler.
+
+
+![AWS PFM screenshot from Satdump](../../assets/images/Radio/AWS-PFM-DB.jpg) <br>
+*AWS PFM while in Direct Broadcast mode*
+
+![AWS PFM screenshot from SatDump while dumping](../../assets/images/Radio/AWS-PFM-Dump.jpg) <br>
+*AWS PFM while dumping*
 
 ### FengYun 3
 
@@ -758,7 +766,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |NOAA POES HRPT|60|665.6 Ksym/s\*|No|
 |Meteor HRPT|60|665.6 Ksym/s\*|No|
 |MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
-|AWS DB|60|1.785 Msym/s|Yes|Dump Symbol rate TODO
+|AWS PFM|60|1.785 Msym/s|Yes|Fades when facing away
 |FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 3.4 Msps
 
 \* Parallel modulated signals - Two 665.6 Ksym/s bumps. SatDump receives both, a sampling rate of at roughly 2.4 Msps is recommended.
@@ -772,7 +780,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |NOAA 19|1698 MHz||
 |Meteor M2-3, M2-4|1700 MHz||
 |Metop B, C|1701.3 MHz||
-|Arctic Weather Satellite|1707 MHz|DB+Dump|
+|Arctic Weather Satellite|1707 MHz||
 |FengYun 3C|1701.4 MHz||
 
 ## Symbol and sampling rate relation
@@ -891,7 +899,7 @@ TODO?
 - This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the defeault `FengYun 2 S-VISSR` pipeline to remedy this.
 - FengYun 2H broadcasts dead (empty) LRIT every hour (except 5:30Z and every 6 hours onwards) on 1690.5 MHz, this leads to the second image being cut at about 57%.
 
-> These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to it's weak & wide nature.
+> These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to it's weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line. This is the reason why S-VISSR is so jumpy.
 
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
 *FengYun 2H S-VISSR*
@@ -900,11 +908,13 @@ TODO?
 *S-VISSR switching from a carrier to the image broadcast at XX:59*
 
 #### FengYun 4 series
-- **FengYun 4A** and ~~**FengYun 4B**~~ currently broadcast a **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+***!WARNING!***
+> I can't confirm the status of either of these, if you have any information about it please let me know using the contacts at the bottom of this page. The satellites seem to intermittedly cease broadcasts, rarely transmit any imagery.
+
+- **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
 - This satellite series has been shrouded in mystery, with both satellites having transmitted xRIT in the past albeit without any live imagery. These broadcasts have intermittedly stopped without any acknowledgement from NSMC (Satellite operators).
 - **xRIT from Fengyun 4A currently doesn't seem to contain any imagery.**
 
-> I can't confirm the status of FengYun 4B, if you have any information about it please let me know using the contacts at the bottom of this page.
 
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
@@ -937,7 +947,7 @@ TODO?
     - RSS - Rapid Scan Service - The top third of the Earth is transmitted every 5 minutes
     - FES - Full Earth Scan - The whole earth is scanned every 15 mintues, only enabled during eclipse sason
 
-> Reception note: The minimal dish size is speculative, but it has been received using a 3 metre dish and custom aplifier before.
+> Reception note: The minimal dish size is speculative due to insufficient data, but it has been received using a 3 metre dish and custom aplifier before.
 
 
 > These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
