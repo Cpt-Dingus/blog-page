@@ -856,15 +856,17 @@ TODO?
 - GVAR is very prone to corruption because of lacking FEC, which often causes lines to be misplaced in the resulting imagery. I have created a corrector to make the imagery more presentable even at low SNRs, you can view it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
 - The sounder is disabled: The raw sounder downlink is empty, GVAR produces empty sounder images.
 
-> Reception note: The satellite normally does regional crops, as they can be scanned faster than full disc images. It still transmits a full disc image every 3 hours.
+> Reception note: The satellite normally does regional crops, as they can be scanned faster than full disc images at just 15 minutes. It still transmits a full disc image every 3 hours.
 
-![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg)
+![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg) <br>
 *EWS-G2 (GOES 15) GVAR*
 
-![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg)
+![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg) <br>
 *GOES 13 SD: sounder SD is the thin spike in the middle, everything else is the imager SD. CC: dereksgc on Discord*
 
-> TODO: GOES-N CDA FFT, gotta get a good picture of that sucker
+![GOES CDA screenshots from SatDump](../../assets/images/Radio/GOES-N-CDA.jpg) <br>
+*EWS-G2 (GOES 15) CDA*
+
 
 ### Elektro-L
 - **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites broadcasting imagery in the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
@@ -904,12 +906,8 @@ TODO?
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
 *FengYun 2H S-VISSR*
 
-![Gif of S-VISSR doing what's described below](../../assets/images/Radio/S-VISSR_Rollback.webp) <br>
-*S-VISSR switching from a carrier to the image broadcast at XX:59*
-
 #### FengYun 4 series
-***!WARNING!***
-> I can't confirm the status of either of these, if you have any information about it please let me know using the contacts at the bottom of this page. The satellites seem to intermittedly cease broadcasts, rarely transmit any imagery.
+***!WARNING! - I can't confirm the status of either of these, if you have any information about it please let me know using the contacts at the bottom of this page. The satellites seem to intermittedly cease broadcasts, rarely transmit any imagery.***
 
 - **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
 - This satellite series has been shrouded in mystery, with both satellites having transmitted xRIT in the past albeit without any live imagery. These broadcasts have intermittedly stopped without any acknowledgement from NSMC (Satellite operators).
