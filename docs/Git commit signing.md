@@ -51,3 +51,14 @@ In this case the ID would be `3AA5C34371567BD2`
 - Manually sign commits by passing the `-S` flag to the `git commit` command
 
 You are now able to create commits with a verified signature.
+
+# Common Windows issue
+
+If using Windows, you might run into the following issue after running `git commit`:
+```
+gpg: skipped "name <name@mail.com>": secret key not available
+gpg: signing failed: secret key not available
+error: gpg failed to sign the data
+fatal: failed to write commit object
+```
+This happens when git tries to use a different GPG program than the one you used to make create your key. To fix this, all you have to do is run `git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`. This will point git to a proper, systemwide GPG installation.
