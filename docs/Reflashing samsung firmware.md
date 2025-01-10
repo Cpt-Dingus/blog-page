@@ -6,24 +6,29 @@ nav_order: 2
 
 # Preamble
 
-This article will guide you on how to reflash your Samsung phone's stock firmware if you are facing issues that require a full wipe of the OS. When done properly, it should be perfectly safe, especially since this guide is instructed under your phone's protected state, which will NOT flash any unknown or incorrect binaries. However please keep in mind, *this guide describes some sensitive processes, which - if done incorrectly - CAN cause permanent damage to your device. 
+This article will guide you on how to reflash your Samsung phone's stock firmware if you are facing issues that require a full wipe of the OS. When done properly, it should be perfectly safe and have feasibly no risk of damage to your device. To ensure that, this guide instructs you to enable your phone's protected state, which will NOT flash any unknown or incorrect binaries. <u>However please keep in mind, that this guide describes some sensitive processes, which - if done incorrectly - CAN cause permanent damage to your device.</u>
 
 > ***I HOLD NO LIABLITY FOR ANY DAMAGE YOU MIGHT DO TO YOUR DEVICE.***
 
 # Uses
 
-Reflashing the firmware can fix issues that stem from corrupted OS files which wouldn't normally get replaced/fixed using a factory reset. Another use is when you have an issue with updating your device, including but not limited to the settings app stating: `Your current software version isn't supported. Visit a service centre.` and refusing to download any new updates.
+Reflashing the firmware can fix issues that stem from corrupted OS files which wouldn't normally get replaced/fixed using a standard factory reset. Another use is when you have an issue with updating your device, including but not limited to the settings app stating: `Your current software version isn't supported. Visit a service centre.` and refusing to download any new updates.
 
 # Dangers
 
-Make sure to download the correct binaries, select every file correctly, **FOLLOW THIS GUIDE TO THE TEE.** Deviating or making mistakes can vary from a simple error message to you owning a fancy paperweight. ***Don't mess around with random switches if you don't know what you are doing. Really.*** 
+Make sure to download the correct binaries, select every file correctly, and **FOLLOW THIS GUIDE TO THE TEE.** Deviating or making mistakes can vary from a simple error message to you owning a fancy paperweight. ***Don't mess around with random switches if you don't know what you are doing. Really.*** 
 
 - Flashing an incorrect binary or messing around with random settings within Odin **CAN** brick your device.
-- Flashing an unofficial binary **WILL** trip the Knox e-fuse within your phone breaking all Knox functionality and will also void its warranty. Only download official binaries to avoid this from happening.
+- Flashing an unofficial binary **WILL** trip the Knox e-fuse within your phone breaking all Knox functionality while also voiding its warranty. Only download official binaries to avoid this from happening.
 
 # Making the process safe
 
-- As a safety precaution, if your phone has an Exynos chipset, it is advised to enable the **OEM lock** prior to following this guide. If you have a Snapdragon chipset, it's already permanently enabled. **If the OEM lock is enabled, you don't have to worry about bricking your device or tripping your phone's knox and warranty.** The lock makes you only able to flash official binaries, if you choose an invalid binary your phone will simply refuse it.
+Samsung phones have two locks that exist to limit what binaries you're able to flash:
+- An **FRP (Factory Reset Protection) lock** in place to not be able to flash any binaries on stolen devices which are still connected to a Google account
+- An **OEM lock** which ensures you can only flash official and valid binaries
+
+If your phone has a **Snapdragon chipset**, it is <u>permanently enabled</u>. If your phone uses an **Exynos chipset**, you have to enable this in Android's developer options. It should be on by default.
+> You can find out which chipset you have by downloading an app such as `CPU-Z`.
 
 
 
@@ -84,21 +89,21 @@ Odin is a tool made for flashing Samsung devices, is what you will use to flash 
 
 # Getting the firmware binaries
 
-To not trip (permanently disable) knox and void your warranty, you **MUST** install the official binary. Several websites disseminate these such as [Samfw](https://samfw.com/) and [Sammobile](https://www.sammobile.com/), I will focus on Samfw given its faster download speeds via Google Drive.
+To not trip (permanently disable) knox and void your warranty, you **MUST** install the official binaries. Several websites disseminate these such as [Samfw](https://samfw.com/) and [Sammobile](https://www.sammobile.com/), I will focus on Samfw given its faster download speeds via Google Drive.
 
 1. Enter your model number and click the entry that pops up
 2. Choose your CSC code
 3. Download the latest available version by clicking the `Version` field.
 ![Image showing the field to click](../assets/images/Samsung-flash/Select-version.png)
-4. Once downloaded, extract the .zip archive. It will have 5 big files inside as well as a info text file.
+4. Once downloaded, extract the .zip archive. It will have 5 big files inside as well as an info text file.
 5. Open Odin
 6. Reboot your phone into Download (Odin) mode by plugging it into your computer, rebooting, holding both volume up and volume down until your screen turns on with a warning. Hit volume up to continue.
-7. Verify your phone shows up by seeing if it pops up in the first `ID:COM` window. If it doesn't, you need to install Samsung drivers found [here](https://developer.samsung.com/android-usb-driver). <br>
+7. Verify your phone is visible to Odin by seeing if it pops up in the first `ID:COM` window. If it doesn't, you need to install Samsung drivers found [here](https://developer.samsung.com/android-usb-driver). <br>
 ![Image showing a blue IMG:COM window, indicating a device is connected](../assets/images/Samsung-flash/ID_COM.png)
 
-8. Select everything but `USERDATA` accordingly from the archive you downloaded (`AP_..` to AP, `BL_..` to BL, `CP_..` to CP, `CSC_..` to CSC) and tick the box next to each one of these. 
+8. Select everything but `USERDATA` accordingly from the archive you downloaded (`AP_..` to AP, `BL_..` to BL, `CP_..` to CP, `CSC_..` to CSC) and tick the box next to each one of these.
 
-    > You could also use the `HOME_CSC` file in the CSC field, it won't erase user data but we want a full reflash, so use the standard `CSC_..` file.
+    > You will have a leftover `HOME_CSC` file, which wouldn't erase user data. However we want a full reflash, so use the standard `CSC_..` file instead.
 
     ![Image showing the above loaded into Odin](../assets/images/Samsung-flash/Odin-config.png)
 
