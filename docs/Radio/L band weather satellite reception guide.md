@@ -24,7 +24,7 @@ There will be sample imagery next to every satellite series, you can view the ra
 
 In relation to VHF:
 - The L-band is **harder to receive** requiring some **specialized equipment** as well as a **dish** paired with some half decent craftsmanship skills.
-- Offers **much** more interesting things including but not limited to uncomrpessed LEO satellite imagery, as fell as full disk Earth scans.
+- Offers **much** more interesting things including but not limited to uncompressed LEO satellite imagery, as well as full disk Earth scans.
 
 ## Example processed HRPT image
 
