@@ -532,6 +532,11 @@ Your LRPT pass should now decode as usual.
 ### There is a map but no clouds are present
 You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded) or solid black (visible LRPT channels at night), all you are left with is the predefined map. You can confirm this by looking at the folder with the products, in the case of APT look at the `raw_sync.png` file, it'll likely be full of static. In case of LRPT look into the `MSU-MR` folder, you are likely going to find 3 solid black iamges.
 
+### The signal is fading a lot near the horizon
+
+> TODO: image
+
+This is normal, happens due to atmospheric phenomena.
 
 ## APT specific
 
@@ -547,11 +552,12 @@ This line is caused by APT passing through the center of your FFT spectrum, whic
 
 > I.e. with a frequency offset of 100 kHz, tune 100 kHz above the APT frequency. For NOAA 15 broadcasting on 137.62 MHz, that would be 137.72 MHz.
 
-### There were occasional bursts of crackles, the image has several small lines in it!
+### There were occasional bursts of crackles, the image has several small lines of static in it!
+
 ![A crop of an AOT image with several small static lines in it](../../assets/images/Radio/APT-VDL.png)
 *Small lines are most visible on channel A (left)*
 
-This is caused by interference from VDL, a data transmission format used by planed in the neighbouring aviation band. There is sadly no remedy for this other than moving away from areas where planes frequent in.
+This is caused by interference from VDL, a data transmission format used by planes in the neighbouring aviation band. Because of its strength and proximity to this band there is sadly no remedy for this other than moving away from areas where planes frequent in.
 
 ## LRPT specific
 
@@ -562,12 +568,15 @@ If the image is from LRPT on an evening pass, you need to select an infrared cha
 ### I saw an LRPT signal but got no SNR andor NOSYNC on the viterbi
 - SatDump has recently had a period where where the demodulator got modified in a way that has caused issues with locking onto the LRPT signal. This was fixed in a later update, should be fixed by simply updating SatDump.
 
+> I have noticed this issue happening in the recent past as well, will investigate when able
+
 
 # Colors of received imagery
 
 After receiving these satellites and checking the resulting images, you will notice, that they are all black and white even though the images you see online are colorful. The colored images are created by processing the raw channels into RGB composites - applying different channels to different colors. You will quickly find the term `False Color` being thrown around, but how can color be false? To understand why this is the case, we have to look at some color theory and instrument descriptions:
 
 ## How is color perceived?
+
 
 Our eyes sense different colors by sensing different wavelengths that objects reflect using three types of cone cells:
 - Short → 380 - 540 nm, corresponds to **Blue**
@@ -637,10 +646,10 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 ![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
 *FengYun 3C received on 29/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
-#  (TODO) MIscallenous stuff
+# MIscallenous stuff
 
 ## Pass rating scale
-This scale is not official or perfect, I just created it to be able to gauge how good each **xRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometres of the ground track you received from the satellite. <u> Given Meteor-M's spatial resolution of approximately 1 kilometre, you can use the vertical length of raw MSU-MR images from your LRPT pass to get  the amount of kilometres you tracked</u>
+This scale is not official or perfect, I just created it to be able to gauge how good each **xRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometres of the ground track you received from the satellite. <u> Given Meteor-M's spatial resolution of approximately 1 kilometre, you can use the vertical length of raw MSU-MR images from your LRPT pass to get the amount of kilometres you tracked</u>
 
 For example: `/path/to/product/MSU-MR/msu-mr_1.png`, has a 2,048 × **4,750 px** resolution. This means, that the resulting image has approximately 4,750 km of the satellite's ground track.
 
@@ -676,7 +685,7 @@ Thanks to the satellite itself always pointing straight down and the nature of t
 This guide has covered everything you need to know about VHF reception of weather satellites, if you want to learn how to use the data you gathered for scientific purposes, you can look at [Lego11's guide on weather prediction from the data you receive](](https://www.a-centauri.com/articoli/weather-predictions-from-satellite-data)).
 
 
-If you crave for something more interesting while remaining relatively easy and "5+ raw 1 km/px channels and full disk Earth imagery" piques your interest, you can check my **L-band** [reception guide](TODO) out! Thanks to Nooelec's **SawBird GOES** and people commonly giving dishes away after switching to terrestrial TV, this band usually costs no more than 50 bucks to set up.
+If you crave for something more interesting while remaining relatively easy and "5+ raw 1 km/px channels and full disk Earth imagery" piques your interest, you can check my **L-band** [reception guide]({{site.baseurl}}/docs/Radio/L band weather satellite reception guide) out! Thanks to Nooelec's **SawBird GOES** and people commonly giving dishes away after switching to terrestrial TV, this band usually costs no more than 50 bucks to set up.
 
 
 ## Contacts
