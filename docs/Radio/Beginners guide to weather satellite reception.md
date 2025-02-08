@@ -570,6 +570,14 @@ If the image is from LRPT on an evening pass, you need to select an infrared cha
 
 > I have noticed this issue happening in the recent past as well, will investigate when able
 
+### The imagery I received is blocky and/or corrupted
+
+![An image of the 221 LRPT composite with extreme damage](../../assets/images/Radio/Meteor-LRPT-JPEG-Compressor-1.jpg) <br>
+*Meteor-M N°2-4 received by t0nito on 31/07/2024*
+![An image of the 221 LRPT composite being overly blocky](../../assets/images/Radio/Meteor-LRPT-JPEG-Compressor-2.jpg) <br>
+*A crop of Meteor-M N°2-3 received by KentuckyFriedData on 05/02/2025*
+
+This happens when the JPEG compressor on the satellite gets stuck or glitches. The satellite has a watchdog that will restart it after a while, until then there's nothing you can do.
 
 # Colors of received imagery
 
