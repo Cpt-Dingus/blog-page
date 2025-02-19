@@ -23,7 +23,15 @@ For further context, I use EndeavourOS, which is where the issues originated in 
 When launching games, you might be able to occasionally hear a popping sound, usually when something bassy happens in-game. It's seemingly a very common bug, with a lot of conflicting solutions.
 
 ## Solution
-The solution that worked for me is adding `PULSE_LATENCY_MSEC=60 %command%` as a launch option for the affected app(s). This adds a delay of N miliseconds, which (assumedly) gives pipewire more time to process the audio. 50 should work in most cases, but more might be needed depending on if crackling is still present.
+The solution that worked for me is creating the file `/etc/pipewire/pipewireconf.d/fix-crackle.conf` containing the following:
+
+```
+context.properties = {
+    default.clock.min-quantum = 2048
+}
+```
+
+This fixed the issue permanently on all games. An alternative solution is to add `PULSE_LATENCY_MSEC=60 %command%` as a launch option for the affected app(s). This adds a delay of N milliseconds, which (assumedly) gives pipewire more time to process the audio. 50 should work in most cases, but more might be needed depending on if crackling is still present.
 
 ## Other suggestions
 - Installing the `faudio` package from your distribution's repository

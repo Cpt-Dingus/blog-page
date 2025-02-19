@@ -34,7 +34,7 @@ To receive satellite signals *(among other things, an SDR has a wide range!)*, y
 
 > If you ever used a DVB-T tuner, it might have even had SDR capability - some RTL chipsets come with an SDR mode!
 
-The actual reception process is also not as daunting than it might seem! In essence doing so is no different than listening to an FM station, it only happens with different hardware and at a different frequency... with the transmitter flying 800 km above your head. The most difficult part is gaining knowledge about this hobby, which is the reason I wrote this guide.
+The actual reception process is also not as daunting as it might seem! In essence doing so is no different from listening to an FM station, it only happens with different hardware and at a different frequency... with the transmitter flying 800 km above your head. The most difficult part is gaining knowledge about this hobby, which is the reason I wrote this guide.
 
 ## Why should I do this?
 
@@ -42,10 +42,10 @@ There is no definitive reason for trying this niche hobby out - you can do it fo
 
 ## What is covered by this guide?
 
-This guide covers weather satellite reception in the easier to receive **VHF satellite band (~137 MHz)**, which contains imagery at a 4 km/px and a JPEG-compressed 1 km/px quality. You can also find a guide on how to receive a more difficult but more interesting **L band satellite band (~1.7 GHz)** [here](TODO). This band contains imagery from not just low-earth-orbitting satellites, but also geostationary satellites providing full disk Earth imagery. The prevailing resolution is roughly 1 km/px but can get as high as 500 m/px with American GOES satellites.
+This guide covers weather satellite reception in the easier to receive **VHF satellite band (~137 MHz)**, which contains imagery at a 4 km/px and a JPEG-compressed 1 km/px quality. You can also find a guide on how to receive a more difficult but more interesting **L band satellite band (~1.7 GHz)** [here](TODO). This band contains imagery from not just low-earth-orbiting satellites, but also geostationary satellites providing full disk Earth imagery. The prevailing resolution is roughly 1 km/px but can get as high as 500 m/px with American GOES satellites.
 
 
-These aren't the only bands that weather satellites broadcast in, but are by far the easiest to receive imagery in both due to physical constraints and commercial availability. Other bands range from requiring a simple LNB (C band) to year long endavours that require a lot of dedication and individual research. *Looking at you, X band!*
+These aren't the only bands that weather satellites broadcast in, but are by far the easiest to receive imagery in both due to physical constraints and commercial availability. Other bands range from requiring a simple LNB (C band) to year long endeavors that require a lot of dedication and individual research. *Looking at you, X band!*
 
 # Glossary
 
@@ -66,12 +66,12 @@ Understanding the terminology used in satellite reception is essential, especial
 - **Pass** → Refers to the time when you can see a satellite passing overhead, used with orbiting satellites
 - **Elevation** → Height of a satellite above the horizon
 - **Azimuth** → Compass heading
-- **AOS** - Acquisition Of Signal → The moment when you start geting a signal from a satellite
+- **AOS** - Acquisition Of Signal → The moment when you start getting a signal from a satellite
 - **LOS** - Line Of Sight / Loss Of Signal → Depending on the context this abbreviation is used in either describes your ability to see the satellite, or the moment when you stop getting a signal from a satellite
 
 ---
 
-- **LEO** - Low Earth Orbit → Refers to objects orbitting the earth at an altitude of less than 2000 km
+- **LEO** - Low Earth Orbit → Refers to objects orbiting the earth at an altitude of less than 2000 km
 
 ---
 
@@ -106,27 +106,27 @@ You'll likely meet these terms when using SatDump and other SDR programs.
 ### Data related terms
 
 - **DB** - Direct Broadcast → A signal that is transmitted constantly, directly from the instruments (Without processing from a ground station)
-- **Rebroadcast** → A signal that is transmitted down to earth in a different band/time period, processed by a groundstation, then uplinked to the satellite to be rebroadcasted. An example is xRIT.
-- **Dump** → A signal that is transmitted to a specific groundstation at a specific time - has a beginning and an end
+- **Rebroadcast** → A signal that is transmitted down to earth in a different band/time period, processed by a ground station, then uplinked to the satellite to be rebroadcasted. An example is xRIT.
+- **Dump** → A signal that is transmitted to a specific ground station at a specific time - has a beginning and an end
 
 ---
 
-Please note that the wavelengths (μm) values are not important unless you're tinkering with composites, are only listed for the sake of completency.
+Please note that the wavelength (μm) values are not important unless you're tinkering with composites, are only listed for the sake of keeping this complete.
 
 - **VIS** → Shorthand for "Visible channel", describes channels imaging light visible by the naked eye (0.4 to 0.7 µm)
 - **IR** → Shorthand for "Infrared channel", describes channels imaging:
     - **NIR** - Near Infrared → 0.7 to 1.4 μm 
     - **SWIR** - Short Wave Infrared → 1.4 to 3 μm, is necessary for microphysics composites
     - **MWIR** - Medium Wave Infrared → 3 to 8 μm 
-    - **LWIR** - Long Wave Infrared →  8 to 15 μm
-- **WV** → Shorthand for "Water Vapour channel", describes channels imaging water vapour in the atmosphere
+    - **LWIR** - Long Wave Infrared → 8 to 15 μm
+- **WV** → Shorthand for "Water Vapor channel", describes channels imaging water vapor in the atmosphere
 
 
 
 # Mistakes and pitfalls
 This is a list of mistakes I made that ended up in wasted time, avoid them for the sake of saving you a headache or two
 
-- **Using old, outdated guides and software** → Radio is very niche, the majority of guides you can find online are heavily outdated giving you bad advice and suggesting deprecated software, leading to confusion and subpar results. Please make sure that any sources you use are up to date.
+- **Using old, outdated guides and software** → Radio is very niche, the majority of guides you can find online are heavily outdated giving you bad advice and suggesting deprecated software, leading to confusion and subpar results. Please make sure that any sources you use are up-to-date.
 
 - **Compass tracking with directional antennas** → Due to inaccuracies in your phone's compass and differing real world conditions, you should always try to go by signal strength instead of tracking by elevation and azimuth. Use apps to find the general direction of the satellite, move your antenna around until you see the signal. Once you see the signal, move slow and with purpose to have the signal be as strong as possible.
 
@@ -134,7 +134,7 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 > Doing the above is especially hurtful with LRPT, as your machine knows where the signal is by using a costas loop, changing the frequency makes the costas loop momentarily lose its lock and cause data loss. 
 
-- **Blindly maxxing the gain setting** → Upping the gain only makes signals stronger up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This can drown them out due to overloading, as well as damage the signal's quality due to your SDR saturating. Turn it up only until you see, that the signal isn't getting any stronger.  [Use SatDump's `Debug`](#correct-gain) window for this
+- **Blindly maxing the gain setting** → Upping the gain only makes signals stronger up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This can drown them out due to overloading, as well as damage the signal's quality due to your SDR saturating. Turn it up only until you see, that the signal isn't getting any stronger.  [Use SatDump's `Debug`](#correct-gain) window for this
 
 
 # SDR specific information
@@ -158,18 +158,18 @@ The best program for **decoding data** from satellites is arguably [SatDump](htt
  To **track satellites** and figure out their future passes (Most are orbiting the Earth after all), you can use these:
 
 Cross-Platform:
-- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, MacOS, Android - SatDump has an inbuilt module you can use for tracking found in the `Recording` tab. **It can only track one satellite at a time, doesn't do long term predictions.**
+- [SatDump](https://github.com/SatDump/SatDump/releases) - Windows, Linux, macOS, Android - SatDump has an inbuilt module you can use for tracking found in the `Recording` tab. **It can only track one satellite at a time, doesn't do long term predictions.**
 - [N2YO](https://n2yo.com/) - Web - Does the job, however lacks the polish of other apps
 
 PC:
-- [Gpredict](https://oz9aec.dk/gpredict/) - Windows, Linux, MacOS - A relatively young tool, arguably the best choice for tracking on your computer
+- [Gpredict](https://oz9aec.dk/gpredict/) - Windows, Linux, macOS - A relatively young tool, arguably the best choice for tracking on your computer
 - [Orbitron](http://www.stoff.pl/) - Windows, Linux (wine) - Quite dated but functionally sound
 
 Mobile:
 - [Look4Sat](https://play.google.com/store/apps/details?id=com.rtbishop.look4sat&hl=en&gl=US) - Android - Provides everything essential in a simple UI.
 
 
-There are a few apps for IOS but they have severe limitations, using any of the above instead is heavily encouraged instead.
+There are a few apps for IOS, but they have severe limitations. Using any of the above instead is heavily encouraged.
 
 > **Make sure you update your TLEs** every few days/weeks, not doing so can make the satellite locations be outdated or just outright incorrect.
 
@@ -186,7 +186,7 @@ This guide will focus on using **SatDump** for all recording and decoding purpos
 
 Before anything, we need to configure a few things in the `Settings` tab. Make sure to do the following:
 
-**General Satdump**
+**General SatDump**
 - Set your location (QTH Longitude, QTH latitude)
 - Hit the `Update` button on the `Update TLEs` line
 - (optional) Disable `Automatically process products`
@@ -213,13 +213,13 @@ When you launch SatDump, you initially face the `Offline processing` tab. This i
 <br>
 ![Screenshot of the SatDump source config](../../assets/images/Radio/SD_Source-selection.jpg) 
 
-> If your SDR isn't showing up, make sure that it is being recognized by your computer and that the drviers are installed properly. If it's visible by other programs but now SatDump, ensure all SatDump dependencies are installed.
+> If your SDR isn't showing up, make sure that it is being recognized by your computer and that the drivers are installed properly. If it's visible by other programs but now SatDump, ensure all SatDump dependencies are installed.
 
 Once you have selected your SDR, you can select a sampling rate appropriate for the signal you are about to decode; this depends on the symbol rate of the target signal. Your sampling rate should be **at least** roughly twice the symbol rate of the signal. 2.048 Msps is perfectly adequate for VHF signals described here, while 2.4 Msps is enough for most L band signals. Please note that higher sampling rates don't hurt the signal as long as you don't begin to [drop samples](#viterbi-spikes).
 
 > I.e. if a signal has a symbol rate of 1 Msym/s, a sampling rate of **at least** 2 Msps is recommended
 
-You can now press `Start`, you should see a blue waterfall appear on the right hand side of your screen (see image below). You can configure the gain slider(s) once you are receiving a signal.
+You can now press `Start`, you should see a blue waterfall appear on the right-hand side of your screen (see image below). You can configure the gain slider(s) once you are receiving a signal.
 
 ### UI elements
 
@@ -228,30 +228,30 @@ Now that we have something to look at, we can break the UI down into a few diffe
 ![Screenshot of the SatDump UI](../../assets/images/Radio/SD_UI-elements.jpg)
 
 1. **FFT spectrum** - This shows the slice of the radio spectrum being sampled by your SDR. The higher a point is, the stronger that part of the spectrum is.
-2. **FFT Waterfall** - This shows how the FFT spectrum has changed overtime using a color gradient. By default blue is the weakest and red is the strongest.
+2. **FFT Waterfall** - This shows how the FFT spectrum has changed overtime using a color gradient. By default, blue is the weakest and red is the strongest.
 3. **Frequency range** - This gives you a scale of what frequencies you're looking at.
 4. **Status bar** - Shows what SatDump is doing right now, clicking it gives you a full log.
 
 ### Adjusting FFT
 
-If we don't adjust the FFT settings, we won't see much happening on it; the default FFT range is setup to two extremes: -150 dB and 150 dB. To make sure we can actually see signals on it, connect your SDR to your receiving setup (antenna) and do the following:
+If we don't adjust the FFT settings, we won't see much happening on it; the default FFT range is set up to two extremes: -150 dB and 150 dB. To make sure we can actually see signals on it, connect your SDR to your receiving setup (antenna) and do the following:
 
 1. Open the `FFT` dropdown
 2. Select a reasonable FFT size (resolution), 16384 should be more than enough for most use cases 
 3. Move the `FFT Min` slider until the *Noise floor* (bottom of the sampled spectrum) is just above the bottom of the window
-4. Move the `FFT Max` slider until you have enough of a range from the *Noise floor*, that you will be able to see the signal at its maximum strength with a decent margain on top. You can also simply adjust it when a satellite is in view, position it so it's aesthetically pleasing to look at.
-> I.e. if the noise floor is at -65 dB, you expect the signal to reach 20 dB, make the maximum -65 [Noise floor] + 20 [Maximum signal strength] + 5 [Margain] = -40 dB
+4. Move the `FFT Max` slider until you have enough of a range from the *Noise floor*, that you will be able to see the signal at its maximum strength with a decent margin on top. You can also simply adjust it when a satellite is in view, since it has no effect on reception. Position it, so it's aesthetically pleasing to look at.
+> I.e. if the noise floor is at -65 dB, you expect the signal to reach 20 dB, make the maximum -65 [Noise floor] + 20 [Maximum signal strength] + 5 [Margin] = -40 dB
 5. Set the `Avg num` to anywhere between 10-50, it smoothens the FFT to make it more visually pleasing.
 
 
-Your FFt should be configured properly now, here's an example of the same signal at 1691 MHz as seen above, but with a properly adjusted FFT:
+Your FFT should be configured properly now, here's an example of the same signal at 1691 MHz as seen above, but with a properly adjusted FFT:
 
 ![Screenshot of a properly adjusted FFT](../../assets/images/Radio/SD_Adjusted-FFT.jpg)
 *Everything tinted yellow here is a signal. We can now see the shape and strength of it.*
 
 ## Setting up tracking (optional)
 
-If you set your location properly and your TLEs are up to date, you can use SatDump's `Tracking` dropdown to see the following satellite pass. It allows you to have the satellite's location in a convenient spot, eliminating the need for a second program running next to SatDump. To use it, choose the `Satellites` option and select the target satellite from the dropdown. You will now see a summary of the next pass.
+If you set your location properly and your TLEs are up-to-date, you can use SatDump's `Tracking` dropdown to see the following satellite pass. It allows you to have the satellite's location in a convenient spot, eliminating the need for a second program running next to SatDump. To use it, choose the `Satellites` option and select the target satellite from the dropdown. You will now see a summary of the next pass.
 
 The 'radar' is like a compass, where every circle is equivalent to 30° of elevation. The closer to the center a satellite is, the higher in the sky it is in the real life, with the center point being the zenith (straight, 90°).
 
@@ -272,13 +272,13 @@ On the bottom of your screen you can see the pipeline appear, it separates into 
 
 Now let's look at everything individually:
 
-1. **Constellation** - Without going into much detail about radio theory, the constellation is a visualisation of the signal you are receiving. It is helpful when determining issues with your reception, is able to tell much more than just by looking at the signal on the spectrum. It should match the modulation found right above it, in this case OQPSK = 4 dots in each corner. The smaller the dots are, the stronger the signal is.
+1. **Constellation** - Without going into much detail about radio theory, the constellation is a visualization of the signal you are receiving. It is helpful when determining issues with your reception, is able to tell much more than just by looking at the signal on the spectrum. It should match the modulation found right above it, in this case OQPSK = 4 dots in each corner. The smaller the dots are, the stronger the signal is.
 2. **SNR** - How strong the signal is expressed in dB. This is just a calculated value, can be wrong! The constellation and BER are the ultimate judges of signal strength.
-3. **Viterbi** - Without going into much radio theory again, the viterbi algorithm shows whether SatDump knows where the error correction bits are. Is is useful when figuring out how strong a signal is (Lower BER = Cleaner signal), or if you are [dropping samples](#viterbi-spikes)
+3. **Viterbi** - Without going into much radio theory again, the viterbi algorithm shows whether SatDump knows where the error correction bits are. It is useful when figuring out how strong a signal is (Lower BER = Cleaner signal), or if you are [dropping samples](#viterbi-spikes)
 4. **Deframer** - The deframer shows, whether SatDump knows where individual frames of data start. If it doesn't know (NOSYNC), SatDump isn't decoding any data, because it has no idea what it is looking at.
 5. **Reed-Solomon** - This describes the forward error correction bits, where: **Green** = "Bit is OK", **Orange** = "Bit had to be recovered", **Red** = "Bit was lost".
 
-Other things might show up here depending on the satellite you are receiving, such as an image or frame counter. Please note that numbers 3,4, abd 5 only show up with signals that have FEC. In this band, that's only LRPT.
+Other things might show up here depending on the satellite you are receiving, such as an image or frame counter. Please note that numbers 3,4, and 5 only show up with signals that have FEC. In this band, that's only LRPT.
 
 
 ---
@@ -294,7 +294,7 @@ Now that we have gone over the terminology behind these satellite and know how t
 - While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
 
 ## Sample processed APT and LRPT images
-> Note: The raw images don't have maps on them, they were added in post processing.
+> Note: The raw images don't have maps on them, they were added in post-processing.
 
 ![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
 *NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
@@ -308,7 +308,7 @@ Now that we have gone over the terminology behind these satellite and know how t
 ### NOAA
 
 - There are **3** NOAA satellites broadcasting imagery in this band, **NOAA 15, 18, and 19**. These are the only remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation. They were launched in 1998, 2005, and 2009 respectively.
-- Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
+- Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4 km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
 - These satellites also broadcast an auxiliary [DSB (Direct Sounder Broadcast)](https://www.sigidwiki.com/wiki/NOAA_Direct_Sounder_Broadcast_(DSB)) signal which contains the HIRS and SEM instruments as well as telemetry. I won't be covering it in this guide, as it's primarily focused on visible imagery.
 
 <br>
@@ -324,7 +324,7 @@ Now that we have gone over the terminology behind these satellite and know how t
 
 ### METEOR-M
 
-- There are **2** satellites currently broadcasting imagery in this band, **Meteor-M N°2-3** and **Meteor-M N°2-4** (coloquially referred to as Meteor M2-x or just M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June of 2023 and February of 2024 respectively. 
+- There are **2** satellites currently broadcasting imagery in this band, **Meteor-M N°2-3** and **Meteor-M N°2-4** (colloquially referred to as Meteor M2-x or just M2-x for short), both a part of the **Meteor-M** constellation. They were launched very recently - in June 2023 and February 2024 respectively. 
 - These satellites have a *digital* **[LRPT (Low rate picture transmission)](https://www.sigidwiki.com/wiki/Low_Rate_Picture_Transmission_(LRPT))** broadcast that includes 3 channels at a JPEG-compressed 1 km/px quality. It includes **FEC** to make sure the picture doesn't come out grainy as well as allowing you to decode the signal properly even if it's fairly weak.
 
 > Reception note: M2-3 LRPT fades significantly when facing away from you at lower elevations.
@@ -343,8 +343,8 @@ Now that we have gone over the terminology behind these satellite and know how t
 *Meteor M2-4 LRPT. Spike on the left isn't a part of the signal.*
 
 
-- This satellite series has been plagued with accidents, faults, and delays: Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, M2-2 got hit by a micrometeor making it unable to broadcast LRPT, **M2-3's LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is suppoed to be**.
-- As a long awaited change of luck, M2-4 has succesfully launched on leap day in 2024, is broadcasting LRPT at a full strength. Its JPEG compressor has had a few hiccups presenting as a lot of artefacting in its imagery, but it has always recovered after the satellite restarted it a few orbits later.
+- This satellite series has been plagued with accidents, faults, and delays: Meteor M1 and M2 lost altitude control, M2-1 exploded on launch, M2-2 got hit by a micrometeor making it unable to broadcast LRPT, **M2-3's LRPT antenna didn't fully extend, leaving it in a tilted angle making the signal improperly polarized, experience random drops as well as making it generally weaker than it is supposed to be**.
+- As a long awaited change of luck, M2-4 has successfully launched on leap day in 2024, is broadcasting LRPT at a full strength. Its JPEG compressor has had a few hiccups presenting as a lot of artefacting in its imagery, but it has always recovered after the satellite restarted it a few orbits later.
 
 
 ## Broadcast issues
@@ -390,7 +390,7 @@ That's it. Really.
 > Note: This antenna can be used for permanent fixtures, but should have a proper ground plane. A good example is a V shaped reflector about 1/4 wl below the dipole, a bit larger than the V dipole itself.
 
 ![A visual guide on how the antenna should look](../../assets/images/Radio/V-Dipole-guide.jpg) <br>
-*This image suggests a wire length of 53.4 cm, while that would work the actual length should be approximately 54.5cm. This is because the v dipole elements be a fourth of the target wavelength, which in this case is `299,792,458 ms⁻¹/137,500,000 hz = ~2.18 m; 2,18/4 = ~0.545 m = ~54.5 cm`. Why? [It's how a v dipole works.](https://upload.wikimedia.org/wikipedia/commons/d/d8/Dipole_antenna_standing_waves_animation_6_-_10fps.gif)). This image also suggests using aluminum rods, while that'd work, copper is about twice as conductive and will therefore lead to better results).*
+*This image suggests a wire length of 53.4 cm, while that would work the actual length should be approximately 54.5 cm. This is because the v dipole elements be a fourth of the target wavelength, which in this case is `299,792,458 ms⁻¹/137,500,000 hz = ~2.18 m; 2,18/4 = ~0.545 m = ~54.5 cm`. Why? [It's how a v dipole works](https://upload.wikimedia.org/wikipedia/commons/d/d8/Dipole_antenna_standing_waves_animation_6_-_10fps.gif). This image also suggests using aluminum rods, while that'd work, copper is about twice as conductive and will therefore lead to better results.*
 
 
 ### 2. Yagi-Uda antenna
@@ -403,16 +403,16 @@ That's it. Really.
 *[Source](https://www.digikey.com.br/pt/blog/the-yagi-antenna)*
 
 To make it:
-1. Get something long and nonconductive, this wll be the base for the yagi and is called a "boom". Afterwards, figure out how many elements fit on it based on its length.
+1. Get something long and non-conductive, this will be the base for the yagi and is called a "boom". Afterwards, figure out how many elements fit on it based on its length.
 > More elements make the antenna: 
 >   - More directional (Harder to track)
 >   - Have a higher gain (Better signal strength)
 >   - Have a longer boom length (Bulkier)
 2. Shove appropriate numbers into [this calculator](https://www.steeman.org/Antenna/Yagi-Antenna-Calculator) (For frequency choose 137.5 MHz)
-3. Cut copper wires to length, place them onto the boom according to to the values from the calculator
+3. Cut copper wires to length, place them onto the boom according to the values from the calculator
 4. For the driven element (dipole), cut it in half and put one side in a terminal with the shielding of a coaxial wire and the other with the core of the same wire\
 **Make sure the cables don't touch or are short together in any way, this will make the antenna not work**
-5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (In essence creating a HF choke)
+5. Coil the coaxial cable up a few times right after the feed point in order to convert the **unbalanced** signal to a **balanced** one (In essence creating an HF choke)
 
 ![My yagi setup showcasing the balun and feed](../../assets/images/Radio/My-yagi-dipole-feed.jpg)
 *The choked balun and dipole feed I use on my yagi*
@@ -427,7 +427,7 @@ To make it:
 ![Sample QFH antenna](../../assets/images/Radio/QFH-guide.jpg) <br>
 *[Source](https://okelectronic.wordpress.com/2014/08/20/rtl-sdr-second-attempt/)*
 
-A good guide I have followed to make this antenna can be found [here](https://sdr-es.com/construccion-antena-qfh-137/), while being in spanish it offers great information about the dimensions and the installation. [Google translated page](https://sdr--es-com.translate.goog/construccion-antena-qfh-137/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
+A good guide I have followed to make this antenna can be found [here](https://sdr-es.com/construccion-antena-qfh-137/), while being in Spanish it offers great information about the dimensions and the installation. [Google translated page](https://sdr--es-com.translate.goog/construccion-antena-qfh-137/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
 
 ***WARNING! This antenna has a circular polarization, meaning you <u>HAVE</u> to match it with the satellites', that being RHCP!!!*** (For APT & LRPT)
 ![Correct QFH polarization](../../assets/images/Radio/QFH-correct-polarization.jpg)
@@ -491,7 +491,7 @@ As of the latest commit, the frequencies these satellites broadcast at are as fo
 
 5. Once you see the signal has completely disappeared and/or the satellite has passed under the horizon, press `Stop` on the pipeline
 
-6. SatDump will now begin automatically processing the results, you can see the progress on the status bar and the `Offline processing` tab. (You can disable the autoprocessing in the settings if you want to tinker with the images yourself and don't want SatDump creating automatic images)
+6. SatDump will now begin automatically processing the results, you can see the progress on the status bar and the `Offline processing` tab. (You can disable the auto-processing in the settings if you want to tinker with the images yourself and don't want SatDump creating automatic images)
 
 7. Once it finishes processing, head to the `Viewer` tab and select the pass you decoded on the top left
 
@@ -505,7 +505,7 @@ As an alternative to directly recording in SatDump, SDR++ can be used to record 
 1. Open SDR++ and start the radio
 
 2. Open the Module manager and configure as follows:
-    1. Type any name you want into the left window and select `meteor_demodulator` in the right iwndow
+    1. Type any name you want into the left window and select `meteor_demodulator` in the right window
     2. Click the '+' icon
     3. Tick OQPSK in the newly added module
     4. Hit record when a satellite is in sight
@@ -530,7 +530,7 @@ Your LRPT pass should now decode as usual.
 ## Generic
 
 ### There is a map but no clouds are present
-You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded) or solid black (visible LRPT channels at night), all you are left with is the predefined map. You can confirm this by looking at the folder with the products, in the case of APT look at the `raw_sync.png` file, it'll likely be full of static. In case of LRPT look into the `MSU-MR` folder, you are likely going to find 3 solid black iamges.
+You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded) or solid black (visible LRPT channels at night), all you are left with is the predefined map. You can confirm this by looking at the folder with the products, in the case of APT look at the `raw_sync.png` file, it'll likely be full of static. In case of LRPT look into the `MSU-MR` folder, you are likely going to find 3 solid black images.
 
 ### The signal is fading a lot near the horizon
 
@@ -557,7 +557,7 @@ This line is caused by APT passing through the center of your FFT spectrum, whic
 ![A crop of an AOT image with several small static lines in it](../../assets/images/Radio/APT-VDL.png)
 *Small lines are most visible on channel A (left)*
 
-This is caused by interference from VDL, a data transmission format used by planes in the neighbouring aviation band. Because of its strength and proximity to this band there is sadly no remedy for this other than moving away from areas where planes frequent in.
+This is caused by interference from VDL, a data transmission format used by planes in the neighboring aviation band. Because of its strength and proximity to this band there is sadly no remedy for this other than moving away from areas where planes frequent in.
 
 ## LRPT specific
 
@@ -565,8 +565,8 @@ This is caused by interference from VDL, a data transmission format used by plan
 If the image is from LRPT on an evening pass, you need to select an infrared channel (4/5/6) to see imagery - Channels 1/2/3 are all visible, so during night they are solid black. If the satellite was in 123 mode, you won't be able to see any imagery from this decode. Sorry!
 
 
-### I saw an LRPT signal but got no SNR andor NOSYNC on the viterbi
-- SatDump has recently had a period where where the demodulator got modified in a way that has caused issues with locking onto the LRPT signal. This was fixed in a later update, should be fixed by simply updating SatDump.
+### I saw an LRPT signal but got no SNR and/or NOSYNC on the viterbi
+- SatDump has recently had a period where the demodulator got modified in a way that has caused issues with locking onto the LRPT signal. This was fixed in a later update, should be fixed by simply updating SatDump.
 
 > I have noticed this issue happening in the recent past as well, will investigate when able
 
@@ -593,13 +593,13 @@ Our eyes sense different colors by sensing different wavelengths that objects re
 
 ![Color spectrum showing the S, M and L wavelengths](../../assets/images/Radio/Color-spectrum.jpg)
 
-Satellites work simmilar to our eyes, but instead of having different cones for different wavelengths they have different **channels**. 
+Satellites work similar to our eyes, but instead of having different cones for different wavelengths they have different **channels**. 
 
 > But why are the images in black and white when we see color? Because we are looking at individual channels (Equivalent of only one type of cone at a time) instead of a mix of channels as perceived by our brains.
 
 ## Why is it called false color?
 
-Put simply, the term 'false color' refers to an image that does not represent what you would see with a naked eye. We can't see electromagnatic waves that have a lower or higher wavelength than RGB (400-700 nm). Due to technological contraints and a focus on scientific value, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrareds.
+Put simply, the term 'false color' refers to an image that does not represent what you would see with a naked eye. We can't see electromagnetic waves that have a lower or higher wavelength than RGB (400-700 nm). Due to technological constraints and a focus on scientific value, earlier satellites' instruments usually didn't bother sampling all color bands, instead receiving other wavelengths that are more important for research such as different infrareds.
 
 As an example, these are the channels present on the AVHRR/3 instrument flown on MetOp and NOAA POES satellites:
 
@@ -634,7 +634,7 @@ You can play with the different composites and see what looks the best for your 
 
 ## Do any satellites broadcast true color?
 
-Yes! New satellites often have channels that individually sample R, G, and B wavelengths. For example, here are the channels of the VIRR instrument flown on Fengyun 3 [A/B/C] satellites:
+Yes! New satellites often have channels that individually sample R, G, and B wavelengths. For example, here are the channels of the VIRR instrument flown on FengYun 3 [A/B/C] satellites:
 
 |Channel number|Wavelength|Description|
 |---|---|---|
@@ -654,7 +654,7 @@ Channels 1, 7, and 9 sample R, B, and G wavelengths respectively; this makes the
 ![A true color image from FengYun 3C](../../assets/images/Radio/compressed/True-color-COMPRESSED.jpg)
 *FengYun 3C received on 29/03/2024 using a 125 cm dish and a SawBird GOES+. Processed using SatDump with the `197` RGB composite. Median blur applied, equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*
 
-# MIscallenous stuff
+# Miscellaneous stuff
 
 ## Pass rating scale
 This scale is not official or perfect, I just created it to be able to gauge how good each **xRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometres of the ground track you received from the satellite. <u> Given Meteor-M's spatial resolution of approximately 1 kilometre, you can use the vertical length of raw MSU-MR images from your LRPT pass to get the amount of kilometres you tracked</u>
@@ -676,7 +676,7 @@ The theoretical limit for this is about 6000 km, which has been received by some
 
 ## Why does the horizon appear as a straight line during skew tests?
 
-If you received Meteor M2-4 in the few months following its launch, you might have captured one of its skew tests! While perforing these, the imager turns a perfect 90° to its side.
+If you received Meteor M2-4 in the few months following its launch, you might have captured one of its skew tests! While performing these, the imager turns a perfect 90° to its side.
 
 ![Meteor M2-4 skew test picture](../../assets/images/Radio/compressed/MSU-Skew-test-COMPRESSED.jpg)
 *Meteor M2-4 received on 21/04/2024 using a V-dipole. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied.*

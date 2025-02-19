@@ -6,9 +6,9 @@ nav_order: 2
 
 # Preamble
 
-This article will guide you on how to reflash your Samsung phone's stock firmware if you are facing issues that require a full wipe of the OS. When done properly, it should be perfectly safe and have feasibly no risk of damage to your device. To ensure that, this guide instructs you to enable your phone's protected state, which will NOT flash any unknown or incorrect binaries. <u>However please keep in mind, that this guide describes some sensitive processes, which - if done incorrectly - CAN cause permanent damage to your device.</u>
+This article will guide you on how to reflash your Samsung phone's stock firmware if you are facing issues that require a full wipe of the OS. When done properly, it should be perfectly safe and have feasibly no risk of damage to your device. To ensure that, this guide instructs you to enable your phone's protected state, which will NOT flash any unknown or incorrect binaries. <u>However, please keep in mind, that this guide describes some sensitive processes, which - if done incorrectly - CAN cause permanent damage to your device.</u>
 
-> ***I HOLD NO LIABLITY FOR ANY DAMAGE YOU MIGHT DO TO YOUR DEVICE.***
+> ***I HOLD NO LIABILITY FOR ANY DAMAGE YOU MIGHT DO TO YOUR DEVICE.***
 
 # Uses
 
@@ -36,7 +36,7 @@ If your phone has a **Snapdragon chipset**, it is <u>permanently enabled</u>. If
 
 ## Know your CSC code and model number
 
-Samsung devices use CSC (Country Specific Codes) to differentiate firmware between different regions. It's best you flash the same one as the one currently on your device for safety. An exhaustive list can be found [here](](https://technastic.com/samsung-csc-codes-list/). 
+Samsung devices use CSC (Country Specific Codes) to differentiate firmware between different regions. It's best you flash the same one as the one currently on your device for safety. An exhaustive list can be found [here](https://technastic.com/samsung-csc-codes-list/). 
 > **Warning: Some CSC codes are marked as `Multi-CSC`, these are NOT specific and represent several other CSC codes! If the CSC code you found in the first method is in the `Multi-CSC` section in the list linked above, try one of the other two methods.**
 
 Each phone also has a model number which defines the specific hardware variant you have, such as international versus USA specific hardware. You HAVE to match it to that of your phone's, otherwise it will refuse to flash the binary.
@@ -54,8 +54,8 @@ You can find these code in a few ways:
 2. **Using device information in your settings app**
 
     - Model number:
-        - Navigate to Settings > Device information > Look at hte `Model name` field
-
+        - Navigate to Settings > Device information > Look at the `Model name` field
+h
     - CSC: 
         - Navigate to Settings > Device information > Software information > `Service provider software version`
 
@@ -103,7 +103,7 @@ To not trip (permanently disable) knox and void your warranty, you **MUST** inst
 
 8. Select everything but `USERDATA` accordingly from the archive you downloaded (`AP_..` to AP, `BL_..` to BL, `CP_..` to CP, `CSC_..` to CSC) and tick the box next to each one of these.
 
-    > You will have a leftover `HOME_CSC` file, which wouldn't erase user data. However we want a full reflash, so use the standard `CSC_..` file instead.
+    > You will have a leftover `HOME_CSC` file, which wouldn't erase user data. However, we want a full reflash, so use the standard `CSC_..` file instead.
 
     ![Image showing the above loaded into Odin](../assets/images/Samsung-flash/Odin-config.png)
 
@@ -113,5 +113,5 @@ To not trip (permanently disable) knox and void your warranty, you **MUST** inst
 
 One of two results can happen now:
 
-- **A green `PASS` lights up**: Congratulations, you have succesfully flashed your device! You can unplug it once it restarts, set it up as usual. If you had an issue with updating, you can verify it's fixed now.
+- **A green `PASS` lights up**: Congratulations, you have successfully flashed your device! You can unplug it once it restarts, set it up as usual. If you had an issue with updating, you can verify it's fixed now.
 - **A red `FAIL` lights up**: Something went wrong with the flash. Make sure you selected the correct files, have the correct model number downloaded.
