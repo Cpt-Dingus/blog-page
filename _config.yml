@@ -4,3 +4,5 @@ theme: just-the-docs
 
 url: https://cpt-dingus.github.io
 baseurl: "/Obsidian-notes" 
+
+color_scheme: custom
