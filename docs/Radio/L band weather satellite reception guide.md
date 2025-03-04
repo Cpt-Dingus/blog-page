@@ -13,9 +13,9 @@ parent: Radio
 
 # Preamble
 
-If you're reading this, you have probably been intrigued by the lower resolution VHF imager that you can (or even have) received yourself. Well, you're in for a ride! The L band is relatively easy to receive thanks to commercial solutions existing for the equipment, while it's been deprecated by most LEO satellites, it still offers a lot of interesting data; particularly geostationary satellites. This guide will cover both. You can expect resolutions of roughly 1 km/px in the majority of this band. This guide will definitively describe the reception of the **L satellite band (~1.7 GHz)** when it comes to weather satellites. 
+If you're reading this, you have probably been intrigued by the lower resolution VHF imagery that you can (or even have) received yourself. Well, you're in for a ride! The L band is relatively easy to receive thanks to commercial solutions existing for the equipment, while it's been deprecated by most LEO satellites, it still offers a lot of interesting data; particularly geostationary satellites. This guide will cover both. You can expect resolutions of roughly 1 km/px in the majority of this band. This guide will definitively describe the reception of the **L satellite band (~1.7 GHz)** when it comes to weather satellites. 
 
-**This guide assumes you have read the [VHF guide](TODO) already, won't repeat some more basic concepts.**
+**This guide assumes you have read the [VHF guide](Beginners guide to weather satellite reception) already, won't repeat some more basic concepts.**
 
 There will be sample imagery next to every satellite series, you can view the raw tree along with credits [here](https://cpt-dingus.cc/static/sat-images). If an image doesn't have credit, I received it myself.
 > This is still WIP! Dead links and incomplete lists are both possible while I set this up.
@@ -75,7 +75,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
 - The broadcast features a very strong carrier wave making it very easy to track
 - Full resolution sample imagery:
-    - [NOAA Natural color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/2024-12-01_10-05_noaa_hrpt_1.698%20GHz/avhrr_3_NOAA%20Natural%20Color.png)
+    - [NOAA Natural color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.pngg)
     - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_AVHRR%20221%20False%20Color.png)
     - [4/221 merge](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_4-221%20Merge.png)
     - [Enhanced Infrared](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_Enhanced%20IR.png)
@@ -96,7 +96,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - This broadcast, much like POES HRPT, has a very strong carrier wave making it easy to track.
 - Full resolution sample imagery:
     - [Natural color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_AVHRR%20221%20False%20Color.png)
-    - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Meteor-M/2024-11-09_13-16_meteor_hrpt_1.7%20GHz/msu_mr_AVHRR%20221%20False%20Color.png)
+    - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_AVHRR%20221%20False%20Color.png)
     - [Day microphysics](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_Day%20Microphysics.png)
 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg) <br>
@@ -112,12 +112,18 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels at a 1.1 km/px quality as well as one IASI Imaging channel at 0.8 km/px.
 - The signal does not have a carrier wave or easily discernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
+
+> !WARNING! - As of 03/2025, MetOp B has been found to have a deteriorating modulator causing a significant hit to the expected AHRPT SNR. According to receptions by Lego11 and Aang23, there is an approximately 7 dB loss compared to the nominal status. This issue is visible when decoding at higher SNRs, the modulator starts to form an X shape instead of the correct OQPSK modulation.
+
+
 - Full resolution sample imagery:
     - [NOAA Natural color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_NOAA%20Natural%20Color.png)
     - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_AVHRR%20221%20False%20Color.png)
     - [4/221 merge](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_4-221%20Merge.png)
     - [Day microphysics](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_Day%20Microphysics%20(Metop).png)
     
+
+
 
 > Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut shaped constellation while decoding this signal, make sure to follow [this heading](#bad_constellation) to lower the PLL bandwidth.
 
@@ -171,7 +177,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
 |Meteor M2-3, M2-4|1700 MHz||
-|MetOp B, C|1701.3 MHz||
+|MetOp B|1701.3 MHz|Lower SNR than MetOp C|
+|MetOp C|1701.3 MHz||
 |Arctic Weather Satellite|1707 MHz||
 |FengYun 3C|1701.4 MHz||
 
@@ -181,7 +188,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Don't require tracking, since the satellites don't move (It's on the tin - geo**stationary**)\*
 - Broadcast full disc images of the earth and/or regional crops
 
-\* Some older satellites might have an inclination, where they slowly move in an 8 shape throughout a day.
+\* Some older satellites might have an increased inclination, where they slowly move in an 8 shape throughout a day. They still maintain a consistent longitude though.
 <br>
 
 - There are **13** geostationary satellites broadcasting imagery in this band:
@@ -210,7 +217,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - Meteosat: 1x IR at 15 km/px every hour\*
     - Miscellaneous EMWIN data (Crops, weather charts, L2 products...)
 
-\* I've only seen this in GOES-East HRIT. The imagery is in `EMWIN`, not `IMAGES`.
+\* I've only seen this in GOES-East HRIT. Additionally, the imagery is in `EMWIN`, not `IMAGES`.
 
 - GRB specifically transmits:
     - LHCP:
@@ -237,7 +244,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
             - MSG (TODO)
 
     - GRB:
-        - TODO
+        - Have no data available as of now. If you have any, please contact me using the information at the bottom of this page.
 
 
 ![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.jpg) <br>
@@ -265,7 +272,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 > Reception note: The satellite normally does regional crops, as they can be scanned faster than full disc images at just 15 minutes. It still transmits a full disc image every 3 hours.
 
 - Full resolution sample imagery:
-    - TODO
+    - [False Color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/EWS-G/EWS-G2/GVAR/2025-02-16_13-01/G15_FC_20250216T130335Z.png)
 
 ![GOES GVAR screenshot from SatDump](../../assets/images/Radio/GOES-GVAR.jpg) <br>
 *EWS-G2 (GOES 15) GVAR*
@@ -317,7 +324,9 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 > These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to its weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line in real time. This is the reason why S-VISSR is so jumpy.
 
 - Full resolution sample imagery:
-    - TODO
+    - [False color crop](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-2/FengYun-2H/2025-02-16_12-44/FY-2x_FC_20250216T124452Z.png)
+    - [False color FD](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-2/FengYun-2H/2025-02-16_13-25/FY-2x_FC_20250216T132604Z.png)
+    - [False color FD](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-2/FengYun-2H/2025-02-16_10-25/FY-2x_FC_20250216T102523Z.jpg) (More illumination, but JPG)
 
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
 *FengYun 2H S-VISSR on the right, short horizontal blips are CDAS. See how the blips line up with the gaps in S-VISSR.*
@@ -334,7 +343,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 - Full resolution sample imagery:
-    - TODO
+    - [LRIT](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-4/FengYun-4A/LRIT/2023-08-04_11-14_drew4781/) - Credit to drew4781, click on a file to view it
+    - [HRIT](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-4/FengYun-4A/HRIT/2023-08-22_06-14_drew4781/FY4A_12_20230822T061400Z.png) - Credit to drew4781
 
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
@@ -373,8 +383,13 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - RSS - Rapid Scan Service - The top third of the Earth is transmitted every 5 minutes
     - FES - Full Earth Scan - The whole earth is scanned every 15 minutes, only enabled during eclipse season
 
-> Reception note: The minimal dish size is speculative due to insufficient data, I do not know of anybody receiving it with just a SawBird. The 4-metre dish size given is a rough estimate.
+- Full resolution sample imagery (credit to FelixTRG):
+    - [321](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/MSG/Meteosat-10/seviri_rgb_321.png)
+    - [221](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/MSG/Meteosat-10/seviri_rgb_221.png)
+    - [Day Microphysics](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/MSG/Meteosat-10/seviri_rgb_Day_Microphysics.png) - Misaligned channels, 'blur' effect
+    - [Water Vapor](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/MSG/Meteosat-10/seviri_rgb_7.35_%c2%b5m_Water_Vapor.png)
 
+> Reception note: The minimal dish size is speculative due to insufficient data, I do not know of anybody receiving it with just a SawBird. The 4-metre dish size given is a rough estimate.
 
 > These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
 
@@ -413,7 +428,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly, image every 15 minutes
 |GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
 |EWS-G|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every TODO minutes rest of the time.
+|EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every 15 minutes rest of the time.
 |EWS-G|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
 |EWS-G|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
 |Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second timeslot variable\*\*\*

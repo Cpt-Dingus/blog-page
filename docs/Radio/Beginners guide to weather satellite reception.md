@@ -15,6 +15,9 @@ parent: Radio
 
 # Preamble
 
+> NOTE: If you've been linked here and expect to see anything related to L-band reception, it was moved and can be found [here](L band weather satellite reception guide). This was done to make this page seem less daunting, limiting its scope to only include VHF reception.
+
+
 Before anything, I have to start with some credits:
 - ***[Lego11's articles](https://a-centauri.com/articoli/)***
 - ***The [Dereksgc](https://discord.gg/b375hYqUxh) Discord***
