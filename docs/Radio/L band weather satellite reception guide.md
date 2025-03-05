@@ -75,7 +75,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
 - The broadcast features a very strong carrier wave making it very easy to track
 - Full resolution sample imagery:
-    - [NOAA Natural color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.pngg)
+    - [NOAA Natural color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.png)
     - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_AVHRR%20221%20False%20Color.png)
     - [4/221 merge](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_4-221%20Merge.png)
     - [Enhanced Infrared](https://cpt-dingus.cc/static/sat-images/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_Enhanced%20IR.png)
