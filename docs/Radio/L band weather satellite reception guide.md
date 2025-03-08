@@ -234,13 +234,13 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Full resolution sample imagery:
     - HRIT:
         - Full disk:
-            - [ABI False Color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/HRIT/Full%20Disk/2025-01-08_21-00-20/abi_ABI%20False%20Color.png)
-            - [Day cloud convection](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/HRIT/Full%20Disk/2025-01-08_21-00-20/abi_Day%20Cloud%20Convection.png)
+            - [ABI False Color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/GOES-18/HRIT/Full%20Disk/2025-01-08_21-00-20/abi_ABI%20False%20Color.png)
+            - [Day cloud convection](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/GOES-18/HRIT/Full%20Disk/2025-01-08_21-00-20/abi_Day%20Cloud%20Convection.png)
         - Mesoscale: 
             - TODO
         - Other data:
-            - [Retransmitted other GOES](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/HRIT/other-data/GOES-16/Full%20Disk/2025-01-08_21-00-20/G16_13_20250108T210020Z.png) (GOES 16 retransmitted from GOES 18 HRIT)
-            - [Himawari](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/HRIT/other-data/Himawari/2025-01-08_21-51-00/)
+            - [Retransmitted other GOES](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/GOES-18/HRIT/other-data/GOES-16/Full%20Disk/2025-01-08_21-00-20/G16_13_20250108T210020Z.png) (GOES 16 retransmitted from GOES 18 HRIT)
+            - [Himawari](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GOES/GOES-18/HRIT/other-data/Himawari/2025-01-08_21-51-00/) (click on a file to view it)
             - MSG (TODO)
 
     - GRB:
@@ -304,8 +304,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 >       3. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 KHz or -3 KHz. Shift 3 KHz lower or higher respectively, it should lock thereafter.
 
 - Full resolution sample imagery:
-    - [HRIT Natural color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/Elektro/HRIT/2024-11-09_09-00-00/msu_gs_Natural%20Color.png)
-    - [LRIT Natural color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/Elektro/LRIT/2024-10-13_09-30-00/msu_gs_Natural%20Color.png)
+    - [HRIT Natural color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/Elektro/Elektro-L3/HRIT/2024-11-09_09-00-00/msu_gs_Natural%20Color.png)
+    - [LRIT Natural color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/Elektro/Elektro-L3/LRIT/2024-10-13_09-30-00/msu_gs_Natural%20Color.png)
 
 ![Elektro-L LRIT and HRIT signal screenshots from SatDump](../../assets/images/Radio/Elektro-LRIT-HRIT.jpg)
 *Elektro-L N°3 LRIT on the top, HRIT on the bottom*
