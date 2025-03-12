@@ -297,7 +297,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 > - **GGAK**:
 >   - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
 >   - GGAK gets significantly weaker while an xRIT transmission is in progress.
->   - Elektro-L2 also transmits GGAK, but is approximately 5 dB weaker than the contemporaries.
+>   - Elektro-L2 also transmits GGAK, but the strength is different from its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
 >   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
 >       1. Set frequency offset to -50 KHz, shift to 1691.05 MHz
 >       2. Start the pipeline
