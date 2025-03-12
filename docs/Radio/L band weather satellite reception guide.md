@@ -328,7 +328,10 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [False color FD](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-2/FengYun-2H/2025-02-16_13-25/FY-2x_FC_20250216T132604Z.png)
     - [False color FD](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-2/FengYun-2H/2025-02-16_10-25/FY-2x_FC_20250216T102523Z.jpg) (More illumination, but JPG)
 
-![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
+![CDAS and S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
+*Fengyun 2H S-VISSR*
+
+![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-CDAS.jpg) <br>
 *FengYun 2H S-VISSR on the right, short horizontal blips are CDAS. See how the blips line up with the gaps in S-VISSR.*
 
 #### FengYun 4 series
@@ -343,8 +346,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 - Full resolution sample imagery:
-    - [LRIT](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-4/FengYun-4A/LRIT/2023-08-04_11-14_drew4781/) - Credit to drew4781, click on a file to view it
-    - [HRIT](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-4/FengYun-4A/HRIT/2023-08-22_06-14_drew4781/FY4A_12_20230822T061400Z.png) - Credit to drew4781
+    - [LRIT](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-4/FengYun-4A/LRIT/2023-08-04_11-14_plugger_lockett/) - Credit to plugger_lockett, click on a file to view it
+    - [HRIT](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-4/FengYun-4A/HRIT/2023-08-22_06-14_plugger_lockett/FY4A_12_20230822T061400Z.png) - Credit to plugger_lockett
 
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
 *FengYun 4A LRIT, CC: drew0781 on Discord*
@@ -417,7 +420,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 - The minimum dish size heavily depends on the satellite's elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
 - The minimum dish size stated is when considering an optimal feed setup and a SawBird GOES.
 
-> **Scroll to the side! Haven't figured the table overflow yet**
+> **The table continues to the right! Jekyll is just stupid with overflow**
 
 |Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|

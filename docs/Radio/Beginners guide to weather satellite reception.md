@@ -549,7 +549,7 @@ APT is an **analogue** transmission format, so what you hear is exactly what you
 
 ### There is a thin line in the middle of the image, even though the signal sounded clear
 
-![A crop of an APT image with a thin line in the middle](../../assets/images/Radio/APT-DC-artefact.png)
+![A crop of an APT image with a thin line in the middle](../../assets/images/Radio/APT-DC-artefact.jpg)
 
 This line is caused by APT passing through the center of your FFT spectrum, which has a thin DC spike created by your SDR merging together the two sampled radio branches. APT's analogue nature makes this thin spike be interpreted as part of the APT signal, which can create erroneous lines in the image. You can easily avoid this by using a `Frequency offset`, then tuning the value you typed into the field away from the target signal. Use enough of an offset, so that the APT signal doesn't travel through the middle of your spectrum, 100 kHz is usually enough.
 
@@ -557,7 +557,7 @@ This line is caused by APT passing through the center of your FFT spectrum, whic
 
 ### There were occasional bursts of crackles, the image has several small lines of static in it!
 
-![A crop of an AOT image with several small static lines in it](../../assets/images/Radio/APT-VDL.png)
+![A crop of an AOT image with several small static lines in it](../../assets/images/Radio/APT-VDL.jpg)
 *Small lines are most visible on channel A (left)*
 
 This is caused by interference from VDL, a data transmission format used by planes in the neighboring aviation band. Because of its strength and proximity to this band there is sadly no remedy for this other than moving away from areas where planes frequent in.
