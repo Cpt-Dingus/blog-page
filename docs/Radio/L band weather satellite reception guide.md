@@ -299,7 +299,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 >   - GGAK gets significantly weaker while an xRIT transmission is in progress.
 >   - Elektro-L2 also transmits GGAK, but the strength is different from its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
 >   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
->       1. Set frequency offset to -50 KHz, shift to 1691.05 MHz
+>       1. Set frequency offset to 50 KHz, shift to 1693.05 MHz
 >       2. Start the pipeline
 >       3. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 KHz or -3 KHz. Shift 3 KHz lower or higher respectively, it should lock thereafter.
 
