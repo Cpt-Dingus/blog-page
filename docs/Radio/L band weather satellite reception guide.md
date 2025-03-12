@@ -338,8 +338,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ***! WARNING ! - I can't confirm the status of either of these, if you have any information about it please let me know using the contacts at the bottom of this page. The satellites seem to intermittently cease broadcasts, rarely transmit any imagery.***
 
 > Latest updates:
->   - 10/01/2025: No visible broadcast from FengYun 4B
->   - 1/02/2025: No visible broadcast from FengYun 4A
+>   - 10/1/2025: No visible broadcast from FengYun 4B
+>   - 01/2/2025: No visible broadcast from FengYun 4A
 
 - **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
 - This satellite series has been shrouded in mystery, with both satellites having transmitted xRIT in the past albeit without any live imagery. These broadcasts have intermittently stopped without any acknowledgement from NSMC (Satellite operators).
