@@ -293,9 +293,9 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 > - **LRIT**:
 >   - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason why imagery is broadcasted like this is unknown.
 >   - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from the neighboring satellite FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
->   - Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
+>   - **Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.
 > - **GGAK**:
->   - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
+>   - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).**
 >   - GGAK gets significantly weaker while an xRIT transmission is in progress.
 >   - Elektro-L2 also transmits GGAK, but the strength is different from its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
 >   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
