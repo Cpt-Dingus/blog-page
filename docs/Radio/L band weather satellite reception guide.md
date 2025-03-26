@@ -138,8 +138,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 > Reception note: The satellite antenna seems to have an inconsistent radiation pattern causing the signal to significantly fluctuate when heading away from you.
 
-- Please note that this satellite has launched very recently and is still commissioning. The signal might be disabled for days at a time without prior notice, or contain erroneous data.
-- As of the latest commit, the satellite dumps to Svalbard on seemingly every pass, the direct broadcast is currently only filler.
+- As of the latest commit, the satellite dumps to Svalbard on every pass, but the satellite only transmits filler in place of the direct broadcast.
 
 - Full resolution sample imagery:
     - [AMSU False color](https://cpt-dingus.cc/static/sat-images/L-band/LEO/AWS/sterna_2024-11-16_18-18-55Z_AMSU%20False%20Color.png)
