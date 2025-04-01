@@ -61,12 +61,12 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 # Detailed satellite information
 
 ## Low-Earth-Orbiting satellites
-- There are **9** LEO satellites currently broadcasting imagery in this band:
+- There are **8** LEO satellites currently broadcasting imagery in this band:
     - 3x NOAA POES
     - 2x Meteor-M
     - 2x MetOp
     - 1x AWS
-    - 1x FengYun (Only broadcasts when in sight of China)
+    - ~~1x FengYun (Only broadcasts when in sight of China)~~
 
 
 ### NOAA POES
@@ -103,8 +103,9 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 *Meteor-M N°2-2 HRPT*
 
 
-- Meteor-M N°2-2 has recently inexplicably stopped broadcasting imagery in the L and X bands, with the last known successful reception being on the 24th of July 2024. The C band telemetry broadcast has been received since then, showing the satellite is still in orbit, but no other emissions have been detected. Roscosmos hasn't released a statement yet, Lego11 has suggested this might be because the satellite is undergoing in-flight testing, but this has not been confirmed. UsRadioGuy presumes the satellite to have failed: 
-> *"HRPT was transmitting up until July 2024, however that has since stopped. VNIIEM (the Russian State Corp that built the satellite) has since stopped supporting logistics for M2-2 HRPT, it is presumed that the system has failed.*" [source](https://usradioguy.com/meteor-satellite/#status)
+- Meteor-M N°2-2 has recently inexplicably stopped broadcasting imagery in the L and X bands, with the last known successful reception being on the 24th of July 2024. The C band telemetry broadcast has been received since then, showing the satellite is still in orbit, but no other emissions have been detected. Roscosmos hasn't released a statement yet, Lego11 has suggested this might be because the satellite is undergoing in-flight testing which can take up to a year, but this has not been confirmed. UsRadioGuy presumes the satellite to have failed: 
+
+ *"HRPT was transmitting up until July 2024, however that has since stopped. VNIIEM (the Russian State Corp that built the satellite) has since stopped supporting logistics for M2-2 HRPT, it is presumed that the system has failed.*" [source](https://usradioguy.com/meteor-satellite/#status)
     
 
 
@@ -113,7 +114,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels at a 1.1 km/px quality as well as one IASI Imaging channel at 0.8 km/px.
 - The signal does not have a carrier wave or easily discernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
 
-> !WARNING! - As of 03/2025, MetOp B has been found to have a deteriorating modulator causing a significant hit to the expected AHRPT SNR. According to receptions by Lego11 and Aang23, there is an approximately 7 dB loss compared to the nominal status. This issue is visible when decoding at higher SNRs, the modulator starts to form an X shape instead of the correct OQPSK modulation.
+> !NOTE! - During 03/2025, MetOp B was found to have a deteriorating modulator causing a significant hit to the expected AHRPT SNR. According to receptions by Lego11 and Aang23, there was an approximately 7 dB loss compared to the nominal status. This issue was visible when decoding at higher SNRs, the modulator starts to form an X shape instead of the correct OQPSK modulation. <u>***As of 04/2025 the broadcast has seemingly returned to normal, but this should continue to be monitored.***</u>
 
 
 - Full resolution sample imagery:
@@ -122,7 +123,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [4/221 merge](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_4-221%20Merge.png)
     - [Day microphysics](https://cpt-dingus.cc/static/sat-images/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_Day%20Microphysics%20(Metop).png)
     
-
 
 
 > Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut shaped constellation while decoding this signal, make sure to follow [this heading](#bad_constellation) to lower the PLL bandwidth.
@@ -152,8 +152,12 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 *AWS PFM while dumping*
 
 ### FengYun 3
+> ! ! ! ! !
 
-- The only satellite from this constellation still broadcasting in the L-band is **FengYun 3C**. Due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within Chinese territory). 
+> As of 04/2025, the AHRPT broadcast has seemingly **CEASED**. The satellite is presumed to have **failed**.
+
+> ! ! ! ! !
+- ~~The only satellite from this constellation still broadcasting in the L-band is **FengYun 3C**. Due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within Chinese territory).~~
 - It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruments. The broadcast has Reed-Solomon FEC, but unlike any other satellite in the L-band **it broadcasts channels required for true color** - exactly what you would see with your eyes if you stood right next to the satellite.
 - The signal has a relatively high symbol rate, can't be decoded with a standard RTLSDR dongle.
 
@@ -176,10 +180,9 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 |NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
 |Meteor M2-3, M2-4|1700 MHz||
-|MetOp B|1701.3 MHz|Lower SNR than MetOp C|
-|MetOp C|1701.3 MHz||
+|MetOp B, C|1701.3 MHz||
 |Arctic Weather Satellite|1707 MHz||
-|FengYun 3C|1701.4 MHz||
+|FengYun 3C|~~1701.4 MHz~~|Not transmitting as of 04/2025|
 
 
 ## Geostationary satellites
