@@ -3,6 +3,6 @@ description: I post stuff about satellites and general tech inhere
 theme: just-the-docs
 
 url: https://cpt-dingus.github.io
-baseurl: "/Obsidian-notes" 
+baseurl: "/blog-page" 
 
 color_scheme: custom
