@@ -81,9 +81,9 @@ Combining all of my SNR discoveries, this helix got me a whopping 10.5 dB averag
 Having successfully gotten L3 LRIT without a dish at such a low elevation, my dream was complete. Here are some of my favorite LEO passes I've gathered up to that point:
 
 ![Meteor M2-3 NC composite](../../assets/images/Direct-reception-helix/M2-4_01-04-2025_13-47.jpg) <br>
-*Meteor M2-3 received on 29/03/2025 with an 11 turn helix and Sawbird+ GOES. Processed using Satdump with the `Natural Color` composite, equalized. 40% quality lossy JPEG compression applied, full resolution image can be viewed [here](https://static.cpt-dingus.cc/direct-rx-helix/M2-4_01-04-2025_13-47.png)*
+*Meteor M2-3 received on 29/03/2025 with an 8 turn helix and Sawbird+ GOES. Processed using Satdump with the `Natural Color` composite, equalized. 40% quality lossy JPEG compression applied, full resolution image can be viewed [here](https://static.cpt-dingus.cc/direct-rx-helix/M2-4_01-04-2025_13-47.png)*
 
 ![NOAA 19 NC composite](../../assets/images/Direct-reception-helix/N19_01-04-2025_08-21.jpg) <br>
-*Meteor M2-3 received on 29/03/2025 with an 11 turn helix and Sawbird+ GOES. Processed using Satdump with the `Natural Color` composite, equalized. 40% quality lossy JPEG compression applied, full resolution image can be viewed [here](https://static.cpt-dingus.cc/direct-rx-helix/N19_01-04-2025_08-21.png)*
+*Meteor M2-3 received on 29/03/2025 with an 8 turn helix and Sawbird+ GOES. Processed using Satdump with the `Natural Color` composite, equalized. 40% quality lossy JPEG compression applied, full resolution image can be viewed [here](https://static.cpt-dingus.cc/direct-rx-helix/N19_01-04-2025_08-21.png)*
 
 I only had a few days to get these, there are more to come (:
