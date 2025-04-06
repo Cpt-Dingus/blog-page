@@ -66,7 +66,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - 2x Meteor-M
     - 2x MetOp
     - 1x AWS
-    - ~~1x FengYun (Only broadcasts when in sight of China)~~
 
 
 ### NOAA POES
@@ -151,25 +150,14 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ![AWS PFM screenshot from SatDump while dumping](../../assets/images/Radio/AWS-PFM-Dump.jpg) <br>
 *AWS PFM while dumping*
 
-### FengYun 3
-> ! ! ! ! !
+### FengYun 3C (DEAD)
 
-> As of 04/2025, the AHRPT broadcast has seemingly **CEASED**. The satellite is presumed to have **failed**.
-
-> ! ! ! ! !
-- ~~The only satellite from this constellation still broadcasting in the L-band is **FengYun 3C**. Due to a severe power supply failure **it only broadcasts when in sight of China** (When its footprint is anywhere within Chinese territory).~~
-- It broadcasts a FengYun AHRPT signal containing 10 VIRR channels in addition to some other instruments. The broadcast has Reed-Solomon FEC, but unlike any other satellite in the L-band **it broadcasts channels required for true color** - exactly what you would see with your eyes if you stood right next to the satellite.
-- The signal has a relatively high symbol rate, can't be decoded with a standard RTLSDR dongle.
-
-> Reception note: The signal might cut out a bit sooner or later than it gains/loses LOS with Chinese territory, it does not follow the rule to the tee.
-
+> In a statement from NSMC, the satellite has **FAILED** as of 11/2024. The satellite used to transmit true color imagery when in sight of Chinese territory. Sample imagery will be kept below.
 
 - Full resolution sample imagery:
     - [197 (True color)](https://cpt-dingus.cc/static/sat-images/L-band/LEO/FengYun%203C/virr_2024-08-06_13-12-16Z_197.png)
     - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/FengYun%203C/virr_2024-08-06_13-12-16Z_221.png)
 
-![FengYun AHRPT screenshot from SatDump](../../assets/images/Radio/FengYun-AHRPT.jpg) <br>
-*FengYun 3C AHRPT*
 
 
 ### Frequency reference
@@ -182,7 +170,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 |Meteor M2-3, M2-4|1700 MHz||
 |MetOp B, C|1701.3 MHz||
 |Arctic Weather Satellite|1707 MHz||
-|FengYun 3C|~~1701.4 MHz~~|Not transmitting as of 04/2025|
 
 
 ## Geostationary satellites
@@ -414,7 +401,6 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 |Meteor HRPT|60|665.6 Ksym/s\*|No|
 |MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
 |AWS PFM|60|1.785 Msym/s|Yes|Fades when facing away
-|FengYun AHRPT|80|2.80 MSym/s|Yes|Not receivable by an RTLSDR, needs at least 3.4 Msps
 
 \* Parallel modulated signals - Two 665.6 Ksym/s bumps. SatDump receives both, a sampling rate of at roughly 2.4 Msps is recommended.
 
@@ -509,11 +495,11 @@ Popular options for feeds are as follows:
 - This guide will have instructions on building a helical feed, loop, and a cantenna.
 
 
-## Building a helical feed
+### Building a helical feed
 
 > Helix dimensions are from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
 
-### Materials 
+#### Materials 
 
 You will need the following materials:
 - A flat and conductive material that has **AT LEAST** a 13 cm diameter (i.e. a computer case side panel). A thin paint layer shouldn't greatly affect signal strength.
@@ -528,7 +514,7 @@ Appropriate tools for creating this antenna are a soldering station and multimet
 
 > - The groundplane can be either circular or square (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, might have a minor SNR benefit particularly on offset dishes where the larger ground plane doesn't cover the dish itself.
 
-### Parts of a helical antenna
+#### Parts of a helical antenna
 
 The helical antenna consists of two primary parts: 
 - **Ground plane** - The conductive surface the helix is laid upon, acts as a secondary reflector (Where the primary one is the dish itself)
@@ -537,7 +523,7 @@ The helical antenna consists of two primary parts:
 ![A helical antenna image](../../assets/images/Radio/Helical-antenna.jpg) <br>
 *R = Ground plane; C = Coaxial feed; S = Helix; B/E = Supports. [Source](https://en.wikipedia.org/wiki/Helical_antenna)*
 
-### Winding the helix
+#### Winding the helix
 
 The helix should have these dimensions:
 - Turn spacing: 3 cm
@@ -560,13 +546,13 @@ In this case, the satellites transmit a RHCP signal, <u>but using a dish reflect
 *Credit: lego11, [source](https://www.a-centauri.com/articoli/easy-hrpt-guide)*
 
 
-### Putting it all together
+#### Putting it all together
 
 1. Drill a hole exactly 2.75 cm from the center of the ground plane for the SMA port
 2. Drill holes matching up with the mounting holes of your SMA port, use screws and nuts to secure it in place
 3. Install a non-conductive support for the helix in a way that:
     - Can hold the wire up without it swaying
-    - Makes the bottom turn run more or less parallel to the ground plane
+    - Makes about a third of the bottom turn run more or less parallel to the ground plane
     - Has the bottom end of the wire touching the core of the SMA port
 
 4. Solder the helix to the SMA port
@@ -574,7 +560,9 @@ In this case, the satellites transmit a RHCP signal, <u>but using a dish reflect
     - After tin is melting while holding it to the end of the wire and not your soldering iron, move on to heating the SMA core, it should be very easy to solder to.
     - Once you applied tin to both the end of the wire and the SMA port, you should be able to heat both at once to get them to bind together
 
-    > TODO: Picture of the soldering
+    ![A picture showing the soldering of the SMA port](../../assets/images/Radio/Helix-soldering.jpg)
+    *This is how the soldering should look.*
+
 
 ![A picture of my helix](../../assets/images/Radio/Sample-helix.jpg) <br>
 A sample helix, using a gritty zinc spray-painted surface and hot glue as the support. Note how the bottom turn runs mostly parallel to the ground plane.
@@ -583,9 +571,9 @@ A sample helix, using a gritty zinc spray-painted surface and hot glue as the su
 Congratulations, you now have a helical antenna! 
 
 
-### Things to check
+#### Troubleshooting
 
-It's wise to check the following using a multimeter:
+If you're not getting any signals or they're too weak to decode, it's wise to check the following using a multimeter before seeking other issues:
 
 1. There **SHOULD** be continuity between the top of the helix and the core of the SMA port
 2. There **SHOULDN'T** be continuity between the helix and ground plane, or the frame of the SMA port
@@ -593,35 +581,112 @@ It's wise to check the following using a multimeter:
 If either of these are wrong, verify that your helix is soldered properly and isn't touching the ground plane or the frame of the SMA port.
 
 
-### Tips for improved SNR
+#### Tuning
+> Note: I still lack experience in this field, take any information about tuning with a grain of salt
 
-These are minor things to check on existing setups, which can give you a dB or two of SNR in total.
+If you own a VNA capable of sampling 1.7 GHz, you can tune the helix by:
+- Modulating the height of the bottom turn
+- Adding a matching strip (example: copper tape)
+- Adding a matching wire (solder 1/3 of a turn from the SMA port to the copper wire, see image)
+> TODO: image
 
-1. Use a male SMA connector to be able to connect your amplifier directly to the feed without any additional adapters
-2. Use insulated SMA ports (The core sticks out with a bit of teflon instead of just being a simple pin)
-3. Make sure the ground plane is STRAIGHT
-4. Make sure the spacings are CORRECTLY SIZED using a caliper (if possible)
+Ideally you want at *least* a -20 dB S11 logmag at 1690-1700 MHz
 
-## Building a cantenna
+### Building a cantenna
 
-### Materials
+A cantenna is a suprisingly well performing feed for smaller PF dishes (<1.2 m) and offset dishes in general. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
 
-- A can that is at **least** ~15 cm tall and has an **11-13 cm diameter** (12 cm is optimal)
+#### Materials
+
+- A can roughly 23 cm in height and 13 cm in diameter
+    - The height can be lower, but the feed efficiency will be reduced. Assume a 1 cm margain for the diameter.
 
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
-- A thin piece of copper wire
+- A thin piece of copper wire (About 1 mm in diameter. The core of a coaxial cable should do.)
 
-### Building
-TODO
+#### Building
 
-## Building a loop feed
-> Calculated values are from FelixTRG
+1. Put the dimensions of your can into this [calculator](https://www.changpuak.ch/electronics/cantenna.php)
+    - For the frequency choose 1700 MHz, your can is suitable as long as 1700 MHz is between the cited TE11 and TM01 frequencies
+2. Mark and drill the holes for the SMA port according to the calculator
+3. Remove as much insulation from the probe (antenna) side of the SMA port as possible while still isolating it from the cantenna body
+4. Solder a wire onto the probe so, that the height of the whole probe (including the part attached to the SMA port) is 44 mm (1/4 wl)
+5. Secure the SMA port in place by using screws and nuts
 
-TODO
+Congratulations, you have successfully made a cantenna!
 
 
-## Mounting to dish
+### Building a loop feed
+> Used calculations are from FelixTRG:
+> - Target FD: ~0.4
+> - 0.621 * wl diameter
+> - 0.128 * wl rim depth
+> - 0.123 * wl loop height
+
+> !WARNING! - This feed is **DC-SHORTED**, do NOT connect a bias tee directly to it, it WILL short out!
+
+A loop feed is a moderately difficult to make and also easy to mess up feed which offers decent performance on most dishes. The values used here are for PF dishes with an f/D ratio of about 0.4, but they should work on most other dishes as well. If unsure, you can calculate the f/D ratio of a PF dish [here](https://satlex.de/en/fdratio.html) and an offset dish [here](https://www.satellite-calculations.com/Satellite/Offsetreflector.htm)
+
+
+> Please note that the f/D calculation for offset dishes is significantly more complex than for PF dishes, the website I linked should be replaced by a better one if I find one. (TODO)
+
+
+
+#### Materials
+
+- 17.5 cm of copper wire
+- Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
+- Adequately sized screws and nuts for the SMA port's mounting holes
+- A few centinmetres of solderable coaxial cable (Shielding has to be solderable)
+    - Copper-shielded one is preferred, aluminum-shielded coax can work but is near-impossible to solder.
+- Some kind of a nonconductive 21.7 mm long support
+
+For materials you can either get:
+- A can with an 11 cm diameter made out of a conductive material
+
+Or, if you prefer working with raw materials:
+- A round conductive plate that has a 10.9 cm diameter
+- A 34.5 cm long 22.6 mm tall plate (with a margain for riveting/soldering)
+    
+#### Constructing
+1. Depending on what materials you used:
+    - If working with a can, cut so that the rim is 22.6 mm tall from the bottom of the can
+    - If working with raw materials, solder or rivet the pieces together to create a round plate (10.9 cm diameter) with a 22.6 mm tall rim
+2. Bend the copper wire into a circle, leave a small gap between the ends
+3. Drill a hole for the SMA port 2.8 cm away from the centre, drill and secure it in place using the flange holes and appropriate mounting screws
+4. Install the support 2.8 cm away on the opposing side from the SMA port
+5. Strip *just the ends* and cut as much coaxial cable as is needed to solder:
+    - The **core of the coaxial** cable between **the pin on the SMA port** to **one end of the loop**
+    - The **shielding of the coaxial cable** between **the body of the SMA port** and **the other end of the loop**
+    
+    \- - -
+    
+    - Make sure to include some margains for the shielding, more doesn't hurt
+    - Make sure the uninsulated core run is as short as possible 
+    - When measuring, the loop should be placed on the support and be perpendicular to the ground plane (bottom).
+6. Solder the coaxial cable
+    - If using aluminum-shielded coaxial cable, you can wrap one end between the SMA port's flange screw and its nut; this will spare you having to solder it on one end. Just make sure the nut is real tight.
+7. Place and secure the other end of the loop on the support, the coaxial cable should secure one side and the support the other. If needed, add a second support on either side.
+
+You're done! The center of the ground plane should be in the focal point of the dish.
+
+#### Tuning
+> Note: I still lack experience in this field, take any information about tuning with a grain of salt
+
+- The feed can be tuned by adjusting the gap length and height above the ground plane.
+
+
+### VE4MA feed
+
+The best performing feed on larger (>1.2 m) PF dishes is the **VE4MA**. It is fairly difficult to make, but is worth it with the results. I will not describe the individual steps due to the different approaches you can take, but will provide the dimensions adjusted for 1700 MHz below:
+
+![VE4MA dimensions](../../assets/images/Radio/ve4ma.jpg)
+*VE4MA feed dimensions adjusted for 1700 MHz. Values calculated by albatross_v2*
+
+
+
+### Mounting to dish
 This wholly depends on your dish and its existing mounting solution, is completely up to you to DIY. Anything should be fine as long as you ensure two things:
 1. The helix front of the feed isn't covered by anything
 2. The feed is in the focal point correctly:
@@ -640,7 +705,7 @@ Setting your gain properly is **vital**, as an incorrect setting can severely hu
 
 To ensure it's set correctly, use the `Debug` menu in SatDump's `Recording` tab and refer to the following examples:
 
-1) **A lot of dots are hitting the edge** → Gain too high
+1) **A lot of dots are hitting the edge** OR **the dots are forming a square** → Gain too high
 
 ![An image of the debug eye showing this condition](../../assets/images/Radio/Debug-Gain-too-high.jpg) <br>
 
@@ -796,14 +861,13 @@ The theoretical limit for this is about 6000 km, which has been received by some
 ## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
-> Note: A good decode is defined as recognizable imagery.
+> Note: A good decode is defined as recognizable imagery if no FEC is present, or minimum for a consistent deframer sync with signals that have it.
 
 |Signal|Minimum SNR|FEC|
 |---|---|---|
 |NOAA HRPT|0 dB\*|No|
 |Meteor-M HRPT|0 dB\*|No|
 |MetOp AHRPT|4 dB|Yes|
-|FengYun AHRPT|7 dB|Yes|
 |Elektro-L LRIT|2dB|Yes|
 |Elektro-L HRIT|3dB|Yes|
 |Goes GVAR|4 dB\*\*|No|
