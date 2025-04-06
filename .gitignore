@@ -27,3 +27,6 @@ node_modules
 *.gem
 .bundle
 .ruby-version
+
+# vscode nonsense
+.vscode
