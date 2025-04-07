@@ -492,12 +492,14 @@ Popular options for feeds are as follows:
     - [Loop feed](http://www.om6aa.eu/Loop_Feed_with_enhanced_performance.pdf): A fairly unforgiving but very simple feed, you can maximize performance when using a prime focus dish by using [this calculator](https://projects.radioastro.pl/loop_feed_calculator/#/LoopFeed) and trying to get your dish's F/D.
     - [VE4MA](http://www.w1ghz.org/antbook/conf/high_efficiency_prime_feeds.pdf): A very solid performing feed, best for prime focus dishes.
 
-- This guide will have instructions on building a helical feed, loop, and a cantenna.
+- This guide will have instructions on building a helical feed, loop, and a cantenna. Dimensions for a VE4MA are also included.
 
 
 ### Building a helical feed
 
 > Helix dimensions are from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
+
+The helix is a very good and forgiving circularily polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
 
 #### Materials 
 
@@ -594,7 +596,7 @@ Ideally you want at *least* a -20 dB S11 logmag at 1690-1700 MHz
 
 ### Building a cantenna
 
-A cantenna is a suprisingly well performing feed for smaller PF dishes (<1.2 m) and offset dishes in general. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
+A cantenna is a surprisingly well performing linearly polarized feed for smaller PF dishes (<1.2 m) and offset dishes in general. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
 
 #### Materials
 
@@ -626,7 +628,7 @@ Congratulations, you have successfully made a cantenna!
 
 > !WARNING! - This feed is **DC-SHORTED**, do NOT connect a bias tee directly to it, it WILL short out!
 
-A loop feed is a moderately difficult to make and also easy to mess up feed which offers decent performance on most dishes. The values used here are for PF dishes with an f/D ratio of about 0.4, but they should work on most other dishes as well. If unsure, you can calculate the f/D ratio of a PF dish [here](https://satlex.de/en/fdratio.html) and an offset dish [here](https://www.satellite-calculations.com/Satellite/Offsetreflector.htm)
+A loop feed is a moderately difficult to make and also easy to mess up linearly polarized feed which offers decent performance on most dishes. The values used here are for PF dishes with an f/D ratio of about 0.4, but they should work on most other dishes as well. If unsure, you can calculate the f/D ratio of a PF dish [here](https://satlex.de/en/fdratio.html) and an offset dish [here](https://www.satellite-calculations.com/Satellite/Offsetreflector.htm)
 
 
 > Please note that the f/D calculation for offset dishes is significantly more complex than for PF dishes, the website I linked should be replaced by a better one if I find one. (TODO)
@@ -638,23 +640,23 @@ A loop feed is a moderately difficult to make and also easy to mess up feed whic
 - 17.5 cm of copper wire
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
-- A few centinmetres of solderable coaxial cable (Shielding has to be solderable)
+- A few centimeters of solderable coaxial cable (Shielding has to be solderable)
     - Copper-shielded one is preferred, aluminum-shielded coax can work but is near-impossible to solder.
-- Some kind of a nonconductive 21.7 mm long support
+- Some kind of a non-conductive 21.7 mm long support
 
-For materials you can either get:
+For materials, you can either get:
 - A can with an 11 cm diameter made out of a conductive material
 
 Or, if you prefer working with raw materials:
 - A round conductive plate that has a 10.9 cm diameter
-- A 34.5 cm long 22.6 mm tall plate (with a margain for riveting/soldering)
+- A 34.5 cm long 22.6 mm tall plate (with a margin for riveting/soldering)
     
 #### Constructing
 1. Depending on what materials you used:
     - If working with a can, cut so that the rim is 22.6 mm tall from the bottom of the can
     - If working with raw materials, solder or rivet the pieces together to create a round plate (10.9 cm diameter) with a 22.6 mm tall rim
 2. Bend the copper wire into a circle, leave a small gap between the ends
-3. Drill a hole for the SMA port 2.8 cm away from the centre, drill and secure it in place using the flange holes and appropriate mounting screws
+3. Drill a hole for the SMA port 2.8 cm away from the center, drill and secure it in place using the flange holes and appropriate mounting screws
 4. Install the support 2.8 cm away on the opposing side from the SMA port
 5. Strip *just the ends* and cut as much coaxial cable as is needed to solder:
     - The **core of the coaxial** cable between **the pin on the SMA port** to **one end of the loop**
@@ -662,7 +664,7 @@ Or, if you prefer working with raw materials:
     
     \- - -
     
-    - Make sure to include some margains for the shielding, more doesn't hurt
+    - Make sure to include some margins for the shielding, more doesn't hurt
     - Make sure the uninsulated core run is as short as possible 
     - When measuring, the loop should be placed on the support and be perpendicular to the ground plane (bottom).
 6. Solder the coaxial cable
@@ -679,7 +681,7 @@ You're done! The center of the ground plane should be in the focal point of the 
 
 ### VE4MA feed
 
-The best performing feed on larger (>1.2 m) PF dishes is the **VE4MA**. It is fairly difficult to make, but is worth it with the results. I will not describe the individual steps due to the different approaches you can take, but will provide the dimensions adjusted for 1700 MHz below:
+This is the best performing linearly polarized feed on larger (>1.2 m) PF dishes. It is fairly difficult to make, but is worth it with the results. I will not describe the individual steps due to the different approaches you can take, but will provide the dimensions adjusted for 1700 MHz below:
 
 ![VE4MA dimensions](../../assets/images/Radio/ve4ma.jpg)
 *VE4MA feed dimensions adjusted for 1700 MHz. Values calculated by albatross_v2*
@@ -697,6 +699,7 @@ This wholly depends on your dish and its existing mounting solution, is complete
 > The focal point is exactly where the front part (mouth) of a TV LNB would be
 
 Drilling small holes into the groundplane shouldn't greatly affect reception. Personal tip: zip ties are your best friends.
+
 # Actually receiving the satellites!
 
 ## Correctly adjusting your gain {#correct-gain}
