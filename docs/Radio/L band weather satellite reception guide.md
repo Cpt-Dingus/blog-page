@@ -155,8 +155,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 > In a statement from NSMC, the satellite has **FAILED** as of 11/2024. The satellite used to transmit true color imagery when in sight of Chinese territory. Sample imagery will be kept below.
 
 - Full resolution sample imagery:
-    - [197 (True color)](https://cpt-dingus.cc/static/sat-images/L-band/LEO/FengYun%203C/virr_2024-08-06_13-12-16Z_197.png)
-    - [221](https://cpt-dingus.cc/static/sat-images/L-band/LEO/FengYun%203C/virr_2024-08-06_13-12-16Z_221.png)
+    - [197 (True color)](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/FengYun%203/virr_2024-08-06_13-12-16Z_197.png.cc/sat-archive/L-band/LEO/FengYun%203/virr_2024-08-06_13-12-16Z_221.png)
+    - [AVHRR 221 (False color)](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/FengYun%203/virr_2024-08-06_13-12-16Z_221.png)
 
 
 
