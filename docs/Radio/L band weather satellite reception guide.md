@@ -191,7 +191,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### GOES
 
-- **GOES 16** and **GOES 18**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
+- **GOES 18** and **GOES 19**, satellites from the `GOES-R` series, are the two currently operational satellites broadcasting three signals: 
     - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
     - **HRIT** - A strong and very easy to receive signal transmitting imagery at 2 km/px, as well as rebroadcasted data from other satellites such as Meteosat and Himawari
     - **GRB** - A fairly weak rebroadcast sending full quality data from the majority of instruments, has a massive 7.8 Msym/s. Transmits half the data over RHCP and the other half over LHCP.
@@ -242,8 +242,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ![A more zoomed out view showing all transmissions at once](../../assets/images/Radio/GOES-GRB.jpg) <br>
 *GOES 18 GRB, spike on the left is DCP and spike on the right is CDA telemetry.*
 
-> GOES 19 has launched fairly recently, is currently commissioning with no active L band imagery broadcasts. It is expected to replace GOES 16 in early-to-mid 2025.
-> GOES 14, 17 are currently in on-orbit storage and are not broadcasting anything useful.
+> GOES 14, 16, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
 
 
