@@ -73,7 +73,7 @@ Seeing how close I was to an LRIT decode, I scrapped the helix one last time and
 Combining all of my SNR discoveries, this helix got me a whopping 10.5 dB average on L3 GGAK, which ended up equaling to about 1.5 dB on LRIT. This was enough for a good decode and got me an image that was deemed impossible by many:
 
 ![Elektro-L3 channel 1 as described below](../../assets/images/Direct-reception-helix/L3_1_20250403T033000Z.jpg)
-*Elektro-L3 channel 1 received on 03/04/2025 using an 11-turn helix, Sawbird+ GOES, AirSpy R2 from LRIT at 03:42Z. 60% quality lossy JPEG compression applied. Satellite elevation: 12°*
+*Elektro-L3 channel 1 received on 03/04/2025 using an 11-turn helix, Sawbird+ GOES, AirSpy R2 from LRIT at 03:42Z. 60% quality lossy JPEG compression applied. Satellite elevation: 13°*
 
 
 # More results
