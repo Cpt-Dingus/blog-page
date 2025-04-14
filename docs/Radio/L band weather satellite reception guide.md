@@ -287,9 +287,9 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 >   - GGAK gets significantly weaker while an xRIT transmission is in progress.
 >   - Elektro-L2 also transmits GGAK, but the strength is different from its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
 >   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
->       1. Set frequency offset to 50 KHz, shift to 1693.05 MHz
+>       1. Set frequency offset to 50 kHz, shift to 1693.05 MHz
 >       2. Start the pipeline
->       3. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 KHz or -3 KHz. Shift 3 KHz lower or higher respectively, it should lock thereafter.
+>       3. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 kHz or -3 kHz. Shift 3 kHz lower or higher respectively, it should lock thereafter.
 
 - Full resolution sample imagery:
     - [HRIT Natural color](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/Elektro/Elektro-L3/HRIT/2024-11-09_09-00-00/msu_gs_Natural%20Color.png)
@@ -306,7 +306,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 #### FengYun 2 series
 - **FengYun 2H**, and **FengYun 2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
-- This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgors S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the default `FengYun 2 S-VISSR` pipeline to remedy this.
+- This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgor's S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the default `FengYun 2 S-VISSR` pipeline to remedy this.
 - FengYun 2H broadcasts dead (empty) LRIT every hour (except 5:30Z and every 6 hours onwards) on 1690.5 MHz, this leads to the second image being cut at about 57%.
 
 > These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to its weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line in real time. This is the reason why S-VISSR is so jumpy.
@@ -317,7 +317,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [False color FD](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/FY-2/FengYun-2H/2025-02-16_10-25/FY-2x_FC_20250216T102523Z.jpg) (More illumination, but JPG)
 
 ![CDAS and S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-SVISSR.jpg) <br>
-*Fengyun 2H S-VISSR*
+*FengYun 2H S-VISSR*
 
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-CDAS.jpg) <br>
 *FengYun 2H S-VISSR on the right, short horizontal blips are CDAS. See how the blips line up with the gaps in S-VISSR.*
@@ -358,14 +358,14 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [LRIT Clean longwave IR](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/GK-2A/LRIT/2024-12-28_08-50-06/ami_Clean%20Longwave%20IR%20Window%20Band.png)
 
 
-![Geokompsat LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.jpg) <br>
+![GEO-KOMPSAT LRIT and HRIT screenshots from SatDump](../../assets/images/Radio/GK-LRIT-HRIT.jpg) <br>
 *GEO-KOMPSAT-2A LRIT on the left, HRIT in the middle*
 
 
 ### Meteosat Second Generation (MSG)
 - **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 2x VIS at a 1.6 km/px quality, and 9x IR at a 4.8 km/px quality.
-- This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring approximately a massive **4-metre dish** to decode. 
-> Few people have access to such dish sizes in Europe, I personally only know of 3 people ever receiving it, all with custom amplifiers. The 4-metre estimate stems from @Digielektro using a 3-metre dish and a custom amplifier for a decode.
+- This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring approximately a massive **4-meter dish** to decode. 
+> Few people have access to such dish sizes in Europe, I personally only know of 3 people ever receiving it, all with custom amplifiers. The 4-meter estimate stems from @Digielektro using a 3-meter dish and a custom amplifier for a decode.
 - The SEVIRI instrument has three operating modes:
     - HRV - High Resolution Visible - A crop of Europe and a crop of the bottom hemisphere is transmitted every 15 minutes, these move with sunlight as pictured below <br>
 ![Meteosat HRV crop GIF over 24 hours](../../assets/images/Radio/Meteosat-HRV-mode.webp)<br>
@@ -380,7 +380,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [Day Microphysics](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/MSG/Meteosat-10/seviri_rgb_Day_Microphysics.png) - Misaligned channels, 'blur' effect
     - [Water Vapor](https://cpt-dingus.cc/static/sat-images/L-band/Geostationary/MSG/Meteosat-10/seviri_rgb_7.35_%c2%b5m_Water_Vapor.png)
 
-> Reception note: The minimal dish size is speculative due to insufficient data, I do not know of anybody receiving it with just a SawBird. The 4-metre dish size given is a rough estimate.
+> Reception note: The minimal dish size is speculative due to insufficient data, I do not know of anybody receiving it with just a SawBird. The 4-meter dish size given is a rough estimate.
 
 > These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
 
@@ -396,12 +396,12 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 
 |Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
-|NOAA POES HRPT|60|665.6 Ksym/s\*|No|
-|Meteor HRPT|60|665.6 Ksym/s\*|No|
+|NOAA POES HRPT|60|665.6 ksym/s\*|No|
+|Meteor HRPT|60|665.6 ksym/s\*|No|
 |MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
 |AWS PFM|60|1.785 Msym/s|Yes|Fades when facing away
 
-\* Parallel modulated signals - Two 665.6 Ksym/s bumps. SatDump receives both, a sampling rate of at roughly 2.4 Msps is recommended.
+\* Parallel modulated signals - Two 665.6 ksym/s bumps. SatDump receives both, a sampling rate of at roughly 2.4 Msps is recommended.
 
 ### Geostationary
 - The minimum dish size heavily depends on the satellite's elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
@@ -411,20 +411,20 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 
 |Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
-|Elektro-L|LRIT|1691 MHz|294 KSym/s|RHCP|80 cm|Yes|Every 3 hours from midnight UTC at XX:42 excluding 06:42
+|Elektro-L|LRIT|1691 MHz|294 ksym/s|RHCP|80 cm|Yes|Every 3 hours from midnight UTC at XX:42 excluding 06:42
 |Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
-|Elektro-L|GGAK|1693 MHz|5 Ksym/s|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
-|GOES-R|CDA Telemetry|1693 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|GOES-R|HRIT|1694.1 MHz|927 KSym/s|Linear|80 cm|Yes|Constantly, image every 15 minutes
+|Elektro-L|GGAK|1693 MHz|5 ksym/s|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
+|GOES-R|CDA Telemetry|1693 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
+|GOES-R|HRIT|1694.1 MHz|927 ksym/s|Linear|80 cm|Yes|Constantly, image every 15 minutes
 |GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
-|EWS-G|CDA Telemetry|1694 MHz|40 Ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
+|EWS-G|CDA Telemetry|1694 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every 15 minutes rest of the time.
 |EWS-G|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
-|EWS-G|Sounder SD|1676 MHz|40 Ksym/s|Linear|125 cm|No|Constantly
-|Fengyun 2|S-VISSR|1687.5 MHz|660 Ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second timeslot variable\*\*\*
-|FengYun 4|LRIT|1697 MHz|90 Ksym/s|Linear|TODO|Yes|Hourly
+|EWS-G|Sounder SD|1676 MHz|40 ksym/s|Linear|125 cm|No|Constantly
+|FengYun 2|S-VISSR|1687.5 MHz|660 ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second time slot variable\*\*\*
+|FengYun 4|LRIT|1697 MHz|90 ksym/s|Linear|TODO|Yes|Hourly
 |FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|Every half an hour
-|GEO-KOMPSAT|LRIT|1692.14 MHz|128 Ksym/s|Linear|None\*\*\*\*|Yes|Constantly, image every 10 minutes
+|GEO-KOMPSAT|LRIT|1692.14 MHz|128 ksym/s|Linear|None\*\*\*\*|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
 |Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300 cm\*\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
 
@@ -446,38 +446,43 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 ## SDR
 
-- Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is adequate to receive the satellites of your choosing.
+- Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is adequate to receive the satellites of your choosing. A bias-tee is a nice addition, since you do not need to use an external one.
 
 ## LNA
 
 - L-band radio waves are very weak and dissipate too quickly to be usable with just your SDR - an LNA connected directly to the feed is imperative.
-- The only viable commercial option that doesn't cost a liver is the [Sawbird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception.
+- The only viable commercial option that doesn't cost a liver is the [SawBird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception.
+- **!WARNING!** - The SawBird backfeeds DC *when powered by the USB connector*, either:
+    - Use a bias-tee instead (Either external or SDR)
+    - Buy a DC-block and place it between the LNA and SDR
 
 > Do not waste your money on cheap wideband LNAs, **they will NOT work well enough to get satisfactory results.**
 
 ## Dish
 
-- A prime focus, offset, or grid dish are all usable for L band reception, with some minor notes:
+- Offset, prime focus, or grid dish are all usable for L band reception, with some minor notes:
+    - On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations.
     - Prime focus dishes require fewer turns on the helix (compared to an offset) or a [patch feed](http://sat.cc.ua/page3.html) for better performance altogether
-    - You can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations.
     - Wi-Fi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more. <br>
     ![Image showing the two reflector rotations for S and L bands](../../assets/images/Radio/Grid-reflector.jpg) <br>
     *Credit: lego11*
 
-- The bigger the dish, the harder it is to track with, but the higher gain you have - the stronger the signals will be. 
+- Bigger dishes are more difficult to track with but have a higher gain - you will get a better signal strength
 
-An 80 cm offset is a great starter dish, given its lightness and wide availability - people give these away all the time after switching to terrestrial television. Check your local marketplaces, you ought to find something!
+- Try checking your marketplace, people often give old dishes away all the time after switching to terrestrial TV. Aim for at least 80 cm in height/diameter (offset or PF respectively), 60 cm should still do just fine.
+
+- Do note that reception without a dish is [possible]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but is discouraged for beginners because of the lower margins it gives.
 
 
 ## Feed
 
 - The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
 - Different feeds are used for different satellites due to different polarizations, all weather satellites in this band are either **Circular** or **Linear**. They separate as follows:
-    - LEO satellites exclusively use the RHCP polarization
+    - LEO satellites exclusively use the RHCP (Right-hand circular) polarization
     - The majority of geostationary satellites use a linear polarization, with one series using RHCP.
     - GOES GRB is an outlier in geostationary satellite signals, uses both RHCP and LHCP. The LHCP broadcast is pretty much useless to receive, won't be mentioned in further polarization warnings.
 
-> Warning: Using a dish reflects circular polarizations, meaning you need to create a **LHCP** feed to receive RHCP signals!
+> Warning: Using a dish reflects the circular polarizations, meaning you need to create a **LHCP** feed to receive RHCP signals!
 
 <br>
 
@@ -487,18 +492,18 @@ Popular options for feeds are as follows:
     - [Patch feed](http://sat.cc.ua/page3.html): Recommended for prime focus dishes.
 
 - Linear
-    - [Cantenna](https://www.changpuak.ch/electronics/cantenna.php): A very easy to make antenna with decent results on both offset and prime focus dishes. This band requires a roughly 11-13 cm diameter, refer to the linked calculator for more info.
+    - [Cantenna](https://www.changpuak.ch/electronics/cantenna.php): A very easy to make antenna with decent results on both offset and prime focus dishes.
     - [Loop feed](http://www.om6aa.eu/Loop_Feed_with_enhanced_performance.pdf): A fairly unforgiving but very simple feed, you can maximize performance when using a prime focus dish by using [this calculator](https://projects.radioastro.pl/loop_feed_calculator/#/LoopFeed) and trying to get your dish's F/D.
     - [VE4MA](http://www.w1ghz.org/antbook/conf/high_efficiency_prime_feeds.pdf): A very solid performing feed, best for prime focus dishes.
 
-- This guide will have instructions on building a helical feed, loop, and a cantenna. Dimensions for a VE4MA are also included.
+- This guide will have instructions on building a helical feed, loop, and a cantenna. Dimensions for a VE4MA are also provided.
 
 
 ### Building a helical feed
 
 > Helix dimensions are from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
 
-The helix is a very good and forgiving circularily polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
+The helix is a very good and forgiving circularly polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
 
 #### Materials 
 
@@ -513,7 +518,7 @@ You will need the following materials:
 
 Appropriate tools for creating this antenna are a soldering station and multimeter.
 
-> - The groundplane can be either circular or square (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, might have a minor SNR benefit particularly on offset dishes where the larger ground plane doesn't cover the dish itself.
+> - The ground plane can be either circular or square (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, might have a minor SNR benefit particularly on offset dishes where the larger ground plane doesn't cover the dish itself.
 
 #### Parts of a helical antenna
 
@@ -551,7 +556,7 @@ In this case, the satellites transmit a RHCP signal, <u>but using a dish reflect
 
 1. Drill a hole exactly 2.75 cm from the center of the ground plane for the SMA port
 2. Drill holes matching up with the mounting holes of your SMA port, use screws and nuts to secure it in place
-3. Install a non-conductive support for the helix in a way that:
+3. Install a non-conductive support for the helix in a way that it:
     - Can hold the wire up without it swaying
     - Makes about a third of the bottom turn run more or less parallel to the ground plane
     - Has the bottom end of the wire touching the core of the SMA port
@@ -591,16 +596,16 @@ If you own a VNA capable of sampling 1.7 GHz, you can tune the helix by:
 - Adding a matching wire (solder 1/3 of a turn from the SMA port to the copper wire, see image)
 > TODO: image
 
-Ideally you want at *least* a -20 dB S11 logmag at 1690-1700 MHz
+Ideally you want at *least* a -20 dB S11 return loss at 1690-1700 MHz
 
 ### Building a cantenna
 
-A cantenna is a surprisingly well performing linearly polarized feed for smaller PF dishes (<1.2 m) and offset dishes in general. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
+A cantenna is a surprisingly well performing linearly polarized feed for most dishes. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
 
 #### Materials
 
 - A can roughly 23 cm in height and 13 cm in diameter
-    - The height can be lower, but the feed efficiency will be reduced. Assume a 1 cm margain for the diameter.
+    - The height can be lower, but the feed efficiency will be reduced. Assume a 1 cm margin for the diameter.
 
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
@@ -627,7 +632,7 @@ Congratulations, you have successfully made a cantenna!
 
 > !WARNING! - This feed is **DC-SHORTED**, do NOT connect a bias tee directly to it, it WILL short out!
 
-A loop feed is a moderately difficult to make and also easy to mess up linearly polarized feed which offers decent performance on most dishes. The values used here are for PF dishes with an f/D ratio of about 0.4, but they should work on most other dishes as well. If unsure, you can calculate the f/D ratio of a PF dish [here](https://satlex.de/en/fdratio.html) and an offset dish [here](https://www.satellite-calculations.com/Satellite/Offsetreflector.htm)
+A loop feed is a moderately difficult to make and also easy to mess up linearly polarized feed which offers decent performance on most dishes. The values used here are for PF dishes with an f/D ratio of about 0.4, but they should work on most other dishes as well. If unsure about your F/D, you can calculate the ratio of your PF dish [here](https://satlex.de/en/fdratio.html) and an offset dish [here](https://www.satellite-calculations.com/Satellite/Offsetreflector.htm)
 
 
 > Please note that the f/D calculation for offset dishes is significantly more complex than for PF dishes, the website I linked should be replaced by a better one if I find one. (TODO)
@@ -658,7 +663,7 @@ Or, if you prefer working with raw materials:
 3. Drill a hole for the SMA port 2.8 cm away from the center, drill and secure it in place using the flange holes and appropriate mounting screws
 4. Install the support 2.8 cm away on the opposing side from the SMA port
 5. Strip *just the ends* and cut as much coaxial cable as is needed to solder:
-    - The **core of the coaxial** cable between **the pin on the SMA port** to **one end of the loop**
+    - The **core of the coaxial cable** between **the pin on the SMA port** to **one end of the loop**
     - The **shielding of the coaxial cable** between **the body of the SMA port** and **the other end of the loop**
     
     \- - -
@@ -670,7 +675,7 @@ Or, if you prefer working with raw materials:
     - If using aluminum-shielded coaxial cable, you can wrap one end between the SMA port's flange screw and its nut; this will spare you having to solder it on one end. Just make sure the nut is real tight.
 7. Place and secure the other end of the loop on the support, the coaxial cable should secure one side and the support the other. If needed, add a second support on either side.
 
-You're done! The center of the ground plane should be in the focal point of the dish.
+Congratulations, you have made a loop feed!
 
 #### Tuning
 > Note: I still lack experience in this field, take any information about tuning with a grain of salt
@@ -694,10 +699,11 @@ This wholly depends on your dish and its existing mounting solution, is complete
     - Helix: The focal point should be in the center of the ground plane
     - Loop: The focal point should be in the center of the ground plane
     - Cantenna: The focal point should be in the mouth of the can
+    - VE4MA: The focal point should fall on the focal plane (see image)
 
 > The focal point is exactly where the front part (mouth) of a TV LNB would be
 
-Drilling small holes into the groundplane shouldn't greatly affect reception. Personal tip: zip ties are your best friends.
+Drilling small holes into the ground plane shouldn't greatly affect reception. Personal tip: zip ties are your best friends.
 
 # Actually receiving the satellites!
 
@@ -729,7 +735,32 @@ A small dot means that you should up the gain, if you're already maxed you can l
 
 ## LEO reception
 
-TODO
+- Get to a place that has LOS for as much of the pass as possible, the longer you can see the satellite for, the longer the resulting image will be
+- Try getting clear LOS with the sky, unlike VHF the signals are attenuated significantly easier. They should still pass through dead trees with ease.
+- In the beginning, aim for lower (<60°) passes, as higher ones require some precise movements which you'll have to learn
+
+
+1. Open SatDump, move to the `Recording` tab, start the appropriate pipeline in the `Processing` shortly before the pass 
+    - You can optimally select the satellite in the `Tracking` tab so you have an easy-to-see reference of where the satellite is in real-time
+2. Aim your dish in the general direction of the satellite, move it around until you can begin seeing the signal
+    - With **NOAA/Meteor HRPT**, you will first see the strong carrier in the center of your FFT
+    - With **MetOp/AWS**, you will first see a lot of smaller jumpy lines appearing, which is filler that's stronger than the actual data payload
+3. When you see the pipeline sync or the deframer count start ticking up, **you're now getting a signal**! Make slight adjustments until you see the SNR counter start ticking up, it should go up fairly quickly thanks to atmospheric phenomena.
+4. Once you see that you have an SNR reading, only make slight adjustments from this point onward. I personally recommend you **SNR track** - create a small margin, move your dish very slowly to get the average as high as possible. The general convention for L-band is **point & wait** - you do not need to be moving constantly, just move when the signal starts getting weaker.
+    > For high (>60°) passes, you will have difficulties tracking the satellite with an offset dish *because of the offset* - I personally suggest the following steps:
+    >    1. Track normally until you're pushing the arm into the ground
+    >    2. When the signal starts getting weaker, rotate the dish until it comes back to the original strength (or the best strength you can achieve, should be no more than a few dB weaker than the peak)
+    >    3. **WAIT** until the signal starts getting weaker again, repeat step 2
+    >    4. When you've rotated 180°, begin tracking as normal again
+
+5. After the satellite sets below the horizon or obstacles, or gets too weak to decode, hit `Stop` on the pipeline
+
+6. The results of your pass will now automatically get processed by SatDump, you can view the progress in the `Offline processing` tab. After it finishes, the results are saved to the `Viewer` tab.
+    > If SatDump crashes, or you shut it down before it could write the results, don't worry! SatDump automatically writes the raw data to the live output folder during the pass, you can just select the pipeline in the `Offline processing` tab` with the .cadu/.raw16 file as the input, cadu/frames as the input level respectively.
+
+7. You are now done! You can now play around with the results, you can figure it out (: 
+
+If you experienced any issues during the pass, make sure to check the [common issues](#common-issues) heading out!
 
 ## Geostationary reception
 
@@ -737,7 +768,7 @@ TODO
 
 1. Aim your dish using whatever broadcast the satellite transmits constantly, or using a dish alignment app (Less accurate). Alternatively, locate the rough area of where the satellite should be in the sky, start the correct pipeline and when the broadcast starts quickly try to find where the signal is the strongest. You usually have a few seconds to find it, which is more than enough in most cases.
 
-2. Open SatDump, move to the `Recording tab` following the same setup as for HRPT
+2. Open SatDump, move to the `Recording` tab following the same setup as for HRPT
 
 3. Start the appropriate pipeline:
 
@@ -773,8 +804,29 @@ TODO
 
 7. You are now done! You can now play around with the results using 3rd party tools or SatDump where applicable.
 
+If you experienced any issues during the pass, make sure to check the [common issues](#common-issues) heading found below!
+
 
 # Common issues
+
+## Noise floor is jumpy/unstable
+
+- This is caused by interference, which can have a few sources:
+    - A bad USB cable (Spikes all over the spectrum)
+    - Your phone communicating to a cell tower (Random jumps)
+    - Proximity to a cell tower (Super strong and wide signals, random jumps)
+
+
+- Fixes for each are:
+    - Use a better USBs cable
+    - Set your phone to airplane mode
+    - Move farther away from cell towers
+
+Universal solutions:
+- Lower your gain until the interference is minimized
+- Buy an additional filter, the most popular solution being a [Sysmocom cavity filter](https://shop.sysmocom.de/L-Band-cavity-filter-1525-1705-MHz/filter-rf-l-band)
+
+> TODO: IMAGE
 
 ## Donut shaped constellation with NOSYNC on the viterbi {#bad_constellation}
 
@@ -842,11 +894,11 @@ This error appears when your sampling rate is lower than the signals symbol rate
 # Miscellaneous stuff
 
 ## Pass rating scale
-This scale is not official or perfect, I just created it to be able to gauge how good each **xRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometres of the ground track you received from the satellite. <u> Given most LEO satellites have a spatial resolution of approximately 1 kilometre in this band, you can use the vertical length of raw images to get the amount of kilometres you tracked</u>
+This scale is not official or perfect, I just created it to be able to gauge how good each **xRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometers of the ground track you received from the satellite. <u> Given most LEO satellites have a spatial resolution of approximately 1 kilometer in this band, you can use the vertical length of raw images to get the amount of kilometers you tracked</u>
 
 For example: `/path/to/product/MSU-MR/msu-mr_1.png`, has a 2,048 × **4,750 px** resolution. This means, that the resulting image has approximately 4,750 km of the satellite's ground track.
 
-|Kilometres tracked|Pass quality|
+|Kilometers tracked|Pass quality|
 |---|---|
 |<250|Very poor|
 |250-1000|Poor|
@@ -873,11 +925,11 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |Elektro-L LRIT|2dB|Yes|
 |Elektro-L HRIT|3dB|Yes|
 |Goes GVAR|4 dB\*\*|No|
-|GOES GRB|TODO|Yes|
+|GOES GRB|8 dB|Yes|
 |GOES HRIT|4 dB|Yes|
 |FengYun 2 S-VISSR|3 dB\*\*|No|
 |FengYun 4 LRIT|2 dB|Yes|
-|FengYun 4 HRIT|TODO|Yes|
+|FengYun 4 HRIT|4 dB|Yes|
 |GEO-KOMPSAT LRIT|4 dB|Yes|
 |GEO-KOMPSAT HRIT|4 dB|Yes|
 
