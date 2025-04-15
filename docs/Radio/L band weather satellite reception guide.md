@@ -242,6 +242,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ![A more zoomed out view showing all transmissions at once](../../assets/images/Radio/GOES-GRB.jpg) <br>
 *GOES 18 GRB, spike on the left is DCP and spike on the right is CDA telemetry.*
 
+> WARNING: pending correction; image above used an IQ recording, the center frequency is WRONG!
+
 > GOES 14, 16, 17 are currently in on-orbit storage and are not broadcasting anything useful.
 
 
