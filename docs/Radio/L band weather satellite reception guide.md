@@ -237,7 +237,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 ![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.jpg) <br>
-*GOES 18 CDA Telemetry on the left, HRIT in the middle. CC: phantomsghost on Discord*
+*GOES 18 CDA Telemetry on the left, HRIT in the middle. Credit: phantomsghost on Discord*
 
 ![A more zoomed out view showing all transmissions at once](../../assets/images/Radio/GOES-GRB.jpg) <br>
 *GOES 18 GRB, spike on the left is DCP and spike on the right is CDA telemetry.*
@@ -268,7 +268,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 *EWS-G2 (GOES 15) GVAR*
 
 ![GOES SD screenshots from SDR#](../../assets/images/Radio/GOES-SD.jpg) <br>
-*GOES 13 SD: sounder SD is the thin spike in the middle, everything else is the imager SD. CC: dereksgc on Discord*
+*GOES 13 SD: sounder SD is the thin spike in the middle, everything else is the imager SD. Credit: dereksgc on Discord*
 
 ![GOES CDA screenshots from SatDump](../../assets/images/Radio/GOES-N-CDA.jpg) <br>
 *EWS-G2 (GOES 15) CDA*
@@ -341,10 +341,10 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [HRIT](https://static.cpt-dingus.cc/sat-archive/L-band/Geostationary/FY-4/FengYun-4A/HRIT/2023-08-22_06-14_plugger_lockett/FY4A_12_20230822T061400Z.png) - Credit to plugger_lockett
 
 ![FengYun LRIT screenshot from SatDump](../../assets/images/Radio/FengYun-LRIT.jpg) <br>
-*FengYun 4A LRIT, CC: drew0781 on Discord*
+*FengYun 4A LRIT, Credit: drew0781 on Discord*
 
 ![FengYun HRIT screenshot from SatDump](../../assets/images/Radio/FengYun-HRIT.jpg) <br>
-*FengYun 4A HRIT, CC: drew0781 on Discord*
+*FengYun 4A HRIT, Credit: drew0781 on Discord*
 
 ### GEO-KOMPSAT
 - **GEO-KOMPSAT-2A** currently broadcasts **LRIT** and **HRIT** at a 4 and 1 km/px peak quality respectively. The broadcasts are encrypted, but the decryption key has been shared by the operators, making amateur reception possible.
@@ -388,7 +388,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 > These satellites used to transmit a much stronger LRIT signal which contained five channels along with rebroadcasted GOES data, but the broadcast was [discontinued in 2018](https://web.archive.org/web/20170318043205/https://www.eumetsat.int/website/home/News/DAT_3247528.html).
 
 ![Meteosat PGS screenshot from SatDump](../../assets/images/Radio/Meteosat-PGS.jpg)
-*Meteosat 9 PGS, CC: that_zbychu on Discord. The thin spikes present aren't a part of the signal.*
+*Meteosat 9 PGS, Credit: that_zbychu on Discord. The thin spikes present aren't a part of the signal.*
 
 
 ## Signal information

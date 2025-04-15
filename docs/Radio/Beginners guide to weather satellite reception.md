@@ -323,7 +323,7 @@ Now that we have gone over the terminology behind these satellite and know how t
 - New satellite launches are a part of the JPSS constellation, which only include an incomparably harder to receive X-band signal. No future satellite launches from NOAA are planned to include a VHF antenna.
 
 ![NOAA APT screenshot from SatDump](../../assets/images/Radio/NOAA-APT.jpg)
-*NOAA 19 APT, CC: SigIdWiki*
+*NOAA 19 APT, Credit: SigIdWiki*
 
 ### METEOR-M
 
