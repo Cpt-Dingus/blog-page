@@ -274,6 +274,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - They broadcast **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4 km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just ~2.5 dB.
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapor channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
 - These satellites have recently began transmitting at 06:XXZ, something they haven't done for years. It is unknown whether this time slot will remain enabled, but as of the latest commit; both satellites transmit it. 18:XXZ still hasn't returned, but should come back by May.
+- All Elektro (as well as Arktika) data is available on the NTSoMZ FTP: `ftp://electro:electro@ntsomz.gptl.ru:2121/`
+
 
 > Reception notes:
 > - **LRIT**:
