@@ -112,9 +112,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
 - Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels at a 1.1 km/px quality as well as one IASI Imaging channel at 0.8 km/px.
 - The signal does not have a carrier wave or easily discernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
-
-> !NOTE! - During 03/2025, MetOp B was found to have a deteriorating modulator causing a significant hit to the expected AHRPT SNR. According to receptions by Lego11 and Aang23, there was an approximately 7 dB loss compared to the nominal status. This issue was visible when decoding at higher SNRs, the modulator starts to form an X shape instead of the correct OQPSK modulation. <u>***As of 04/2025 the broadcast has seemingly returned to normal, but this should continue to be monitored.***</u>
-
+> Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut shaped constellation while decoding this signal, make sure to follow [this heading](#bad_constellation)
 
 - Full resolution sample imagery:
     - [NOAA Natural color](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_NOAA%20Natural%20Color.png)
@@ -122,9 +120,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [4/221 merge](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_4-221%20Merge.png)
     - [Day microphysics](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Metop/avhrr_3_2024-10-13_09-09-23Z_Day%20Microphysics%20(Metop).png)
     
-
-
-> Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut shaped constellation while decoding this signal, make sure to follow [this heading](#bad_constellation) to lower the PLL bandwidth.
+> !NOTE! - During 03/2025, MetOp B was found to have a deteriorating modulator causing a significant hit to the expected AHRPT SNR. According to receptions by Lego11 and Aang23, there was an approximately 7 dB loss compared to the nominal status. This issue was visible when decoding at higher SNRs, the modulator starts to form an X shape instead of the correct OQPSK modulation. <u>***As of 04/2025 the broadcast has seemingly returned to normal, but this should continue to be monitored.***</u>
 
 ![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.jpg) <br>
 *MetOp B AHRPT*
@@ -230,7 +226,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
         - Other data:
             - [Retransmitted other GOES](https://static.cpt-dingus.cc/sat-archive/L-band/Geostationary/GOES/GOES-18/HRIT/other-data/GOES-16/Full%20Disk/2025-01-08_21-00-20/G16_13_20250108T210020Z.png) (GOES 16 retransmitted from GOES 18 HRIT)
             - [Himawari](https://static.cpt-dingus.cc/sat-archive/L-band/Geostationary/GOES/GOES-18/HRIT/other-data/Himawari/2025-01-08_21-51-00/) (click on a file to view it)
-            - MSG (TODO)
+            - [MSG](https://static.cpt-dingus.cc/sat-archive/L-band/Geostationary/GOES/GOES-16/HRIT/EMWIN/Z_EIIO00KWBC161145_C_KWIN_20250116234558_243014-4-INDCIRUS.JPG)
 
     - GRB:
         - Have no data available as of now. If you have any, please contact me using the information at the bottom of this page.
@@ -277,6 +273,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites from the Elektro-L series broadcasting imagery in the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4 km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just ~2.5 dB.
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapor channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
+- These satellites have recently began transmitting at 06:XXZ, something they haven't done for years. It is unknown whether this time slot will remain enabled, but as of the latest commit; both satellites transmit it. 18:XXZ still hasn't returned, but should come back by May.
 
 > Reception notes:
 > - **LRIT**:
@@ -284,14 +281,15 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 >   - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from the neighboring satellite FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
 >   - **Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.**
 > - **GGAK**:
->   - You can use GGAK as a 24/7 metric to see if you are capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
+>   - You can use GGAK as a 24/7 metric to see if you should be capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
 >   - GGAK gets significantly weaker while an xRIT transmission is in progress.
->   - Elektro-L2 also transmits GGAK, but the strength is different from its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
+>   - Elektro-L2 also transmits GGAK, but the strength seems inconsistent when compared to its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
 >   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
->       1. Set frequency offset to 50 kHz, shift to 1693.05 MHz
->       2. Start the pipeline
->       3. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 kHz or -3 kHz. Shift 3 kHz lower or higher respectively, it should lock thereafter.
-
+>       1. Your SDR likely has a small <abbr title="The oscillator your SDR has isn't perfectly accurate which can cause a very small offset from the frequency you tuned to. For example, signals might be shifted by 3 KHz: what the SDR shows as 100 MHz might be 100.003 MHz in reality.">reference inaccuracy</abbr>, decimate and tune until the GGAK signal is centered. Add this offset to the next steps.
+>       2. Set frequency offset to 50 kHz + the reference inaccuracy (Explained above) if your SDR has one, shift that much above 1693 MHz
+>       3. Start the pipeline
+>       4. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 kHz or -3 kHz. Shift 3 kHz lower or higher respectively, it should lock thereafter.
+>       5. If you still can't sync, try setting the pll bandwidth to 0.002 [#pll-bw]
 - Full resolution sample imagery:
     - [HRIT Natural color](https://static.cpt-dingus.cc/sat-archive/L-band/Geostationary/Elektro/Elektro-L3/HRIT/2024-11-09_09-00-00/msu_gs_Natural%20Color.png)
     - [LRIT Natural color](https://static.cpt-dingus.cc/sat-archive/L-band/Geostationary/Elektro/Elektro-L3/LRIT/2024-10-13_09-30-00/msu_gs_Natural%20Color.png)
@@ -410,34 +408,33 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 
 ### Geostationary
 - The minimum dish size heavily depends on the satellite's elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
-- The minimum dish size stated is when considering an optimal feed setup and a SawBird GOES.
+- The minimum dish size stated is when considering an optimal feed setup and a SawBird GOES unless stated otherwise.
 
-> **The table continues to the right! Jekyll is just stupid with overflow**
+> **The table continues to the right! Jekyll is just stupid with table overflow**
 
 |Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
-|Elektro-L|LRIT|1691 MHz|294 ksym/s|RHCP|80 cm|Yes|Every 3 hours from midnight UTC at XX:42 excluding 06:42
-|Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|125 cm|Yes|Every 3 hours from midnight UTC at XX:12 excluding 06:12
-|Elektro-L|GGAK|1693 MHz|5 ksym/s|RHCP|N/A|N/A|Constantly, can be used to verify your setup is functional
+|Elektro-L|LRIT|1691 MHz|294 ksym/s|RHCP|60 cm|Yes|Every 3 hours from midnight UTC at XX:42
+|Elektro-L|HRIT|1691 MHz|1.15 Msym/s|RHCP|100 cm|Yes|Every 3 hours from midnight UTC at XX:12
+|Elektro-L|GGAK|1693 MHz|5 ksym/s|RHCP|None|N/A|Constantly, can be used to verify your setup is functional
 |GOES-R|CDA Telemetry|1693 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |GOES-R|HRIT|1694.1 MHz|927 ksym/s|Linear|80 cm|Yes|Constantly, image every 15 minutes
-|GOES-R|GRB|1681.6 MHz|8.67 Msym/s|Circular\*|180 cm|Yes|Constantly
+|GOES-R|GRB|1681.6 MHz|8.67 Msym/s|LHCP+RHCP|180 cm|Yes|Constantly
 |EWS-G|CDA Telemetry|1694 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
-|EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|125 cm**|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every 15 minutes rest of the time.
+|EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|100 cm\*|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every 15 minutes rest of the time.
 |EWS-G|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
 |EWS-G|Sounder SD|1676 MHz|40 ksym/s|Linear|125 cm|No|Constantly
-|FengYun 2|S-VISSR|1687.5 MHz|660 ksym/s|Linear|80 cm\*\*|No|XX:00 - XX:28, second time slot variable\*\*\*
-|FengYun 4|LRIT|1697 MHz|90 ksym/s|Linear|TODO|Yes|Hourly
-|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|TODO|Yes|Every half an hour
-|GEO-KOMPSAT|LRIT|1692.14 MHz|128 ksym/s|Linear|None\*\*\*\*|Yes|Constantly, image every 10 minutes
+|FengYun 2|S-VISSR|1687.5 MHz|660 ksym/s|Linear|60 cm\*|No|XX:00 - XX:28, second time slot variable\*\*
+|FengYun 4|LRIT|1697 MHz|90 ksym/s|Linear|60 cm|Yes|Hourly
+|FengYun 4|HRIT|1681 MHz|1 Msym/s|Linear|150 cm|Yes|Every half an hour
+|GEO-KOMPSAT|LRIT|1692.14 MHz|128 ksym/s|Linear|None\*\*\*|Yes|Constantly, image every 10 minutes
 |GEO-KOMPSAT|HRIT|1695.4 MHz|3 Msym/s|Linear|175 cm|Yes|Constantly, image every 10 minutes
-|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300 cm\*\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
+|Meteosat Second Generation|PGS|1686.83 MHz|3.75 Msym/s|Linear|300 cm\*\*\*\*|Yes|Constantly, image every 15 minutes in HRV and FES modes and every 5 minutes in RSS mode|
 
-\* Half the data sent over RHCP, the other half over LHCP <br>
-\*\* Only with the respective corrector, the image will otherwise be severely cut up. <br>
-\*\*\* **FengYun 2H:** 5:30-5:58 UTC and every 6 hours after, XX:30-XX:48 at all other times | **FengYun 2G:** 01:30-01:58 UTC and every 4 hours after <br>
-\*\*\*\* LRIT is notoriously strong, just pointing the feed at the satellite is often enough to decode products. <br>
-\*\*\*\*\* Only tested using a custom LNA such as a [G4DDK VLNA](http://www.g4ddk.com/VLNASept13.pdf).
+\* Only with the respective corrector, the image will otherwise be severely cut up. <br>
+\*\* **FengYun 2H:** 5:30-5:58 UTC and every 6 hours after, XX:30-XX:48 at all other times | **FengYun 2G:** 01:30-01:58 UTC and every 4 hours after <br>
+\*\*\* LRIT is notoriously strong, just pointing the feed at the satellite is often enough to decode products. <br>
+\*\*\*\* Only tested using a custom LNA such as a [G4DDK VLNA](https://www.g4ddk.com/VLNASept13.pdf).
 
 
 ## Symbol and sampling rate relation
@@ -445,13 +442,12 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 You can only receive these signals with an SDR that has a sampling rate at least roughly 1.2x greater than the signal's symbol rate. Not having enough overhead will make the signal weaker as well as cause issues such as a donut constellation on the demodulator (described [here](#bad_constellation)). Overhead is also needed because of doppler shifting and the SDR's reference inaccuracy. According to the [Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), the ideal sampling rate is twice the symbol rate -  anything less than that will result in lower and lower SNR and anything higher has basically no benefit.
 
 
-
 # Hardware requirements
-
 
 ## SDR
 
 - Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is adequate to receive the satellites of your choosing. A bias-tee is a nice addition, since you do not need to use an external one.
+- As with VHF, aim for reputable brands whenever possible; the standard RTL-SDR dongles do just fine. (Just avoid the plastic-cased and fake ones for your sanity)
 
 ## LNA
 
@@ -467,7 +463,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 - Offset, prime focus, or grid dish are all usable for L band reception, with some minor notes:
     - On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations.
-    - Prime focus dishes require fewer turns on the helix (compared to an offset) or a [patch feed](http://sat.cc.ua/page3.html) for better performance altogether
+    - Prime focus dishes require fewer turns on the helix (compared to an offset) or a [patch feed](https://sat.cc.ua/page3.html) for better performance altogether
     - Wi-Fi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more. <br>
     ![Image showing the two reflector rotations for S and L bands](../../assets/images/Radio/Grid-reflector.jpg) <br>
     *Credit: lego11*
@@ -482,8 +478,8 @@ You can only receive these signals with an SDR that has a sampling rate at least
 ## Feed
 
 - The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
-- Different feeds are used for different satellites due to different polarizations, all weather satellites in this band are either **Circular** or **Linear**. They separate as follows:
-    - LEO satellites exclusively use the RHCP (Right-hand circular) polarization
+- Different feeds are used for different satellites due to different polarizations, with these satellites you'll become familiar with **Circular** and **Linear** polarizations. They separate as follows:
+    - LEO satellites exclusively use the <abbr title="Radio waves turn clockwise - towards the right">RHCP</abbr> (Right-hand circular) polarization
     - The majority of geostationary satellites use a linear polarization, with one series using RHCP.
     - GOES GRB is an outlier in geostationary satellite signals, uses both RHCP and LHCP. The LHCP broadcast is pretty much useless to receive, won't be mentioned in further polarization warnings.
 
@@ -494,12 +490,12 @@ You can only receive these signals with an SDR that has a sampling rate at least
 Popular options for feeds are as follows:
 - Circular
     - [Helical antenna](https://en.wikipedia.org/wiki/Helical_antenna): Very forgiving which makes it recommended for beginners, best for offset dishes.
-    - [Patch feed](http://sat.cc.ua/page3.html): Recommended for prime focus dishes.
+    - [Patch feed](https://sat.cc.ua/page3.html): Recommended for prime focus dishes.
 
 - Linear
     - [Cantenna](https://www.changpuak.ch/electronics/cantenna.php): A very easy to make antenna with decent results on both offset and prime focus dishes.
-    - [Loop feed](http://www.om6aa.eu/Loop_Feed_with_enhanced_performance.pdf): A fairly unforgiving but very simple feed, you can maximize performance when using a prime focus dish by using [this calculator](https://projects.radioastro.pl/loop_feed_calculator/#/LoopFeed) and trying to get your dish's F/D.
-    - [VE4MA](http://www.w1ghz.org/antbook/conf/high_efficiency_prime_feeds.pdf): A very solid performing feed, best for prime focus dishes.
+    - [Loop feed](https://www.om6aa.eu/Loop_Feed_with_enhanced_performance.pdf): A fairly unforgiving but simple feed, you can maximize performance when using a prime focus dish by using [this calculator](https://projects.radioastro.pl/loop_feed_calculator/#/LoopFeed) and trying to get your dish's F/D. (The diameter should be around 11 cm!)
+    - [VE4MA](https://www.w1ghz.org/antbook/conf/high_efficiency_prime_feeds.pdf): A very well performing feed, best for prime focus dishes.
 
 - This guide will have instructions on building a helical feed, loop, and a cantenna. Dimensions for a VE4MA are also provided.
 
@@ -514,7 +510,7 @@ The helix is a very good and forgiving circularly polarized feed that works best
 
 You will need the following materials:
 - A flat and conductive material that has **AT LEAST** a 13 cm diameter (i.e. a computer case side panel). A thin paint layer shouldn't greatly affect signal strength.
-- About a meter of 2.5 mm copper wire. Different widths are fine, but 2.5 mm is optimal.
+- About a meter of 2.5 mm copper wire. Different diameters are fine, but 2.5 mm is optimal.
 
 - Male panel mount SMA port, preferably insulated - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
@@ -599,7 +595,7 @@ If you own a VNA capable of sampling 1.7 GHz, you can tune the helix by:
 - Modulating the height of the bottom turn
 - Adding a matching strip (example: copper tape)
 - Adding a matching wire (solder 1/3 of a turn from the SMA port to the copper wire, see image)
-> TODO: image
+> TODO: images
 
 Ideally you want at *least* a -20 dB S11 return loss at 1690-1700 MHz
 
@@ -650,7 +646,7 @@ A loop feed is a moderately difficult to make and also easy to mess up linearly 
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
 - A few centimeters of solderable coaxial cable (Shielding has to be solderable)
-    - Copper-shielded one is preferred, aluminum-shielded coax can work but is near-impossible to solder.
+    - Copper-shielded coax is preferred, aluminum-shielded coax can work but is near-impossible to solder.
 - Some kind of a non-conductive 21.7 mm long support
 
 For materials, you can either get:
@@ -820,12 +816,14 @@ If you experienced any issues during the pass, make sure to check the [common is
     - A bad USB cable (Spikes all over the spectrum)
     - Your phone communicating to a cell tower (Random jumps)
     - Proximity to a cell tower (Super strong and wide signals, random jumps)
+    - Strong thunderstorm close by
 
 
 - Fixes for each are:
     - Use a better USBs cable
     - Set your phone to airplane mode
     - Move farther away from cell towers
+    - Wait for the storm to pass, see if the issue persists
 
 Universal solutions:
 - Lower your gain until the interference is minimized
@@ -842,32 +840,9 @@ When decoding signals with symbol rates close to your sampling rate (Such as Met
 
 To fix this, you have a few options:
 - Make sure you are using your SDR's maximum stable sampling rate
-- Shift the frequency around
-- Lower the pipeline's PLL bandwidth:
-1. Open the SatDump folder (On android you need to download a debuggable APK, then run `adb run-as org.satdump.SatDump`)
-2. Open `./Pipelines/<Pipeline>.json`
-3. Locate the `ppl_bw` option and try incrementally lowering it.
+- Shift the frequency around until you manage to lock
+- [Lower the pipeline's PLL bandwidth](#pll-bw)
 
-> In case of MetOp AHRPT reception with RTLSDRs you should adjust set the PLL bandwidth to 0.002. 
-
-For example with MetOp AHRPT:
-```jsonc
-{
-    "metop_ahrpt": {
-        ...
-        "work": {
-            "baseband": {},
-            "soft": {
-                "psk_demod": {
-                    "constellation": "qpsk",
-                    "symbolrate": 2333333,
-                    "rrc_alpha": 0.5,
-                    "pll_bw": 0.003 // Adjust this value
-                }
-            },
-        ...
-```
-4. Try receiving the signal as usual
 
 If you continue to get a donut shaped constellation even after making the adjustments, you'll need an SDR capable of higher sampling rates.
 
@@ -914,8 +889,23 @@ For example: `/path/to/product/MSU-MR/msu-mr_1.png`, has a 2,048 × **4,750 px**
 |5000-5500|Almost perfect|
 |>5500|Perfect|
 
-The theoretical limit for this is about 6000 km, which has been received by some by using atmospheric phenomena to receive the satellite even just below the horizon.
+The theoretical limit for this is around 6000 km, which has been received by some by using atmospheric phenomena to receive the satellite even just below the horizon.
 
+## Changing the PLL bandwidth {#pll-bw}
+
+Changing the PLL bandwidth makes a signal easier/harder to lock on to, can help with situations such as:
+- Reception with low SNR
+- Reception of signals with insufficient sampling rates (<2 times the symbol rate)
+
+To change it:
+1. Open SatDump, enable `Core settings`>`User interface`>`Advanced mode`
+2. Press `Save` on the bottom of your page, `Advanced settings` should now pop up
+3. Navigate through `Default pipeline configs`>`<Target-pipeline-name>`>`Work`>`Soft`>`psk_demod`
+4. Adjust the `pll_bw` option as needed
+5. Press `Save` to save the modified value, you can disable the advanced mode afterwards
+
+> In case of MetOp AHRPT reception with RTLSDRs you should adjust set the PLL bandwidth to 0.002. 
+```
 
 ## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
