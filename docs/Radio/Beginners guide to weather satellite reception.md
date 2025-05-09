@@ -421,7 +421,7 @@ A good guide I have followed to make this antenna can be found [here](https://sd
 
 ***WARNING! This antenna has a circular polarization, meaning you <u>HAVE</u> to match it with the satellites', that being RHCP!!!*** (For APT & LRPT)
 ![Correct QFH polarization](../../assets/images/Radio/QFH-correct-polarization.jpg)
-*Bottom to top, RHCP is twisted clockwise, while LHCP is twisted counter-clockwise. CC for image: muellermilch.de on Discord*
+*Bottom to top, RHCP is twisted clockwise, while LHCP is twisted counter-clockwise. CC for image: soplica.pl on Discord*
 
 Using the incorrect circular polarization presents itself as the signal being weak, fading significantly throughout the pass.
 

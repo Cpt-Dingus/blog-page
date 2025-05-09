@@ -52,7 +52,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - The HackRF has a fairly outdated design which suffers from heavy phase noise. This means, that you have to receive signals stronger than other SDRs to achieve the same quality.
 - This SDR has a nasty DC spike in the middle. If dealing with thin signals, an offset of at least 50 kHz is recommended
 - (Have to confirm, take with a grain of salt!) The HackRF has a frequency shift of 30 kHz. This is negligible in 99% of cases, but if dealing with signals that have very low symbol rates, you might have to tune 30 kHz above an already offset frequency to get a lock.
-> Using an offset for thin signals is generally recommended because of the last two points, shifting +130 kHz should both problems.
+> Using an offset for very narrow signals is generally recommended because of the last two points, shifting +130 kHz should both problems.
 
 ## MiriSDR (MSI.SDR)
 - The only version that doesn't have gaps in the L satellite band is a thin board with DIP switches. However, these DIP switches make the SDR quite deaf, requiring an additional amplifier just before the input to achieve decent results. This can be remedied by removing the DIP switches and directly soldering a wire between the RF input and the L frequency band. 
