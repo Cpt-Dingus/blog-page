@@ -463,8 +463,8 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 ## Dish
 
-- Offset, prime focus, or grid dish are all usable for L band reception, with some minor notes:
-    - On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations.
+- Offset, prime focus, or grid dishes are all usable for L band reception, with some minor notes:
+    - On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations
     - Prime focus dishes require fewer turns on the helix (compared to an offset) or a [patch feed](https://sat.cc.ua/page3.html) for better performance altogether
     - Wi-Fi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more. <br>
     ![Image showing the two reflector rotations for S and L bands](../../assets/images/Radio/Grid-reflector.jpg) <br>
@@ -472,7 +472,7 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 - Bigger dishes are more difficult to track with but have a higher gain - you will get a better signal strength
 
-- Try checking your marketplace, people often give old dishes away all the time after switching to terrestrial TV. Aim for at least 80 cm in height/diameter (offset or PF respectively), 60 cm should still do just fine.
+- Try checking your local marketplaces, people often give old dishes away all the time after switching to terrestrial TV. Aim for at least 80 cm in height/diameter (offset or PF respectively), 60 cm should still do just fine.
 
 - Do note that reception without a dish is [possible]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but is discouraged for beginners because of the lower margins it gives.
 
