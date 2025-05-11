@@ -500,13 +500,14 @@ Popular options for feeds are as follows:
     - [VE4MA](https://www.w1ghz.org/antbook/conf/high_efficiency_prime_feeds.pdf): A very well performing feed, best for prime focus dishes.
 
 - This guide will have instructions on building a helical feed, loop, and a cantenna. Dimensions for a VE4MA are also provided.
+- Appropriate tools for all of creating these are a soldering iron and multimeter.
 
 
 ### Building a helical feed
 
 > Helix dimensions are from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
 
-The helix is a very good and forgiving circularly polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
+The **helical antenna** is a very good and forgiving circularly polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
 
 #### Materials 
 
@@ -518,8 +519,6 @@ You will need the following materials:
 - Adequately sized screws and nuts for the SMA port's mounting holes
 
 - If not using a 3d printed scaffold (linked later), a non-conductive material used as a support for the helix
-
-Appropriate tools for creating this antenna are a soldering station and multimeter.
 
 > - The ground plane can be either circular or square (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, might have a minor SNR benefit particularly on offset dishes where the larger ground plane doesn't cover the dish itself.
 
