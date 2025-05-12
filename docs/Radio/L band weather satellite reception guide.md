@@ -18,7 +18,6 @@ If you're reading this, you have probably been intrigued by the lower resolution
 **This guide assumes you have read the [VHF guide](Beginners guide to weather satellite reception) already, won't repeat some more basic concepts.**
 
 There will be sample imagery next to every satellite series, you can view the raw tree along with credits [here](https://static.cpt-dingus.cc/sat-archive). If an image doesn't have credit, I received it myself.
-> This is still WIP! Dead links and incomplete lists are both possible while I set this up.
 
 # Introduction
 
@@ -905,39 +904,38 @@ To change it:
 5. Press `Save` to save the modified value, you can disable the advanced mode afterwards
 
 > In case of MetOp AHRPT reception with RTLSDRs you should adjust set the PLL bandwidth to 0.002. 
-```
+
 
 ## Minimum SNR for a good decode
 If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
-> Note: A good decode is defined as recognizable imagery if no FEC is present, or minimum for a consistent deframer sync with signals that have it.
+> Note: A good decode is defined as recognizable imagery if no FEC is present, or minimum for a consistent deframer sync with signals that feature it.
 
 |Signal|Minimum SNR|FEC|
 |---|---|---|
-|NOAA HRPT|0 dB\*|No|
-|Meteor-M HRPT|0 dB\*|No|
+|NOAA HRPT|0.5 dB|No|
+|Meteor-M HRPT|0.5 dB|No|
 |MetOp AHRPT|4 dB|Yes|
 |Elektro-L LRIT|2dB|Yes|
 |Elektro-L HRIT|3dB|Yes|
-|Goes GVAR|4 dB\*\*|No|
+|Goes GVAR|1.5 dB\*|No|
 |GOES GRB|8 dB|Yes|
 |GOES HRIT|4 dB|Yes|
-|FengYun 2 S-VISSR|3 dB\*\*|No|
+|FengYun 2 S-VISSR|1 dB\*|No|
 |FengYun 4 LRIT|2 dB|Yes|
 |FengYun 4 HRIT|4 dB|Yes|
 |GEO-KOMPSAT LRIT|4 dB|Yes|
 |GEO-KOMPSAT HRIT|4 dB|Yes|
 
 
-\* You read that right, you can get these even at 0 dB! As long as you see the signal and there are frames being decoded or the deframer is synced, you are getting an image! It will have a lot of grain, but that is manageable by using the `Median blur` option when viewing the resulting image <br>
-\*\* Only with the respective correctors.
+\* Using SatDump 2.0.0. Only with the respective correctors and an additional 2 dB otherwise.
 
 
 # Epilogue
-- Sitting just above L-band is the **S-band** which has some interesting things to receive as well! It requires some different strategies for reception due to amplifiers being difficult to come by, with the most popular method being modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter to be possible to screw it onto a helix. This band contains full orbit NOAA POES imagery via GAC as well as sun imagery thanks to PROBA-2 and Hinode.
+- Sitting just above L-band is the **S-band** which has some interesting things to receive as well! It requires some different strategies for reception due to amplifiers being difficult to come by and a lot of popular dongles only going up to 1.7 GHz, with the most popular method being modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter to be possible to screw it onto a helix. This band contains full orbit NOAA POES imagery via GAC as well as sun imagery thanks to PROBA-2 and Hinode.
 
 - Another interesting and not very hard to receive band to look at is the **C-band** which offers several rebroadcasts that contain combined data from various satellites. The most notable ones are GeoNetCast, EuMetCast Africa (Receivable in Europe as well), and HimawariCast.
-> Please note that I call this band 'easy' because C-band LNBs paired with appropriately sized dishes are commercially available and very easily sourcable in **English-speaking countries**. Places where C-band TV wasn't developed will have a significantly harder time receiving this band.
+> Please note that I call this band 'easy' because C-band LNBs paired with appropriately sized dishes are commercially available and very easily sourcable in **English-speaking countries**. Places where C-band TV wasn't widely adapted will have a significantly harder time receiving this band.
 
 
 - If you're in for easy reception, the road ends here for the time being. ***BUT*** if you:
