@@ -167,6 +167,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 |MetOp B, C|1701.3 MHz||
 |Arctic Weather Satellite|1707 MHz||
 
+---
 
 ## Geostationary satellites
 - Receiving these is arguably even easier than LEO satellites, since the only limiting factors are line of sight and dish size
@@ -322,10 +323,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 *FengYun 2H S-VISSR*
 
 ![S-VISSR screenshot from SatDump](../../assets/images/Radio/FengYun-CDAS.jpg) <br>
-*FengYun 2H S-VISSR on the right, short horizontal blips are CDAS. See how the blips line up with the gaps in S-VISSR.*
+*FengYun 2H CDAS. See how the blips line up with the gaps in S-VISSR. Thin spikes throughout spectrum are not a part of the signal. Credit: digielektro on Discord*
 
-
-> WARNING: pending correction; image above used an IQ recording, the center frequency is WRONG!
 
 #### FengYun 4 series
 ***! WARNING ! - I can't confirm the status of either of these, if you have any information about it please let me know using the contacts at the bottom of this page. The satellites seem to intermittently cease broadcasts, rarely transmit any imagery.***
