@@ -924,7 +924,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 |FengYun 2 S-VISSR|1 dB\*|No|
 |FengYun 4 LRIT|2 dB|Yes|
 |FengYun 4 HRIT|4 dB|Yes|
-|GEO-KOMPSAT LRIT|4 dB|Yes|
+|GEO-KOMPSAT LRIT|1 dB|Yes|
 |GEO-KOMPSAT HRIT|4 dB|Yes|
 
 
