@@ -123,7 +123,7 @@ This is a list of mistakes I made that ended up in wasted time, avoid them for t
 
 > Doing the above is especially hurtful with LRPT, as your machine knows where the signal is by using a costas loop, changing the frequency makes it momentarily lose its lock causing data loss. 
 
-- **Blindly maxing the gain setting** → Upping the gain only makes signals stronger up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This can drown them out due to overloading, as well as damage the signal's quality due to your SDR saturating. Turn it up only until you see, that the signal isn't getting any stronger. Only up your gain until 
+- **Blindly maxing the gain setting** → Upping the gain only makes signals stronger up to a certain point, after which it starts amplifying the noise floor much more than actual signals. This can drown them out due to overloading, as well as damage the signal's quality due to your SDR saturating. Turn it up only until you see, that the signal isn't getting any stronger or no overloading is present, whichever comes sooner.
 
 
 # SDR specific information
