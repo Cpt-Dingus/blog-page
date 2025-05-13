@@ -93,7 +93,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
 - This broadcast, much like POES HRPT, has a very strong carrier wave making it easy to track.
 - Full resolution sample imagery:
-    - [Natural color](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_AVHRR%20221%20False%20Color.png)
+    - [Natural color](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_Natural%20Color.png)
     - [221](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_AVHRR%20221%20False%20Color.png)
     - [Day microphysics](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/Meteor-M/msu_mr_2024-11-09_13-23-58Z_Day%20Microphysics.png)
 
