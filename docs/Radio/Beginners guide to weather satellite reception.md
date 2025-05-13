@@ -50,6 +50,17 @@ This guide covers weather satellite reception in the easier to receive **VHF sat
 
 These aren't the only bands that weather satellites broadcast in, but are by far the easiest to receive imagery in both due to physical constraints and commercial availability. Other bands range from requiring a simple LNB (C band) to year long endeavors that require a lot of dedication and individual research. *Looking at you, X band!*
 
+## Sample processed APT and LRPT images
+> Note: The raw images don't have maps on them, they were added in post-processing.
+
+![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
+*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
+
+
+![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
+*Meteor M2-3 LRPT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
+
+
 # Glossary
 
 Understanding the terminology used in satellite reception is essential, especially if you aren't familiar with radio. Below, you can find a list of new terms you are likely to encounter while doing this hobby. Any other unknown terms will have a definition pop up when hovering over them.
@@ -283,16 +294,6 @@ Now that we have gone over the terminology behind these satellite and know how t
 - Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR, and some patience
 - As of writing this article, there are **5** weather satellites currently broadcasting imagery in this band
 - While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
-
-## Sample processed APT and LRPT images
-> Note: The raw images don't have maps on them, they were added in post-processing.
-
-![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
-*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
-
-
-![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
-*Meteor M2-3 LRPT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
 
 ## Detailed satellite information
 
