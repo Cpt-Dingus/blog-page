@@ -303,6 +303,8 @@ Now that we have gone over the terminology behind these satellite and know how t
 - Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4 km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
 - These satellites also broadcast an auxiliary [DSB (Direct Sounder Broadcast)](https://www.sigidwiki.com/wiki/NOAA_Direct_Sounder_Broadcast_(DSB)) signal which contains the HIRS and SEM instruments as well as telemetry. I won't be covering it in this guide, as it's primarily focused on visible imagery.
 
+> !Warning! - As of 02/6/25, NOAA 18 has been scheduled for **DECOMMISIONING**. The satellite will cease operations in the near future. [Source](https://www.ospo.noaa.gov/operations/messages.html)
+
 <br>
 
 - During day these transmit one visible and one infrared channel, during night they switch to two infrared channels.
