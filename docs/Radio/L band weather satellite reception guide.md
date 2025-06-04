@@ -61,7 +61,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ## Low-Earth-Orbiting satellites
 - There are **8** LEO satellites currently broadcasting imagery in this band:
-    - 3x NOAA POES
+    - 3x NOAA POES (1 Warning)
     - 2x Meteor-M
     - 2x MetOp
     - 1x AWS
@@ -78,6 +78,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [4/221 merge](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_4-221%20Merge.png)
     - [Enhanced Infrared](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_Enhanced%20IR.png)
     - [NO](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_NO%20enhancement.png)
+
+> !Warning! - As of 02/6/25, NOAA 18 has been scheduled for **DECOMMISIONING**. The satellite will cease operations in the near future. [Source](https://www.ospo.noaa.gov/operations/messages.html)
 
 > Reception note: NOAA 15 only uses a damaged emergency antenna, which makes the signal lose a consistent polarization, be much weaker than intended, and experience severe fading throughout the pass. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
 
