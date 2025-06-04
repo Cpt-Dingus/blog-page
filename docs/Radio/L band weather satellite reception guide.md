@@ -1,4 +1,4 @@
----
+f---
 layout: default
 title: L band weather satellite reception
 nav_order: 2
@@ -101,12 +101,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg) <br>
 *Meteor-M N°2-2 HRPT*
-
-
-- Meteor-M N°2-2 has recently inexplicably stopped broadcasting imagery in the L and X bands, with the last known successful reception being on the 24th of July 2024. The C band telemetry broadcast has been received since then, showing the satellite is still in orbit, but no other emissions have been detected. Roscosmos hasn't released a statement yet, Lego11 has suggested this might be because the satellite is undergoing in-flight testing which can take up to a year, but this has not been confirmed. UsRadioGuy presumes the satellite to have failed: 
-
- *"HRPT was transmitting up until July 2024, however that has since stopped. VNIIEM (the Russian State Corp that built the satellite) has since stopped supporting logistics for M2-2 HRPT, it is presumed that the system has failed.*" [source](https://usradioguy.com/meteor-satellite/#status)
-    
 
 
 ### MetOp
