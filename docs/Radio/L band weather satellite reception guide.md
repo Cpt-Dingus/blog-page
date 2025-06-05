@@ -1,4 +1,4 @@
-f---
+---
 layout: default
 title: L band weather satellite reception
 nav_order: 2
