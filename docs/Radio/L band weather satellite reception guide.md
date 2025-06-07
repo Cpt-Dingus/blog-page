@@ -69,7 +69,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### NOAA POES
 
-- These are the same as VHF: **NOAA 15, 18 and 19**.
+- These are the same as VHF: **NOAA 15 and 19**.
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
 - The broadcast features a very strong carrier wave making it very easy to track
 - Full resolution sample imagery:
@@ -79,7 +79,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [Enhanced Infrared](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_Enhanced%20IR.png)
     - [NO](https://static.cpt-dingus.cc/sat-archive/L-band/LEO/NOAA%20POES/avhrr_3_2024-12-01_10-13-04Z_NO%20enhancement.png)
 
-> !Warning! - As of 02/6/25, NOAA 18 has been scheduled for **DECOMMISIONING**. The satellite will cease operations in the near future. [Source](https://www.ospo.noaa.gov/operations/messages.html)
+> !Warning! - As of 06/06/25, NOAA 18 has been **DECOMMISSIONED** due to unreliable <abbr title="Tracking, telemetry, and command">TT&C</abbr>. The satellite has PERMANENTLY STOPPED all transmissions at 17:40 UTC.
 
 > Reception note: NOAA 15 only uses a damaged emergency antenna, which makes the signal lose a consistent polarization, be much weaker than intended, and experience severe fading throughout the pass. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
 
@@ -154,7 +154,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 |Satellite|Frequency|Notes|
 |---|---|---|
 |NOAA 15|1702.5 MHz|**Very weak**|
-|NOAA 18|1707 MHz||
 |NOAA 19|1698 MHz||
 |Meteor M2-3, M2-4|1700 MHz||
 |MetOp B, C|1701.3 MHz||
