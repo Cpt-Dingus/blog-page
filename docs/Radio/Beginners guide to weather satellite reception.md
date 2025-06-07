@@ -342,7 +342,6 @@ Now that we have gone over the terminology behind these satellite and know how t
 
 ## Broadcast issues
 
-- **NOAA 18** has had a configuration error present ever since its management was transferred to Parsons tech, making it broadcast a visible channel on APT during the night instead of an infrared one. <u>This presents itself as half of the APT image being black during nighttime</u>.
 - **Meteor-M N°2-3** has an incorrectly deployed VHF antenna, making the <u>LRPT signal weaker than intended and unexpectedly experience drops at certain elevations</u>.
 
 > **NOAA 15** has had several major hiccups with its scan motor current spiking due to it grinding through debris. These spikes caused a loss of synchronization between the scan motor and the processor presenting as [major glitches](../../assets/images/Sat-reception-journey/First-good-APT-N15.png) *(NOAA 15 received on 13/10/2023 using a V-dipole)* appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. **The satellite has since recovered and is currently broadcasting fine**. Its status can be checked on the [STAR ICVS monitoring page](https://www.star.nesdis.noaa.gov/icvs/status_N15_AVHRR.php) by selecting `Telemetry` and `Scan motor current`.
