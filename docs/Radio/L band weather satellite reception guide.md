@@ -60,8 +60,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 # Detailed satellite information
 
 ## Low-Earth-Orbiting satellites
-- There are **8** LEO satellites currently broadcasting imagery in this band:
-    - 3x NOAA POES (1 Warning)
+- There are **7** LEO satellites currently broadcasting imagery in this band:
+    - 2x NOAA POES
     - 2x Meteor-M
     - 2x MetOp
     - 1x AWS

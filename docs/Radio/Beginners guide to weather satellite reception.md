@@ -442,7 +442,6 @@ Please note that you don't need to know these by heart, SatDump offers a frequen
 |Satellite|Frequency|
 |---|---|
 |NOAA 15|137.62 MHz|
-|NOAA 18|137.9125 MHz|
 |NOAA 19|137.1 MHz|
 |Meteor M2-3|137.9 MHz|
 |Meteor M2-4|137.9 MHz|
