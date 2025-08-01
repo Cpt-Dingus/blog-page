@@ -69,6 +69,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### NOAA POES
 
+> ***!!!WARNING!!!*** - Following a statement from NOAA, both NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 12/08/2025 and NOAA 19 19/08/2025. There is a chance of the satellites being transferred to USSF, but a permanent shutdown is probable. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
+
 - These are the same as VHF: **NOAA 15 and 19**.
 - Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
 - The broadcast features a very strong carrier wave making it very easy to track
