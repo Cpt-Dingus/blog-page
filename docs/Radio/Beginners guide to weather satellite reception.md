@@ -299,6 +299,8 @@ Now that we have gone over the terminology behind these satellite and know how t
 
 ### NOAA
 
+> ***!!!WARNING!!!*** - Following a statement from NOAA, both NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 12/08/2025 and NOAA 19 19/08/2025. There is a chance of the satellites being transferred to USSF, but a permanent shutdown is probable. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
+
 - There are **2** NOAA satellites broadcasting imagery in this band, **NOAA 15 and 19**. These are the only remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation. They were launched in 1998 and 2009 respectively.
 - Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4 km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
 - These satellites also broadcast an auxiliary [DSB (Direct Sounder Broadcast)](https://www.sigidwiki.com/wiki/NOAA_Direct_Sounder_Broadcast_(DSB)) signal which contains the HIRS and SEM instruments as well as telemetry. I won't be covering it in this guide, as it's primarily focused on visible imagery.
