@@ -408,8 +408,6 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 - The minimum dish size heavily depends on the satellite's elevation! You might be able to get it with a smaller dish if the satellite is high up, or need a bigger dish if it's low in the sky (~ <15°)
 - The minimum dish size stated is when considering an optimal feed setup and a SawBird GOES unless stated otherwise.
 
-> **The table continues to the right! Jekyll is just stupid with table overflow**
-
 |Satellite series|Signal|Frequency|Symbol rate|Polarization|Minimum dish size|FEC|Transmits...
 |---|---|---|---|---|---|---|---|
 |Elektro-L|LRIT|1691 MHz|294 ksym/s|RHCP|60 cm|Yes|Every 3 hours from midnight UTC at XX:42
@@ -431,7 +429,7 @@ All signals mentioned here are RHCP except NOAA 15, which doesn't have a specifi
 
 \* Only with the respective corrector, the image will otherwise be severely cut up. <br>
 \*\* **FengYun 2H:** 5:30-5:58 UTC and every 6 hours after, XX:30-XX:48 at all other times | **FengYun 2G:** 01:30-01:58 UTC and every 4 hours after <br>
-\*\*\* LRIT is notoriously strong, just pointing the feed at the satellite is often enough to decode products. <br>
+\*\*\* LRIT is notoriously strong, just pointing a feed at the satellite is often enough to decode products. <br>
 \*\*\*\* Only tested using a custom LNA such as a [G4DDK VLNA](https://www.g4ddk.com/VLNASept13.pdf).
 
 
