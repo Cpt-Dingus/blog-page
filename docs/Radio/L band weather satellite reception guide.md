@@ -393,7 +393,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### Low-earth-orbiting
 
-All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization due to a bent antenna.
+All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization due to a bent antenna. Please note that the signals listed under this heading are strong enough to be receivable [without a dish]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but it isn't recommended for beginners as the receptions are very often riding the margins of clean decodes.
 
 |Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
