@@ -208,8 +208,8 @@ DPT (Dump)
 - Being an improved NOAA POES, all JPSS satellites transmit in the X-band -> Suomi NPP, NOAA 20, and NOAA 21
 - NOAA 20 has suffered many issues, notably a failed detector in the VIIRS instrument causing scan lines to appear in certain composites.
 - All satellites have a null in their antennas' radiation pattern:
-    - Suomi NPP has a strong null when it's west from your position
-    - NOAA 20 has a strong null when it's east from your position
+    - Suomi NPP has a strong null when it's west from your position at certain elevations
+    - NOAA 20 has a strong null when it's east from your position at certain elevations
     - NOAA 21's null is still present but not as significant, improved FEC helps mitigate it further
 
 
@@ -225,6 +225,47 @@ DB:
 
 ### Sample imagery
 
+
+## NASA EOS
+
+![As described below](../../assets/images/X-band-transmissions/)
+*, received on  at  UTC by . , click [here](https://sat-archive.cpt-dingus.cc/X-band/Meteor-M/KMSS/Meteor-M2-2/2024-03-20_14-26_meteor-kmss-db_Andrew-Lorett-LLC/KMSS_MSU100_1/MSU100-1.png) for the full resolution image*
+
+### Description
+
+- Nasa Earth Observating Satellites is a constellation of 3 satellites, only two of which still transmit DB today: Aqua, and Aura
+- The third satellite, Terra still transmits dumps but the DB has been disabled in 09/2024.
+- Aura only transmits the OMI instrument which is very low rate
+- The dumps are not decodable by SatDump, are encrypted (?)
+
+### Signal tables
+
+|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
+|---|---|---|---|---|---|---|---|
+|Aqua|8160 MHz|7.5 MHz|RHCP|Yes|11 dB|No|Global
+|Aura|8160 MHz|7.5 MHz|RHCP|Yes|11 dB|No|Global
+
+### Sample imagery
+
+
+## MetOp
+
+![As described below](../../assets/images/X-band-transmissions/)
+*, received on  at  UTC by . , click [here](https://sat-archive.cpt-dingus.cc/X-band/Meteor-M/KMSS/Meteor-M2-2/2024-03-20_14-26_meteor-kmss-db_Andrew-Lorett-LLC/KMSS_MSU100_1/MSU100-1.png) for the full resolution image*
+
+### Description
+
+- Both current MetOp satellites dump their whole orbit to Svalbard
+- The dump includes all instruments
+
+### Signal tables
+
+|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
+|---|---|---|---|---|---|---|---|
+|MetOp-B|7800 MHz|š35 Msym/s|RHCP|No|??|??|Svalbard
+|MetOp-C|7800 MHz|5 Msym/s|RHCP|No|??|??|Svalbard
+
+### Sample imagery
 
 
 
@@ -242,7 +283,7 @@ DB:
 
 ### Signal tables
 
-### Sample imagery
-
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
+
+### Sample imagery
