@@ -170,7 +170,7 @@ TODO
 - Fengyun 3D-3G all transmit several signals in the X-band, most notably unencrypted **AHRPT** (DB).
 - The instruments between these vary, notably:
     - FengYun 3E has a XEUVI for sun imaging
-    - FengYun 3G is in a Drifting orbit, carries RM (Rainfall measurement) as its payload unlike the rest of the Fengyun 3 series. It is very fast and flies very low, making it receivable with a smaller dish than the rest.
+    - FengYun 3G is in a Drifting orbit, carries RM (Rainfall measurement) instrumentation as its payload unlike the rest of the Fengyun 3 series. It is very fast and flies very low, making it receivable with a smaller dish than the rest. It also has an unusually small symbol rate at just 6 Msym/s.
 
 ### Signal tables
 
@@ -179,17 +179,17 @@ AHRPT
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
 |FengYun 3D|7820 MHz|30 Msym/s|RHCP|Yes|7 dB|No|Global
-|FengYun 3E|7860 MHz|30 Msym/s|RHCP|Yes|7 dB|No|Global
-|FengYun 3F|7790 MHz|30 Msym/s|LHCP|Yes|7 dB|No|Global
-|FengYun 3G|7790 MHz|30 Msym/s|RHCP|Yes|7 dB|No|Global
+|FengYun 3E|7860 MHz|38.4 Msym/s|RHCP|Yes|7 dB|No|Global
+|FengYun 3F|7790 MHz|38.4 Msym/s|LHCP|Yes|7 dB|No|Global
+|FengYun 3G|7790 MHz|6 Msym/s|RHCP|Yes|7 dB|No|Global
 
 DPT (Dump)
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
-|FengYun 3D|8250 MHz|150 Msym/s|???|Yes|11 dB|???|China
-|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|11 dB|???|China
-|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|11 dB|???|China
+|FengYun 3D|8250 MHz|150 Msym/s|???|Yes|7 dB|???|China
+|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|7 dB|???|China
+|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|7 dB|???|China
 |FengYun 3G|???|225 Msym/s|???|Yes|11 dB|???|China
 
 ### Sample imagery
@@ -205,12 +205,26 @@ DPT (Dump)
 
 ### Description
 
+- Being an improved NOAA POES, all JPSS satellites transmit in the X-band -> Suomi NPP, NOAA 20, and NOAA 21
+- NOAA 20 has suffered many issues, notably a failed detector in the VIIRS instrument causing scan lines to appear in certain composites.
+- All satellites have a null in their antennas' radiation pattern:
+    - Suomi NPP has a strong null when it's west from your position
+    - NOAA 20 has a strong null when it's east from your position
+    - NOAA 21's null is still present but not as significant, improved FEC helps mitigate it further
+
+
 ### Signal tables
 
-### Sample imagery
+DB:
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
+|Suomi NPP|7812 MHz|15 Msym/s|RHCP|Yes|6 dB|No|Global
+|NOAA 20|7812 MHz|15 Msym/s|RHCP|Yes|6 dB|No|Global
+|NOAA 21|7812 MHz|25 Msym/s|RHCP|Yes|4 dB|No|Global
+
+### Sample imagery
+
 
 
 
