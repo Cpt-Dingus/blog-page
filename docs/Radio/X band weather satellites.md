@@ -85,10 +85,10 @@ This list is not exhaustive, I apologize if I missed anything.
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
-|FengYun 3D|8250 MHz|150 Msym/s|???|Yes|7 dB|???|China
-|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|7 dB|???|China
-|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|7 dB|???|China
-|FengYun 3G|???|225 Msym/s|???|Yes|11 dB|???|China
+|FengYun 3D|8250 MHz|150 Msym/s|RHCP|Yes|7 dB|No|China
+|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|China
+|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|China
+|FengYun 3G|???|225 Msym/s|???|Yes|11 dB|No|China
 
 ### Sample imagery
  
