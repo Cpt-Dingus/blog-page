@@ -60,15 +60,17 @@ This list is not exhaustive, I apologize if I missed anything.
 ## FengYun-3
 
 ![As described below](../../assets/images/X-band-transmissions/fengyun-ahrpt.jpg)
-***Left:*** *A crop of FengYun-3F received on 28/4/2025 at 09:07 UTC by Konrad Unger. Processed with the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_09-07_fengyun-3f-ahrpt_UngerKonrad/Fengyun-3F_true-color_ungerkonrad.png) for the full resolution image.* ***Right:*** *FengYun-3E XEUVI received by Konrad Unger on 25/4/2025 at 14:47 UTC. Processed with SatDump, colorized using a script by @plugger-lockett.*
+***Left:*** *A crop of FengYun-3F received on 28/4/2025 at 09:07 UTC by Konrad Unger. Processed with the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_09-07_fengyun-3f-ahrpt_UngerKonrad/Fengyun-3F_true-color_ungerkonrad.png) for the full resolution image.* ***Right:*** *FengYun-3E XEUVI received by Konrad Unger on 25/4/2025 at 14:47 UTC. Processed with SatDump, colorized using a script by lego11 found [here](https://www.a-centauri.com/articoli/satellite-tools) (Xeuvize)*
 
 ### Description
 
 - **Fengyun** **3D**, **3E**, **3F**, and **3G** transmit their mission data in the X-band, most notably their **AHRPT** direct broadcast
-- These satellites also dump their mission data to China in a transmission called **DPT** (Direct Picture Transmission)
+- These satellites also dump their mission data in a transmission called **DPT** (Delayed Picture Transmission)
+- 3D, 3E, 3F all transmit full dumps to Kiruna, partial dumps to China (to get a lower delay for the South China Sea and Oceania). China also acts like a backup if Kiruna is undergoing maintenance.
+- 3G only dumps to China due to its orbit
 - The instruments vary between the satellites, notably:
     - FengYun 3E has a XEUVI for sun imaging
-    - FengYun 3G is in a Drifting orbit, carries RM (Rainfall measurement) instrumentation as its payload unlike the rest of the Fengyun 3 series. It is very fast and flies very low, making it receivable with a smaller dish than the rest albeit with much more difficult tracking. It also has an unusually small symbol rate at just 6 Msym/s.
+    - FengYun 3G is in an Inclined Equatorial orbit, carries RM (Rainfall measurement) instrumentation as its payload unlike the rest of the Fengyun 3 series. It is very fast and flies very low, making it receivable with a smaller dish than the rest albeit with much more difficult tracking. It also has an unusually small symbol rate at just 6 Msym/s.
 
 ### Signal tables
 
@@ -85,9 +87,9 @@ This list is not exhaustive, I apologize if I missed anything.
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
-|FengYun 3D|8250 MHz|150 Msym/s|RHCP|Yes|7 dB|No|China
-|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|China
-|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|China
+|FengYun 3D|8250 MHz|150 Msym/s|RHCP|Yes|7 dB|No|Kiruna, China
+|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|Kiruna, China
+|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|Kiruna, China
 |FengYun 3G|???|225 Msym/s|???|Yes|11 dB|No|China
 
 ### Sample imagery
@@ -150,7 +152,7 @@ This list is not exhaustive, I apologize if I missed anything.
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
-|Meteor M2-3, M2-4|8128 MHz|15.36 Msym/s|RHCP|No|2.5 dB|No|Moscow, other ground stations in Russia
+|Meteor M2-3, M2-4|8128 MHz|15.36 Msym/s|RHCP|No|2.5 dB|No|Moscow, Novosibirsk, Khabrovsk
 
 <u>IKFS Dump (Narrow QPSK)</u> - Unconfirmed, not received yet
 
@@ -172,7 +174,7 @@ This list is not exhaustive, I apologize if I missed anything.
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
-|Meteor M2-4|8320 MHz|61.44 Msym/s|RHCP|No|3.5 dB|No|Moscow, other ground stations in Russia
+|Meteor M2-4|8320 MHz|61.44 Msym/s|RHCP|No|3.5 dB|No|Moscow, Novosibirsk, Khabrovsk
 
 ### Sample imagery
 
@@ -259,7 +261,7 @@ TODO
 
 ## GEO-KOMPSAT
 
-> Imagery is not available from this satellite at all yet, because I am still yet to come home to upload the processed stuff. I ain't uploading a solid 20-something gigabytes over a 500 kB/s upload link dawg
+> Imagery is not available from this satellite at all yet, because I am still yet to come home to upload the processed stuff. I ain't uploading a solid 20-somet it'shing gigabytes over a 500 kB/s upload link dawg
 
 ![As described below](../../assets/images/X-band-transmissions/)
 *x, received on x at x UTC by x. x, click [here]() for the full resolution image*
@@ -295,7 +297,7 @@ TODO
 
 ### Description
 
-- Both MetOp-B and MetOp-C dump their whole orbit to Svalbard on every pass, this dump includes all instruments just like in the [L-band] AHRPT transmission
+- Both MetOp-B and MetOp-C dump their whole orbit to Svalbard on every pass, this dump includes all instruments just like in the [L-band] AHRPT transmission - in essence the transmission is just faster AHRPT
 - Future satellites will be a part of the MetOp-SG constellation which will also transmit in the X-band, albeit at a significantly higher symbol rate
 
 ### Signal table
@@ -304,7 +306,7 @@ TODO
 
 |Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
 |---|---|---|---|---|---|---|---|
-|MetOp-B, MetOp-C|7800 MHz|35 Msym/s|RHCP|No|??|??|Svalbard
+|MetOp-B, MetOp-C|7800 MHz|35 Msym/s|RHCP|No|5 dB|No|Svalbard
 
 ### Sample imagery
 
