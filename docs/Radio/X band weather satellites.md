@@ -182,7 +182,7 @@ This list is not exhaustive, I apologize if I missed anything.
 
 ## NASA EOS
 ![As described below](../../assets/images/X-band-transmissions/nasa-eos.jpg)
-*Terra MODIS crop, received on 25/11/2023 at 09:35 UTC by Andrew Lorett LLC. Processed with SatDump using the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/Meteor-M/KMSS/Meteor-M2-2/2024-03-20_14-26_meteor-kmss-db_Andrew-Lorett-LLC/KMSS_MSU100_1/MSU100-1.png) for the full resolution image*
+*Terra MODIS crop, received on 25/11/2023 at 09:35 UTC by Andrew Lorett LLC. Processed with SatDump using the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_True_Color.png) for the full resolution image*
 
 ### Description
 
