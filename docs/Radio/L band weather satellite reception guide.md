@@ -60,8 +60,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 # Detailed satellite information
 
 ## Low-Earth-Orbiting satellites
-- There are **7** LEO satellites currently broadcasting imagery in this band:
-    - 2x NOAA POES
+- There are **6** LEO satellites currently broadcasting imagery in this band:
+    - 1x NOAA POES
     - 2x Meteor-M
     - 2x MetOp
     - 1x AWS
@@ -69,10 +69,10 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### NOAA POES
 
-> ***!!!WARNING!!!*** - Following a statement from NOAA, both NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 12/08/2025 and NOAA 19 19/08/2025. There is a chance of the satellites being transferred to USSF, but a permanent shutdown is probable. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
+> ***!!!WARNING!!!*** - Following a statement from NOAA, all NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 was meant to be decommissioned on 12/08/2025 but was pushed back a week, pending issues with NOAA 19. Decommissioning is planned on the week of 18/08/2025. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
 
-- These are the same as VHF: **NOAA 15 and 19**.
-- Have a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
+- This is the same as VHF: **NOAA 15 and 19**.
+- Has a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
 - The broadcast features a very strong carrier wave making it very easy to track
 - Full resolution sample imagery:
     - [NOAA Natural color](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.png)
@@ -82,6 +82,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [NO](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NO%20enhancement.png)
 
 > !Warning! - As of 06/06/25, NOAA 18 has been **DECOMMISSIONED** due to unreliable <abbr title="Tracking, telemetry, and command">TT&C</abbr>. The satellite has PERMANENTLY STOPPED all transmissions at 17:40 UTC.
+
+> !Warning! - As of 13/08/25, NOAA 19 has been **DECOMMISSIONED** due to a battery failure which occurred on 09/08/2025. This caused the satellite to safe, shutting down all transmissions except for DSB. The satellite has PERMANENTLY STOPPED all transmissions at 16:55 UTC. This failure happened just a week prior to its planned decommissioning
 
 > Reception note: NOAA 15 only uses a damaged emergency antenna, which makes the signal lose a consistent polarization, be much weaker than intended, and experience severe fading throughout the pass. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
 
@@ -156,7 +158,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 |Satellite|Frequency|Notes|
 |---|---|---|
 |NOAA 15|1702.5 MHz|**Very weak**|
-|NOAA 19|1698 MHz||
 |Meteor M2-3, M2-4|1700 MHz||
 |MetOp B, C|1701.3 MHz||
 |Arctic Weather Satellite|1707 MHz||

@@ -292,20 +292,22 @@ This should cover everything you might encounter while decoding these satellites
 Now that we have gone over the terminology behind these satellite and know how to use the necessary software, we can finally move on to the actual reception!
 
 - Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR, and some patience
-- As of writing this article, there are **5** weather satellites currently broadcasting imagery in this band
+- As of writing this article, there are **3** weather satellites currently broadcasting imagery in this band
 - While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
 
 ## Detailed satellite information
 
 ### NOAA
 
-> ***!!!WARNING!!!*** - Following a statement from NOAA, both NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 12/08/2025 and NOAA 19 19/08/2025. There is a chance of the satellites being transferred to USSF, but a permanent shutdown is probable. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
+> ***!!!WARNING!!!*** - Following a statement from NOAA, all NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 was meant to be decommissioned on 12/08/2025 but was pushed back a week, pending issues with NOAA 19. Decommissioning is planned on the week of 18/08/2025. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
 
-- There are **2** NOAA satellites broadcasting imagery in this band, **NOAA 15 and 19**. These are the only remaining members of the **POES** (Polar Orbiting Environmental Satellites) constellation. They were launched in 1998 and 2009 respectively.
-- Have an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4 km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
+- There is **1** NOAA satellite still broadcasting imagery in this band, **NOAA 15**. It is the last living member of the **POES** (Polar Orbiting Environmental Satellites) constellation. It was launched in 1998, has provided more than 25 years of reliable service.
+- Has an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4 km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
 - These satellites also broadcast an auxiliary [DSB (Direct Sounder Broadcast)](https://www.sigidwiki.com/wiki/NOAA_Direct_Sounder_Broadcast_(DSB)) signal which contains the HIRS and SEM instruments as well as telemetry. I won't be covering it in this guide, as it's primarily focused on visible imagery.
 
 > !Warning! - As of 06/06/25, NOAA 18 has been **DECOMMISSIONED** due to unreliable <abbr title="Tracking, telemetry, and command">TT&C</abbr>. The satellite has PERMANENTLY STOPPED all transmissions at 17:40 UTC.
+
+> !Warning! - As of 13/08/25, NOAA 19 has been **DECOMMISSIONED** due to a battery failure which occurred on 09/08/2025. This caused the satellite to safe, shutting down all transmissions except for DSB. The satellite has PERMANENTLY STOPPED all transmissions at 16:55 UTC. This failure happened just a week prior to its planned decommissioning
 
 <br>
 
