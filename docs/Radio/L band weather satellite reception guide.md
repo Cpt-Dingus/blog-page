@@ -13,6 +13,8 @@ parent: Radio
 
 # Preamble
 
+> NOTE: NOAA POES has been permanently retired because of political reasons. They will be greatly missed. A historical version of this guide with NOAA APT can be found [here](https://static.cpt-dingus.cc/archived-blog_page/L%20band%20weather%20satellite%20reception%20_%20Meti%E2%80%99s%20blog.html). This link is permanent.
+
 If you're reading this, you have probably been intrigued by the lower resolution VHF imagery that you can (or even have) received yourself. Well, you're in for a ride! The L band is relatively easy to receive thanks to commercial solutions existing for the equipment, while it's been deprecated by most LEO satellites, it still offers a lot of interesting data; particularly geostationary satellites. This guide will cover both. You can expect resolutions of roughly 1 km/px in the majority of this band. This guide will definitively describe the reception of the **L satellite band (~1.7 GHz)** when it comes to weather satellites. 
 
 **This guide assumes you have read the [VHF guide](Beginners guide to weather satellite reception) already, won't repeat some more basic concepts.**
@@ -60,44 +62,18 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 # Detailed satellite information
 
 ## Low-Earth-Orbiting satellites
-- There are **6** LEO satellites currently broadcasting imagery in this band:
-    - 1x NOAA POES
+- There are **5** LEO satellites currently broadcasting imagery in this band:
     - 2x Meteor-M
     - 2x MetOp
     - 1x AWS
 
 
-### NOAA POES
-
-> ***!!!WARNING!!!*** - Following a statement from NOAA, all NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 was meant to be decommissioned on 12/08/2025 but was pushed back a week, pending issues with NOAA 19. Decommissioning is planned on the week of 18/08/2025. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
-
-- This is the same as VHF: **NOAA 15**.
-- Has a [POES HRPT](https://www.sigidwiki.com/wiki/NOAA_POES_High_Resolution_Picture_Transmission_(HRPT)) (High Rate Picture Transmission) broadcast which transmits 5 AVHRR channels at a 1.1 km/px resolution as well as some more data (Refer to the hyperlink)
-- The broadcast features a very strong carrier wave making it very easy to track
-- Full resolution sample imagery:
-    - [NOAA Natural color](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.png)
-    - [221](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_AVHRR%20221%20False%20Color.png)
-    - [4/221 merge](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_4-221%20Merge.png)
-    - [Enhanced Infrared](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_Enhanced%20IR.png)
-    - [NO](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NO%20enhancement.png)
-
-> !Warning! - As of 06/06/25, NOAA 18 has been **DECOMMISSIONED** due to unreliable <abbr title="Tracking, telemetry, and command">TT&C</abbr>. The satellite has PERMANENTLY STOPPED all transmissions at 17:40 UTC.
-
-> !Warning! - As of 13/08/25, NOAA 19 has been **DECOMMISSIONED** due to a battery failure which occurred on 09/08/2025. This caused the satellite to safe, shutting down all transmissions except for DSB. The satellite has PERMANENTLY STOPPED all transmissions at 16:55 UTC. This failure happened just a week prior to its planned decommissioning
-
-> Reception note: NOAA 15 only uses a damaged emergency antenna, which makes the signal lose a consistent polarization, be much weaker than intended, and experience severe fading throughout the pass. Reception is still possible, but requires a bigger dish, completely clear LOS with the satellite, and more precise tracking than other satellites described here.
-
-
-![NOAA HRPT screenshot from SatDump](../../assets/images/Radio/NOAA-HRPT.jpg) <br>
-*NOAA 19 HRPT*
-
-> Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50-year-old satellite! - has gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familiar sync lines from APT broadcasts.
 
 ### METEOR-M
 
 - 2 satellites from this constellation currently broadcast in this band: **Meteor M2-3** and **Meteor M2-4**
 - Have a [**Meteor HRPT**](https://www.sigidwiki.com/wiki/METEOR-M_High_Resolution_Picture_Transmission_(HRPT)) broadcast containing 6 MSU-MR channels in addition to 30 MTVZA channels.
-- This broadcast, much like POES HRPT, has a very strong carrier wave making it easy to track.
+- This broadcast features a very strong carrier wave making it easy to track.
 - Full resolution sample imagery:
     - [Natural color](https://sat-archive.cpt-dingus.cc/L-band/Meteor-M/msu_mr_2024-11-09_13-23-58Z_Natural%20Color.png)
     - [221](https://sat-archive.cpt-dingus.cc/L-band/Meteor-M/msu_mr_2024-11-09_13-23-58Z_AVHRR%20221%20False%20Color.png)
@@ -109,7 +85,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### MetOp
 - There are two functional satellites: **MetOp-B** and **MetOp-C** operated by EumetSat, launched in 2013 and 2019 respectively.
-- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike NOAA POES and METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels at a 1.1 km/px quality as well as one IASI Imaging channel at 0.8 km/px.
+- Have a [MetOp AHRPT](https://www.sigidwiki.com/wiki/METOP_Advanced_High_Resolution_Picture_Transmission_(AHRPT)) (Advanced High Rate Picture Transmission) broadcast which - unlike METEOR-M HRPT - includes Reed-Solomon FEC to make sure your picture doesn't come out with grain. The broadcast also contains several more instruments and much more data, including 5 AVHRR channels at a 1.1 km/px quality as well as one IASI Imaging channel at 0.8 km/px.
 - The signal does not have a carrier wave or easily discernible bumps making it a bit harder to track, it presents as a jumpy signal on the FFT.
 > Reception note: When receiving with an RTLSDR, you might run into some issues owing to its relatively high symbol rate. If you get a donut shaped constellation while decoding this signal, make sure to follow [this heading](#bad_constellation)
 
@@ -143,6 +119,20 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ![AWS PFM screenshot from SatDump while dumping](../../assets/images/Radio/AWS-PFM-Dump.jpg) <br>
 *AWS PFM while dumping*
 
+### NOAA POES (DEAD)
+
+- NOAA POES used to transmit at a 4 km/px quality 1978-2025 before being decommissioned. There are no future POES launches planned. A historical version of the guide with APT can be found [here](https://static.cpt-dingus.cc/archived-blog_page/L%20band%20weather%20satellite%20reception%20_%20Meti%e2%80%99s%20blog.html)
+- Sample imagery will be kept here for archival purposes
+- Full resolution sample imagery:
+    - [NOAA Natural color](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.png)
+    - [221](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_AVHRR%20221%20False%20Color.png)
+    - [4/221 merge](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_4-221%20Merge.png)
+    - [Enhanced Infrared](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_Enhanced%20IR.png)
+    - [NO](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NO%20enhancement.png)
+
+
+> Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50-year-old satellite! - has gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familiar sync lines from APT broadcasts.
+> 
 ### FengYun 3C (DEAD)
 
 > In a statement from NSMC, the satellite has **FAILED** as of 11/2024. The satellite used to transmit true color imagery when in sight of Chinese territory. Sample imagery will be kept below.
@@ -157,7 +147,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 |Satellite|Frequency|Notes|
 |---|---|---|
-|NOAA 15|1702.5 MHz|**Very weak**|
 |Meteor M2-3, M2-4|1700 MHz||
 |MetOp B, C|1701.3 MHz||
 |Arctic Weather Satellite|1707 MHz||
@@ -394,11 +383,10 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### Low-earth-orbiting
 
-All signals mentioned here are RHCP except NOAA 15, which doesn't have a specific polarization due to a bent antenna. Please note that the signals listed under this heading are strong enough to be receivable [without a dish]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but it isn't recommended for beginners as the receptions are very often riding the margins of clean decodes.
+All signals listed below are RHCP!
 
 |Signal|Minimum dish size|Symbol rate|FEC|Notes|
 |---|---|---|---|---|
-|NOAA POES HRPT|60|665.6 ksym/s\*|No|
 |Meteor HRPT|60|665.6 ksym/s\*|No|
 |MetOp AHRPT|60|2.33 Msym/s|Yes|Just barely receivable with an RTLSDR, might cause [issues](#bad_constellation)
 |AWS PFM|60|1.785 Msym/s|Yes|Fades when facing away
@@ -740,7 +728,7 @@ A small dot means that you should up the gain, if you're already maxed you can l
 1. Open SatDump, move to the `Recording` tab, start the appropriate pipeline in the `Processing` shortly before the pass 
     - You can optimally select the satellite in the `Tracking` tab so you have an easy-to-see reference of where the satellite is in real-time
 2. Aim your dish in the general direction of the satellite, move it around until you can begin seeing the signal
-    - With **NOAA/Meteor HRPT**, you will first see the strong carrier in the center of your FFT
+    - With **Meteor HRPT**, you will first see the strong carrier in the center of your FFT
     - With **MetOp/AWS**, you will first see a lot of smaller jumpy lines appearing, which is filler that's stronger than the actual data payload
 3. When you see the pipeline sync or the deframer count start ticking up, **you're now getting a signal**! Make slight adjustments until you see the SNR counter start ticking up, it should go up fairly quickly thanks to atmospheric phenomena.
 4. Once you see that you have an SNR reading, only make slight adjustments from this point onward. I personally recommend you **SNR track** - create a small margin, move your dish very slowly to get the average as high as possible. The general convention for L-band is **point & wait** - you do not need to be moving constantly, just move when the signal starts getting weaker.
@@ -910,7 +898,6 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
 |Signal|Minimum SNR|FEC|
 |---|---|---|
-|NOAA HRPT|0.5 dB|No|
 |Meteor-M HRPT|0.5 dB|No|
 |MetOp AHRPT|4 dB|Yes|
 |Elektro-L LRIT|2dB|Yes|
@@ -929,7 +916,7 @@ If the signal lacks FEC, you can expect grain when near the minimum SNR.
 
 
 # Epilogue
-- Sitting just above L-band is the **S-band** which has some interesting things to receive as well! It requires some different strategies for reception due to amplifiers being difficult to come by and a lot of popular dongles only going up to 1.7 GHz, with the most popular method being modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter to be possible to screw it onto a helix. This band contains full orbit NOAA POES imagery via GAC as well as sun imagery thanks to PROBA-2 and Hinode.
+- Sitting just above L-band is the **S-band** which has some interesting things to receive as well! It requires some different strategies for reception due to amplifiers being difficult to come by and a lot of popular dongles only going up to 1.7 GHz, with the most popular method being modding an [MMDS](https://en.wikipedia.org/wiki/Multichannel_multipoint_distribution_service) downconverter to be possible to screw it onto a helix. This band contains some university satellites as well as sun imagery thanks to PROBA-2 and Hinode.
 
 - Another interesting and not very hard to receive band to look at is the **C-band** which offers several rebroadcasts that contain combined data from various satellites. The most notable ones are GeoNetCast, EuMetCast Africa (Receivable in Europe as well), and HimawariCast.
 > Please note that I call this band 'easy' because C-band LNBs paired with appropriately sized dishes are commercially available and very easily sourcable in **English-speaking countries**. Places where C-band TV wasn't widely adapted will have a significantly harder time receiving this band.

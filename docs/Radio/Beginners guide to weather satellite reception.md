@@ -15,7 +15,7 @@ parent: Radio
 
 # Preamble
 
-> NOTE: If you've been linked here and expect to see anything related to L-band reception, it was moved and can be found [here](L band weather satellite reception guide). This was done to make this page seem less daunting, limiting its scope to only include VHF reception.
+> NOTE: NOAA POES has been permanently retired because of political reasons. They will be greatly missed. A historical version of this guide with NOAA APT can be found [here](https://static.cpt-dingus.cc/archived-blog_page/Beginners%20guide%20to%20weather%20satellite%20reception%20_%20Meti%e2%80%99s%20blog.html). This link is permanent.
 
 
 Before anything, I have to start with some credits:
@@ -27,11 +27,11 @@ I learned almost everything you can read here from the places linked above, I ca
 
 # Introduction
 
-While you have certainly seen imagery gathered by satellites before, did you know that you can receive it by yourself with very little effort? The purpose of this guide is to show you how the broadcasts work, how you can receive them in practice in an easy to understand and approachable way.
+While you have certainly seen imagery gathered by satellites before, did you know that you can receive it by yourself with very little effort? The purpose of this guide is to show you how the broadcasts work, how you can receive them in practice in an easy-to-understand and approachable way.
 
 ## How can I receive data off of computers when they're flying hundreds of kilometers above my head?
 
-Satellites use the same method as your regular old FM station to transmit their data, **radio waves**! Of course you aren't able to just tune to a frequency on your car radio and start getting images, this is because it lacks the hardware & software needed to decode and process satellite signals.
+Satellites use the same method as your regular old FM station to transmit their data, **radio waves**! Of course, you aren't able to just tune to a frequency on your car radio and start getting images, this is because it lacks the hardware & software needed to decode and process satellite signals.
 
 To receive satellite signals *(among other things, an SDR has a wide range!)*, you can use a **Software Defined Radio** [SDR]. This is a device, that - unlike conventional radios - *uses **software** to perform radio-signal processing*. You usually plug these into a computer and use software like [SDR++](https://www.sdrpp.org/) to operate them.
 
@@ -45,17 +45,15 @@ There is no definitive reason for trying this niche hobby out - you can do it fo
 
 ## What is covered by this guide?
 
-This guide covers weather satellite reception in the easier to receive **VHF satellite band (~137 MHz)**, which contains imagery at a 4 km/px and a JPEG-compressed 1 km/px quality. You can also find a guide on how to receive a more difficult but more interesting **L band satellite band (~1.7 GHz)** [here](TODO). This band contains imagery from not just low-earth-orbiting satellites, but also geostationary satellites providing full disk Earth imagery. The prevailing resolution is roughly 1 km/px but can get as high as 500 m/px with American GOES satellites.
+This guide covers weather satellite reception in the easier to receive **VHF satellite band (~137 MHz)**, which contains imagery at a (JPEG-compressed) 1 km/px quality. 
+
+You can also find a guide on how to receive a more difficult but more interesting **L band satellite band (~1.7 GHz)** [here]({{site.baseurl}}/docs/Radio/L band weather satellite reception guide). Said band contains imagery from not just low-earth-orbiting satellites, but also geostationary satellites providing full disk Earth imagery. The prevailing resolution is roughly 1 km/px but can get as high as 500 m/px with American GOES satellites.
 
 
 These aren't the only bands that weather satellites broadcast in, but are by far the easiest to receive imagery in both due to physical constraints and commercial availability. Other bands range from requiring a simple LNB (C band) to year long endeavors that require a lot of dedication and individual research. *Looking at you, X band!*
 
-## Sample processed APT and LRPT images
-> Note: The raw images don't have maps on them, they were added in post-processing.
-
-![A processed APT image](../../assets/images/Radio/compressed/APT-Sample-image-COMPRESSED.jpg)
-*NOAA 18 APT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `HVC` RGB composite. Equalized, median blur applied. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/APT-Sample-image.png) for the full resolution image.*
-
+## Sample processed image
+> Note: The map was added in post-processing.
 
 ![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
 *Meteor M2-3 LRPT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
@@ -217,7 +215,7 @@ When you launch SatDump, you initially face the `Offline processing` tab. This i
 
 > If your SDR isn't showing up, make sure that it is being recognized by your computer and that the drivers are installed properly. If it's visible by other programs but now SatDump, ensure all SatDump dependencies are installed.
 
-Once you have selected your SDR, you can select a sampling rate appropriate for the signal you are about to decode; this depends on the symbol rate of the target signal. Your sampling rate should be **at least** roughly twice the <abbr title="How quickly the signal transmits data, expressed in symbols per second">symbol rate</abbr> of the signal. 2.048 Msps is perfectly adequate for VHF signals described here, while 2.4 Msps is enough for most L band signals. Please note that higher sampling rates don't hurt the signal as long as you don't begin to <abbr title="This is when your computer can't handle all the data coming from your SDR, loses some of it. It shows as the audio occassionally disappearing on APT and spikes on the viterbi graph on LRPT.">drop samples</abbr>.
+Once you have selected your SDR, you can select a sampling rate appropriate for the signal you are about to decode; this depends on the symbol rate of the target signal. Your sampling rate should be **at least** roughly twice the <abbr title="How quickly the signal transmits data, expressed in symbols per second">symbol rate</abbr> of the signal. 2.048 Msps is perfectly adequate for VHF signals described here, while 2.4 Msps is enough for most L band signals. Please note that higher sampling rates don't hurt the signal as long as you don't begin to <abbr title="This is when your computer can't handle all the data coming from your SDR, loses some of it. It shows as spikes on the viterbi graph.">drop samples</abbr>.
 
 > I.e. if a signal has a symbol rate of 1 Msym/s, a sampling rate of **at least** 2 Msps is recommended
 
@@ -280,7 +278,7 @@ Now let's look at everything individually:
 4. **Deframer** - The deframer shows, whether SatDump knows where individual frames of data start. If it doesn't know (NOSYNC), SatDump isn't decoding any data, because it has no idea what it is looking at.
 5. **Reed-Solomon** - This describes the forward error correction bits, where: **Green** = "Bit is OK", **Orange** = "Bit had to be recovered", **Red** = "Bit was lost".
 
-Other things might show up here depending on the satellite you are receiving, such as an image or frame counter. Please note that numbers 3,4, and 5 only show up with signals that have FEC. In this band, that's only LRPT. APT will have a live image preview of what SatDump is decoding.
+Other things might show up here depending on the satellite you are receiving, such as an image or frame counter. Please note that numbers 3,4, and 5 only show up with signals that have FEC. In this band, that's only LRPT.
 
 
 ---
@@ -288,37 +286,17 @@ Other things might show up here depending on the satellite you are receiving, su
 This should cover everything you might encounter while decoding these satellites.
 
 
-# VHF APT/LRPT reception guide (137MHz)
+# VHF LRPT reception guide (137MHz)
 Now that we have gone over the terminology behind these satellite and know how to use the necessary software, we can finally move on to the actual reception!
 
 - Receiving VHF broadcasts is **incredibly easy** → all you need is some wire, an SDR, and some patience
-- As of writing this article, there are **3** weather satellites currently broadcasting imagery in this band
-- While easy to receive, they have a **relatively low quality** (4 km/px on APT and 1 km/px with JPEG compression on LRPT) and transmit only 2-3 channels while broadcasts in higher frequencies usually transmit 5+ raw, 1 km/px channels 
+- As of writing this article, there are **2** weather satellites currently broadcasting imagery in this band
+- The resolution you can find in this band is a JPEG-compressed 1 km/px of 3 selected channels.
 
 ## Detailed satellite information
 
-### NOAA
+> NOAA POES used to transmit analogue APT at a 4 km/px quality 1978-2025 before being decommissioned. There are no future APT launches planned. A historical version of the guide with APT can be found [here](https://static.cpt-dingus.cc/archived-blog_page/Beginners%20guide%20to%20weather%20satellite%20reception%20_%20Meti%e2%80%99s%20blog.html)
 
-> ***!!!WARNING!!!*** - Following a statement from NOAA, all NOAA POES satellites are now pending ***DECOMMISSIONING*** - NOAA 15 was meant to be decommissioned on 12/08/2025 but was pushed back a week, pending issues with NOAA 19. Decommissioning is planned on the week of 18/08/2025. Stay posted [here](https://www.ospo.noaa.gov/operations/messages.html)
-
-- There is **1** NOAA satellite still broadcasting imagery in this band, **NOAA 15**. It is the last living member of the **POES** (Polar Orbiting Environmental Satellites) constellation. It was launched in 1998, has provided more than 25 years of reliable service.
-- Has an *analogue* **[APT (Automatic picture transmission)](https://www.sigidwiki.com/wiki/Automatic_Picture_Transmission_(APT))** broadcast that transmits two channels at a 4 km/px quality. Its analogue nature means, that crackling (noise) during the recording translates to grain in the output images.
-- These satellites also broadcast an auxiliary [DSB (Direct Sounder Broadcast)](https://www.sigidwiki.com/wiki/NOAA_Direct_Sounder_Broadcast_(DSB)) signal which contains the HIRS and SEM instruments as well as telemetry. I won't be covering it in this guide, as it's primarily focused on visible imagery.
-
-> !Warning! - As of 06/06/25, NOAA 18 has been **DECOMMISSIONED** due to unreliable <abbr title="Tracking, telemetry, and command">TT&C</abbr>. The satellite has PERMANENTLY STOPPED all transmissions at 17:40 UTC.
-
-> !Warning! - As of 13/08/25, NOAA 19 has been **DECOMMISSIONED** due to a battery failure which occurred on 09/08/2025. This caused the satellite to safe, shutting down all transmissions except for DSB. The satellite has PERMANENTLY STOPPED all transmissions at 16:55 UTC. This failure happened just a week prior to its planned decommissioning
-
-<br>
-
-- During day these transmit one visible and one infrared channel, during night they switch to two infrared channels.
-
-<br>
-
-- New satellite launches are a part of the JPSS constellation, which only include an incomparably harder to receive X-band signal. No future satellite launches from NOAA are planned to include a VHF antenna.
-
-![NOAA APT screenshot from SatDump](../../assets/images/Radio/NOAA-APT.jpg)
-*NOAA 19 APT, Credit: SigIdWiki*
 
 ### METEOR-M
 
@@ -329,7 +307,8 @@ Now that we have gone over the terminology behind these satellite and know how t
 
 <br>
 
-- These transmit any 3 channels the operators choose, as of the latest commit:
+- These transmit any 3 channels the operators choose, during summer months these are normally channels 1, 2, and 3 for sea ice monitoring in Siberia. During winter, they usually transmit channels 1, 2, and 4 for night imaging. 
+- As of the latest commit:
 
 |Satellite|Channel numbers|Channel types|
 |---|---|---|
@@ -344,12 +323,6 @@ Now that we have gone over the terminology behind these satellite and know how t
 - As a long awaited change of luck, M2-4 has successfully launched on leap day in 2024, is broadcasting LRPT at a full strength. Its JPEG compressor has had a few hiccups presenting as a lot of artefacting in its imagery, but it has always recovered after the satellite restarted it a few orbits later.
 
 
-## Broadcast issues
-
-- **Meteor-M N°2-3** has an incorrectly deployed VHF antenna, making the <u>LRPT signal weaker than intended and unexpectedly experience drops at certain elevations</u>.
-
-> **NOAA 15** has had several major hiccups with its scan motor current spiking due to it grinding through debris. These spikes caused a loss of synchronization between the scan motor and the processor presenting as [major glitches](../../assets/images/Sat-reception-journey/First-good-APT-N15.png) *(NOAA 15 received on 13/10/2023 using a V-dipole)* appearing in place of actual imagery. A large enough spike could lead to a complete motor stall, from which recovery would be highly unlikely. **The satellite has since recovered and is currently broadcasting fine**. Its status can be checked on the [STAR ICVS monitoring page](https://www.star.nesdis.noaa.gov/icvs/status_N15_AVHRR.php) by selecting `Telemetry` and `Scan motor current`.
- 
 
 ## Hardware needed to receive these satellites
 
@@ -425,7 +398,7 @@ To make it:
 
 A good guide I have followed to make this antenna can be found [here](https://sdr-es.com/construccion-antena-qfh-137/), while being in Spanish it offers great information about the dimensions and the installation. [Google translated page](https://sdr--es-com.translate.goog/construccion-antena-qfh-137/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
 
-***WARNING! This antenna has a circular polarization, meaning you <u>HAVE</u> to match it with the satellites', that being RHCP!!!*** (For APT & LRPT)
+***WARNING! This antenna has a circular polarization, meaning you <u>HAVE</u> to match it with the satellites', that being RHCP!!!*** (For LRPT)
 ![Correct QFH polarization](../../assets/images/Radio/QFH-correct-polarization.jpg)
 *Bottom to top, RHCP is twisted clockwise, while LHCP is twisted counter-clockwise. CC for image: soplica.pl on Discord*
 
@@ -444,28 +417,15 @@ Please note that you don't need to know these by heart, SatDump offers a frequen
 
 |Satellite|Frequency|
 |---|---|
-|NOAA 15|137.62 MHz|
-|NOAA 19|137.1 MHz|
 |Meteor M2-3|137.9 MHz|
 |Meteor M2-4|137.9 MHz|
 
 ## Actually receiving the satellites!
 1. Get to a place with a good view of the sky - The more you can see, the longer you can receive the satellite for and the longer the resulting image will be. VHF signals should easily pass through dead trees and some foliage.
 2. Open SatDump and navigate to the `Recorder` tab, select your SDR, set the sampling rate to an appropriate value (~ 1-2 Msps for this band) and hit `Start`
-    - Rise the gain until your noise floor starts to rise more than the target signal, or until your SDR overloads, whichever comes first. Try not to move it around much during the pass, it will lead to the image having sections with a different brightness with APT. Doing so has no effect on LRPT.
+    - Rise the gain until your noise floor starts to rise more than the target signal, or until your SDR overloads, whichever comes first.
 
 3. In the side panel, open the `Processing` menu and do the following:
-
-    <b><u>FOR NOAA APT</u></b>
-    - Select the `NOAA APT` pipeline
-    - Enable `DC Blocking` and `SDR++ Noise Reduction`
-    - Select the proper NOAA satellite
-    - Open the frequency menu, select the correct satellite
-
-    ![A screenshot of the settings mentioned above](../../assets/images/Radio/APT-SatDump-Settings.jpg) <br>
-    *Example configuration for an NOAA 19 pass*
-
-    <b><u>FOR METEOR-M LRPT</u></b>
     - Select the appropriate pipeline:
         - `METEOR M2-x LRPT 72k` for Meteor M2-3 and Meteor M2-4
         - `METEOR M2-x LRPT 80k` for \<x\>
@@ -476,13 +436,13 @@ Please note that you don't need to know these by heart, SatDump offers a frequen
         - `Backup` for 137.1 MHz
 
     ![A screenshot of the settings mentioned above](../../assets/images/Radio/LRPT-SatDump-Settings.jpg) <br>
-    *Example configuration for an 80k bitrate Meteor-M pass. Note that the satellites usually transmit 72k instead.*
+    *Example configuration for an 80k bitrate Meteor-M pass. Note that the satellites only transmit 80k shortly after launch, normally transmit 72k instead.*
 
 4. When the satellite comes into view, press `Start` on the processing window
 
-    > When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR with LRPT and the FFT along with the sound (trying to avoid crackling) with APT. You might not get the hang of it on your first try, tracking is a skill you have to learn!
+    > When using a directional antenna, move slowly and try keeping the signal as strong as possible using the SNR chart. You might not get the hang of it on your first try, tracking is a skill you have to learn!
 
-    If everything is right, you are now receiving a beeping APT signal or see four dots on the demodulator in case of an LRPT signal!
+    If everything is right, you should be seeing four dots on the demodulator and a `SYNCED` mark on the deframer!
     ![SatDump screenshot mid LRPT pass](../../assets/images/Radio/LRPT-SatDump.jpg) <br>
     *SatDump mid LRPT decode. See the `SYNCED` viterbi and deframer.*
 
@@ -524,39 +484,15 @@ Your LRPT pass should now decode as usual.
 
 # Common issues {#common-issues}
 
-## Generic
 
 ### There is a map but no clouds are present
-You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded) or solid black (visible LRPT channels at night), all you are left with is the predefined map. You can confirm this by looking at the folder with the products, in the case of APT look at the `raw_sync.png` file, it'll likely be full of static. In case of LRPT look into the `MSU-MR` folder, you are likely going to find 3 solid black images.
+You likely selected the MCIR/MSA RGB composites, which overlay a predefined map over your image. If your original image was just static (no actual signal was decoded) or solid black (visible LRPT channels at night), all you are left with is the predefined map. You can confirm this by looking at the `MSU-MR` folder with the products, you are likely going to find 3 solid black images.
 
 ### The signal is fading a lot near the horizon
 
 > TODO: image
 
 This is normal, happens due to atmospheric phenomena.
-
-## APT specific
-
-### There is grain all over the resulting image
-APT is an **analogue** transmission format, so what you hear is exactly what you get. If you heard any crackling during the decode, it will have shown up as grain on the resulting image. The most common reason for this is that the signal was simply too weak. This can be remedied by using the `Median blur` option.
-
-
-### There is a thin line in the middle of the image, even though the signal sounded clear
-
-![A crop of an APT image with a thin line in the middle](../../assets/images/Radio/APT-DC-artefact.jpg)
-
-This line is caused by APT passing through the center of your FFT spectrum, which has a thin DC spike created by your SDR merging together the two sampled <abbr title="In-phase and quadrature. You do not have to know what these are.">radio branches</abbr>. APT's analogue nature makes this thin spike be interpreted as part of the APT signal, which can create erroneous lines in the image. You can easily avoid this by using a `Frequency offset`, then tuning the value you typed into the field away from the target signal. Use enough of an offset, so that the APT signal doesn't travel through the middle of your spectrum, 100 kHz is usually enough.
-
-> I.e. with a frequency offset of 100 kHz, tune 100 kHz above the APT frequency. For NOAA 15 broadcasting on 137.62 MHz, that would be 137.72 MHz.
-
-### There were occasional bursts of crackles, the image has several small lines of static in it
-
-![A crop of an AOT image with several small static lines in it](../../assets/images/Radio/APT-VDL.jpg)
-*Small lines are most visible on channel A (left)*
-
-This is caused by interference from VDL, a data transmission format used by planes in the neighboring aviation band. Because of its strength and proximity to this band there is sadly no consumer-level remedy for this other than moving away from areas where planes frequent in.
-
-## LRPT specific
 
 ### The image is solid black
 If the image is from LRPT on an evening pass, you need to select an infrared channel (4/5/6) to see imagery - Channels 1/2/3 are all visible, so during night they are solid black. If the satellite was in 123 mode, you won't be able to see any imagery from this decode. Sorry!
