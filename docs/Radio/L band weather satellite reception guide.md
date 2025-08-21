@@ -121,7 +121,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### NOAA POES (DEAD)
 
-- NOAA POES used to transmit at a 4 km/px quality 1978-2025 before being decommissioned. There are no future POES launches planned. A historical version of the guide with APT can be found [here](https://static.cpt-dingus.cc/archived-blog_page/L%20band%20weather%20satellite%20reception%20_%20Meti%e2%80%99s%20blog.html)
+- NOAA POES used to transmit at a 4 km/px quality 1978-2025 before being decommissioned. There are no future POES launches planned. A historical version of the guide with POES can be found [here](https://static.cpt-dingus.cc/archived-blog_page/L%20band%20weather%20satellite%20reception%20_%20Meti%e2%80%99s%20blog.html)
 - Sample imagery will be kept here for archival purposes
 - Full resolution sample imagery:
     - [NOAA Natural color](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.png)
