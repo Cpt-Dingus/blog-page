@@ -354,16 +354,17 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 ### Meteosat Second Generation (MSG)
-- **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 2x VIS at a 1.6 km/px quality, and 9x IR at a 4.8 km/px quality.
+- **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 1x panchromatic at 1 km/px, 3x VIS and 9x IR at a 3 km/px quality
 - This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring approximately a massive **4-meter dish** to decode. 
 > Few people have access to such dish sizes in Europe, I personally only know of 3 people ever receiving it, all with custom amplifiers. The 4-meter estimate stems from @Digielektro using a 3-meter dish and a custom amplifier for a decode.
-- The SEVIRI instrument has three operating modes:
-    - HRV - High Resolution Visible - A crop of Europe and a crop of the bottom hemisphere is transmitted every 15 minutes, these move with sunlight as pictured below <br>
+
+- The imaging insturment, SEVIRI, has a panchromatic channel called HRV (High Resolution Visible) which transmits a crop of Europe and a crop of the bottom hemisphere every 15 minutes, these move with sunlight as pictured below <br>
 ![Meteosat HRV crop GIF over 24 hours](../../assets/images/Radio/Meteosat-HRV-mode.webp)<br>
 *HRV crops, [source](https://user.eumetsat.int/resources/user-guides/msg-high-rate-seviri-level-1-5-data-guide#ID-HRV-SEVIRI-scan-modes)*
 
+- SEVIRI has two operating modes:
     - RSS - Rapid Scan Service - The top third of the Earth is transmitted every 5 minutes
-    - FES - Full Earth Scan - The whole earth is scanned every 15 minutes, only enabled during eclipse season
+    - FES - Full Earth Scan - The whole earth is scanned every 15 minutes
 
 - Full resolution sample imagery (credit to FelixTRG):
     - [321](https://sat-archive.cpt-dingus.cc/L-band/MSG/Raw-downlink/Meteosat-10/seviri_rgb_321.png)
