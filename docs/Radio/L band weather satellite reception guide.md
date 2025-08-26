@@ -79,6 +79,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [221](https://sat-archive.cpt-dingus.cc/L-band/Meteor-M/msu_mr_2024-11-09_13-23-58Z_AVHRR%20221%20False%20Color.png)
     - [Day microphysics](https://sat-archive.cpt-dingus.cc/L-band/Meteor-M/msu_mr_2024-11-09_13-23-58Z_Day%20Microphysics.png)
 
+> Meteor-M N°2-2 is currently in storage mode due to its orbital proximity to M2-4. It can be reenabled if an issue arises with M2-4.
+
 ![Meteor HRPT screenshot from SatDump](../../assets/images/Radio/Meteor-HRPT.jpg) <br>
 *Meteor-M N°2-2 HRPT*
 
@@ -95,10 +97,10 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
     - [4/221 merge](https://sat-archive.cpt-dingus.cc/L-band/Metop/avhrr_3_2024-10-13_09-09-23Z_4-221%20Merge.png)
     - [Day microphysics](https://sat-archive.cpt-dingus.cc/L-band/Metop/avhrr_3_2024-10-13_09-09-23Z_Day%20Microphysics%20(Metop).png)
     
-> !NOTE! - During 03/2025, MetOp B was found to have a deteriorating modulator causing a significant hit to the expected AHRPT SNR. According to receptions by Lego11 and Aang23, there was an approximately 7 dB loss compared to the nominal status. This issue was visible when decoding at higher SNRs, the modulator starts to form an X shape instead of the correct OQPSK modulation. <u>***As of 04/2025 the broadcast has seemingly returned to normal, but this should continue to be monitored.***</u>
+> !NOTE! - Since 03/2025, MetOp B was found to have a deteriorating modulator intermittently causing a significant hit to its SNR. According to receptions by Lego11 and Aang23, there was an approximately 7 dB loss compared to the nominal status. This issue is visible when decoding at higher SNRs, where the modulator starts to form an X shape instead of the correct OQPSK modulation.
 
 ![MetOp AHRPT screenshot from SatDump](../../assets/images/Radio/MetOp-AHRPT.jpg) <br>
-*MetOp B AHRPT*
+*MetOp-B AHRPT*
 
 ### Arctic Weather Satellite
 
@@ -122,7 +124,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ### NOAA POES (DEAD)
 
 - NOAA POES used to transmit HRPT 1978-2025 before being decommissioned. There are no future launches. A historical version of the guide with POES can be found [here](https://static.cpt-dingus.cc/archived-blog_page/L%20band%20weather%20satellite%20reception%20_%20Meti%e2%80%99s%20blog.html)
-- Sample imagery will be kept here for archival purposes
+- Sample imagery will be kept here for historical purposes
 - Full resolution sample imagery:
     - [NOAA Natural color](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_NOAA%20Natural%20Color.png)
     - [221](https://sat-archive.cpt-dingus.cc/L-band/NOAA%20POES//avhrr_3_2024-12-01_10-13-04Z_AVHRR%20221%20False%20Color.png)
@@ -132,11 +134,11 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 > Fun fact: Since 2021, **NOAA 2** (ITOS-D) - A 50-year-old satellite! - has gone back to life transmitting a legacy [ITOS HRPT](https://www.sigidwiki.com/wiki/NOAA_ITOS_High_Resolution_Picture_Transmission_(HRPT)) broadcast. **It includes no actual imagery** since the VHRR sensor has died ages ago, however it still matches the modulation and spec - if decoded properly you can still see the familiar sync lines from APT broadcasts.
-> 
+
 ### FengYun 3C (DEAD)
 
-> In a statement from NSMC, the satellite has **FAILED** as of 11/2024. The satellite used to transmit true color imagery when in sight of Chinese territory. Sample imagery will be kept below.
-
+- In a statement from NSMC, the satellite has **FAILED** as of 11/2024. The satellite used to transmit true color imagery when in sight of Chinese territory. 
+- Sample imagery will be kept here for historical purposes
 - Full resolution sample imagery:
     - [197 (True color)](https://sat-archive.cpt-dingus.cc/L-band/FengYun-3/virr_2024-08-06_13-12-16Z_197.png)
     - [AVHRR 221 (False color)](https://sat-archive.cpt-dingus.cc/L-band/FengYun-3/virr_2024-08-06_13-12-16Z_221.png)
@@ -145,11 +147,11 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 ### Frequency reference
 
-|Satellite|Frequency|Notes|
-|---|---|---|
-|Meteor M2-3, M2-4|1700 MHz||
-|MetOp B, C|1701.3 MHz||
-|Arctic Weather Satellite|1707 MHz||
+|Satellite|Frequency|
+|---|---|
+|Meteor M2-3, M2-4|1700 MHz|
+|MetOp B, C|1701.3 MHz|
+|Arctic Weather Satellite|1707 MHz|
 
 ---
 
@@ -215,7 +217,12 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
             - [MSG](https://sat-archive.cpt-dingus.cc/L-band/GOES-R/HRIT/GOES-19/2025-06-26_12-07_goes-r-hrit_Patrick-Cunningham/EMWIN/sat-imagery-crops/Z_EIIO00KWBC260200_C_KWIN_20250626140039_399237-4-INDCIRUS.JPG)
 
     - GRB:
-        - Have no data available as of now. If you have any, please contact me using the information at the bottom of this page.
+        - RHCP - Credit to Aang23:
+            - [Full-Disk RGB 125](https://sat-archive.cpt-dingus.cc/L-band/GOES-R/GRB/GOES-16/2022-07-27_23-37_goes-grb_Aang23/ABI/FULLDISK/20220728T131152Z/ABI_FULLDISK_RGB135_20220728T131152Z.png)
+            - [CONUS RGB 125](https://sat-archive.cpt-dingus.cc/L-band/GOES-R/GRB/GOES-16/2022-07-27_23-37_goes-grb_Aang23/ABI/CONUS/20220727T234457Z/ABI_CONUS_RGB135_20220727T234457Z.png)
+            - [Mesoscale 1 RGB 135](https://sat-archive.cpt-dingus.cc/L-band/GOES-R/GRB/GOES-16/2022-07-27_23-37_goes-grb_Aang23/ABI/MESO1/20220727T234049Z/ABI_MESO1_RGB135_20220727T234049Z.png)
+            - [304 angstrom SUVI](https://sat-archive.cpt-dingus.cc/L-band/GOES-R/GRB/GOES-16/2022-07-27_23-37_goes-grb_Aang23/SUVI/Fe304/SUVI_Fe304_20220727T234053Z.png)
+            - [171 angstrom SUVI](https://sat-archive.cpt-dingus.cc/L-band/GOES-R/GRB/GOES-16/2022-07-27_23-37_goes-grb_Aang23/SUVI/Fe171/SUVI_Fe171_20220727T234355Z.png)
 
 
 ![GOES CDA Telemetry and HRIT signal screenshots from SatDump](../../assets/images/Radio/GOES-CDA-HRIT.jpg) <br>
@@ -232,13 +239,13 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 ### EWS-G
 
 - **EWS-G2 (GOES 15)**, a retired GOES satellite part of the `GOES-N` series, was transferred to USSF and moved over the Indian Ocean to replace EWS-G1 (GOES 13) and now broadcasts a few relatively weak signals:
-    - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly.
+    - **CDA Telemetry** - Contains telemetry (duh), can be used to check your setup is working properly
     - **GVAR** - A relatively weak broadcast that contains all 5 imagery channels at a 1 km/px quality for the singular VIS channel and 4 km/px for the other IR channels.
-    - **SD** - Broadcasts raw instrument data, separates into two downlinks on the same frequency:
+    - **SD** - Sensor Data - Broadcasts raw instrument data, separates into two downlinks on the same frequency:
         - **Raw imager data**
         - **Raw sounder data**
-- GVAR is very prone to corruption because of lacking FEC, which often causes lines to be misplaced in the resulting imagery. I have created a corrector to make the imagery more presentable even at low SNRs, you can view it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
-- The sounder is disabled: The raw sounder downlink is empty, GVAR produces empty sounder images.
+- GVAR is very prone to corruption because of lacking FEC, which often causes lines to be misplaced in the resulting imagery. In 2.0, correction has been baked in, but if you are still using an older version of SatDump and want significantly more presentable imagery at low SNRs, you can find it [here](https://github.com/Cpt-Dingus/GVAR-line-corrector/).
+- The sounder is disabled: The raw sounder downlink is empty, GVAR produces empty sounder images. The solar imager (SXI) is also disabled.
 
 > Reception note: The satellite normally does regional crops, as they can be scanned faster than full disc images at just 15 minutes. It still transmits a full disc image every 3 hours.
 
@@ -263,10 +270,11 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - These satellites have recently began transmitting at 06:XXZ, something they haven't done for years. It is unknown whether this time slot will remain enabled, but as of the latest commit; both satellites transmit it. 18:XXZ still hasn't returned, but should come back by May.
 - All Elektro (as well as Arktika) data is available on the NTSoMZ FTP: `ftp://electro:electro@ntsomz.gptl.ru:2121/`
 - Elektro-L N°5 is scheduled for launch on 22/10/2025, will replace L3 which will in turn be moved over to 14.5°W, replacing L2. L2 will be decommissioned due to existing issues with power and imaging instrumentation. This will be the first time that Europe has accessible xRIT in a few years.
+- The 06:XX and 18:XX time slots are seasonal, both should be active during summer and winter months
 
 > Reception notes:
 > - **LRIT**:
->   - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason why imagery is broadcasted like this is unknown.
+>   - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason why imagery is broadcasted like this is a bit [complex](#lrit-explanation).
 >   - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from the neighboring satellite FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
 >   - **Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.**
 > - **GGAK**:
@@ -454,16 +462,20 @@ You can only receive these signals with an SDR that has a sampling rate at least
     ![Image showing the two reflector rotations for S and L bands](../../assets/images/Radio/Grid-reflector.jpg) <br>
     *Credit: lego11*
 
-- Bigger dishes are more difficult to track with but have a higher gain - you will get a better signal strength
+- Wi-Fi grid dishes are the best choice for if you want a solution with minimal DIY, however offset dishes are often larger and therefore provide better performance.
+- The bigger the dish, the better signal strength you get. It is also more difficult to track with, but on L band it is almost unnoticeable below ~2 M
+- Small dishes cover LEO satellites as well as some geostationary signals just fine, you do not need a big dish to get anything.
 
-- Try checking your local marketplaces, people often give old dishes away all the time after switching to terrestrial TV. Aim for at least 80 cm in height/diameter (offset or PF respectively), 60 cm should still do just fine.
+- To get a dish, try checking your local marketplaces, people often give old dishes away all the time after switching to terrestrial TV. Aim for at least 60 cm in height/diameter (offset or PF respectively)
 
 - Do note that reception without a dish is [possible]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but is discouraged for beginners because of the lower margins it gives.
 
 
 ## Feed
 
-- The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort.
+> If you are using a grid dish for reception, you can skip this heading.
+
+- The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort. 
 - Different feeds are used for different satellites due to different polarizations, with these satellites you'll become familiar with **Circular** and **Linear** polarizations. They separate as follows:
     - LEO satellites exclusively use the <abbr title="Radio waves turn clockwise - towards the right">RHCP</abbr> (Right-hand circular) polarization
     - The majority of geostationary satellites use a linear polarization, with one series using RHCP.
@@ -528,11 +540,11 @@ You have two choices for winding the wire:
 - You can wind it manually (Tip: 55 mm PVC pipes are really useful for keeping a consistent diameter)
 - 3d print a [premade stand](https://www.thingiverse.com/thing:4980180) and stick a wire through it. Also acts as a support for the wire. If you choose this approach, use the `1700L_5.5T_0.14S_4D_10-90M.stl` file
 
-#### Polarization warning!
+***WARNING!!!***
 
-> ***This antenna is circularly polarized, meaning you have to match it to the satellites' to be able to receive anything!***
+- This antenna is circularly polarized, meaning you MUST match it to the satellites' to be able to receive anything!
 
-In this case, the satellites transmit a RHCP signal, <u>but using a dish reflects it - you have to create a <b>LHCP</b> helix!</u>
+- In this case, the satellites transmit a RHCP signal, <u>BUT using a dish reflects it - <b>you have to create a -LHCP- helix!</b></u>
 
 ![Picture showing the different polarizations for the spin direction](../../assets/images/Radio/Helix-polarizations.jpg) <br>
 *Credit: lego11, [source](https://www.a-centauri.com/articoli/easy-hrpt-guide)*
@@ -567,8 +579,9 @@ Congratulations, you now have a helical antenna!
 
 If you're not getting any signals or they're too weak to decode, it's wise to check the following using a multimeter before seeking other issues:
 
-1. There **SHOULD** be continuity between the top of the helix and the core of the SMA port
-2. There **SHOULDN'T** be continuity between the helix and ground plane, or the frame of the SMA port
+1. Make sure your polarization is correct! For LEO satellites, when using a dish, the helix must be wound counter-clockwise (LHCP)
+2. There **SHOULD** be continuity between the top of the helix and the core of the SMA port
+3. There **SHOULDN'T** be continuity between the helix and ground plane, or the frame of the SMA port
 
 If either of these are wrong, verify that your helix is soldered properly and isn't touching the ground plane or the frame of the SMA port.
 
@@ -582,20 +595,21 @@ If you own a VNA capable of sampling 1.7 GHz, you can tune the helix by:
 - Adding a matching wire (solder 1/3 of a turn from the SMA port to the copper wire, see image)
 > TODO: images
 
-Ideally you want at *least* a -20 dB S11 return loss at 1690-1700 MHz
+Ideally you want at *least* a -20 dB S11 return loss at 1690-1700 MHz. However, do note that a poorly made but matched feed will still perform worse than a well-made but unmatched feed!
 
+---
 ### Building a cantenna
 
 A cantenna is a surprisingly well performing linearly polarized feed for most dishes. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
 
 #### Materials
 
-- A can roughly 23 cm in height and 13 cm in diameter
+- A can roughly 17 cm in height and 13 cm in diameter
     - The height can be lower, but the feed efficiency will be reduced. Assume a 1 cm margin for the diameter.
 
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
-- A thin piece of copper wire (About 1 mm in diameter. The core of a coaxial cable should do.)
+- A thin piece of copper wire (About 1 mm in diameter. The core of a coaxial cable should do just fine)
 
 #### Building
 
@@ -610,16 +624,11 @@ Congratulations, you have successfully made a cantenna!
 
 
 ### Building a loop feed
-> Used calculations are from FelixTRG:
-> - Target FD: ~0.4
-> - 0.621 * wl diameter
-> - 0.128 * wl rim depth
-> - 0.123 * wl loop height
+> Used dimensions are from FelixTRG
 
 > !WARNING! - This feed is **DC-SHORTED**, do NOT connect a bias tee directly to it, it WILL short out!
 
 A loop feed is a moderately difficult to make and also easy to mess up linearly polarized feed which offers decent performance on most dishes. The values used here are for PF dishes with an f/D ratio of about 0.4, but they should work on most other dishes as well. If unsure about your F/D, you can calculate the ratio of your PF dish [here](https://satlex.de/en/fdratio.html) and an offset dish [here](https://www.satellite-calculations.com/Satellite/Offsetreflector.htm)
-
 
 > Please note that the f/D calculation for offset dishes is significantly more complex than for PF dishes, the website I linked should be replaced by a better one if I find one. (TODO)
 
@@ -631,7 +640,7 @@ A loop feed is a moderately difficult to make and also easy to mess up linearly 
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
 - A few centimeters of solderable coaxial cable (Shielding has to be solderable)
-    - Copper-shielded coax is preferred, aluminum-shielded coax can work but is near-impossible to solder.
+    - Copper-shielded coax, you can not solder aluminum shielded coax.
 - Some kind of a non-conductive 21.7 mm long support
 
 For materials, you can either get:
@@ -678,7 +687,7 @@ This is the best performing linearly polarized feed on larger (>1.2 m) PF dishes
 
 
 
-### Mounting to dish
+## Mounting feed to dish
 This wholly depends on your dish and its existing mounting solution, is completely up to you to DIY. Anything should be fine as long as you ensure two things:
 1. The helix front of the feed isn't covered by anything
 2. The feed is in the focal point correctly:
@@ -722,7 +731,7 @@ A small dot means that you should up the gain, if you're already maxed you can l
 ## LEO reception
 
 - Get to a place that has LOS for as much of the pass as possible, the longer you can see the satellite for, the longer the resulting image will be
-- Try getting clear LOS with the sky, unlike VHF the signals are attenuated significantly easier. They should still pass through dead trees with ease.
+- Try getting clear LOS with the sky, unlike VHF, the signals are attenuated significantly easier. They should still pass through dead trees with ease.
 - In the beginning, aim for lower (<60°) passes, as higher ones require some precise movements which you'll have to learn
 
 
@@ -750,7 +759,7 @@ If you experienced any issues during the pass, make sure to check the [common is
 
 ## Geostationary reception
 
-> ! WARNING ! - The majority of geostationary satellites broadcast linearly polarized signals, which require you to match their **skew** (rotation of your feed) - you can do this using online [calculators](https://satellite.ihmelapsi.net/) or just receiving the signal and rotating the dish until it's the strongest. You do **not** have to do this with Elektro-L and GOES GRB, as they are circularly polarized!
+> ! WARNING ! - The vast majority of geostationary satellites broadcast linearly polarized signals, which require you to match their **skew** (rotation of your feed) - rotate the feed (or dish) until it's the strongest. If using a circular feed, you do **not**  necessarily have to do this with Elektro-L and GOES GRB as they are circulrily polarized, however it can still squeeze an extra dB or so out due to real world variations.
 
 1. Aim your dish using whatever broadcast the satellite transmits constantly, or using a dish alignment app (Less accurate). Alternatively, locate the rough area of where the satellite should be in the sky, start the correct pipeline and when the broadcast starts quickly try to find where the signal is the strongest. You usually have a few seconds to find it, which is more than enough in most cases.
 
@@ -784,9 +793,9 @@ If you experienced any issues during the pass, make sure to check the [common is
 
 5. After the transmission stops, or you are satisfied with the results, hit `Stop` on the pipeline
 
-6. As of the latest commit, SatDump **PARTIALLY** supports processing of images received from geostationary satellites: The only supported satellite series relevant to this band are <u><b>GOES, Elektro-L, and GEO-KOMPSAT</b></u>. Please note that **they will not automatically show up in the `Viewer` tab.** 
+6. For most satellites (SatDump 2.0!), SatDump will generate a `products.cbor` file which you can load into the `Explorer` tab for processing
     - <u>For all satellites</u>, navigate to your live output directory, open the folder of the latest live recording. The images will be in the `IMAGES` folder. 
-    - If you received something from the above 3 series, you should also have a `products.cbor` file present here that you can load into SatDump's `Viewer` tab.
+    - On most series, you should also have a `products.cbor` file present here that you can load into SatDump's `Viewer` tab.
 
 7. You are now done! You can now play around with the results using 3rd party tools or SatDump where applicable.
 
@@ -857,6 +866,19 @@ This error appears when your sampling rate is lower than the signals symbol rate
 
 
 # Miscellaneous stuff
+
+## Why does LRIT transmit pre-equalized channels? {#lrit-explanation}
+
+![A crop as stated below showing an extremely overexposed edge of the Earth](../../assets/images/Radio/lrit-explained.jpg)
+*Elektro-L3 channel 1 crop received by yours truly from LRIT on 15/8/2024 at 15:42Z. Lossy JPEG compression with 60% quality applied. Raw image can be found [here](https://sat-archive.cpt-dingus.cc/L-band/Elektro/LRIT/Elektro-L3/2024-08-15_15-30_elektro-lrit_Meti/L3_1_20240815T153000Z.jpg)*
+
+If you ever received LRIT at a time slot that has a very low illumination, you know the issue very well - the edge of the Earth often turns solid white from overexposure. The reason for this comes from why LRIT exists in the first place - easy data availability.
+
+Remote stations (for Elektros primarily in Siberia) are often made as cheaply as possible, for LRIT specifically they are too weak to do anything besides applying basic LUTs - they would be unable to do image processing themselves, so it is done for them on the satellite level using histogram equalization. While this makes the imagery unusable for more advanced meteorological purposes (since you can't calibrate an equalized image), it is perfectly usable for public visualizations or TV display.
+
+A question you might have is, whether Roscosmos could just not use a different algorithm depending on the illumination, making the imagery not appear overexposed when fully illuminated. The answer is that they could, they just don't.
+
+
 
 ## Pass rating scale
 This scale is not official or perfect, I just created it to be able to gauge how good each **xRPT** satellite pass was. Which metric to use is debatable, but I personally prefer how many kilometers of the ground track you received from the satellite. <u> Given most LEO satellites have a spatial resolution of approximately 1 kilometer in this band, you can use the vertical length of raw images to get the amount of kilometers you tracked</u>
