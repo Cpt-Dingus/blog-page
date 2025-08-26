@@ -354,7 +354,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 ### Meteosat Second Generation (MSG)
-- **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 1x panchromatic at 1 km/px, 3x VIS and 9x IR at a 3 km/px quality
+- **Meteosat 9, 10, and 11** broadcast a notoriously weak **linearly polarized PGS raw data downlink** containing all of their channels - 1x panchromatic at 1.6 km/px, 3x VIS and 9x IR at a 4.8 km/px quality (Sensor can do 1 km/px and 3 km/px respectively but the instrument as a whole oversamples 1.6x to get a better dynamic range)
 - This is the second weakest geostationary L-band signal behind FengYun 2 CDAS, requiring approximately a massive **4-meter dish** to decode. 
 > Few people have access to such dish sizes in Europe, I personally only know of 3 people ever receiving it, all with custom amplifiers. The 4-meter estimate stems from @Digielektro using a 3-meter dish and a custom amplifier for a decode.
 
