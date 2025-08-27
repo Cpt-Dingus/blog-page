@@ -27,9 +27,9 @@ Following the description is the `Signal table(s)` heading which contains inform
 
 <u>Name of transmission</u> - Potential notes
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Transmitting satellite(s)|S/E|S/E|S/E|Whether signal has FEC|Minimal dB needed for green RS on FEC, or enough SNR for recognizable imagery with median blur if no FEC|Whether signal is transmitted at a specific location|If beamed, location of beam. Otherwise, area where the signal is active
+| Satellite                 | Frequency | Symbol rate | Polarization | FEC                    | Minimum SNR                                                                                              | Beamed                                               | Location                                                                |
+| ------------------------- | --------- | ----------- | ------------ | ---------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------- |
+| Transmitting satellite(s) | S/E       | S/E         | S/E          | Whether signal has FEC | Minimal dB needed for green RS on FEC, or enough SNR for recognizable imagery with median blur if no FEC | Whether signal is transmitted at a specific location | If beamed, location of beam. Otherwise, area where the signal is active |
 
 > S/E = Self explanatory
 
@@ -76,29 +76,66 @@ This list is not exhaustive, I apologize if I missed anything.
 
 <u>AHRPT</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|FengYun 3D|7820 MHz|30 Msym/s|RHCP|Yes|7 dB|No|Global
-|FengYun 3E|7860 MHz|38.4 Msym/s|RHCP|Yes|7 dB|No|Global
-|FengYun 3F|7790 MHz|38.4 Msym/s|LHCP|Yes|7 dB|No|Global
-|FengYun 3G|7790 MHz|6 Msym/s|RHCP|Yes|7 dB|No|Global
+| Satellite  | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
+| ---------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
+| FengYun 3D | 7820 MHz  | 30 Msym/s   | RHCP         | Yes | 7 dB        | No     | Global   |
+| FengYun 3E | 7860 MHz  | 38.4 Msym/s | RHCP         | Yes | 7 dB        | No     | Global   |
+| FengYun 3F | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
+| FengYun 3G | 7790 MHz  | 6 Msym/s    | RHCP         | Yes | 7 dB        | No     | Global   |
 
 <u>DPT (Dump)</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|FengYun 3D|8250 MHz|150 Msym/s|RHCP|Yes|7 dB|No|Kiruna, China
-|FengYun 3E|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|Kiruna, China
-|FengYun 3F|8212.5 MHz|225 Msym/s|???|Yes|7 dB|No|Kiruna, China
-|FengYun 3G|???|225 Msym/s|???|Yes|11 dB|No|China
+| Satellite  | Frequency  | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location      |
+| ---------- | ---------- | ----------- | ------------ | --- | ----------- | ------ | ------------- |
+| FengYun 3D | 8250 MHz   | 150 Msym/s  | RHCP         | Yes | 7 dB        | No     | Kiruna, China |
+| FengYun 3E | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
+| FengYun 3F | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
+| FengYun 3G | ???        | 225 Msym/s  | ???          | Yes | 11 dB       | No     | China         |
 
 ### Sample imagery
- 
-- [FengYun 3F True color](https://sat-archive.cpt-dingus.cc/X-band/Meteor-M/KMSS/Meteor-M2-2/2024-03-20_14-26_meteor-kmss-db_Andrew-Lorett-LLC/KMSS_MSU100_1/MSU100-1.png) - Credit to Konrad Unger
 
-- TODO
+- FengYun 3D by Konrad Unger
+  - MERSI-2
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mersi2_AVHRR_221_False_Color.png)
+    - [Day land cloud-fire RGB](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mersi2_Day_Land_Cloud-Fire_RGB.png)
+    - [Day Microphysics](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mersi2_Day_Microphysics.png)
+    - [True Color](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mersi2_True_Color.png)
+  - MWRI/1
+    - [MWRI 123](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mwri_MWRI_123.png)
+  - MWHS/2 - same as FY 3E
 
 
+- FengYun 3E by Konrad Unger
+  - MERSI-LL
+    - [10.8um Thermal IR (highest res)](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mersill_10.8um_Thermal_IR_%28Uncalibrated%29.png)
+    - [Automatic Visible FC](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mersill_Automatic_Visible_False_Color_%28uncal%29.png)
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mersill_AVHRR_221_False_Color.png)
+    - [MERSI-LL Airmass](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mersill_MERSI-LL_Airmass.png)
+  - MWHS/2
+    - [MHS 421](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mwhs2_MHS_421.png)
+    - [MWHS FC](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mwhs2_MWHS_False_Color.png)
+  - MWTS/3
+    - [AMSU FC](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mwts3_AMSU_False_Color.png)
+  - XEUVI (processed with xeuvize)
+    - [Colorized GIF](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/XEUVI/XEUVI.gif)
+
+- FengYun 3F by Konrad Unger
+  - MERSI-3
+    - [10.8um Thermal IR](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_10.8um_Thermal_IR_%28Uncalibrated%29.png)
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_AVHRR_221_False_Color.png)
+    - [Day Microphysics](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_Day_Microphysics.png)
+    - [MERSI FC](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_MERSI_False_Color.png)
+    - [True Color](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_True_Color.png)
+  - MWHS/2 and MWTS/3 same as FY-3E
+  - MWRI/2 not implemented in SatDump, TODO
+- FengYun 3G by Lego11
+  - MERSI-RM
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_AVHRR_221_False_Color.png)
+    - [AVHRR 3a21](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_AVHRR_3a21_False_Color.png)
+    - [Day Microphysics](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_Day_Microphysics.png)
+    - [MERSI-RM 321](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_MERSI-RM_321.png)
+    - [Natural Color](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_Natural_Color.png)
+  - MWRI-RM - not implemented yet, TODO
 ## NOAA JPSS
 ![As described below](../../assets/images/X-band-transmissions/jpss.jpg)
 ***Left:*** *NOAA 20 received on 24/4/2025 at 12:56 UTC by Konrad Unger. Processed with SatDump using the `True color` composite. Cropped. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-24_12-56_jpss-hrd_UngerKonrad/viirs_True_Color.png) for the full resolution image.* ***Right:*** *NOAA 20 VIIRS DNB channel crop, received on 1/1/2025 at 1:05 UTC by lego11. Processed with SatDump using the `DNB Night` composite. Cropped. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-01-01_01-05_jpss-2_lego11/viirs_DNB_Night.png) for the full resolution image*
@@ -117,11 +154,11 @@ This list is not exhaustive, I apologize if I missed anything.
 
 <u>DB</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Suomi NPP|7812 MHz|15 Msym/s|RHCP|Yes|6 dB|No|Global
-|NOAA 20|7812 MHz|15 Msym/s|RHCP|Yes|6 dB|No|Global
-|NOAA 21|7812 MHz|25 Msym/s|RHCP|Yes|4 dB|No|Global
+| Satellite | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
+| --------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
+| Suomi NPP | 7812 MHz  | 15 Msym/s   | RHCP         | Yes | 6 dB        | No     | Global   |
+| NOAA 20   | 7812 MHz  | 15 Msym/s   | RHCP         | Yes | 6 dB        | No     | Global   |
+| NOAA 21   | 7812 MHz  | 25 Msym/s   | RHCP         | Yes | 4 dB        | No     | Global   |
 
 ### Sample imagery
 
@@ -133,7 +170,7 @@ This list is not exhaustive, I apologize if I missed anything.
 ## Meteor-M
 
 ![As described below](../../assets/images/X-band-transmissions/meteor-kmss.jpg)
-*Meteor-M N°2-4 KMSS DB crop from the first MSU-100, received on 19/3/2025 at 10:51 UTC by Konrad Unger. Processed with SatDump using the `Natural color` composite. 60% quality lossy JPEG compression and median blur applied, click [here](https://sat-archive.cpt-dingus.cc/X-band/Meteor-M/KMSS/Meteor-M2-4/2025-03-19_10-51_meteor-kmss-db_KonradUnger/kmss_msu100_Natural_color.png) for the full resolution image*
+*Meteor-M N°2-4 KMSS DB crop from the first MSU-100, received on 19/3/2025 at 10:51 UTC by Konrad Unger. Processed with SatDump using the `Natural color` composite. 60% quality lossy JPEG compression and median blur applied, click [here](https://sat-archive.cpt-dingus.cc/X-band/Meteor-M/KMSS/Meteor-M2-4/2025-03-19_10-51_meteor-kmss-db_UngerKonrad/kmss_msu100_Natural_color.png) for the full resolution image*
 
 
 
@@ -150,31 +187,31 @@ This list is not exhaustive, I apologize if I missed anything.
 
 <u>MTVZA Dump (Narrow BPSK)</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Meteor M2-3, M2-4|8128 MHz|15.36 Msym/s|RHCP|No|2.5 dB|No|Moscow, Novosibirsk, Khabrovsk
+| Satellite         | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location                       |
+| ----------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------------------------ |
+| Meteor M2-3, M2-4 | 8128 MHz  | 15.36 Msym/s | RHCP         | No  | 2.5 dB      | No     | Moscow, Novosibirsk, Khabrovsk |
 
 <u>IKFS Dump (Narrow QPSK)</u> - Unconfirmed, not received yet
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Meteor M2-3, M2-4|???|15.36 Msym/s|???|No|3.5 dB|No|Khabrovsk ???
+| Satellite         | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location      |
+| ----------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------- |
+| Meteor M2-3, M2-4 | ???       | 15.36 Msym/s | ???          | No  | 3.5 dB      | No     | Khabrovsk ??? |
 
 
 <u>KMSS DB (Wide BPSK)</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Meteor M2-4|8128, 8320\* MHz|61.44 Msym/s|RHCP|No|2.5 dB|No|Europe, Russia & its surroundings
+| Satellite   | Frequency        | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location                          |
+| ----------- | ---------------- | ------------ | ------------ | --- | ----------- | ------ | --------------------------------- |
+| Meteor M2-4 | 8128, 8320\* MHz | 61.44 Msym/s | RHCP         | No  | 2.5 dB      | No     | Europe, Russia & its surroundings |
 
 \* 8320 MHz is rare
 
 
 <u>KMSS Dump / MSU-MR Dump / Severjanin-M + MeteoSAR Dump (Wide QPSK)</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Meteor M2-4|8320 MHz|61.44 Msym/s|RHCP|No|3.5 dB|No|Moscow, Novosibirsk, Khabrovsk
+| Satellite   | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location                       |
+| ----------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------------------------ |
+| Meteor M2-4 | 8320 MHz  | 61.44 Msym/s | RHCP         | No  | 3.5 dB      | No     | Moscow, Novosibirsk, Khabrovsk |
 
 ### Sample imagery
 
@@ -195,10 +232,10 @@ This list is not exhaustive, I apologize if I missed anything.
 
 <u>DB</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Aqua|8160 MHz|7.5 MHz|RHCP|Yes|11 dB|No|Global
-|Aura|8160 MHz|7.5 MHz|RHCP|Yes|11 dB|No|Global
+| Satellite | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
+| --------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
+| Aqua      | 8160 MHz  | 7.5 MHz     | RHCP         | Yes | 11 dB       | No     | Global   |
+| Aura      | 8160 MHz  | 7.5 MHz     | RHCP         | Yes | 11 dB       | No     | Global   |
 
 ### Sample imagery
 
@@ -221,11 +258,11 @@ TODO
 
 <u>RDAS</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Elektro L2|7500 MHz|30.72 Msym/s|LHCP|No|5 dB|Yes|Moscow
-|Elektro L3|7500 MHz|30.72 Msym/s|RHCP|No|5 dB|Yes|Moscow
-|Elektro L4|7500 MHz|30.72 Msym/s|RHCP|No|5 dB|Yes|Vladivostok
+| Satellite  | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location    |
+| ---------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ----------- |
+| Elektro L2 | 7500 MHz  | 30.72 Msym/s | LHCP         | No  | 5 dB        | Yes    | Moscow      |
+| Elektro L3 | 7500 MHz  | 30.72 Msym/s | RHCP         | No  | 5 dB        | Yes    | Moscow      |
+| Elektro L4 | 7500 MHz  | 30.72 Msym/s | RHCP         | No  | 5 dB        | Yes    | Vladivostok |
 
 ### Sample imagery
 
@@ -250,9 +287,9 @@ TODO
 
 <u>RDAS</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|Arktika-M1, M2|7865 MHz|30.72 Msym/s|RHCP|No|5 dB|Yes|Moscow, Vladivostok
+| Satellite      | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location            |
+| -------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------------- |
+| Arktika-M1, M2 | 7865 MHz  | 30.72 Msym/s | RHCP         | No  | 5 dB        | Yes    | Moscow, Vladivostok |
 
 ### Sample imagery
 
@@ -276,15 +313,15 @@ TODO
 
 <u>UHRIT</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|GEO-KOMPSAT 2A|8070 MHz|LHCP|15.63 Msym/s|Yes|10 dB|No|Global
+| Satellite      | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
+| -------------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
+| GEO-KOMPSAT 2A | 8070 MHz  | LHCP        | 15.63 Msym/s | Yes | 10 dB       | No     | Global   |
 
 <u>Raw sensor downlink</u> - Not received or supported
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|GEO-KOMPSAT 2A|8300 MHz MHz|RHCP|65 Msym/s|Yes|???|???|???
+| Satellite      | Frequency    | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
+| -------------- | ------------ | ----------- | ------------ | --- | ----------- | ------ | -------- |
+| GEO-KOMPSAT 2A | 8300 MHz MHz | RHCP        | 65 Msym/s    | Yes | ???         | ???    | ???      |
 
 
 ### Sample imagery
@@ -304,9 +341,9 @@ TODO
 
 <u>Dump</u>
 
-|Satellite|Frequency|Symbol rate|Polarization|FEC|Minimum SNR|Beamed|Location
-|---|---|---|---|---|---|---|---|
-|MetOp-B, MetOp-C|7800 MHz|35 Msym/s|RHCP|No|5 dB|No|Svalbard
+| Satellite        | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
+| ---------------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
+| MetOp-B, MetOp-C | 7800 MHz  | 35 Msym/s   | RHCP         | No  | 5 dB        | No     | Svalbard |
 
 ### Sample imagery
 
