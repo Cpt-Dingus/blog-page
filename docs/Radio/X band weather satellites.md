@@ -205,7 +205,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 - Transmissions are separated into "Narrow" ones that have a ~15 MHz bandwidth and "Wide" ones which have a ~61 MHz bandwidth
 - Meteor M2-3 has a **failed <u>wide</u> X-band transmitter**, making it only do <u>narrow transmissions</u>. This means it ONLY transmits MTVZA dumps and IKFS dumps (?)
 - Meteor M2-4 transmits KMSS DB in and around Russia as well as over most of Europe, possibly the Caribbean and Brazil as well (unconfirmed)
-- These satellites transmit a diverse amount of transmissions, as is seen in the tables below. RHCP is what is used the majority of the time, LHCP has been reported but has not been confirmed.
+- These satellites transmit a diverse amount of transmissions, as is seen in the tables below
 
 ### Signal Tables
 
