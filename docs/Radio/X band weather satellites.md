@@ -136,6 +136,7 @@ This list is not exhaustive, I apologize if I missed anything.
     - [MERSI-RM 321](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_MERSI-RM_321.png)
     - [Natural Color](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_Natural_Color.png)
   - MWRI-RM - not implemented yet, TODO
+
 ## NOAA JPSS
 ![As described below](../../assets/images/X-band-transmissions/jpss.jpg)
 ***Left:*** *NOAA 20 received on 24/4/2025 at 12:56 UTC by Konrad Unger. Processed with SatDump using the `True color` composite. Cropped. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-24_12-56_jpss-hrd_UngerKonrad/viirs_True_Color.png) for the full resolution image.* ***Right:*** *NOAA 20 VIIRS DNB channel crop, received on 1/1/2025 at 1:05 UTC by lego11. Processed with SatDump using the `DNB Night` composite. Cropped. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-01-01_01-05_jpss-2_lego11/viirs_DNB_Night.png) for the full resolution image*
@@ -180,7 +181,7 @@ This list is not exhaustive, I apologize if I missed anything.
 - Transmissions are separated into "Narrow" ones that have a ~15 MHz bandwidth and "Wide" ones which have a ~61 MHz bandwidth
 - Meteor M2-3 has a **failed <u>wide</u> X-band transmitter**, making it only do <u>narrow transmissions</u>. This means it ONLY transmits MTVZA dumps and IKFS dumps (?)
 - Meteor M2-4 transmits KMSS DB in and around Russia as well as over most of Europe, possibly the Caribbean and Brazil as well (unconfirmed)
-- These satellites transmit a diverse amount of transmissions, as is seen in the tables below. The transmissions are usually RHCP, but can also be LHCP.
+- These satellites transmit a diverse amount of transmissions, as is seen in the tables below. RHCP is what is used the majority of the time, LHCP has been reported but has not been confirmed.
 
 ### Signal Tables
 
