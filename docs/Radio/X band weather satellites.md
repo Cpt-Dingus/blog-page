@@ -94,7 +94,7 @@ This list is not exhaustive, I apologize if I missed anything.
 
 ### Sample imagery
 
-- FengYun 3D by Konrad Unger
+- **FengYun 3D** by Konrad Unger at 14:17z on 12/7/2025
   - MERSI-2
     - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mersi2_AVHRR_221_False_Color.png)
     - [Day land cloud-fire RGB](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3D/2025-07-12_14-17_fengyun-3d-ahrpt_UngerKonrad/mersi2_Day_Land_Cloud-Fire_RGB.png)
@@ -105,7 +105,7 @@ This list is not exhaustive, I apologize if I missed anything.
   - MWHS/2 - same as FY 3E
 
 
-- FengYun 3E by Konrad Unger
+- **FengYun 3E** by Konrad Unger at 16:41z on 12/7/2025
   - MERSI-LL
     - [10.8um Thermal IR (highest res)](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mersill_10.8um_Thermal_IR_%28Uncalibrated%29.png)
     - [Automatic Visible FC](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/mersill_Automatic_Visible_False_Color_%28uncal%29.png)
@@ -119,7 +119,7 @@ This list is not exhaustive, I apologize if I missed anything.
   - XEUVI (processed with xeuvize)
     - [Colorized GIF](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3E/2025-07-12_16-41_fengyun-3e-ahrpt_UngerKonrad/XEUVI/XEUVI.gif)
 
-- FengYun 3F by Konrad Unger
+- **FengYun 3F** by Konrad Unger at 10:47z on 28/4/2025
   - MERSI-3
     - [10.8um Thermal IR](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_10.8um_Thermal_IR_%28Uncalibrated%29.png)
     - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_AVHRR_221_False_Color.png)
@@ -128,7 +128,8 @@ This list is not exhaustive, I apologize if I missed anything.
     - [True Color](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3F/2025-04-28_10-47_fengyun-3f-ahrpt_UngerKonrad/mersi3_True_Color.png)
   - MWHS/2 and MWTS/3 same as FY-3E
   - MWRI/2 not implemented in SatDump, TODO
-- FengYun 3G by Lego11
+
+- **FengYun 3G** by Lego11 at 16:55z on 27/2/2025
   - MERSI-RM
     - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_AVHRR_221_False_Color.png)
     - [AVHRR 3a21](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_AVHRR_3a21_False_Color.png)
@@ -163,10 +164,33 @@ This list is not exhaustive, I apologize if I missed anything.
 
 ### Sample imagery
 
-- [3a21 (High spatial res channels)](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-24_12-56_jpss-hrd_UngerKonrad/viirs_True_Color.png) - Credit to Konrad Unger
+VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in SatDump.
 
-- TODO
+- NOAA 21 by lego11 at 12:51z on 17/8/2025
+    - VIIRS
+      - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_AVHRR_221_False_Color.png)
+      - [AVHRR 3a21](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_AVHRR_3a21_False_Color.png)
+      - [Bathymetric](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_Bathymetric.png)
+      - [Day Land-cloud fire RGB](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_Day_Land-Cloud_Fire_RGB.png)
+      - [Fire temperature RGB](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_Day_Land-Cloud_Fire_RGB.png)
+      - [Panchromatic](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_Panchromatic.png)
+      - [True color](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_True_Color.png)
+      - [VIIRS I321-I221 mix](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/viirs_VIIRS_I321-I221_Mix.png)
+      - [VIIRS DNB Night](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-01-01_01-05_jpss-2_lego11/viirs_DNB_Night.png) - Different pass, still by lego11 but at 01:05z on 1/1/2025 
+    - ATMS
+      - [ATMS FC](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/atms_ATMS_False_Color.png)
+      - [MHS 421](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/atms_MHS_421.png)
+      - [Microwave Airmass](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-21/2025-08-17_12-51_jpss-2_lego11/atms_Microwave_Airmass.png)
+- NOAA 20 by Konrad Unger at 12:37z on 25/4/2025
+  - VIIRS (Identical to NOAA 21)
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-25_12-37_jpss-hrd_UngerKonrad/viirs_AVHRR_221_False_Color.png)
+    - [AVHRR 3a21](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-25_12-37_jpss-hrd_UngerKonrad/viirs_AVHRR_3a21_False_Color.png)
+    - [Day Microphysics](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-25_12-37_jpss-hrd_UngerKonrad/viirs_Day_Microphysics.png)
+    - [Panchromatic](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-25_12-37_jpss-hrd_UngerKonrad/viirs_Panchromatic.png)
+    - [True Color](https://sat-archive.cpt-dingus.cc/X-band/NOAA-JPSS/NOAA-20/2025-04-25_12-37_jpss-hrd_UngerKonrad/viirs_True_Color.png)
+  - ATMS - Identical to NOAA 21
 
+- Suomi NPP - Identical to NOAA 21
 
 ## Meteor-M
 
