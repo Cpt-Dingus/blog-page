@@ -205,7 +205,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 - Transmissions are separated into "Narrow" ones that have a ~15 MHz bandwidth and "Wide" ones which have a ~61 MHz bandwidth
 - Meteor M2-3 has a **failed <u>wide</u> X-band transmitter**, making it only do <u>narrow transmissions</u>. This means it ONLY transmits MTVZA dumps and IKFS dumps (?)
 - Meteor M2-4 transmits KMSS DB in and around Russia as well as over most of Europe, possibly the Caribbean and Brazil as well (unconfirmed)
-- These satellites transmit a diverse amount of transmissions, as is seen in the tables below
+- These satellites transmit a diverse amount of transmissions, as is seen in the tables below.
 
 ### Signal Tables
 
@@ -244,7 +244,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 ## NASA EOS
 ![As described below](../../assets/images/X-band-transmissions/nasa-eos.jpg)
-*Terra MODIS crop, received on 25/11/2023 at 09:35 UTC by Andrew Lorett LLC. Processed with SatDump using the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_True_Color.png) for the full resolution image*
+*Terra MODIS crop, received on 25/11/2023 at 09:35 UTC by Andrew Lorett LLC. Processed with SatDump using the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_True_Color.png) for the full resolution image*
 
 ### Description
 
@@ -264,7 +264,31 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 ### Sample imagery
 
-TODO
+- Terra by Andrew Lorett LLC at 09:35z on 25/11/2023
+  - MODIS
+    - [3.75um IR (Enhanced rainbow)](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_3.75um_IR_%28Enhanced_Rainbow%29.png)
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_AVHRR_221_False_Color.png)
+    - [Day Microphysics](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_Day_Microphysics.png)
+    - [Enhanced IR](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_Enhanced_IR.png)
+    - [True color](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_True_Color.png)
+- Aqua by Konrad Unger at 12:08z on 26/4/2025
+  - MODIS
+    - [AVHRR 221](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_AVHRR_221_False_Color.png)
+    - [Bathymetric](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_Bathymetric.png)
+    - [Day Microphysics](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_Day_Microphysics.png)
+    - [Differential Water Vapour RGB](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_Differential_Water_Vapor_RGB.png)
+    - [Enhanced IR](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_Enhanced_IR.png)
+    - [True Color](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_True_Color.png)
+  - AIRS HD
+    - [AIRS-HD 321](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/airs_hd_AIRS-HD_321.png)
+  - AIRS
+    - [AVHRR 543b](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/airs_AVHRR_543b_IR_False_Color.png)
+    - [Clouds only (N2O sounding)](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/airs_Clouds_Only_%28N2O_Sounding%29.png)
+  - CERES
+    - [Total radiation](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/ceres_Total_Radiation.png)
+- Aura by Lego11 at 14:30z on 22/10/2023
+  - OMI
+    - [OMI heatmap](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aura/2023-10-22_14-30_aura-db_lego11/OMI/OMI-VIS-1_heatmap.png)
 
 ## Elektro-L
 
