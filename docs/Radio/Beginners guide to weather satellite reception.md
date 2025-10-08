@@ -312,8 +312,8 @@ Now that we have gone over the terminology behind these satellite and know how t
 
 |Satellite|Channel numbers|Channel types|
 |---|---|---|
-|M2-3|1, 2, 3|3×Visible|
-|M2-4|1, 2, 3|3×Visible|
+|M2-3|1, 2, 4|2×Visible, 1x IR|
+|M2-4|1, 2, 4|2×Visible, 1x IR|
 
 ![Meteor LRPT screenshot from SatDump](../../assets/images/Radio/Meteor-LRPT.jpg)
 *Meteor M2-4 LRPT. Spike on the left isn't a part of the signal.*
