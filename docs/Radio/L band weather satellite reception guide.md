@@ -306,6 +306,8 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - FengYun 2H broadcasts dead (empty) LRIT every hour (except 5:30Z and every 6 hours onwards) on 1690.5 MHz, this leads to the second image being cut at about 57%.
 - During the eclipse season (near equinoxes), these satellites lose track of the sun and end up not transmitting any imagery 17:00Z-19-00Z. The transmission might be off, or a jumpy S-VISSR signal with no data might be present instead.
 
+> Reception note: FengYun 2H has been experiencing issues with the power amplifier, causing significant fluctuations in SNR. Usually they clear up in a few minutes, but the broadcast strength end up being below nominal for a while after.
+
 > These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to its weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line in real time. This is the reason why S-VISSR is so jumpy.
 
 - Full resolution sample imagery:
