@@ -37,9 +37,9 @@ What follows after is some sample images in the `Sample imagery` heading (duh), 
 
 # List of satellites that you can receive with SatDump
 
-There are 21+ satellites you can receive in this band, more specifically:
+There are 22+ satellites you can receive in this band, more specifically:
 
-- 4x FengYun 3
+- 5x FengYun 3
 - 3x NOAA JPSS
 - 2x Meteor-M
 - 2x NASA EOS
@@ -64,10 +64,11 @@ This list is not exhaustive, I apologize if I missed anything.
 
 ### Description
 
-- **Fengyun** **3D**, **3E**, **3F**, and **3G** transmit their mission data in the X-band, most notably their **AHRPT** direct broadcast
+- **Fengyun** **3D**, **3E**, **3F**, **3G**, and as of recently **3H** all transmit their mission data in the X-band, most notably their **AHRPT** direct broadcast
 - These satellites also dump their mission data in a transmission called **DPT** (Delayed Picture Transmission)
 - 3D, 3E, 3F all transmit full dumps to Kiruna, partial dumps to China (to get a lower delay for the South China Sea and Oceania). China also acts like a backup if Kiruna is undergoing maintenance.
 - 3G only dumps to China due to its orbit
+- 3H is still commissioning, is very simmilar to 3F
 - The instruments vary between the satellites, notably:
     - FengYun 3E has a XEUVI for sun imaging
     - FengYun 3G is in an Inclined Equatorial orbit, carries RM (Rainfall measurement) instrumentation as its payload unlike the rest of the Fengyun 3 series. It is very fast and flies very low, making it receivable with a smaller dish than the rest albeit with much more difficult tracking. It also has an unusually small symbol rate at just 6 Msym/s.
@@ -82,6 +83,7 @@ This list is not exhaustive, I apologize if I missed anything.
 | FengYun 3E | 7860 MHz  | 38.4 Msym/s | RHCP         | Yes | 7 dB        | No     | Global   |
 | FengYun 3F | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
 | FengYun 3G | 7790 MHz  | 6 Msym/s    | RHCP         | Yes | 7 dB        | No     | Global   |
+| FengYun 3G | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
 
 <u>DPT (Dump)</u>
 
@@ -91,6 +93,7 @@ This list is not exhaustive, I apologize if I missed anything.
 | FengYun 3E | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
 | FengYun 3F | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
 | FengYun 3G | ???        | 225 Msym/s  | ???          | Yes | 11 dB       | No     | China         |
+| FengYun 3H | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
 
 ### Sample imagery
 
@@ -137,6 +140,9 @@ This list is not exhaustive, I apologize if I missed anything.
     - [MERSI-RM 321](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_MERSI-RM_321.png)
     - [Natural Color](https://sat-archive.cpt-dingus.cc/X-band/FengYun-3/AHRPT/FengYun-3G/2025-02-27_16-55_fengyun-3g-ahrpt_lego11/mersirm_Natural_Color.png)
   - MWRI-RM - not implemented yet, TODO
+
+- **FengYun 3H** - TODO
+
 
 ## NOAA JPSS
 ![As described below](../../assets/images/X-band-transmissions/jpss.jpg)
