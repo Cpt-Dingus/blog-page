@@ -83,7 +83,7 @@ This list is not exhaustive, I apologize if I missed anything.
 | FengYun 3E | 7860 MHz  | 38.4 Msym/s | RHCP         | Yes | 7 dB        | No     | Global   |
 | FengYun 3F | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
 | FengYun 3G | 7790 MHz  | 6 Msym/s    | RHCP         | Yes | 7 dB        | No     | Global   |
-| FengYun 3G | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
+| FengYun 3H | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
 
 <u>DPT (Dump)</u>
 
