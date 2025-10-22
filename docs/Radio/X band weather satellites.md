@@ -353,10 +353,8 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 ## GEO-KOMPSAT
 
-> Imagery is not available from this satellite at all yet, because I am still yet to come home to upload the processed stuff. I ain't uploading a solid 20-somet it'shing gigabytes over a 500 kB/s upload link dawg
-
-![As described below](../../assets/images/X-band-transmissions/)
-*x, received on x at x UTC by x. x, click [here]() for the full resolution image*
+![As described below](../../assets/images/X-band-transmissions/uhrit.jpg)
+*GEO-KOMPSAT 2A True Color, received on 12/10/2025 at 03-47 UTC by plugger-lockett (Drew). 60% quality lossy JPEG compression applied, click [here](https://sat-archive.cpt-dingus.cc/X-band/GEO-KOMPSAT/UHRIT/GEO-KOMPSAT-2A/2025-10-12_03-47_geokompsat-uhrit_plugger-lockett/drew_ami_AMI_True_Color.png) for the full resolution image*
 
 ### Description
 
@@ -380,7 +378,8 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 
 ### Sample imagery
-- TODO
+- [True color](https://sat-archive.cpt-dingus.cc/X-band/GEO-KOMPSAT/UHRIT/GEO-KOMPSAT-2A/2025-10-12_03-47_geokompsat-uhrit_plugger-lockett/drew_ami_AMI_True_Color.png) - Credit to plugger-lockett
+- [600 nm channel (highest res)](https://sat-archive.cpt-dingus.cc/X-band/GEO-KOMPSAT/UHRIT/GEO-KOMPSAT-2A/2025-10-12_03-47_geokompsat-uhrit_plugger-lockett/GK2A_VI006_20251012T034736Z.png) - Credit to plugger-lockett
 
 ## MetOp
 
