@@ -61,7 +61,7 @@ find . | cpio -o -H newc | gzip > ../initramfs.gz
 cd ..
 ```
 
-Now that the initramfs is packed, we can pack add the U-Boot header
+Now that the initramfs is packed, we can add the U-Boot header back:
 
 ```bash
 mkimage -A arm -O linux -T ramdisk -C gzip -n "PlutoSDR ramdisk" -d initramfs.gz ./uramdisk.image.gz
