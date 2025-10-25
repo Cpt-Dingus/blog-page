@@ -1,4 +1,3 @@
-# Extract the rootfs
 ---
 layout: default
 title: Persistent HamGeek Ethernet IP
