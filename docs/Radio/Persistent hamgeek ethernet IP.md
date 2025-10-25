@@ -18,7 +18,7 @@ When using a HamGeek (Pluto) SDR directly with an Ethernet cable, you will quick
 
 # Extracting the rootfs
 
-The rootfs is inside a U-Boot wrapped initramfs, we remove the U-Boot header to get the gzip compressed initramfs
+The rootfs is inside a gzip compressed initramfs with a U-Boot header, we first remove said header to get to the initramfs
 
 ```bash
 mkdir work && cd work
@@ -38,7 +38,7 @@ gunzip -c ../initramfs.gz | cpio -idmv
 ```
 
 # Adjusting the IP
-You can cd into the rootfs directory, then edit the following file:
+You can `cd` into the rootfs directory, then edit the following file:
 
 
 ```diff
