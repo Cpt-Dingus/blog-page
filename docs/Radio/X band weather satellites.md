@@ -250,7 +250,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 ## NASA EOS
 ![As described below](../../assets/images/X-band-transmissions/nasa-eos.jpg)
-*Terra MODIS crop, received on 25/11/2023 at 09:35 UTC by Andrew Lorett LLC. Processed with SatDump using the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Aqua/DB/2025-04-26_12-08_aqua-db_UngerKonrad/modis_True_Color.png) for the full resolution image*
+*Terra MODIS crop, received on 25/11/2023 at 09:35 UTC by Andrew Lorett LLC. Processed with SatDump using the `True color` composite. Click [here](https://sat-archive.cpt-dingus.cc/X-band/NASA-EOS/Terra/2023-11-25_09-35_terra-db_Andrew-Lorett-LLC/modis_True_Color.png) for the full resolution image*
 
 ### Description
 
