@@ -366,9 +366,9 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>UHRIT</u>
 
-| Satellite      | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
-| -------------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
-| GEO-KOMPSAT 2A | 8070 MHz  | LHCP        | 15.63 Msym/s | Yes | 10 dB       | No     | Global   |
+| Satellite      | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location |
+| -------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | -------- |
+| GEO-KOMPSAT 2A | 8070 MHz  | 15.63 Msym/s | LHCP         | Yes | 10 dB       | No     | Global   |
 
 <u>Raw sensor downlink</u> - Not received or supported
 
