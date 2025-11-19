@@ -71,7 +71,7 @@ Functionally identical to the HamGeek Zynq7020, just performs better due to a be
 - €207 [Official site](https://opensourcesdrlab.com/products/libresdr-b210-mini-ad9361)
 - €260 [AliExpress](https://www.aliexpress.com/item/1005009175889484.html)
 
-This SDR variant comes with improved connectivity - USB 3.0 as well as 5 gigabit LAN. This allows it to reliably pull the full 61.44 Msps even without overclocks.
+This SDR variant comes with improved connectivity - 5 gbit/s USB 3. This allows it to reliably pull the full 61.44 Msps even without overclocks.
 
 ### Libre B220
 
