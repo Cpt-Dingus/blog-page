@@ -39,7 +39,7 @@ The specific SDRs from both manufacturers are:
 
 ## HamGeek (Fishball)
 
-- These can be purchased from both their official [website](https://www.hgeek.com/) in addition to their [AliExpress](https://www.aliexpress.com/store/1102732208) store.
+- These can be purchased from both their official [website](https://www.hgeek.com/) in addition to their AliExpress [store](https://www.aliexpress.com/store/1102732208).
 
 ![An image of a Zynq7020 HamGeek.](https://www.hgeek.com/cdn/shop/files/92589-1.jpg)<br>
 *Zynq7020-based HamGeek*
@@ -65,12 +65,11 @@ Please note that it has fragile surface-mounted components but has no case, I ha
 
 - €286 [Official site](https://www.hgeek.com/products/%E6%B5%8B%E8%AF%95-hamgeek-b210-mini-ad9361-software-defined-radio-sdr-replacement-for-hackrf-plutosdr) - BlackSDR
 
-
-Hamgeek also sells two versions of the B210 mini line of SDRs on its website - a drophsipped LiberSDR and a "BlackSDR". This version has an older PCB design and is more expensive than the LibreSDR, is only included here for the sake of making this list exhaustive.
+Hamgeek also sells two versions of the B210 mini line of SDRs on its website - a drop-shipped LibreSDR and a "BlackSDR". The former version is just a more expensive LibreSDR, the latter version has an older PCB design and is more expensive than the LibreSDR, is only included here for the sake of making this list exhaustive.
 
 ## LibreSDR
 
-- These can be bought from the [OpenSourceSDRLab](https://opensourcesdrlab.aliexpress.com/store/4586015) website as well as their [AliExpress](https://opensourcesdrlab.aliexpress.com/store/4586015) store.
+- These can be purchased from the OpenSourceSDRLab [website](https://opensourcesdrlab.aliexpress.com/store/4586015) in addition to their AliExpress [store](https://opensourcesdrlab.aliexpress.com/store/4586015).
 
 ![An image of a B210-based LibreSDR](../../assets/images/hgeek/libresdr.jpg) <br>
 *B210-based LibreSDR without a case*
@@ -93,7 +92,7 @@ This SDR variant comes with improved connectivity - USB 3.0 as well as 5 gigabit
 - €233 [Official site](https://opensourcesdrlab.com/products/libresdr-b220-mini-ad9361)
 - €270 [AliExpress](https://www.aliexpress.com/item/1005007542400624.html?)
 
-Effectively the same as the B210. Only real benefit is a more powerful FPGA for development, but you most likely won't need it.
+Effectively the same as the B210. Only real benefit is a more powerful FPGA for development purposes (modding), but you most likely won't need it.
 
 
 # Accessing the SDRs
