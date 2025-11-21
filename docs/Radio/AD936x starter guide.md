@@ -1,19 +1,15 @@
 ---
 layout: default
-title: HamGeek SDR starter guide
+title: AD936x SDR starter guide
 nav_order: 2
 parent: Radio
 ---
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
 # Preamble
 
-Hamgeek has recently begun selling cheap SDRs capable of very respectable sampling rates, however they require some tinkering to get started with. This guide will list out the different types available, how to get them to perform the best they can. LibreSDRs are included since they are the original design, however the primary focus of the guide is the cheaper HamGeeks.
+HamGeek has recently begun selling cheap SDRs capable of very respectable sampling rates, however they require some tinkering to get started with. The original line sold by LibreSDR has recently grown in popularity as well, often leads to confusion due to the similar design and naming. 
+
+The goal of this guide is to make clear what the differences between these are, what variants are available, and how to get them to perform the best they can.
 
 > Huge thanks to @mothmaux for helping with the different variants as well as overclocks, this article wouldn't exist without him.
 
@@ -23,17 +19,27 @@ These SDRs all come with an AD9363 or AD9361 tuner, which are rated at up to 61.
  
 > Note: AD9363 is officially rated as 325 MHz - 3.8 GHz, but still work at the same range as the AD9361 albeit at a reduced sensitivity.
 
-There are two major types of the SDRs: 
-- The original PCB design - **LibreSDR***
-- The newer and cheaper design - **Fishball** made by **HamGeek**
+There are two major manufacturers of the SDRs which are very often confused: 
+- The original PCB design - **LibreSDR**
+- The newer and cheaper design - **HamGeek**, nicknamed "Fishball"
 
-LibreSDRs consistently outperform the HamGeeks in sampling rates, the latter of which is able to overclock significantly higher which is required to compete.
 
-However, by far the biggest factor that sets these apart from one another is the CPU chipset, which can limit the maximum stable sampling rate. The different SDRs are:
+**HamGeeks** use a more modern design with some cheaper components that reduces the manufacturing cost. This is at the expense of some sensitivity and reliability at high sampling rates, but at the benefit of very competitive pricing. Most notably they use the AD9363 tuner which perform a bit worse than the AD9361 of LibreSDRs.
 
-## HamGeek (Fishball) - Zynq70x0
+---
 
-- These can be purchased from both their official [website](https://www.hgeek.com/) as well as [AliExpress](https://www.aliexpress.com/store/1102732208). They appear to be clones of the LibreSDR devices, with some cut corners as well as cheaper components to lower the price. Most notably they use the AD9363 tuner which perform a bit worse than the AD9361 of LibreSDRs.
+What sets the SDRs apart from one another is the **CPU chipset**, which can bottleneck the maximum stable sampling rate due to limited bandwidth. There are 2 CPU series that the SDRs are sold with:
+
+- B2x0 (B210/B220) - These are more expensive, but can do high sampling rates out of the box without any tinkering.
+- Zynq 70x0 (Zynq7010/Zynq7020) - These require overclocking and a few tweaks to perform well, but it's nothing complex! 
+
+> Note that the HamGeeks support significantly higher overclocks than the Zynq70x0-based LibreSDR.
+
+The specific SDRs from both manufacturers are:
+
+## HamGeek (Fishball)
+
+- These can be purchased from both their official [website](https://www.hgeek.com/) in addition to their [AliExpress](https://www.aliexpress.com/store/1102732208) store.
 
 ![An image of a Zynq7020 HamGeek.](https://www.hgeek.com/cdn/shop/files/92589-1.jpg)<br>
 *Zynq7020-based HamGeek*
@@ -51,9 +57,18 @@ This is the cheapest variant of these SDRs, being available for as little as €
 - €115 [Official store](https://www.hgeek.com/collections/software-defined-radio/products/hamgeek-70mhz-6ghz-zynq7020-ad9363-sdr-software-defined-radio-development-board-for-pluto-sdr-matlab-1)
 - €150 [AliExpress](https://www.aliexpress.com/item/1005008162884638.html?)
 
-This variant is able to pull around 45 Msps without drops for most people, is able to do it more reliably than the Zynq7010-based variant. Being priced just above the Zynq7010 and being sold with included cooling, it is arguably the recommended option.
+This variant is able to pull around 45 Msps without drops for most people, is able to do it more reliably than the Zynq7010-based variant. Being priced just above the Zynq7010 and being sold with included cooling, it is arguably the recommended option. 
 
-## LibreSDR - B2x0 / Zynq7020
+Please note that it has fragile surface-mounted components but has no case, I have designed one for it that can be 3d printed, it can be found [here](https://www.thingiverse.com/thing:7207664)
+
+### "BlackSDR" - B210 mini
+
+- €286 [Official site](https://www.hgeek.com/products/%E6%B5%8B%E8%AF%95-hamgeek-b210-mini-ad9361-software-defined-radio-sdr-replacement-for-hackrf-plutosdr) - BlackSDR
+
+
+Hamgeek also sells two versions of the B210 mini line of SDRs on its website - a drophsipped LiberSDR and a "BlackSDR". This version has an older PCB design and is more expensive than the LibreSDR, is only included here for the sake of making this list exhaustive.
+
+## LibreSDR
 
 - These can be bought from the [OpenSourceSDRLab](https://opensourcesdrlab.aliexpress.com/store/4586015) website as well as their [AliExpress](https://opensourcesdrlab.aliexpress.com/store/4586015) store.
 
@@ -64,32 +79,34 @@ This variant is able to pull around 45 Msps without drops for most people, is ab
 
 - €135 [Official site](https://opensourcesdrlab.com/products/libresdr-zynqsdr-ad9363-zynq7020)
 
-Functionally identical to the HamGeek Zynq7020, just performs better due to a better PCB design as well as the slightly more sensitive AD9361 tuner. An AD9363 version is also available but there's really no good reason to get it.
+Functionally identical to the HamGeek Zynq7020, but performs better since it uses higher quality components as well as the slightly more sensitive AD9361 tuner. An AD9363 version is also available, but there's really no good reason to get it.
 
-### Libre B210
+### Libre B210 mini
 
 - €207 [Official site](https://opensourcesdrlab.com/products/libresdr-b210-mini-ad9361)
 - €260 [AliExpress](https://www.aliexpress.com/item/1005009175889484.html)
 
-This SDR variant comes with improved connectivity - 5 gbit/s USB 3. This allows it to reliably pull the full 61.44 Msps even without overclocks.
+This SDR variant comes with improved connectivity - USB 3.0 as well as 5 gigabit LAN. This allows it to reliably pull the full 61.44 Msps even without overclocks. It is theorized that a firmware tweak can be made to allow 122.88 Msps much like on the BladeRF SDRs, but this hasn't been attempted yet.
 
-### Libre B220
+### Libre B220 mini
 
 - €233 [Official site](https://opensourcesdrlab.com/products/libresdr-b220-mini-ad9361)
 - €270 [AliExpress](https://www.aliexpress.com/item/1005007542400624.html?)
 
-Effectively the same as the B210. It is theorized that a firmware tweak can be made to allow 122.88 Msps much like on the BladeRF SDRs, but this hasn't been attempted yet.
-
+Effectively the same as the B210. Only real benefit is a more powerful FPGA for development, but you most likely won't need it.
 
 
 # Accessing the SDRs
 
-Since these SDRs are essentially small computers, they have a fully fledged Linux shell inside that you can SSH into. 
-> The user account is `root` and the password is `analog`.
+> This doesn't apply to B2x0 SDRs!
+
+Since the Zynq70x0-based SDRs are essentially small computers, they have a fully fledged Linux shell inside that you can SSH into. This is usable, for example, to set the Ethernet IP using `ifconfig` commands.
+
+> The user account is `root` and the password is `analog` in all major firmware.
 
 To access this shell you can use:
 
-## Standard Ethernet (Zynq70x0)
+## Standard Ethernet
 
 If plugged into a DHCP-capable device, the SDR assigns itself an IP that you can use as `ssh root@<ip>` like any other computer.
 
@@ -104,9 +121,9 @@ If all else fails or you messed some configs up, you can always use the JTAG USB
 > It's usually `/dev/TTYUSB1`.
 
 
-# Getting the high sampling rates on Zynq 70x0-based SDRs
+# Getting the high sampling rates
 
-> The B2x0-based SDRs can do high sampling rates out of the box, this heading only applies to the Zynq SDRs! On B2x0, just use CS8 and you'll be fine.
+> The B2x0-based SDRs can do high sampling rates out of the box, this heading only applies to the Zynq 70x0-based ones.
 
 When you first unbox the SDR and plug it in, it is likely to not be able to do much more than some 10 Msps. This is, because the stock firmware is quite limiting - the AD936x tuner can do much better. We can push it by doing the following:
 
@@ -118,7 +135,7 @@ To install it:
 
 #### 1. Head to the [Releases](https://github.com/F5OEO/tezuka_fw/releases/latest/) page and select your SDR accordingly
 
-> Note that `fishball` refers to Zynq 7010-based SDRs and `fishball7020` refers to Zynq 7020-based SDRs
+> Note that `fishball` refers to Zynq 7010-based HamGeek SDRs, `fishball7020` refers to Zynq 7020-based HamGeek SDRs, `libresdr` refers to the Zynq 7020-based LibreSDR
 
 #### 2. Remove the SD card from the SDR
 
@@ -142,7 +159,7 @@ Using this setting effectively doubles the sampling rate, as you only use half t
 
 ## 3. Use the Ethernet port
 
-The Zynq based SDRs only have a USB 2.0 chipset limiting the throughput at just 480 mbps, making the maximum theoretical sampling rate just 30 Msps on CS8! You should ALWAYS use the Ethernet connector with a gigabit connector, preferably directly.
+The Zynq based SDRs only have a USB 2.0 chipset limiting the throughput at just 480 Mbps, making the maximum theoretical sampling rate just 30 Msps on CS8! You should ALWAYS use the Ethernet connector with a gigabit cable, preferably connected directly to your computer to reduce interference.
 
 When using directly, you must set the IP manually on both the SDR and your computer:
 
@@ -190,12 +207,6 @@ To overclock the SDR:
 > Please note that the SDR might not boot at all with the blue `DONE` LED never lighting up, this happens when an overclock you selected is too large. Use a lower one until it's happy again.
 
 Repeat this process until you find the 'wall' - place where you can't go higher with overclocks because of kernel panics. If the SDR runs for a few minutes without dropping samples, congrats! You have successfully overclocked the SDR.
-
-# Cases
-
-The LibreSDRs all come with cases, HamGeek offers one with the Zynq7010 version (Both machined aluminum as well as .STEP files for 3d printing), however the **Zynq7020-based HamGeek doesn't come with one**.
-
-I have designed one, it can be found [here](TODO)
 
 ---
 
