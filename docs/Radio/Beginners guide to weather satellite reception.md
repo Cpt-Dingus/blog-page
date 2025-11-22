@@ -53,10 +53,9 @@ You can also find a guide on how to receive a more difficult but more interestin
 These aren't the only bands that weather satellites broadcast in, but are by far the easiest to receive imagery in both due to physical constraints and commercial availability. Other bands range from requiring a simple LNB (C band) to year long endeavors that require a lot of dedication and individual research. *Looking at you, X band!*
 
 ## Sample processed image
-> Note: The map was added in post-processing.
 
-![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg)
-*Meteor M2-3 LRPT received on 02/01/2024 using a 5 element yagi-uda antenna. Processed using SatDump with the `221` RGB composite. Equalized. 65% quality lossy JPEG compression with 0.05 gaussian blur applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
+![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg) <br>
+*Meteor M2-4 LRPT received on 2025-04-21 using a QFH antenna. Processed using SatDump with the `AVHRR 3a21 False color` RGB composite. Equalized. 95% quality lossy JPEG compression applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
 
 
 # Glossary
