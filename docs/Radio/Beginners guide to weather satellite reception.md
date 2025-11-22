@@ -490,7 +490,8 @@ You likely selected the MCIR/MSA RGB composites, which overlay a predefined map 
 
 ### The signal is fading a lot near the horizon
 
-> TODO: image
+![LRPT FFT screenshot showing said issue](../../assets/images/Radio/Multipath.jpg) <br>
+*Meteor LRPT from Seler1500 showing said issue. See how it fades almost completely, really quickly returns to maximum strength*
 
 This is normal, happens due to atmospheric phenomena.
 
