@@ -55,7 +55,7 @@ These aren't the only bands that weather satellites broadcast in, but are by far
 ## Sample processed image
 
 ![A processed LRPT image](../../assets/images/Radio/compressed/LRPT-Sample-image-COMPRESSED.jpg) <br>
-*Meteor M2-4 LRPT received on 2025-04-21 using a QFH antenna. Processed using SatDump with the `AVHRR 3a21 False color` RGB composite. Equalized. 95% quality lossy JPEG compression applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
+*Meteor M2-4 LRPT received on 2025-04-21 using a QFH antenna. Processed using SatDump with the `AVHRR 3a21 False color` RGB composite. White balanced. 95% quality lossy JPEG compression applied, click [here]({{site.baseurl}}/assets/images/Radio/LRPT-Sample-image.png) for the full resolution image.*
 
 
 # Glossary
