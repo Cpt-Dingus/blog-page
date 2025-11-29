@@ -170,7 +170,7 @@ On your computer:
 - IPv4: `192.168.1.99`
 - Netmask: `255.255.255.0`
 
-You can make the SDR-side config persistent by following [this article]({{site.baseurl}}/docs/Radio/Persistent hamgeek Ethernet IP).
+You can make the SDR-side config persistent by following [this article]({{site.baseurl}}/docs/Radio/Persistent hamgeek ethernet IP).
 
 
 > Warning: Even though apps might mark the SDR as using `IP`, you might be using the Ethernet over USB feature! I personally recommend you always just plug into the JTAG port, since that doesn't create said interface preventing possible confusion.
