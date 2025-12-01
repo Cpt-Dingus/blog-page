@@ -207,6 +207,56 @@ To overclock the SDR:
 
 Repeat this process until you find the 'wall' - place where you can't go higher with overclocks because of kernel panics. If the SDR runs for a few minutes without dropping samples, congrats! You have successfully overclocked the SDR.
 
+# Common issues
+
+## No boot, error over console
+
+> Massive thanks to r1chae for providing this fix!
+
+```
+U-Boot 2016.07 (Nov 17 2025 - 14:29:18 +0000)
+
+I2C:   ready
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0
+SF: Detected W25Q128BV with page size 256 Bytes, erase size 4 KiB, total 16 MiB
+In:    serial@e0001000
+Out:   serial@e0001000
+Err:   serial@e0001000
+Model: FISH Ball SDR Board (7010-AD9363)
+Net:   ZYNQ GEM: e000b000, phyaddr 0, interface rgmii-rxid
+
+Warning: ethernet@e000b000 (eth0) using random MAC address - 46:70:c2:01:b6:ee
+eth0: ethernet@e000b000
+Hit any key to stop autoboot:  0 
+ethernet@e000b000 Waiting for PHY auto negotiation to complete......... TIMEOUT !
+Wrong Image Format for bootm command
+ERROR: can't get kernel image!
+FISHBALL> 
+```
+
+This happens when the U-boot environment gets corrupted for whatever reason, will persist through different firmware installs. The issue presents itself as all LEDs having a solid glow, with the SDR never popping up on your computer.
+
+Please note that I only know of this issue happening on Zynq70x0-based boards, have no idea if it is possible to occur on B2x0-based ones. To fix it:
+
+#### 1. Plug a USB cable into the JTAG (Debug) USB-C port
+
+#### 2. Access the debug console
+
+As is described earlier, the JTAG USB port exposes a 115200 baud TTY, access it via a command like `picocom`
+
+> i.e. `sudo picocom -b 115200 /dev/ttyUSB1`
+
+#### 3. Write the following commands:
+
+```
+env default -a
+saveenv
+reset
+```
+
+This should reset the environment into a working state, the SDR should reboot normally.
+
 ---
 
 You should now be good to use your SDR with the optimal performance. Have fun!
