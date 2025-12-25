@@ -71,7 +71,7 @@ This list is not exhaustive, I apologize if I missed anything.
 - 3H is still commissioning, is very simmilar to 3F
 - The instruments vary between the satellites, notably:
     - FengYun 3E has a XEUVI for sun imaging
-    - FengYun 3G is in an Inclined Equatorial orbit, carries RM (Rainfall measurement) instrumentation as its payload unlike the rest of the Fengyun 3 series. It is very fast and flies very low, making it receivable with a smaller dish than the rest albeit with much more difficult tracking. It also has an unusually small symbol rate at just 6 Msym/s.
+    - FengYun 3G is in an Inclined Equatorial orbit, carries RM (Rainfall measurement) instrumentation as its payload unlike the rest of the Fengyun 3 series. It is VERY fast and flies very low, making it receivable with a smaller dish than the rest albeit with significantly more difficult tracking. It also has an unusually small symbol rate at just 6 Msym/s.
 
 ### Signal tables
 
@@ -152,11 +152,11 @@ This list is not exhaustive, I apologize if I missed anything.
 
 - Being the current-gen constellation from NOAA+NASA, all JPSS (Joint Polar Satellite System) satellites transmit in the X-band -> **Suomi NPP**, **NOAA 20**, and **NOAA 21**
 - NOAA 20 has suffered many issues, notably a failed detector in the VIIRS (imaging) instrument causing scan lines to appear in certain composites
-- The Suomi NPP satellite also has occasional issues with its clock, causing imagery to process with erroneous dates
+- The Suomi NPP satellite also has occasional issues with its internal clock, causing imagery to process with erroneous dates (or lack thereof)
 - All satellites have a null in their antennas' radiation pattern:
     - Suomi NPP has a strong null when it's west from your position at certain elevations
     - NOAA 20 has a strong null when it's east from your position at certain elevations
-    - NOAA 21's null is still present but not as significant, improved FEC helps mitigate it further
+    - NOAA 21 doesn't have significant nulls and features much better FEC than the rest of the JPSS constellation
 
 ### Signal table
 
@@ -256,6 +256,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 - **Aqua** and **Aura** are the only satellites from the NASA EOS (Earth Observation Satellites) constellation that still transmit DB, **Terra** still transmits dumps but the DB signal has been disabled in 09/2024 due to a power supply issue.
 - All satellites from this constellation have a null in their antenna's radiation pattern above a ~60° elevation
+- Aqua has a really poor type of FEC (Reed-solomon but no viterbi) which makes it require a quite high SNR for a decode.
 - Aura only transmits the OMI instrument which is very low rate
 - The dumps from these satellites are not implemented into SatDump (Encrypted?)
 
@@ -334,9 +335,8 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 ### Description
 - **Arktika-M N°1** and **Arktika-M N°2** both transmit beamed **RDAS** during their apogee to Moscow and Vladivostok (depending on which apogee the satellite is currently in - one is above the atlantic, the other is above the Bering Strait)
-- The broadcast is identical to that of Elektro-L satellites, because Arktikas are the same bus; just shot into a molnyia orbit.
-- The transmission is much weaker than that of Elektros' because of the significantly higher apogee of the molnyia orbit.
-
+- The broadcast itself is identical to that of Elektro-L satellites, because Arktikas are the same bus; just shot into a molnyia orbit. However, it is at a different frequency - see the table below.
+- Arktika-M1 has a much weaker broadcast when compared to Arktika M2
 
 ### Signal table
 
