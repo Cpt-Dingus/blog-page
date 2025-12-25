@@ -880,6 +880,7 @@ Remote stations (for Elektros primarily in Siberia) are often made as cheaply as
 
 A question you might have is, whether Roscosmos could just not use a different algorithm depending on the illumination, making the imagery not appear overexposed when fully illuminated. The answer is that they could, they just don't.
 
+> Thanks to lego for sharing this explanation!
 
 
 ## Pass rating scale
