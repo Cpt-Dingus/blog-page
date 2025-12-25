@@ -144,7 +144,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - This band does not require anything more than **2.048 Msps**, using a higher setting can lead to sample drops due to instability.
 
 ## HackRF One
-- ***DO NOT USE THE `Amp` (preamplifier) OPTION!!!*** The preamplifier is flawed, can get killed **very easily**. An exception to this is when you're using **Clifford Heath's [redesign](https://www.aliexpress.com/item/1005005351172184.html)**, which adds several protections making the preamplifier safe to use.
+- ***DO NOT USE THE `Amp` (preamplifier) OPTION!!!*** The preamplifier is flawed, can get killed **very easily**. An exception to this is when you're using **Clifford Heath's [redesign](https://www.aliexpress.com/item/1005008922273073.html)**, which adds several protections making the preamplifier safe to use.
 - The HackRF has a fairly outdated design which suffers from heavy phase noise. This means, that you have to receive signals stronger than other SDRs to achieve the same quality.
 
 # Preferred software
