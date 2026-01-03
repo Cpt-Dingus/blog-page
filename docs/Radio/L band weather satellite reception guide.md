@@ -448,12 +448,35 @@ You can only receive these signals with an SDR that has a sampling rate at least
 ## LNA
 
 - L-band radio waves are very weak and dissipate too quickly to be usable with just your SDR - an LNA connected directly to the feed is imperative.
-- The only viable commercial option that doesn't cost a liver is the [SawBird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) from Nooelec. It is a filtered LNA providing very good performance for L-band satellite reception.
+- Do not waste your money on cheap wideband LNAs (SPF/SBF boards etc.), **they will NOT work well enough to get satisfactory results.**
+- There are a few options you can purchase:
+
+### SawBird GOES (Ol' reliable)
+
+![Image of said LNA](../../assets/images/Radio/Sawbird.jpg)
+
+The [SawBird+ GOES](https://www.nooelec.com/store/sawbird-plus-goes-302.html) is a commercially sold SAW-filtered LNA from Nooelec that provides reliably good results, which made it become the de facto gold-standard for L-band reception. There is a nonplus version available, but it often performs worse than the plus version - you shouldn't get it unless you know what you're doing.
+
 - **!WARNING!** - The SawBird backfeeds DC *when powered by the USB connector*, either:
-    - Use a bias-tee instead (Either external or SDR)
+    - Use a bias-tee instead (Either external or built into your SDR)
     - Buy a DC-block and place it between the LNA and SDR
 
-> Do not waste your money on cheap wideband LNAs, **they will NOT work well enough to get satisfactory results.**
+
+### Digitelektro L-band LNA (Best performing)
+
+![Image of said LNA](../../assets/images/Radio/Digit-LNA.jpg)
+
+Digitelektro hand-makes LNAs for L-band reception which often greatly outperform other LNA options, while staying at an affordable price - 60€ + VAT as of writing this article. 
+
+If interested, you can contact him via Discord at **@digitelektro**
+
+### Aliexpress SAW BPF (Entry level)
+
+![Image of said LNA](../../assets/images/Radio/Sawbpf.jpg)
+
+If under a tight budget or you're unable to buy the aforementioned LNAs for whatever reason, you can also get a [SAW BPF LNA](https://www.aliexpress.com/item/1005002610116321.html) from Aliexpress. This usually performs pretty poorly, but with most LEO sats you should still have enough of a margin to decode imagery.
+
+> Note: Make sure to select the 1690 SAW/BPF + LNA option!
 
 ## Dish
 
@@ -506,6 +529,9 @@ Popular options for feeds are as follows:
 > Helix dimensions are from Lego's [HRPT guide](https://www.a-centauri.com/articoli/easy-hrpt-guide)
 
 The **helical antenna** is a very good and forgiving circularly polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
+
+![A picture of my helix](../../assets/images/Radio/Sample-helix.jpg) <br>
+A sample helix, using a gritty zinc spray-painted surface and hot glue as the support.
 
 #### Materials 
 
@@ -569,11 +595,6 @@ You have two choices for winding the wire:
     ![A picture showing the soldering of the SMA port](../../assets/images/Radio/Helix-soldering.jpg)
     *This is how the soldering should look.*
 
-
-![A picture of my helix](../../assets/images/Radio/Sample-helix.jpg) <br>
-A sample helix, using a gritty zinc spray-painted surface and hot glue as the support. Note how the bottom turn runs mostly parallel to the ground plane.
-
-
 Congratulations, you now have a helical antenna! 
 
 
@@ -635,6 +656,8 @@ A loop feed is a moderately difficult to make and also easy to mess up linearly 
 > Please note that the f/D calculation for offset dishes is significantly more complex than for PF dishes, the website I linked should be replaced by a better one if I find one. (TODO)
 
 
+![A picture of my loop feed](../../assets/images/Radio/Loop-feed.jpg)
+*A lopo feed I made a while ago, uses a smaller can than intended. Only for illustration purposes.*
 
 #### Materials
 
