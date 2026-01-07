@@ -444,6 +444,17 @@ You can only receive these signals with an SDR that has a sampling rate at least
 
 - Any SDR able to sample this band (~1.7 GHz) will work, just make sure its sampling rate is adequate to receive the satellites of your choosing. A bias-tee is a nice addition, since you do not need to use an external one.
 - As with VHF, aim for reputable brands whenever possible; the standard RTL-SDR dongles do just fine. (Just avoid the plastic-cased and fake ones for your sanity)
+- Some examples of SDRs that are usable in this band (not exhaustive!)
+    - RTL-SDR v3/v4
+    - Nooelec Smart SDR
+    - Airspy mini
+    - Hackrf one
+    - HydraSDR
+    - MiriSDR (DIP switch version)
+    - AD936x-based (Pluto) SDRs
+    - Many more...
+
+> Some guides might say that RTLSDR based receivers can't receive L-band wx sats, **this is false** They can do it just fine, as the top limit is above the highest frequency transmissions (in this band).
 
 ## LNA
 
@@ -480,20 +491,44 @@ If under a tight budget or you're unable to buy the aforementioned LNAs for what
 
 ## Dish
 
-- Offset, prime focus, or grid dishes are all usable for L band reception, with some minor notes:
-    - On offset dishes, you can hold the dish upside down (arm side up) to 'invert' the offset - you can point higher than the satellite instead of below it, this allows much easier reception at lower elevations
-    - Prime focus dishes require fewer turns on the helix (compared to an offset) or a [patch feed](https://sat.cc.ua/page3.html) for better performance altogether
-    - Wi-Fi grid dishes HAVE to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the dish some more. <br>
+- Any old dish you might find is usable for L-band reception - be it an offset, prime focus, or grid dish
+- The bigger the dish, the better signal strength you get but the more difficult it is to track with, however on L band the tracking difficulty is almost unnoticeable below ~2 M due to the high margins
+- Small dishes can receive all LEO satellites as well as some geostationary signals just fine, you do not need a big dish to get imagery.
+
+> Do note that reception without a dish is [possible]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but is discouraged for beginners because of the lower margins it gives.
+
+### Offset dishes
+
+![An example offset dish](../../assets/images/Radio/Offset-dish.jpg) <br>
+*A standard TV offset dish[Source](https://en.wikipedia.org/wiki/Offset_dish_antenna)*
+
+- These are the easiest to source, are likely the first thing you imagine when you hear the words "Satellite dish"
+- You can very likely find these for free at local marketplaces, as people very commonly get rid of these when switching to terrestrial television
+- As the name of the dish suggests, this type of dish has a tracking **offset** - the actual metal part of the dish doesn't point directly at the satellite, but instead a bit below it, which might introduce problems when tracking at low elevations. To solve this, you can hold the dish upside down (arm side up) to **invert the offset** - this enables you to point **above** the satellite than the satellite instead of below it. Do note that it makes overhead pass tracking a bit more tedious.
+
+### Prime focus dishes
+
+![An example prime focus dish](../../assets/images/Radio/Prime-focus.jpg) <br>
+*A sample prime focus dish. [Source](https://www.bee1.com.br/Prime-Focus-Satellite-Dish-Galvanized-Steel-With-Powder-Coating-i-784810)*
+
+- You can tell this type of dish apart with the circular shape - you point directly at the satellite you are trying to receive
+- In English-speaking countries, you can very easily source big mesh ones that were used for C-band television, which has declined in popularity in the last couple of decades in favor of easier to receive Ku-band television. These are usually above 150 cm in size, making such dishes perfect for geostationary satellite reception!
+- Prime focus dishes require fewer turns on the helix (compared to an offset) or a [patch feed](https://sat.cc.ua/page3.html) for better performance altogether
+
+
+### Grid dishes
+
+![A sample Wi-Fi grid dish](../../assets/images/Radio/Grid-dish.jpg) <br>
+*A sample 2.4 GHz Wi-Fi grid dish usable for L-band (with modifications). [Source](https://www.wimo.com/en/18686-24)*
+
+
+- Grid dishes are often the easiest to get started with, as they require no soldering - everything is already wired, you just need to buy some adapters
+- Nooelec sells (a rather expensive) [1.7 GHz grid dish](https://www.amazon.com/GOES-Weather-Satellite-Mesh-Antenna/dp/B08NLDTDM7) made for 1.7 GHz reception if you want the lowest amount of DIY - it is ready-made to be used with a SawBird.
+- If buying a Wi-Fi dish, you MUST buy a 2.4 GHz one! A 5 GHz one will NOT work for L-band without feed modifications.
+- 2.4 GHz Wi-Fi grid dishes need to have the reflector be flipped to be usable in the L band, you can also follow [UsRadioGuy's guide](https://usradioguy.com/optimizing-wifi-grid) to optimize the performance some more. <br>
+
     ![Image showing the two reflector rotations for S and L bands](../../assets/images/Radio/Grid-reflector.jpg) <br>
     *Credit: lego11*
-
-- Wi-Fi grid dishes are the best choice for if you want a solution with minimal DIY, however offset dishes are often larger and therefore provide better performance.
-- The bigger the dish, the better signal strength you get. It is also more difficult to track with, but on L band it is almost unnoticeable below ~2 M
-- Small dishes cover LEO satellites as well as some geostationary signals just fine, you do not need a big dish to get anything.
-
-- To get a dish, try checking your local marketplaces, people often give old dishes away all the time after switching to terrestrial TV. Aim for at least 60 cm in height/diameter (offset or PF respectively)
-
-- Do note that reception without a dish is [possible]({{site.baseurl}}/docs/Radio/Creating%20a%20helix%20for%20direct%20satrx.html), but is discouraged for beginners because of the lower margins it gives.
 
 
 ## Feed
@@ -501,12 +536,13 @@ If under a tight budget or you're unable to buy the aforementioned LNAs for what
 > If you are using a grid dish for reception, you can skip this heading.
 
 - The dish is only a half of the story though, you will need to DIY the feed yourself - it isn't difficult but requires a bit of effort. 
-- Different feeds are used for different satellites due to different polarizations, with these satellites you'll become familiar with **Circular** and **Linear** polarizations. They separate as follows:
-    - LEO satellites exclusively use the <abbr title="Radio waves turn clockwise - towards the right">RHCP</abbr> (Right-hand circular) polarization
-    - The majority of geostationary satellites use a linear polarization, with one series using RHCP.
-    - GOES GRB is an outlier in geostationary satellite signals, uses both RHCP and LHCP. The LHCP broadcast is pretty much useless to receive, won't be mentioned in further polarization warnings.
+- Different satellites transmit different polarizations, which require different feeds for optimal performance. 
+- **Polar-orbiting** satellites exclusively use the <abbr title="Radio waves turn clockwise - towards the right">**RHCP**</abbr> (Right-hand circular) polarization for the image transmissions
+- The vast majority of **geostationary satellites** in this band have a **linear polarization** (with two exceptions - Elektro and GOES GRB which use RHCP)
+- GOES GRB is an outlier, as it transmits some data over RHCP and some over LHCP. Since there is no other LHCP satellite in this band (and the LHCP transmission kinda sucks), I will omit it in any future polarization warnings.
 
-> Warning: Using a dish reflects the circular polarizations, meaning you need to create a **LHCP** feed to receive RHCP signals!
+
+> WARNING: Using a dish inverts the circular polarizations, meaning you need to create a **LHCP** feed to receive RHCP signals!
 
 <br>
 
@@ -531,29 +567,31 @@ Popular options for feeds are as follows:
 The **helical antenna** is a very good and forgiving circularly polarized feed that works best on offset dishes. It also works with PF dishes albeit at a reduced efficiency.
 
 ![A picture of my helix](../../assets/images/Radio/Sample-helix.jpg) <br>
-A sample helix, using a gritty zinc spray-painted surface and hot glue as the support.
+*A sample helix, using a gritty zinc spray-painted surface and hot glue as the support.*
 
 #### Materials 
 
-You will need the following materials:
 - A flat and conductive material that has **AT LEAST** a 13 cm diameter (i.e. a computer case side panel). A thin paint layer shouldn't greatly affect signal strength.
 - About a meter of 2.5 mm copper wire. Different diameters are fine, but 2.5 mm is optimal.
+
+> The ground plane can be either circular or rectangular (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, have a minor SNR benefit particularly on offset dishes where the larger ground plane doesn't cover the dish itself.
+
+
+<br>
 
 - Male panel mount SMA port, preferably insulated - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
 
-- If not using a 3d printed scaffold (linked later), a non-conductive material used as a support for the helix
+<br>
 
-> - The ground plane can be either circular or square (13x13 cm). Larger ones (i.e. 17x17 cm) can be used, might have a minor SNR benefit particularly on offset dishes where the larger ground plane doesn't cover the dish itself.
+- If you don't have access to a 3d printer, a non-conductive material used as a support for the helix
 
-#### Parts of a helical antenna
+
+#### Terminology
 
 The helical antenna consists of two primary parts: 
 - **Ground plane** - The conductive surface the helix is laid upon, acts as a secondary reflector (Where the primary one is the dish itself)
 - **Helix** - The wound copper wire
-
-![A helical antenna image](../../assets/images/Radio/Helical-antenna.jpg) <br>
-*R = Ground plane; C = Coaxial feed; S = Helix; B/E = Supports. [Source](https://en.wikipedia.org/wiki/Helical_antenna)*
 
 #### Winding the helix
 
@@ -564,15 +602,19 @@ The helix should have these dimensions:
 
 - Number of turns: 5.5 (3.5 on prime focus dishes)
 
+<br> 
+
 You have two choices for winding the wire:
 - You can wind it manually (Tip: 55 mm PVC pipes are really useful for keeping a consistent diameter)
 - 3d print a [premade stand](https://www.thingiverse.com/thing:4980180) and stick a wire through it. Also acts as a support for the wire. If you choose this approach, use the `1700L_5.5T_0.14S_4D_10-90M.stl` file
+
+> Make sure to pre-bend the wire to at least a rough shape to not damage your stand
 
 ***WARNING!!!***
 
 - This antenna is circularly polarized, meaning you MUST match it to the satellites' to be able to receive anything!
 
-- In this case, the satellites transmit a RHCP signal, <u>BUT using a dish reflects it - <b>you have to create a -LHCP- helix!</b></u>
+- In this case, these satellites transmit RHCP signals, <u>BUT using a dish inverts it - <b>you have to create a -LHCP- helix!</b></u>
 
 ![Picture showing the different polarizations for the spin direction](../../assets/images/Radio/Helix-polarizations.jpg) <br>
 *Credit: lego11, [source](https://www.a-centauri.com/articoli/easy-hrpt-guide)*
@@ -620,7 +662,11 @@ If you own a VNA capable of sampling 1.7 GHz, you can tune the helix by:
 
 Ideally you want at *least* a -20 dB S11 return loss at 1690-1700 MHz. However, do note that a poorly made but matched feed will still perform worse than a well-made but unmatched feed!
 
+
+
 ---
+
+
 ### Building a cantenna
 
 A cantenna is a surprisingly well performing linearly polarized feed for most dishes. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
@@ -630,11 +676,13 @@ A cantenna is a surprisingly well performing linearly polarized feed for most di
 - A can roughly 17 cm in height and 13 cm in diameter
     - The height can be lower, but the feed efficiency will be reduced. Assume a 1 cm margin for the diameter.
 
+> If trying to source a can, look for pastry storage or piggy banks
+
 - Male panel mount SMA port - [Example](https://www.aliexpress.com/item/1005003803735398.html)
 - Adequately sized screws and nuts for the SMA port's mounting holes
 - A thin piece of copper wire (About 1 mm in diameter. The core of a coaxial cable should do just fine)
 
-#### Building
+#### Putting it together
 
 1. Put the dimensions of your can into this [calculator](https://www.changpuak.ch/electronics/cantenna.php)
     - For the frequency choose 1700 MHz, your can is suitable as long as 1700 MHz is between the cited TE11 and TM01 frequencies
@@ -657,7 +705,7 @@ A loop feed is a moderately difficult to make and also easy to mess up linearly 
 
 
 ![A picture of my loop feed](../../assets/images/Radio/Loop-feed.jpg)
-*A lopo feed I made a while ago, uses a smaller can than intended. Only for illustration purposes.*
+*A loop feed I made a while ago, uses a smaller can than intended. Only for illustration purposes, it sucked.*
 
 #### Materials
 
@@ -712,7 +760,7 @@ This is the best performing linearly polarized feed on larger (>1.2 m) PF dishes
 
 
 
-## Mounting feed to dish
+### Mounting the feed to your dish
 This wholly depends on your dish and its existing mounting solution, is completely up to you to DIY. Anything should be fine as long as you ensure two things:
 1. The helix front of the feed isn't covered by anything
 2. The feed is in the focal point correctly:
@@ -723,7 +771,7 @@ This wholly depends on your dish and its existing mounting solution, is complete
 
 > The focal point is exactly where the front part (mouth) of a TV LNB would be
 
-Drilling small holes into the ground plane shouldn't greatly affect reception. Personal tip: zip ties are your best friends.
+Drilling small holes into the ground plane shouldn't affect reception. Personal tip: zip ties are your best friends.
 
 # Actually receiving the satellites!
 
@@ -765,7 +813,7 @@ A small dot means that you should up the gain, if you're already maxed you can l
 2. Aim your dish in the general direction of the satellite, move it around until you can begin seeing the signal
     - With **Meteor HRPT**, you will first see the strong carrier in the center of your FFT
     - With **MetOp/AWS**, you will first see a lot of smaller jumpy lines appearing, which is filler that's stronger than the actual data payload
-3. When you see the pipeline sync or the deframer count start ticking up, **you're now getting a signal**! Make slight adjustments until you see the SNR counter start ticking up, it should go up fairly quickly thanks to atmospheric phenomena.
+3. When you see the pipeline sync, **you're now getting a signal**! Make slight adjustments until you see the SNR counter start ticking up, it should go up fairly quickly thanks to atmospheric phenomena.
 4. Once you see that you have an SNR reading, only make slight adjustments from this point onward. I personally recommend you **SNR track** - create a small margin, move your dish very slowly to get the average as high as possible. The general convention for L-band is **point & wait** - you do not need to be moving constantly, just move when the signal starts getting weaker.
     > For high (>60°) passes, you will have difficulties tracking the satellite with an offset dish *because of the offset* - I personally suggest the following steps:
     >    1. Track normally until you're pushing the arm into the ground
@@ -788,41 +836,20 @@ If you experienced any issues during the pass, make sure to check the [common is
 
 1. Aim your dish using whatever broadcast the satellite transmits constantly, or using a dish alignment app (Less accurate). Alternatively, locate the rough area of where the satellite should be in the sky, start the correct pipeline and when the broadcast starts quickly try to find where the signal is the strongest. You usually have a few seconds to find it, which is more than enough in most cases.
 
-2. Open SatDump, move to the `Recording` tab following the same setup as for HRPT
+2. Open SatDump, move to the `Recording` tab following the same setup as for HRPT, start the appropriate pipeline when ready
 
-3. Start the appropriate pipeline:
-
-    |Signal|Pipeline|
-    |---|---|
-    |Elektro LRIT|Elektro-L LRIT|
-    |Elektro HRIT|Elektro-L HRIT|
-    |Elektro GGAK|Elektro-L GGAK\*|
-    |GOES HRIT|GOES-R HRIT|
-    |GOES GRB|GOES-R GRB|
-    |GOES GVAR|GOES GVAR|
-    |GOES Imager SD|GOES-N Sensor Data|
-    |GOES Sounder SD| GOES-N Sounder SD
-    |FengYun 2 S-VISSR|FengYun-2 S-VISSR|
-    |FengYun 4 LRIT|FengYun-4[A/B] LRIT|
-    |FengYun 4 HRIT|FengYun-4A HRIT -II/III|
-    |GEO-KOMPSAT LRIT|GK-2A LRIT|
-    |GEO-KOMPSAT HRIT|GK-2A HRIT|
-    |MSG PGS|MSG Raw Data| 
-
-\* In older SatDump versions known as Elektro-L L-band TLM
-
-4. The broadcast will show up as a bump that might occasionally jump up and down, you should be seeing a few decibels of signal, `SYNCED` and green Reed-Solomon numbers when applicable.
+3. The broadcast will show up as a bump that might occasionally jump up and down, you should be seeing a few decibels of signal, `SYNCED` and green Reed-Solomon numbers when applicable.
 
     ![A screenshot of SatDump taken while receiving Elektro-L LRIT](../../assets/images/Radio/Lrit-SatDump.jpg)
     *SatDump mid Elektro LRIT reception*
 
-5. After the transmission stops, or you are satisfied with the results, hit `Stop` on the pipeline
+4. After the transmission stops, or you are satisfied with the results, hit `Stop` on the pipeline
 
-6. For most satellites (SatDump 2.0!), SatDump will generate a `products.cbor` file which you can load into the `Explorer` tab for processing
+5. For most satellites (SatDump 2.0!), SatDump will generate a `products.cbor` file which you can load into the `Explorer` tab for processing
     - <u>For all satellites</u>, navigate to your live output directory, open the folder of the latest live recording. The images will be in the `IMAGES` folder. 
     - On most series, you should also have a `products.cbor` file present here that you can load into SatDump's `Viewer` tab.
 
-7. You are now done! You can now play around with the results using 3rd party tools or SatDump where applicable.
+6. You are now done! You can now play around with the results using 3rd party tools or SatDump where applicable.
 
 If you experienced any issues during the pass, make sure to check the [common issues](#common-issues) heading found below!
 
@@ -897,13 +924,14 @@ This error appears when your sampling rate is lower than the signals symbol rate
 ![A crop as stated below showing an extremely overexposed edge of the Earth](../../assets/images/Radio/lrit-explained.jpg)
 *Elektro-L3 channel 1 crop received by yours truly from LRIT on 15/8/2024 at 15:42Z. Lossy JPEG compression with 60% quality applied. Raw image can be found [here](https://sat-archive.cpt-dingus.cc/L-band/Elektro/LRIT/Elektro-L3/2024-08-15_15-30_elektro-lrit_Meti/L3_1_20240815T153000Z.jpg)*
 
+> Thanks to Lego11 for sharing this explanation!
+
 If you ever received LRIT at a time slot that has a very low illumination, you know the issue very well - the edge of the Earth often turns solid white from overexposure. The reason for this comes from why LRIT exists in the first place - easy data availability.
 
 Remote stations (for Elektros primarily in Siberia) are often made as cheaply as possible, for LRIT specifically they are too weak to do anything besides applying basic LUTs - they would be unable to do image processing themselves, so it is done for them on the satellite level using histogram equalization. While this makes the imagery unusable for more advanced meteorological purposes (since you can't calibrate an equalized image), it is perfectly usable for public visualizations or TV display.
 
 A question you might have is, whether Roscosmos could just not use a different algorithm depending on the illumination, making the imagery not appear overexposed when fully illuminated. The answer is that they could, they just don't.
 
-> Thanks to lego for sharing this explanation!
 
 
 ## Pass rating scale
