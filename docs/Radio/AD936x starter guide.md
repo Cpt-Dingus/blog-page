@@ -52,6 +52,8 @@ The specific SDRs from both manufacturers are:
 
 This is the cheapest variant of these SDRs, being available for as little as €99 from the official store. Most people have achieved around 35 Msps stable, though the maximum sampling rates appear to be based on silicon lotteries. Please note that the version with the case is known to have issues with oscillations, purchase some RF-absorbing foam and put it inside if possible.
 
+Some people have suffered from QC issues when buying this particular variant, please bear this in mind before purchasing.
+
 ### Zynq 7020
 
 - €115 [Official store](https://www.hgeek.com/collections/software-defined-radio/products/hamgeek-70mhz-6ghz-zynq7020-ad9363-sdr-software-defined-radio-development-board-for-pluto-sdr-matlab-1)
@@ -59,13 +61,13 @@ This is the cheapest variant of these SDRs, being available for as little as €
 
 This variant is able to pull around 45 Msps without drops for most people, is able to do it more reliably than the Zynq7010-based variant. Being priced just above the Zynq7010 and being sold with included cooling, it is arguably the recommended option. 
 
-Please note that it has fragile surface-mounted components but has no case, I have designed one for it that can be 3d printed, it can be found [here](https://www.thingiverse.com/thing:7207664)
+Please note that it has fragile surface-mounted components but is sold without a case - I have designed one for it that can be 3d printed, you can find it [here](https://www.thingiverse.com/thing:7207664)
 
 ### "BlackSDR" - B210 mini
 
 - €286 [Official site](https://www.hgeek.com/products/%E6%B5%8B%E8%AF%95-hamgeek-b210-mini-ad9361-software-defined-radio-sdr-replacement-for-hackrf-plutosdr) - BlackSDR
 
-Hamgeek also sells two versions of the B210 mini line of SDRs on its website - a drop-shipped LibreSDR and a "BlackSDR". The former version is just a more expensive LibreSDR, the latter version has an older PCB design and is more expensive than the LibreSDR, is only included here for the sake of making this list exhaustive.
+Hamgeek also sells two versions of the B210 mini line of SDRs on its website - a drop-shipped LibreSDR and a "BlackSDR". The former version is just a more expensive LibreSDR, the latter version has an older PCB design and is more expensive than the LibreSDR - there is absolutely no good reason to get it. These are only included here for the sake of making this list exhaustive.
 
 ## LibreSDR
 
@@ -82,15 +84,17 @@ Functionally identical to the HamGeek Zynq7020, but performs better since it use
 
 ### Libre B210 mini
 
-- €207 [Official site](https://opensourcesdrlab.com/products/libresdr-b210-mini-ad9361)
-- €260 [AliExpress](https://www.aliexpress.com/item/1005009175889484.html)
+- €260 (-Tax, Ali deducts it) [AliExpress](https://www.aliexpress.com/item/1005009175308561.html)
+- €207 (+Tax) [Official site](https://opensourcesdrlab.com/products/libresdr-b210-mini-ad9361)
 
-This SDR variant comes with improved connectivity - USB 3.0 as well as 5 gigabit LAN. This allows it to reliably pull the full 61.44 Msps even without overclocks. It is theorized that a firmware tweak can be made to allow 122.88 Msps much like on the BladeRF SDRs, but this hasn't been attempted yet.
+This SDR variant comes with improved USB 3.0 connectivity which allows it to reliably pull a full 61.44 Msps even without overclocks. 
+
+@mothmaux has managed to create an overclock for the device, which allows it to run at higher sampling rates. As of writing this article, the largest reported stable sampling rate is ~100 Msps. Please note that, as the README says, this overclock voids your warranty and can damage your device. It is available [here](https://github.com/MothMaux/uhd-oc)
 
 ### Libre B220 mini
 
-- €233 [Official site](https://opensourcesdrlab.com/products/libresdr-b220-mini-ad9361)
-- €270 [AliExpress](https://www.aliexpress.com/item/1005007542400624.html?)
+- €270 (-Tax, Ali deducts it) [AliExpress](https://www.aliexpress.com/item/1005007542400624.html?)
+- €233 (+Tax) [Official site](https://opensourcesdrlab.com/products/libresdr-b220-mini-ad9361)
 
 Effectively the same as the B210. Only real benefit is a more powerful FPGA for development purposes (modding), but you most likely won't need it.
 
