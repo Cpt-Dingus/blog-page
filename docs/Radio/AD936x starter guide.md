@@ -56,7 +56,7 @@ Some people have suffered from QC issues when buying this particular variant, pl
 
 ### Zynq 7020
 
-- €115 [Official store](https://www.hgeek.com/collections/software-defined-radio/products/hamgeek-70mhz-6ghz-zynq7020-ad9363-sdr-software-defined-radio-development-board-for-pluto-sdr-matlab-1)
+- €115 [Official store](https://www.hgeek.com/products/hamgeek-70mhz-6ghz-zynq7020-ad9363-sdr-software-defined-radio-development-board-for-pluto-sdr-matlab?_pos=1&_psq=zynq7020)
 - €150 [AliExpress](https://www.aliexpress.com/item/1005008162884638.html?)
 
 This variant is able to pull around 45 Msps without drops for most people, is able to do it more reliably than the Zynq7010-based variant. Being priced just above the Zynq7010 and being sold with included cooling, it is arguably the recommended option. 
