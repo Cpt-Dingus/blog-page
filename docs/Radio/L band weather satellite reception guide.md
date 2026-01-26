@@ -504,7 +504,7 @@ If under a tight budget or you're unable to buy the aforementioned LNAs for what
 
 - These are the easiest to source, are likely the first thing you imagine when you hear the words "Satellite dish"
 - You can very likely find these for free at local marketplaces, as people very commonly get rid of these when switching to terrestrial television
-- As the name of the dish suggests, this type of dish has a tracking **offset** - the actual metal part of the dish doesn't point directly at the satellite, but instead a bit below it, which might introduce problems when tracking at low elevations. To solve this, you can hold the dish upside down (arm side up) to **invert the offset** - this enables you to point **above** the satellite than the satellite instead of below it. Do note that it makes overhead pass tracking a bit more tedious.
+- As the name of the dish suggests, this type of dish has a tracking **offset** - the actual metal part of the dish doesn't point directly at the satellite, but instead a bit below it, which might introduce problems when tracking at low elevations. To solve this, you can hold the dish upside down (arm side up) to **invert the offset** - this enables you to point **above** the satellite rather than below it. Do note that it makes overhead pass tracking a bit more tedious.
 
 ### Prime focus dishes
 

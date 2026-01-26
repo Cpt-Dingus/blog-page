@@ -300,7 +300,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 ## Elektro-L
 
 ![As said below. Image includes a moon in the corner for vanity](../../assets/images/X-band-transmissions/elektro-rdas.jpg)
-*Elektro-L2 Channel 1 received on 11/4/2025 at 12:29 UTC by lego11. 60% quality lossy JPEG compression applied, image resized to 25%. Aligned using the [Digitelektro's RDAS aligner](https://github.com/Digitelektro/rdas_layer_aligner). Click [here](https://sat-archive.cpt-dingus.cc/X-band/Elektro-L/Elektro-L2/2025-04-11_12-29_elektro-rdas_lego11/msugs_vis_Natural_Color.png) for the full resolution image*
+*Elektro-L2 Natural color composite received on 11/4/2025 at 12:29 UTC by lego11. 60% quality lossy JPEG compression applied, image resized to 25%. Aligned using the [Digitelektro's RDAS aligner](https://github.com/Digitelektro/rdas_layer_aligner). Click [here](https://sat-archive.cpt-dingus.cc/X-band/Elektro-L/Elektro-L2/2025-04-11_12-29_elektro-rdas_lego11/msugs_vis_Natural_Color.png) for the full resolution image*
 
 ### Description
 
