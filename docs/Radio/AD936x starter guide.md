@@ -134,7 +134,7 @@ When you first unbox the SDR and plug it in, it is likely to not be able to do m
 
 ## 1. Installing custom firmware
 
-To access to some features, we can first install custom firmware, most notably [Tezuka](https://github.com/F5OEO/tezuka_fw/) which is what this guide will focus on. Most notably it includes
+To access to some features, we can first install custom firmware, most notably [Tezuka](https://github.com/F5OEO/tezuka_fw/) which is what this guide will focus on. Most notably it includes the ability to overclock the device, which is essential to reach high sampling rates.
 
 To install it:
 
