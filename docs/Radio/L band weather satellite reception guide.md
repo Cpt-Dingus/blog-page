@@ -597,10 +597,10 @@ The helical antenna consists of two primary parts:
 
 The helix should have these dimensions:
 - Turn spacing: 3 cm
-
 - Spiral diameter: 5.5 cm
-
 - Number of turns: 5.5 (3.5 on prime focus dishes)
+
+![Image showing the dimensions of the helix](../../assets/images/Radio/helix_dimensions.jpg)
 
 <br> 
 
