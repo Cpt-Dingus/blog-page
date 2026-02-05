@@ -84,16 +84,18 @@ Functionally identical to the HamGeek Zynq7020, but performs better since it use
 
 ### Libre B210 mini
 
-- €260 (-Tax, Ali deducts it) [AliExpress](https://www.aliexpress.com/item/1005009175308561.html)
+- €260 (-Tax, Ali deducts it on checkout) [AliExpress](https://www.aliexpress.com/item/1005009175308561.html)
 - €207 (+Tax) [Official site](https://opensourcesdrlab.com/products/libresdr-b210-mini-ad9361)
 
 This SDR variant comes with improved USB 3.0 connectivity which allows it to reliably pull a full 61.44 Msps even without overclocks. 
 
-@mothmaux has managed to create an overclock for the device, which allows it to run at higher sampling rates. As of writing this article, the largest reported stable sampling rate is ~100 Msps. Please note that, as the README says, this overclock voids your warranty and can damage your device. It is available [here](https://github.com/MothMaux/uhd-oc)
+@mothmaux has managed to create an overclock for the device, which allows it to operate at double the design sampling rate, 122 Msps. Please note that, as the README says, this overclock is done at your own risk. The overclock is available [here](https://github.com/MothMaux/uhd-oc). A [tutorial](https://github.com/seler1500/LibreSDR-B210-setup) written by Seler is also available.
+
+> The overclock increases the tuner's clock rate, but doesn't affect the filter! The maximum RF bandwidth is still ~80 MHz +- manufacturing tolerances
 
 ### Libre B220 mini
 
-- €270 (-Tax, Ali deducts it) [AliExpress](https://www.aliexpress.com/item/1005007542400624.html?)
+- €270 (-Tax, Ali deducts it on checkout) [AliExpress](https://www.aliexpress.com/item/1005007542400624.html?)
 - €233 (+Tax) [Official site](https://opensourcesdrlab.com/products/libresdr-b220-mini-ad9361)
 
 Effectively the same as the B210. Only real benefit is a more powerful FPGA for development purposes (modding), but you most likely won't need it.
@@ -132,7 +134,7 @@ When you first unbox the SDR and plug it in, it is likely to not be able to do m
 
 ## 1. Installing custom firmware
 
-To access to some features, we can first install custom firmware, most notably [Tezuka](https://github.com/F5OEO/tezuka_fw/) which is what this guide will focus on. Most notably it includes
+To access to some features, we can first install custom firmware, most notably [Tezuka](https://github.com/F5OEO/tezuka_fw/) which is what this guide will focus on. Most notably it includes the ability to overclock the device, which is essential to reach high sampling rates.
 
 To install it:
 
