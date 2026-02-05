@@ -605,10 +605,17 @@ The helix should have these dimensions:
 <br> 
 
 You have two choices for winding the wire:
-- You can wind it manually (Tip: 55 mm PVC pipes are really useful for keeping a consistent diameter)
-- 3d print a [premade stand](https://www.thingiverse.com/thing:4980180) and stick a wire through it. Also acts as a support for the wire. If you choose this approach, use the `1700L_5.5T_0.14S_4D_10-90M.stl` file
+1. You can wind it manually (Tip: 55 mm PVC pipes are really useful for keeping a consistent diameter)
+2. 3d print a [premade stand](https://www.thingiverse.com/thing:4980180) and stick a wire through it. Also acts as a support for the wire. If you choose this approach, use the `1700L_5.5T_0.14S_4D_10-90M.stl` file. Use PETG if possible to prevent warping under sunlight.
 
-> Make sure to pre-bend the wire to at least a rough shape to not damage your stand
+    - If working with a prime focus dish, you can download a modified version of the stand with 3.5 turns [here](https://static.cpt-dingus.cc/dsgc_helix/1700L_3.5T_0.14s.stl). Modified original [SCAD](https://github.com/sgcderek/helix-antenna-scaffold/blob/master/dsgc_helix_v5.scad), ©dereksgc
+
+> Make sure to pre-bend the wire into a rough spiral before putting it into the stand! It will make your life significantly easier.
+
+
+
+![As described below](../../assets/images/Radio/helix_with_stand.jpg) <br>
+*A 3d printed stand with a helix for 1700 MHz.*
 
 ***WARNING!!!***
 
