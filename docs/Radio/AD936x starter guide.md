@@ -191,6 +191,10 @@ By default, these SDRs have their CPU run at just 750 MHz (30x) and the memory a
 
 Thanks to @mothmaux managing to reverse engineer how the overclocks are applied, he has created [this repo](https://github.com/ModderMax/O-C-Scripts-for-Tezuka_FW) which contains some premade files for all relevant Tezuka firmware variants, including a script to create your own.
 
+The overclock file name structure is <cpu_multiplier>_<ram_multiplier>.bin where both values are multiplied by 25 MHz to get the clock value of the CPU and RAM respectively.
+
+> I.e. 058_038.bin = 58×25 MHz for CPU clock, 38×25 MHz for RAM clock
+
 To overclock the SDR:
 
 #### 1. Remove the SD card from the SDR
@@ -202,8 +206,8 @@ To overclock the SDR:
 
 > Make sure your computer is running in high performance mode and is under the lowest load! Use Linux if able.
 
-#### 4. SSH into it and watch the terminal for kernel panics
-#### 5. Depending on the result:
+#### 5. SSH into it and watch the terminal for kernel panics
+#### 6. Depending on the result:
 - If the SDR remains stable after a few minutes without underflow errors, you can bump the overclock up
 - If the SDR underflows, use a lower sampling rate. If it's too low for your liking, increase the overclock or make sure your computer has enough resources for the chosen sampling rate. If possible, use Linux.
 - If the SDR suffers a kernel panic and restarts, lower the overclocks
