@@ -330,7 +330,7 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 
 ![As described below](../../assets/images/X-band-transmissions/arktika-rdas.jpg)
-*Arktika-M2 Natural color composite received on 11/4/2025 at 12:29 UTC by yours truly. 60% quality lossy JPEG compression applied, image resized to 25%. Aligned using the [Digitelektro's RDAS aligner](https://github.com/Digitelektro/rdas_layer_aligner). Click [here](https://sat-archive.cpt-dingus.cc/X-band/Arktika-M/Arktika-M2/2026-02-01_13-15_arktika-rdas_Meti/msugs_vis_Natural_Color.png) for the full resolution image*
+*Arktika-M2 Natural color composite received on 2026-02-01 at 13:15 UTC by yours truly. 60% quality lossy JPEG compression applied, image resized to 25%. Aligned using the [Digitelektro's RDAS aligner](https://github.com/Digitelektro/rdas_layer_aligner). Click [here](https://sat-archive.cpt-dingus.cc/X-band/Arktika-M/Arktika-M2/2026-02-01_13-15_arktika-rdas_Meti/msugs_vis_Natural_Color.png) for the full resolution image*
 
 
 ### Description
