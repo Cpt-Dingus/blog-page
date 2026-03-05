@@ -415,7 +415,7 @@ All signals listed below are RHCP!
 |Elektro-L|GGAK|1693 MHz|5 ksym/s|RHCP|None|N/A|Constantly, can be used to verify your setup is functional
 |GOES-R|CDA Telemetry|1693 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |GOES-R|HRIT|1694.1 MHz|927 ksym/s|Linear|80 cm|Yes|Constantly, image every 15 minutes
-|GOES-R|GRB|1681.6 MHz|8.67 Msym/s|LHCP+RHCP|180 cm|Yes|Constantly
+|GOES-R|GRB|1686.6 MHz|8.67 Msym/s|LHCP+RHCP|180 cm|Yes|Constantly
 |EWS-G|CDA Telemetry|1694 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|100 cm\*|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every 15 minutes rest of the time.
 |EWS-G|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
