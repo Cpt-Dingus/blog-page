@@ -264,29 +264,34 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 ### Elektro-L
-- **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites from the Elektro-L series broadcasting imagery in the L-band. Due to a fairly recent power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+- **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites from the Elektro-L series broadcasting imagery in the L-band. Due to a power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4 km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just ~2.5 dB.
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapor channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
-- These satellites have recently began transmitting at 06:XXZ, something they haven't done for years. It is unknown whether this time slot will remain enabled, but as of the latest commit; both satellites transmit it. 18:XXZ still hasn't returned, but should come back by May.
-- All Elektro (as well as Arktika) data is available on the NTSoMZ FTP: `ftp://electro:electro@ntsomz.gptl.ru:2121/`
-- Elektro-L N°5 is scheduled for launch on 12/2025, will replace L3 which will in turn be moved over to 14.5°W, replacing L2. L2 will be decommissioned due to existing issues with power and imaging instrumentation. This will be the first time that Europe has accessible xRIT in a few years.
+- 06:XX and 18:XX are seasonal timeslots which usually aren't transmitted near the solstices.
 - The 06:XX and 18:XX time slots are seasonal, both should be active during summer and winter months
+- Real-time and historical Elektro (as well as Arktika) data is available on the NTSoMZ FTP: `ftp://electro:electro@ntsomz.gptl.ru:2121/`
+- Elektro-L3 often skips timeslots for unknown reasons, Tecmsat has a station which tracks missing transmissions [here](https://tec.aweeri.com/L3TS.php).
 
-> Reception notes:
-> - **LRIT**:
->   - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason why imagery is broadcasted like this is a bit [complex](#lrit-explanation).
->   - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized dead LRIT from the neighboring satellite FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H.
->   - **Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.**
-> - **GGAK**:
->   - You can use GGAK as a 24/7 metric to see if you should be capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
->   - GGAK gets significantly weaker while an xRIT transmission is in progress.
->   - Elektro-L2 also transmits GGAK, but the strength seems inconsistent when compared to its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
->   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
->       1. Your SDR likely has a small <abbr title="The oscillator your SDR has isn't perfectly accurate which can cause a very small offset from the frequency you tuned to. For example, signals might be shifted by 3 KHz: what the SDR shows as 100 MHz might be 100.003 MHz in reality.">reference inaccuracy</abbr>, decimate and tune until the GGAK signal is centered. Add this offset to the next steps.
->       2. Set frequency offset to 50 kHz + the reference inaccuracy (Explained above) if your SDR has one, shift that much above 1693 MHz
->       3. Start the pipeline
->       4. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 kHz or -3 kHz. Shift 3 kHz lower or higher respectively, it should lock thereafter.
->       5. If you still can't sync, try setting the pll bandwidth to 0.002 [#pll-bw]
+> Elektro-L N°5 has launched and is in the process of commissioning, which should finish in the coming few weeks/months. Once commissioning is done, it is scheduled to replace L3, with L3 replacing L2. L2 will consequently be raised to a graveyard orbit.
+
+
+Signal-specific notes:
+
+- **LRIT**:
+   - LRIT broadcasts pre-equalized channels, which often end up severely over-exposing the imagery. The reason why imagery is broadcasted like this is explained [here](#lrit-explanation).
+   - After a few minutes of LRIT from Elektro-L3, you will be able to notice a spiky signal appear at 1690.5 MHz, this is linearly polarized empty LRIT from the neighboring satellite FengYun 2H. It might interfere with Elektro LRIT reception, in which case you should point slightly farther from 2H or skew your feed/dish to minimize it.
+   - **Elektro-L4 has broadcast issues; the LRIT broadcast consistently cuts off after 15 minutes, even when in the middle of transmitting an image.**
+- **GGAK**:
+   - You can use GGAK as a 24/7 metric to see if you should be capable of decoding xRIT: 10 dB on GGAK should equal to about 2.5 dB on LRIT (enough for a decode), 17 dB on GGAK should equal to about 3 dB on HRIT (enough for a decode).
+   - GGAK gets significantly weaker while an xRIT transmission is in progress.
+   - Elektro-L2 also transmits GGAK, but the strength seems inconsistent when compared to its contemporaries. It used to be a tad weaker, now it appears to be significantly stronger.
+   - GGAK has a very low symbol rate, you might have difficulties getting the pipeline to lock. If you have trouble doing so:
+       1. Your SDR likely has a small <abbr title="The oscillator your SDR has isn't perfectly accurate which can cause a very small offset from the frequency you tuned to. For example, signals might be shifted by 3 KHz: what the SDR shows as 100 MHz might be 100.003 MHz in reality.">reference inaccuracy</abbr>, decimate and tune until the GGAK signal is centered. Add this offset to the next steps.
+       2. Set frequency offset to 50 kHz + the reference inaccuracy (Explained above) if your SDR has one, shift that much above 1693 MHz
+       3. Start the pipeline
+       4. If you don't sync, look at the `Frequency` value, it will likely be pinned at +3 kHz or -3 kHz. Shift 3 kHz lower or higher respectively, it should lock thereafter.
+       5. If you still can't sync, try setting the pll bandwidth to 0.002 [#pll-bw]
+
 - Full resolution sample imagery:
     - [HRIT Natural color](https://sat-archive.cpt-dingus.cc/L-band/Elektro/HRIT/Elektro-L3/2024-11-09_09-00_elektro-hrit_Meti/msu_gs_Natural%20Color.png)
     - [LRIT Natural color](https://sat-archive.cpt-dingus.cc/L-band/Elektro/LRIT/Elektro-L3/2024-02-28_09-41_elektro-lrit_Meti/IMAGES/L3_NC_20240228T093000Z.png)
@@ -308,7 +313,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 > Reception note: FengYun 2H has been experiencing issues with the power amplifier, causing significant fluctuations in SNR. Usually they clear up in a few minutes, but the broadcast strength end up being below nominal for a while after.
 
-> These satellites also broadcast an incredibly weak **CDAS** raw downlink, but it's almost completely undocumented owing to its weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line in real time. This is the reason why S-VISSR is so jumpy.
+> These satellites also broadcast a very weak **CDAS** raw downlink, but it's almost completely undocumented owing to its weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line in real time. This is the reason why S-VISSR is so jumpy.
 
 - Full resolution sample imagery:
     - [False color crop](https://sat-archive.cpt-dingus.cc/L-band/FengYun-2/FengYun-2H/2025-02-16_13-44_fengyun-svissr_Meti/FY-2x_FC_20250216T134450Z.png)
@@ -415,7 +420,7 @@ All signals listed below are RHCP!
 |Elektro-L|GGAK|1693 MHz|5 ksym/s|RHCP|None|N/A|Constantly, can be used to verify your setup is functional
 |GOES-R|CDA Telemetry|1693 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |GOES-R|HRIT|1694.1 MHz|927 ksym/s|Linear|80 cm|Yes|Constantly, image every 15 minutes
-|GOES-R|GRB|1681.6 MHz|8.67 Msym/s|LHCP+RHCP|180 cm|Yes|Constantly
+|GOES-R|GRB|1686.6 MHz|8.67 Msym/s|LHCP+RHCP|180 cm|Yes|Constantly
 |EWS-G|CDA Telemetry|1694 MHz|40 ksym/s|Linear|N/A|Yes|Constantly, can be used to verify your setup is functional
 |EWS-G|GVAR|1685.7 MHz|2.11 Msym/s|Linear|100 cm\*|No|Full disc image at midnight UTC, every 3 hours onwards. Regional crops every 15 minutes rest of the time.
 |EWS-G|Imager SD|1676 MHz|2.62 Msym/s|Linear|300 cm|No|Constantly
