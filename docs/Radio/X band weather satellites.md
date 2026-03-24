@@ -17,7 +17,7 @@ Every satellite will have full resolution sample imagery provided from my [archi
 
 X-band reception is a very advanced endeavor, given the severe lack of documentation online, high cost of entry, as well as the dedication required - You **will** fall flat on your face a lot! I might describe this process some day when I get enough disposable income to try it out myself, but for the time being, I will try to write out what I know fairly well already - **the satellites' broadcasts**.
 
-The minimum dish size is inapplicable to this band because of the significant variance between setups, the low margins introduced with X can make two nearly identical setups perform worlds apart because of minimal differences. Upon a suggestion from lego11, a minimum SNR for a good decode will be included instead. See below for a definition.
+The minimum dish size is inapplicable to this band because of the significant variance between setups, the low margins introduced with X can make two nearly identical setups perform worlds apart because of minimal differences. A relative strength is included to get an idea of how strong a signal is, consider "Strong" something you should be able to get with an 80 cm dish. It is done by feel from personal experience, don't consider it definitive.
 
 ## Formatting
 
@@ -27,9 +27,9 @@ Following the description is the `Signal table(s)` heading which contains inform
 
 <u>Name of transmission</u> - Potential notes
 
-| Satellite                 | Frequency | Symbol rate | Polarization | FEC                    | Minimum SNR                                                                                              | Beamed                                               | Location                                                                |
-| ------------------------- | --------- | ----------- | ------------ | ---------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------- |
-| Transmitting satellite(s) | S/E       | S/E         | S/E          | Whether signal has FEC | Minimal dB needed for green RS on FEC, or enough SNR for recognizable imagery with median blur if no FEC | Whether signal is transmitted at a specific location | If beamed, location of beam. Otherwise, area where the signal is active |
+| Satellite                 | Frequency | Symbol rate | Polarization | FEC                    | Relative strength                                           | Beamed                                               | Location                                                                |
+| ------------------------- | --------- | ----------- | ------------ | ---------------------- | ----------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------- |
+| Transmitting satellite(s) | S/E       | S/E         | S/E          | Whether signal has FEC | Strength relative to something receivable with a small dish | Whether signal is transmitted at a specific location | If beamed, location of beam. Otherwise, area where the signal is active |
 
 > S/E = Self explanatory
 
@@ -77,23 +77,23 @@ This list is not exhaustive, I apologize if I missed anything.
 
 <u>AHRPT</u>
 
-| Satellite  | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
-| ---------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
-| FengYun 3D | 7820 MHz  | 30 Msym/s   | RHCP         | Yes | 7 dB        | No     | Global   |
-| FengYun 3E | 7860 MHz  | 38.4 Msym/s | RHCP         | Yes | 7 dB        | No     | Global   |
-| FengYun 3F | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
-| FengYun 3G | 7790 MHz  | 6 Msym/s    | RHCP         | Yes | 7 dB        | No     | Global   |
-| FengYun 3H | 7860 MHz  | 38.4 Msym/s | LHCP         | Yes | 7 dB        | No     | Global   |
+| Satellite  | Frequency | Symbol rate | Polarization | FEC | Relative strength | Beamed | Location |
+| ---------- | --------- | ----------- | ------------ | --- | ----------------- | ------ | -------- |
+| FengYun 3D | 7820 MHz  | 30 Msym/s   | RHCP         | Yes | Strong            | No     | Global   |
+| FengYun 3E | 7860 MHz  | 38.4 Msym/s | RHCP         | Yes | Strong            | No     | Global   |
+| FengYun 3F | 7790 MHz  | 38.4 Msym/s | LHCP         | Yes | Strong            | No     | Global   |
+| FengYun 3G | 7790 MHz  | 6 Msym/s    | RHCP         | Yes | Very strong       | No     | Global   |
+| FengYun 3H | 7860 MHz  | 38.4 Msym/s | LHCP         | Yes | Strong            | No     | Global   |
 
 <u>DPT (Dump)</u>
 
-| Satellite  | Frequency  | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location      |
-| ---------- | ---------- | ----------- | ------------ | --- | ----------- | ------ | ------------- |
-| FengYun 3D | 8250 MHz   | 150 Msym/s  | RHCP         | Yes | 7 dB        | No     | Kiruna, China |
-| FengYun 3E | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
-| FengYun 3F | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
-| FengYun 3G | ???        | 225 Msym/s  | ???          | Yes | 11 dB       | No     | China         |
-| FengYun 3H | 8212.5 MHz | 225 Msym/s  | ???          | Yes | 7 dB        | No     | Kiruna, China |
+| Satellite  | Frequency  | Symbol rate | Polarization | FEC | Relative strength | Beamed | Location      |
+| ---------- | ---------- | ----------- | ------------ | --- | ----------------- | ------ | ------------- |
+| FengYun 3D | 8250 MHz   | 150 Msym/s  | RHCP         | Yes | Moderate          | No     | Kiruna, China |
+| FengYun 3E | 8212.5 MHz | 225 Msym/s  | ???          | Yes | Moderate          | No     | Kiruna, China |
+| FengYun 3F | 8212.5 MHz | 225 Msym/s  | ???          | Yes | Moderate          | No     | Kiruna, China |
+| FengYun 3G | ???        | 225 Msym/s  | ???          | Yes | Moderate          | No     | China         |
+| FengYun 3H | 8212.5 MHz | 225 Msym/s  | ???          | Yes | Moderate          | No     | Kiruna, China |
 
 ### Sample imagery
 
@@ -162,11 +162,11 @@ This list is not exhaustive, I apologize if I missed anything.
 
 <u>DB</u>
 
-| Satellite | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
-| --------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
-| Suomi NPP | 7812 MHz  | 15 Msym/s   | RHCP         | Yes | 6 dB        | No     | Global   |
-| NOAA 20   | 7812 MHz  | 15 Msym/s   | RHCP         | Yes | 6 dB        | No     | Global   |
-| NOAA 21   | 7812 MHz  | 25 Msym/s   | RHCP         | Yes | 4 dB        | No     | Global   |
+| Satellite | Frequency | Symbol rate | Polarization | FEC | Relative strength | Beamed | Location |
+| --------- | --------- | ----------- | ------------ | --- | ----------------- | ------ | -------- |
+| Suomi NPP | 7812 MHz  | 15 Msym/s   | RHCP         | Yes | Mediocre (Fading) | No     | Global   |
+| NOAA 20   | 7812 MHz  | 15 Msym/s   | RHCP         | Yes | Mediocre (Fading) | No     | Global   |
+| NOAA 21   | 7812 MHz  | 25 Msym/s   | RHCP         | Yes | Strong            | No     | Global   |
 
 ### Sample imagery
 
@@ -218,31 +218,31 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>MTVZA Dump (Narrow BPSK)</u>
 
-| Satellite         | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location                       |
-| ----------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------------------------ |
-| Meteor M2-3, M2-4 | 8128 MHz  | 15.36 Msym/s | RHCP         | No  | 2.5 dB      | No     | Moscow, Novosibirsk, Khabrovsk |
+| Satellite         | Frequency | Symbol rate  | Polarization | FEC | Relative strength | Beamed | Location                       |
+| ----------------- | --------- | ------------ | ------------ | --- | ----------------- | ------ | ------------------------------ |
+| Meteor M2-3, M2-4 | 8128 MHz  | 15.36 Msym/s | RHCP         | No  | Very strong       | No     | Moscow, Novosibirsk, Khabrovsk |
 
 <u>IKFS Dump (Narrow QPSK)</u> - Unconfirmed, not received yet
 
-| Satellite         | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location      |
-| ----------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------- |
-| Meteor M2-3, M2-4 | ???       | 15.36 Msym/s | ???          | No  | 3.5 dB      | No     | Khabrovsk ??? |
+| Satellite         | Frequency | Symbol rate  | Polarization | FEC | Relative strength | Beamed | Location      |
+| ----------------- | --------- | ------------ | ------------ | --- | ----------------- | ------ | ------------- |
+| Meteor M2-3, M2-4 | ???       | 15.36 Msym/s | ???          | No  | ???               | No     | Khabrovsk ??? |
 
 
 <u>KMSS DB (Wide BPSK)</u>
 
-| Satellite   | Frequency        | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location                          |
-| ----------- | ---------------- | ------------ | ------------ | --- | ----------- | ------ | --------------------------------- |
-| Meteor M2-4 | 8128, 8320\* MHz | 61.44 Msym/s | RHCP         | No  | 2.5 dB      | No     | Europe, Russia & its surroundings |
+| Satellite   | Frequency        | Symbol rate  | Polarization | FEC | Relative strength | Beamed | Location                          |
+| ----------- | ---------------- | ------------ | ------------ | --- | ----------------- | ------ | --------------------------------- |
+| Meteor M2-4 | 8128, 8320\* MHz | 61.44 Msym/s | RHCP         | No  | Moderate          | No     | Europe, Russia & its surroundings |
 
 \* 8320 MHz is rare
 
 
 <u>KMSS Dump / MSU-MR Dump / Severjanin-M + MeteoSAR Dump (Wide QPSK)</u>
 
-| Satellite   | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location                       |
-| ----------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------------------------ |
-| Meteor M2-4 | 8320 MHz  | 61.44 Msym/s | RHCP         | No  | 3.5 dB      | No     | Moscow, Novosibirsk, Khabrovsk |
+| Satellite   | Frequency | Symbol rate  | Polarization | FEC | Relative strength | Beamed | Location                       |
+| ----------- | --------- | ------------ | ------------ | --- | ----------------- | ------ | ------------------------------ |
+| Meteor M2-4 | 8320 MHz  | 61.44 Msym/s | RHCP         | No  | Moderate          | No     | Moscow, Novosibirsk, Khabrovsk |
 
 ### Sample imagery
 
@@ -264,10 +264,10 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>DB</u>
 
-| Satellite | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
-| --------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
-| Aqua      | 8160 MHz  | 7.5 MHz     | RHCP         | Yes | 11 dB       | No     | Global   |
-| Aura      | 8160 MHz  | 7.5 MHz     | RHCP         | Yes | 11 dB       | No     | Global   |
+| Satellite | Frequency | Symbol rate | Polarization | FEC | Relative strength           | Beamed | Location |
+| --------- | --------- | ----------- | ------------ | --- | --------------------------- | ------ | -------- |
+| Aqua      | 8160 MHz  | 7.5 MHz     | RHCP         | Yes | Very strong (but worse FEC) | No     | Global   |
+| Aura      | 8160 MHz  | 7.5 MHz     | RHCP         | Yes | Very strong (but worse FEC) | No     | Global   |
 
 ### Sample imagery
 
@@ -314,11 +314,11 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>RDAS</u>
 
-| Satellite  | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location    |
-| ---------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ----------- |
-| Elektro L2 | 7500 MHz  | 30.72 Msym/s | LHCP         | No  | 5 dB        | Yes    | Moscow      |
-| Elektro L3 | 7500 MHz  | 30.72 Msym/s | RHCP         | No  | 5 dB        | Yes    | Moscow      |
-| Elektro L4 | 7500 MHz  | 30.72 Msym/s | RHCP         | No  | 5 dB        | Yes    | Vladivostok |
+| Satellite  | Frequency | Symbol rate  | Polarization | FEC | Relative strength | Beamed | Location    |
+| ---------- | --------- | ------------ | ------------ | --- | ----------------- | ------ | ----------- |
+| Elektro L2 | 7500 MHz  | 30.72 Msym/s | LHCP         | No  | Very strong       | Yes    | Moscow      |
+| Elektro L3 | 7500 MHz  | 30.72 Msym/s | RHCP         | No  | Very strong       | Yes    | Moscow      |
+| Elektro L4 | 7500 MHz  | 30.72 Msym/s | RHCP         | No  | Very strong       | Yes    | Vladivostok |
 
 ### Sample imagery
 
@@ -342,9 +342,10 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>RDAS</u>
 
-| Satellite      | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location            |
-| -------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | ------------------- |
-| Arktika-M1, M2 | 7865 MHz  | 30.72 Msym/s | RHCP         | No  | 5 dB        | Yes    | Moscow, Vladivostok |
+| Satellite  | Frequency | Symbol rate  | Polarization | FEC | Relative strength                     | Beamed | Location            |
+| ---------- | --------- | ------------ | ------------ | --- | ------------------------------------- | ------ | ------------------- |
+| Arktika-M1 | 7865 MHz  | 30.72 Msym/s | RHCP         | No  | Weak                                  | Yes    | Moscow, Vladivostok |
+| Arktika-M2 | 7865 MHz  | 30.72 Msym/s | RHCP         | No  | Strong-Moderate (depends on position) | Yes    | Moscow, Vladivostok |
 
 ### Sample imagery
 
@@ -366,22 +367,49 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>UHRIT</u>
 
-| Satellite      | Frequency | Symbol rate  | Polarization | FEC | Minimum SNR | Beamed | Location |
-| -------------- | --------- | ------------ | ------------ | --- | ----------- | ------ | -------- |
-| GEO-KOMPSAT 2A | 8070 MHz  | 15.63 Msym/s | LHCP         | Yes | 10 dB       | No     | Global   |
+| Satellite      | Frequency | Symbol rate  | Polarization | FEC | Relative strength | Beamed | Location |
+| -------------- | --------- | ------------ | ------------ | --- | ----------------- | ------ | -------- |
+| GEO-KOMPSAT 2A | 8070 MHz  | 15.63 Msym/s | LHCP         | Yes | Moderate          | No     | Global   |
 
 <u>Raw sensor downlink</u> - Not received or supported
 
-| Satellite      | Frequency    | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
-| -------------- | ------------ | ----------- | ------------ | --- | ----------- | ------ | -------- |
-| GEO-KOMPSAT 2A | 8300 MHz MHz | 65 Msym/s   | RHCP         | Yes | ???         | ???    | ???      |
+| Satellite      | Frequency    | Symbol rate | Polarization | FEC | Relative strength | Beamed | Location |
+| -------------- | ------------ | ----------- | ------------ | --- | ----------------- | ------ | -------- |
+| GEO-KOMPSAT 2A | 8300 MHz MHz | 65 Msym/s   | RHCP         | Yes | ???               | ???    | ???      |
 
 
 ### Sample imagery
 - [True color](https://sat-archive.cpt-dingus.cc/X-band/GEO-KOMPSAT/UHRIT/GEO-KOMPSAT-2A/2025-10-12_03-47_geokompsat-uhrit_plugger-lockett/drew_ami_AMI_True_Color.png) - Credit to plugger-lockett
 - [600 nm channel (highest res)](https://sat-archive.cpt-dingus.cc/X-band/GEO-KOMPSAT/UHRIT/GEO-KOMPSAT-2A/2025-10-12_03-47_geokompsat-uhrit_plugger-lockett/GK2A_VI006_20251012T034736Z.png) - Credit to plugger-lockett
 
-## MetOp
+## MetOp-SG
+
+![As described below](../../assets/images/X-band-transmissions/metopsg-ddb.jpg)
+*Left: Metop-SGA1 True Color, received by yours truly on 01/3/2026 at 09:57 UTC. 90% quality lossy JPEG compression applied, click [here](https://sat-archive.metislair.com/X-band/MetOp-SG/DB/MetOp-SGA1/2026-03-01_09-57_metopsg-db_Meti/metimage_True_Color.png) for the full resolution image. Right: Same pass, 3MI True Color (0° Polarization), 90% quality lossy JPEG-compression applied. Processed into a video with a custom script. Video is available [here](https://sat-archive.metislair.com/X-band/MetOp-SG/DB/MetOp-SGA1/2026-03-01_09-57_metopsg-db_Meti/true-color_center-polarization.mp4)*
+
+### Description
+
+- Metop-SG A1 carries a 500 m/px primary imager along with a fairly interesting 3MI instrument which images at 3 different polarizations for scientific purposes. It also carries some other instruments which haven't been looked into in detail yet.
+- These are the latest and  ~~meant to be~~ greatest of what ESA has to offer, but are generally looked down upon primarily because of major issues with sensor striping, which is most visible on infrared channels. Consequently, most don't bother receiving these because of the huge data rate for relatively poor instrumantation; along with better choices existing.
+- The FEC on these is exceptional, with clean data as low as 1.5 dB even given that it's QPSK.
+
+### Signal table
+
+<u>DDB (Direct data broadcast)</u>
+
+| Satellite   | Frequency | Symbol rate | Polarization | FEC | Relative strength | Beamed | Location |
+| ----------- | --------- | ----------- | ------------ | --- | ----------------- | ------ | -------- |
+| MetOp-SG A1 | 7825 MHz  | 93.3 Msym/s | RHCP         | Yes | Strong            | No     | Global   |
+
+### Sample imagery
+
+- [True color](https://sat-archive.metislair.com/X-band/MetOp-SG/DB/MetOp-SGA1/2026-03-01_09-57_metopsg-db_Meti/metimage_True_Color.png)
+- [AVHRR 543B](https://sat-archive.metislair.com/X-band/MetOp-SG/DB/MetOp-SGA1/2026-03-01_09-57_metopsg-db_Meti/metimage_AVHRR_543b_IR_False_Color.png) - Shows the striping issues very well
+-  [3MI 0° polarization true color](https://sat-archive.metislair.com/X-band/MetOp-SG/DB/MetOp-SGA1/2026-03-01_09-57_metopsg-db_Meti/true-color_center-polarization.mp4))
+
+
+
+## MetOp-FG (First gen)
 
 ![As described below](../../assets/images/X-band-transmissions/metop-proj.jpg)
 *Metop-B AVHRR/3 from a dump, received on 10/5/2025 at 15:12 UTC by Andrew Lorett LLC. Processed with SatDump using the `4/221 merge` composite, projected. Click [here](https://sat-archive.cpt-dingus.cc/X-band/MetOp/MetOp-B/2025-05-10_15-12_metop-x-dump_Andrew-Lorett-LLC/avhrr_3_4-221_Merge.png) for the full resolution image dump (not a projection since my computer can't do 1 km/px projections)*
@@ -395,20 +423,13 @@ VIIRS and ATMS are identical between all of JPSS. OMPS is not implemented in Sat
 
 <u>Dump</u>
 
-| Satellite        | Frequency | Symbol rate | Polarization | FEC | Minimum SNR | Beamed | Location |
-| ---------------- | --------- | ----------- | ------------ | --- | ----------- | ------ | -------- |
-| MetOp-B, MetOp-C | 7800 MHz  | 35 Msym/s   | RHCP         | No  | 5 dB        | No     | Svalbard |
+| Satellite        | Frequency | Symbol rate | Polarization | FEC | Relative strength | Beamed | Location |
+| ---------------- | --------- | ----------- | ------------ | --- | ----------------- | ------ | -------- |
+| MetOp-B, MetOp-C | 7800 MHz  | 35 Msym/s   | RHCP         | No  | Weak              | No     | Svalbard |
 
 ### Sample imagery
 
 - TODO
-
-
-
-## MetOp-SG
-
-TODO
-
 
 # Epilogue
 
