@@ -163,11 +163,11 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 \* Some older satellites might have an increased inclination, where they slowly move in an 8 shape throughout a day. They still maintain a consistent longitude though.
 <br>
 
-- There are **13** geostationary satellites broadcasting imagery in this band:
+- There are **14** geostationary satellites broadcasting imagery in this band:
     - 2x GOES in the US
     - 1x EWS-G in Europe and Asia (Retired GOES)
     - 2x Elektro-L in Europe, Asia and Oceania
-    - 4x FengYun in Asia and Oceania
+    - 5x FengYun in Asia and Oceania
     - 1x Geo-Kompsat in Asia and Oceania
     - 3x MSG in Europe
 
@@ -308,7 +308,7 @@ Signal-specific notes:
 #### FengYun 2 series
 - **FengYun 2H**, and **FengYun 2G** broadcast a **linearly polarized S-VISSR** signal containing 5 channels (1 visible, 4 infrared) at a fairly high quality - 1.25 km/px for the singular VIS channel and 5 km/px for the 4 IR channels.
 - This signal is very prone to corruption because of lacking FEC, which often causes misplaced/missing lines. You can use [HRPTEgor's S-VISSR corrector](https://github.com/Foxiks/fengyun2-svissr-corrector) instead of the default `FengYun 2 S-VISSR` pipeline to remedy this.
-- FengYun 2H broadcasts dead (empty) LRIT every hour (except 5:30Z and every 6 hours onwards) on 1690.5 MHz, this leads to the second image being cut at about 57%.
+- FengYun 2H broadcasts dead (empty) LRIT every 3 hours starting at 00:48Z on 1690.5 MHz, this leads to the second image being cut at about 57%.
 - During the eclipse season (near equinoxes), these satellites lose track of the sun and end up not transmitting any imagery 17:00Z-19-00Z. The transmission might be off, or a jumpy S-VISSR signal with no data might be present instead.
 
 > Reception note: FengYun 2H has been experiencing issues with the power amplifier, causing significant fluctuations in SNR. Usually they clear up in a few minutes, but the broadcast strength end up being below nominal for a while after.
@@ -333,7 +333,7 @@ Signal-specific notes:
 >   - 10/1/2025: No visible broadcast from FengYun 4B
 >   - 15/04/2025: LRIT without imagery enabled on FengYun 4A, HRIT not checked
 
-- **FengYun 4A** and **FengYun 4B** currently broadcast a **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
+- **FengYun 4A**, **FengYun 4B**, and **FengYun 4C** currently broadcast **linearly polarized LRIT** and **HRIT** signals. The LRIT signal only broadcasts at a very poor quality (Have to confirm, but less than 4 km/px), HRIT only transmits a single unencrypted infrared channel.
 - This satellite series has been shrouded in mystery, with both satellites having transmitted xRIT in the past albeit without any live imagery. These broadcasts have intermittently stopped without any acknowledgement from NSMC (Satellite operators).
 
 
