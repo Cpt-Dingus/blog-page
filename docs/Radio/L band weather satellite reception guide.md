@@ -264,7 +264,10 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 
 
 ### Elektro-L
-- **Elektro-L N°3** and **Elektro-L N°4** (Elektro-L# for short) are the two satellites from the Elektro-L series broadcasting imagery in the L-band. Due to a power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
+
+> !Warning! - Due to the commissioning process of Elektro-L N°5, N°3 transmissions are PAUSED. L5 currently sporadically transmits LRIT/HRIT at inconsistent times around 8 UTC.
+
+- ~~**Elektro-L N°3**~~ and **Elektro-L N°4** (Elektro-L# for short) are the two satellites from the Elektro-L series broadcasting imagery in the L-band. Due to a power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4 km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just ~2.5 dB.
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapor channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
 - 06:XX and 18:XX are seasonal timeslots which usually aren't transmitted near the solstices.
@@ -272,7 +275,7 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - Real-time and historical Elektro (as well as Arktika) data is available on the NTSoMZ FTP: `ftp://electro:electro@ntsomz.gptl.ru:2121/`
 - Elektro-L3 often skips timeslots for unknown reasons, Tecmsat has a station which tracks missing transmissions [here](https://tec.aweeri.com/L3TS.php).
 
-> Elektro-L N°5 has launched and is in the process of commissioning, which should finish in the coming few weeks/months. Once commissioning is done, it is scheduled to replace L3, with L3 replacing L2. L2 will consequently be raised to a graveyard orbit.
+> Elektro-L N°5 has launched and is in the process of commissioning, which should finish in the coming few weeks/months. Once commissioning is done, it is scheduled to replace L3, with L3 replacing L2. L2 will consequently be raised to a graveyard orbit. This will give Western Europe the first reliable xRIT in a few years.
 
 
 Signal-specific notes:
@@ -311,7 +314,7 @@ Signal-specific notes:
 - FengYun 2H broadcasts dead (empty) LRIT every 3 hours starting at 00:48Z on 1690.5 MHz, this leads to the second image being cut at about 57%.
 - During the eclipse season (near equinoxes), these satellites lose track of the sun and end up not transmitting any imagery 17:00Z-19-00Z. The transmission might be off, or a jumpy S-VISSR signal with no data might be present instead.
 
-> Reception note: FengYun 2H has been experiencing issues with the power amplifier, causing significant fluctuations in SNR. Usually they clear up in a few minutes, but the broadcast strength end up being below nominal for a while after.
+> Reception note: FengYun 2H has been experiencing issues with the power amplifier, causing significant fluctuations in SNR. Usually they clear up in a few minutes, but the broadcast strength end up being below nominal for a while after. As of late, this has been prevalent around 21:00 UTC.
 
 > These satellites also broadcast a very weak **CDAS** raw downlink, but it's almost completely undocumented owing to its weak & wide nature. It is present just left S-VISSR, the satellite uses the same transmitter as S-VISSR to transmit it albeit at a significantly higher symbol rate to instantly transmit the whole scan line in real time. This is the reason why S-VISSR is so jumpy.
 
@@ -789,7 +792,7 @@ Drilling small holes into the ground plane shouldn't affect reception. Personal 
 
 ## Correctly adjusting your gain {#correct-gain}
 
-Setting your gain properly is **vital**, as an incorrect setting can severely hurt your reception capabilities either due to the signal being weaker than it can be, or by saturating your SDR which damages the signal's quality. **Setting your gain beyond the SDR's saturation point only gives an illusion of a stronger signal, does NOT make it stronger, even if the SNR meter indicates otherwise!** You can see this by looking at the constellation while upping the gain pas this point, it deforms but does not grow clearer. Another way of seeing this is by looking at the BER of signals with FEC, it stays the same or even grows higher.
+Setting your gain properly is **vital**, as an incorrect setting can severely hurt your reception capabilities either due to the signal being weaker than it can be, or by saturating your SDR which damages the signal's quality. **Setting your gain beyond the SDR's saturation point only gives an illusion of a stronger signal, does NOT make it stronger, even if the SNR meter indicates otherwise!** You can see this by looking at the constellation while upping the gain past this point, it deforms but does not grow clearer. Another way of seeing this is by looking at the BER of signals with FEC, it stays the same or even grows higher.
 
 To ensure it's set correctly, use the `Debug` menu in SatDump's `Recording` tab and refer to the following examples:
 
