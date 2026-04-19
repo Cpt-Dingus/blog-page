@@ -270,7 +270,6 @@ These apply to all SDRs using RTL chipsets (RTLSDR blog, Nooelec SMART...)
 - ~~**Elektro-L N°3**~~ and **Elektro-L N°4** (Elektro-L# for short) are the two satellites from the Elektro-L series broadcasting imagery in the L-band. Due to a power supply failure, Elektro-L2 only broadcasts a beamed X-band transmission to Moscow.
 - They broadcast **Low Rate Information Transmission (LRIT)** as well as **High Rate Information Transmission (HRIT)** signals containing full disc images of the earth at a 4 km/px quality. Both of these include Reed-Solomon FEC, meaning you can get clear imagery at just ~2.5 dB.
 - LRIT broadcasts any number of channels, for Elektro-L3 it's 3 visible channels, one water vapor channel (degraded), as well as one infrared channel. L4 broadcasts channels too inconsistently to be specified here.
-- 06:XX and 18:XX are seasonal timeslots which usually aren't transmitted near the solstices.
 - The 06:XX and 18:XX time slots are seasonal, both should be active during summer and winter months
 - Real-time and historical Elektro (as well as Arktika) data is available on the NTSoMZ FTP: `ftp://electro:electro@ntsomz.gptl.ru:2121/`
 - Elektro-L3 often skips timeslots for unknown reasons, Tecmsat has a station which tracks missing transmissions [here](https://tec.aweeri.com/L3TS.php).
