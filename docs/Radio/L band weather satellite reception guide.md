@@ -684,7 +684,10 @@ Ideally you want at *least* a -20 dB S11 return loss at 1690-1700 MHz. However, 
 
 ### Building a cantenna
 
-A cantenna is a surprisingly well performing linearly polarized feed for most dishes. It's very easy to make requiring very little effort, provided you have access to a can of the appropriate dimensions.
+A cantenna is a surprisingly well performing linearly polarized feed for most dishes. It's very easy to make requiring minimal effort, provided you have access to a can of the appropriate dimensions.
+
+![As described below](../../assets/images/Radio/cantenna.jpg) <br>
+*A simple cantenna I made when starting out with the hobby. Note how remarkably simple it is.*
 
 #### Materials
 
