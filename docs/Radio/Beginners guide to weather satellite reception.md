@@ -631,7 +631,7 @@ If you crave for something more interesting while remaining relatively easy and 
 
 ## Contacts
 
-If you have any questions or remarks regarding this page, feel free to message me either on Twitter (@Meti172172), or on Discord (@cpt_dingus).
+If you have any questions or remarks regarding this page, feel free to message me either on Twitter (@Meti172172), or on Discord @meti172 (formerly @cpt_dingus).
 
 ---
 
