@@ -14,8 +14,6 @@ parent: Radio
 
 # Preamble 
 
-> WARNING: It appears this stopped working now, I am not sure why. If I figure it out I will try updating this article...
-
 When using a HamGeek (Pluto) SDR directly with an Ethernet cable, you will quickly discover that the interface IP does not automatically configure, forcing you to have to SSH into the SDR using the debug USB port every time you restart it to configure it using `ifconfig`. This guide will help you automatically configure the Ethernet IP.
 
 # Extracting the rootfs
@@ -37,7 +35,7 @@ It should say `gzip compressed data`.
 You can now create a `rootfs` directory and extract the contents of the initramfs image there:
 ```bash
 mkdir rootfs && cd rootfs
-gunzip -c ../initramfs.gz | cpio -idmv
+sudo sh -c "gunzip -c ../initramfs.gz | cpio -idmv"
 ```
 
 # Adjusting the IP
@@ -62,7 +60,7 @@ This sets the gateway to `192.168.1.1` and SDR IP to `192.168.1.10`, as per the 
 Now that we changed the network config, we can repack the rootfs. Run this from inside the `rootfs` directory:
 
 ```bash
-find . | cpio -o -H newc | gzip -9 > ../initramfs.gz
+sudo sh -c "find . | cpio -o -H newc | gzip -9" > ../initramfs.gz
 cd ..
 ```
 
