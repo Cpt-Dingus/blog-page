@@ -27,14 +27,14 @@ This review will be split up into 3 ~~stereotypical~~ sections:
 
 This laptop consistently exceeded my expectations, was able to pull more than 10 hours when playing back videos or doing light browser work. The M2 chipset efficiency is no joke, they should be [and are] proud of it. Whether it is worth sacrificing replaceable memory and storage is your call to make.
 
-![A screenshot of Istatmenus](../../assets/images/macbook-review/istatmenu-battery.png) <br>
+![A screenshot of Istatmenus](../assets/images/macbook-review/istatmenu-battery.png) <br>
 *Istatmenus showing battery percentage, SoT ETA with a medium workload at 50% screen brightness. Not necessarily great but certainly not terrible!*
 
 ## Memory management
 
 Given my age, my budget for a new laptop was fairly limited. I had the choice between an M1 Air with 16 gigs and M2 Air with 8 gigs, chose the latter for efficiency (and improved maturity, given it was a second-gen). I was initially worried, having to upgrade from 16 GB on my primary desktop not long ago as OOM-killer kept ruining my evenings. However - as it turns out - macOS does some dark memory management magic which has pleasantly surprised me:
 
-![A screenshot of -Memory monitor showing  6.8/8G of physical memory used with Discord, Spotify, Firefox, Vscode opened](../../assets/images/macbook-review/memory-activity-monitor.png)
+![A screenshot of -Memory monitor showing  6.8/8G of physical memory used with Discord, Spotify, Firefox, Vscode opened](../assets/images/macbook-review/memory-activity-monitor.png)
 *8 GB doing just fine with a three memory hungry apps at once*
 
 This is because macOS does a **terrific** job at balancing physical memory with swap, which has at times made me forget I even have an 8 GB machine. I've even managed to process >2 GB satellite imagery on this thing, that's nothing short of impressive!
@@ -43,7 +43,7 @@ This is because macOS does a **terrific** job at balancing physical memory with 
 
 The speakers on this thing absolutely blew me away the first time I tried them. Every laptop I ever tested, be it a cheap Chromebook or a flagship gaming one with jet fans, they all sounded equally *terrible*. Puny, unclear in the mid-ends, with a lackluster volume. The MacBook speakers somehow managed to sound like you are playing music from a 50 cm wide speaker - the bass is absolutely outstanding!
 
-![NoteBookCheck speaker response chart](../../assets/images/macbook-review/nbc-response.png)
+![NoteBookCheck speaker response chart](../assets/images/macbook-review/nbc-response.png)
 *Speaker response chart sourced from NoteBookCheck*
 
 ## Build quality
@@ -109,7 +109,7 @@ The hinge, while built incredibly well, only opens up to 135°. This has been an
 I've been incredibly torn on the screen. The color reproduction is absolutely incredible, the sharpness is exceptional at 225 PPI. However, I have one chief complaint which made the experience incredibly poor: ***The gloss.***
 
 
-![A picture of a nasty looking MacBook screen](../../assets/images/macbook-review/gloss.jpg)
+![A picture of a nasty looking MacBook screen](../assets/images/macbook-review/gloss.jpg)
 *The amount of smudges accumulated from a couple of days of regular usage.*
 
 While giving the screen outstanding color reproduction when indoors, the laptop falls on its knees the moment you step outside or have any light source anywhere near the laptop. The screen is incredibly easy to smudge, as little as a small bump ends up leaving a large streak on the screen. To add insult to injury, it is also incredibly difficult to clean - you just end up smudging the streak across the screen instead of cleaning it off.
