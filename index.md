@@ -23,8 +23,8 @@ Most recent addition:
 **Last commit info:**
 
 ![Last commit's date](https://img.shields.io/github/last-commit/Cpt-Dingus/blog-page?style=for-the-badge&label=Time:)
-![Last commit badge](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/Cpt-Dingus/blog-page/commits/main&query=$.commit.message&label=Title:&style=for-the-badge)
-[Link](https://github.com/Cpt-Dingus/blog-page/commits/)
+![Last commit badge](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/Cpt-Dingus/blog-page/commits/main&query=$.commit.message&label=Title:&style=for-the-badge) <br>
+[Link](https://github.com/Cpt-Dingus/blog-page/commits/) to commits
 
 ---
 
