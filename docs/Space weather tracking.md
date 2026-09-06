@@ -193,18 +193,18 @@ The sun's immediate surroundings are called the **corona**, it is incredibly dim
 
 There are only four primary coronagraphs in function today:
 
-- ***SOHO LASCO***
+- [***SOHO LASCO***](https://www.spaceweatherlive.com/en/solar-activity/solar-images/soho.html)
   - SOHO (Solar and Heliospheric Observatory) is a satellite placed at **L1** which is a point between Earth and the Sun where gravitational phenomena allow them to remain stationary for the most part.
   - This satellite is incredibly old (and was almost lost in 1998 after it nearly froze itself!), but has been the primary source of corona data (until recent years) with its LASCO instrument.
   - This instrument has three zoom levels - C1, C2, and C3. C1 (closest to the sun surface) was lost during the 1998 incident, C2 and C3 remain operational to this day albeit at a significant delay (> several hours) because of the satellite's slow downlinks.
-- ***Stereo-A SECCHI***
+- [***Stereo-A SECCHI***](https://stereo-ssc.nascom.nasa.gov/beacon/)
   - This is also a fairly old satellite in a heliocentric orbit (around the sun) which is currently getting further from Earth. It includes a sensing suite called SECCHI which features a coronagraph.
   - This satellite is especially helpful since it images the sun at an angle different from Earth, giving us a side view of what might be coming towards Earth.
   - It was launched with its sister satellite, Stereo-B, which was lost in a routine test in 2014.
-- ***GOES-19 CCOR-1***
+- [***GOES-19 CCOR-1***](https://www.spaceweatherlive.com/en/solar-activity/solar-images/goes.html)
   - Launched in 2024, this satellite carries a new generation coronagraph which allowed us to get data at a significantly reduced delay (just ~15 minutes) for the first time.
   - GOES-19 is in a geostationary orbit around the Earth, which means that the Earth sometimes obstructs the sun or gets into view with reflections. The sun only passes behind the Earth during **eclipse season** (equinoxes). Earth reflections entering the sensor have been called **Earthshine** by NOAA.
-- ***Solar-1 CCOR-2***
+- [***Solar-1 CCOR-2***](https://www.spaceweatherlive.com/en/solar-activity/solar-images/solar1.html)
   - Launched in late 2025 and brought into operation in 2026, this satellite is placed at L1 and provides us data without [planned] interruptions unlike GOES-19.
   - Some lens got moved during launch, which gives it a couple of artifacts. These have been averaged out for the most part, however.
 
