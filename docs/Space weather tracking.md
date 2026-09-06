@@ -116,7 +116,7 @@ Since the power of a flare can vary significantly, we needed to develop a scale 
 
 The most powerful flares, **X**, do not roll over after reaching X10 because of their rarity - they just keep going with an X number. Only 12 have ever been recorded, you can see them [here](https://www.spaceweatherlive.com/en/solar-activity/top-50-solar-flares.html)
 
-![As described below](../assets/images/space-weather/flare-chart.jpg)
+![As described below](../assets/images/space-weather/flare-chart.jpg) <br>
 *A chart showing the strength of incoming X-ray flux from the GOES satellites on 18-01-2026. See how there are several peaks denoted by a vertical line - these are flares that occurred, the strongest being an eruptive X1.95 flare around 6 PM. Notice how it gradually decreased over the period of several hours instead of quickly falling back down to background levels. This is a telling sign of an eruptive flare. Also note the scale R scale being used besides the now familiar ABCMX scale. [Source](https://www.spaceweatherlive.com/en/archive/2026/01/18/xray.html)*
 
 #### Flare types
