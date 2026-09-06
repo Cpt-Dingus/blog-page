@@ -356,7 +356,7 @@ A couple of the current (Live) conditions can be accessed here for your convenie
 *Current EPAM data*
 
 ![Northern Hemisphere OVATION status](https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg) <br>
-*Current OVATION run for the Northern Hemisphere)*
+*Current OVATION run for the Northern Hemisphere*
 
 </details>
 
