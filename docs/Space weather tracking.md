@@ -212,7 +212,7 @@ There are only four primary coronagraphs in function today:
   - This satellite is incredibly old (and was almost lost in 1998 after it nearly froze itself!), but has been the primary source of corona data (until recent years) with its LASCO instrument.
   - This instrument has three zoom levels - C1, C2, and C3. C1 (closest to the sun surface) was lost during the 1998 incident, C2 and C3 remain operational to this day albeit at a significant delay (> several hours) because of the satellite's slow downlinks.
 - [***Stereo-A SECCHI***](https://stereo-ssc.nascom.nasa.gov/beacon/)
-  - This is also a fairly old satellite in a heliocentric orbit (around the sun) which is currently getting further from Earth. It includes a sensing suite called SECCHI which features a coronagraph.
+  - This is also a fairly old satellite in a heliocentric orbit (around the sun) which is currently getting further from Earth. It includes a sensing suite called SECCHI which features two coronagraphs - COR1 and COR2.
   - This satellite is especially helpful since it images the sun at an angle different from Earth, giving us a side view of what might be coming towards Earth.
   - It was launched with its sister satellite, Stereo-B, which was lost in a routine test in 2014.
 - [***GOES-19 CCOR-1***](https://www.spaceweatherlive.com/en/solar-activity/solar-images/goes.html)
