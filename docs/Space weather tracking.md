@@ -30,7 +30,7 @@ The constant movement generates magnetic fields which can sometimes become quite
 *An active region containing several sun spots. [Source](https://en.wikipedia.org/wiki/Sunspot)*
 
 
-An interaction between two parts of a spot, or rarely even between two spots, is called a **Flare** - it happens when magnetic fields interact and rapidly change their polarities. When such interactions happen, they tend to happen quite violently while displacing a lot of plasma. If there happens to be a lot of plasma above the spot where the flare occurred, it might get violently ejected from the surface - think of it like lighting a dynamite under a bucket. An event like this is called a **Coronal mass ejection** (CME) because *Coronal mass* (Plasma) gets *Ejected* from the sun surface. Shocking, I know.
+An interaction between two parts of a spot, or rarely even between two spots, is called a **Flare** - it happens when opposing magnetic fields break and reconnect in lower-energy configurations. The excess energy is released in the form of an explosion, which tend to be quite violent while displacing a lot of plasma. If there happens to be a lot of plasma above the spot where the flare occurred, it might get violently ejected from the surface - think of it like lighting a dynamite under a bucket. An event like this is called a **Coronal mass ejection** (CME) because *Coronal mass* (Plasma) gets *Ejected* from the sun surface. Shocking, I know.
 
 ---
 
@@ -216,7 +216,7 @@ There are only four primary coronagraphs in function today:
   - This satellite is especially helpful since it images the sun at an angle different from Earth, giving us a side view of what might be coming towards Earth.
   - It was launched with its sister satellite, Stereo-B, which was lost in a routine test in 2014.
 - [***GOES-19 CCOR-1***](https://www.spaceweatherlive.com/en/solar-activity/solar-images/goes.html)
-  - Launched in 2024, this satellite carries a new generation coronagraph which allowed us to get data at a significantly reduced delay (just ~15 minutes) for the first time.
+  - Launched in 2024, this satellite carries a new generation coronagraph which allowed us to get data at a significantly reduced delay (just ~30 minutes) for the first time.
   - GOES-19 is in a geostationary orbit around the Earth, which means that the Earth sometimes obstructs the sun or gets into view with reflections. The sun only passes behind the Earth during **eclipse season** (equinoxes). Earth reflections entering the sensor have been called **Earthshine** by NOAA.
 - [***Solar-1 CCOR-2***](https://www.spaceweatherlive.com/en/solar-activity/solar-images/solar1.html)
   - Launched in late 2025 and brought into operation in 2026, this satellite is placed at L1 and provides us data without [planned] interruptions unlike GOES-19.
@@ -252,7 +252,7 @@ The IMF is a measure of the strength of the magnetic field in 3 directions:
 - Bz (North and South of the Sun)
 - Also Bt which is a sum of all of these
 
-> The unit used is nT, where 0-10 is 'Weak', 10-20 is 'Moderate', 30+ is strong
+> The unit used is nT, where 0-10 is 'Weak', 10-20 is 'Moderate', 20-30 is strong whereas 30+ is incredibly strong.
 
 ![As described below](../assets/images/space-weather/imf-explained.jpg) <br>
 *A visual guide of the IMF values. [Source](https://www.spaceweatherlive.com/en/help/the-interplanetary-magnetic-field-imf.html)*
@@ -301,7 +301,7 @@ As an example:
 
 ## Geomagnetic storm
 
-If the IMF is deflected far enough south (~ >10 nT), a **geomagnetic storm** can develop on the Earth surface. It is measured in a Kp level which ranges from 1 to 9. The G (of the GSR) scale complements it by doing G1 for Kp=5, G2 for Kp=6, G3 for Kp=7, G4 for Kp=8, G5 for Kp=9.
+If the IMF is deflected far enough south (~ >10 nT), a **geomagnetic storm** can develop on the Earth surface. It is measured in a Kp level which ranges from 0 to 9. The G (of the GSR) scale complements it by doing G1 for Kp=5, G2 for Kp=6, G3 for Kp=7, G4 for Kp=8, G5 for Kp=9.
 
 Kp values also feature intermediate levels with - and + -> i.e. Kp0, Kp0+, Kp1-, Kp1, Kp1+ etc.
 
