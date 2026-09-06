@@ -277,7 +277,7 @@ The CME has reached L1 point, we know its features. Now which of these should I 
 
 ## Initial IMF impact
 
-The Bz component of the IMF is directly what causes the Northern lights to happen. If a CME's material is pointed South at a higher strength, it interacts with Earth's magnetic field by ionizing certain molecules near the poles - this is what Northern lights are! If the Bz element is pointed North, it passes through without reacting.
+The Bz component of the IMF is directly what causes the Northern lights to happen. If a CME's material deflects the magnetic field **South**, it interacts with Earth's magnetic field by inducing currents which ionize certain molecules near the poles - this is what Northern lights are! If the Bz element deflects North, it passes through without reacting.
 
 When a CME impacts the IMF, it is divided into two distinct sections:
 
