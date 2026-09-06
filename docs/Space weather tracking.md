@@ -279,7 +279,7 @@ You can tell when Earth enters the Flux rope by the [EPAM](https://services.swpc
 
 As an example:
 
-![As described below](../assets/images/space-weather/imf.jpg)
+![As described below](../assets/images/space-weather/imf.jpg) <br>
 *An example from SpaceWeatherLive's archive from 19-01-2026 showing a very clear transition from the CME sheath to a flux rope. Notice how the IMF is very turbulent at first, then settles as the CME reaches the flux rope. [Source](https://www.spaceweatherlive.com/en/archive/2026/01/19/aurora.html)*
 
 
