@@ -147,7 +147,9 @@ There is a countless amount of satellites pointed at the sun with the purpose of
 
 > The wavelengths the sun is imaged at are usually measured in Å, which is a unit indicating 10⁻¹⁰ m (i.e. 0.1 nm).
 
-When an eruption happens, you can sometimes see the filament actually lifting off after a flare occurs. My favorite resource for this is [Lmsal's SolarSoft](https://www.lmsal.com/solarsoft/latest_events/) which shows the latest significant events in an easily browsable view (Cruiser). *The website is an absolute mess at first, but I adore its design*
+When an eruption happens, you can sometimes see the filament actually lifting off after a flare occurs. My favorite resource for this is [Lmsal's SolarSoft](https://www.lmsal.com/solarsoft/latest_events/) which shows the latest significant events in an easily browsable view (Cruiser). 
+
+> *The website might seem like an absolute mess at first, but I personally adore its design - once you know where to look you have everything at a glance*
 
 An example of such an event is included in the above animation, where you can see the whole right-hand side of the image lift off of the surface. It is clearer when viewed from the side, here's an example of an eruptive flare happening closer to the solar limb (edge):
 ![As described below](../assets/images/space-weather/Eruptive-flare-2.webp)<br>
