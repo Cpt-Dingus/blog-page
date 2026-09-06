@@ -107,6 +107,10 @@ Now that we know where to find the activity spots, we need to see when the actua
 
 > Whereas both SWPC and SpaceWeatherLive go off of NOAA flare detection, Solar demon runs its own algorithm trying to detect the said flares automatically.
 
+![As described below](../assets/images/space-weather/Eruptive-flare.webp)<br>
+*SDO AIA 193 Å animation showing an eruptive flare which caused a CME on 18-01-2026. Don't worry if you don't understand this description yet. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260202_1201/index.html#Eruptive_X1.9_AR_4341_S14E22_EUVCME_Post_Eruption_Slinky_Arcade_Apex_Aimed_at_Viewer)*
+
+> Fun fact: Notice that after the flare happens, a beautiful tunnel-like structure develops on the surface. This structure is called a **post-erruption arcade**, colloquially referred to as **arcade rings**. See more info [here](https://en.wikipedia.org/wiki/Solar_flare#Post-eruption_loops_and_arcades)
 
 #### Flare scale
 
@@ -117,7 +121,7 @@ Since the power of a flare can vary significantly, we needed to develop a scale 
 The most powerful flares, **X**, do not roll over after reaching X10 because of their rarity - they just keep going with an X number. Only 12 have ever been recorded, you can see them [here](https://www.spaceweatherlive.com/en/solar-activity/top-50-solar-flares.html)
 
 ![As described below](../assets/images/space-weather/flare-chart.jpg) <br>
-*A chart showing the strength of incoming X-ray flux from the GOES satellites on 18-01-2026. See how there are several peaks denoted by a vertical line - these are flares that occurred, the strongest being an eruptive X1.95 flare around 6 PM. Notice how it gradually decreased over the period of several hours instead of quickly falling back down to background levels. This is a telling sign of an eruptive flare. Also note the scale R scale being used besides the now familiar ABCMX scale. [Source](https://www.spaceweatherlive.com/en/archive/2026/01/18/xray.html)*
+*This is a chart showing the strength of incoming X-ray flux from the GOES satellites on 18-01-2026. See how there are several peaks denoted by a vertical line - these are flares that occurred, the strongest of which being an eruptive X1.95 flare around 6 PM. Notice how it gradually decreased over the period of several hours instead of quickly falling back down to background levels. This is a telling sign of an eruptive flare. Also note the scale R scale being used besides the now familiar ABCMX scale. [Source](https://www.spaceweatherlive.com/en/archive/2026/01/18/xray.html)*
 
 #### Flare types
 
@@ -135,7 +139,7 @@ The cage can sometimes be overpowered by a strong enough flare, however it takes
 
 ### Coronal mass ejections
 
-The thing that you should arguably be the most interested in, CMEs, are detected in a couple of ways:
+The thing that you should arguably be the most interested are CMEs, as they are the cause of Northern lights. These are detected in a couple of ways:
 
 #### 1 - Visible lifting
 
@@ -145,29 +149,37 @@ There is a countless amount of satellites pointed at the sun with the purpose of
 
 When an eruption happens, you can sometimes see the filament actually lifting off after a flare occurs. My favorite resource for this is [Lmsal's SolarSoft](https://www.lmsal.com/solarsoft/latest_events/) which shows the latest significant events in an easily browsable view (Cruiser). *The website is an absolute mess at first, but I adore its design*
 
-An example of such an event is visible below:
-![As described below](../assets/images/space-weather/Eruptive-flare.webp)<br>
-*GOES-16 SUVI 193 Å animation showing an eruptive flare on 18-01-2026. Notice how you can see the right-hand side lift off the surface [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260202_1201/index.html#Eruptive_X1.9_AR_4341_S14E22_EUVCME_Post_Eruption_Slinky_Arcade_Apex_Aimed_at_Viewer)*
+An example of such an event is included in the above animation, where you can see the whole right-hand side of the image lift off of the surface. It is clearer when viewed from the side, here's an example of an eruptive flare happening closer to the solar limb (edge):
+![As described below](../assets/images/space-weather/Eruptive-flare-2.webp)<br>
+*SDO AIA 193 Å animation showing an eruptive flare on 05-09-2026. You can see a lot of material getting ejected from the flare. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260906_0001/index.html#Large_Volume_Eruption_M1.0_AR_4520_S12W68_EUVME_Canopy_blow_back_Dimming_CME)*
 
-> Fun fact: Notice that after the flare happens, a beautiful tunnel-like structure develops on the surface. This structure is called a **post-erruption arcade**, colloquially referred to as **arcade rings**. See more info [here](https://en.wikipedia.org/wiki/Solar_flare#Post-eruption_loops_and_arcades)
 
 #### 2 - Coronal dimming
 
 After an ejection happens, the corona gets dimmer because there is less material on the surface. There are tools detected to automatically detect such events, such as [Solar Demon](https://www.sidc.be/solardemon/dimmings.php)
 
-#### 3 - CACTus
+![As described below](../assets/images/space-weather/dimming.webp) <br>
+*The dimming from a very eruptive X1.84 flare pm 09-10-2024 which caused the big October storms. See how a big black blotch developed - that's the dimming! [Source](https://www.sidc.be/solardemon/dimmings.php?did=11357&science=0)*
 
-CACTus is a tool which automatically detects CMEs from the latest available coronagraph imagery. You can access it [here](https://www.spaceweatherlive.com/en/solar-activity/latest-cmes.html)
+#### 3 - Coronagraph imagery
 
-It tells you the angle where it launched, the approximate speed, and the **Halo** - the last being arguably the most important.
+Coronagraphs are instruments that image the sun's immediate surroundings where the ejected material is visible. They will be explained in more detail in a bit.
 
-The **halo** tells you how much of the sun is covered from Earth's point of view. If you see the ejection spread out evenly into every side, you get what's called a **full halo** - this means the majority of the CME material is headed straight for Earth. Otherwise, you might see the material spread to one half of the sun - this is a **partial halo**, which means that the material will likely clip Earth but will not result in a full impact. In the case of **no halo**, the material is likely to completely miss Earth as it was launched in the wrong direction.
+#### 4 - CACTus
 
-> Coronagraphs will be explained in a later heading. Also note that a full halo can also mean a far side eruption, in which case the material is headed precisely away from Earth (:
+CACTus is a tool which automatically detects CMEs from the latest available coronagraph imagery. You can access it [here](https://www.sidc.be/cactus/out/latestCMEs.html).
 
-#### 4 - Coronagraph imagery
+It is also available on [SWL](https://www.spaceweatherlive.com/en/solar-activity/latest-cmes.html).
 
-This is the primary, definitive way to tell if a CME is headed towards Earth. They will be described in the next major heading.
+It tells you the angle where it launched, the approximate speed, and whether a **halo** was present.
+
+The **halo** tells you how many degrees from the center of the image covered from Earth's point of view. 
+- If you see the ejection spread out evenly into every side, you get what's called a **full halo** - this means the majority of the CME material is headed straight for Earth. (or exactly away from it)
+- If the material spread to one half of the sun, this gets called a **partial halo**. It means that the material will likely clip Earth but will not result in a full impact.
+- In the case of **no halo** (i.e. we can see the material being launched to a side), the material is likely to completely miss Earth as it was launched in the wrong direction.
+
+![As described below](../assets/images/space-weather/cactus.gif) <br>
+*A GIF of CACTus showing a full (Class 4) halo CME which had a direct Earth impact on 26-10-2024. [Source](https://www.sidc.be/cactus/catalog/LASCO/2_5_0/qkl/2024/10/CME0108/CME.html)*
 
 #### 5 - CCMC Donki
 
@@ -185,7 +197,7 @@ In any case, once enough time passes, you should see model runs of `WSA-ENLIL` p
 
 Okay, the sun farted some material our way. Now what?
 
-The first step is likely figuring out where it goes - I mentioned it in the above heading with CACTus, but how exactly is it done?
+The first step is likely figuring out where it goes - the heading above mentioned it is done using coronagraphs, but what are they?
 
 ## Coronagraphs
 
@@ -240,7 +252,7 @@ The IMF is a measure of the strength of the magnetic field in 3 directions:
 
 > The unit used is nT, where 0-10 is 'Weak', 10-20 is 'Moderate', 30+ is strong
 
-![As described below](image.png) <br>
+![As described below](../assets/images/space-weather/imf-explained.jpg) <br>
 *A visual guide of the IMF values. [Source](https://www.spaceweatherlive.com/en/help/the-interplanetary-magnetic-field-imf.html)*
 
 For aurora creation, we primarily care about the North-South deflection (Bz), this will be described later. For more information visit the incredible summary from SWL [here](https://www.spaceweatherlive.com/en/help/the-interplanetary-magnetic-field-imf.html)
@@ -254,6 +266,8 @@ Elevated amounts of protons causes the 'S' level of the GSR scale to go up. A ma
 
 ![As described below](../assets/images/space-weather/coronagraph-storm.jpg) <br>
 *LASCO C2 during a major (S4) proton storm on 2026-01-19*
+
+You can access this data on the SpaceWeatherLive dashboard, as well as [SWPC](https://www.spaceweather.gov/products/goes-proton-flux).
 
 # Earth impact
 
