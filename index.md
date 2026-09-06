@@ -15,7 +15,7 @@ I try to put things that others might find useful in here, such as guides or rev
 
 Most recent addition:
 
-- [MacBook Air review]({{site.baseurl}}/docs/A measured MacBook Air review.html)
+- [Space weather knowledge base]({{site.baseurl}}/docs/Space weather tracking.html)
 
 
 ---
