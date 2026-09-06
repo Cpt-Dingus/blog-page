@@ -177,8 +177,8 @@ CMEs above roughly 600 km/s usually start having an impact on Earth. You can als
 
 In any case, once enough time passes, you should see model runs of `WSA-ENLIL` pop up on a given CME. This is a model that predicts how a CME propagates through space.
 
-![As described below](../assets/images/space-weather/WSAENLIL.jpg) <br>
-*A sample WSA-Enlil frame from the big October 2024 solar storm. You can see a lot of high density material passing through Earth. The left side shows a top-down view of the earth-sun plane. The middle view is a vertical slice of the space between the Earth and sun. The right view is a map of the sun's full 360° surroundings at a 1 AU distance (right where Earth is). [Source](https://kauai.ccmc.gsfc.nasa.gov/DONKI/view/WSA-ENLIL/33884/1)*
+![As described below](https://iswa.ccmc.gsfc.nasa.gov/iswa_data_tree/model/heliosphere/wsa-enlil-cone/animation-cme-density/2024/10/20241009_033100_2.0_anim.tim-den.gif) <br>
+*A sample WSA-ENLIL run the big October 2024 solar storm. You can see a lot of high density material passing through Earth. The left side shows a top-down view of the earth-sun plane. The middle view is a vertical slice of the space between the Earth and sun. The right view is a map of the sun's full 360° surroundings at a 1 AU distance (right where Earth is). [Source](https://kauai.ccmc.gsfc.nasa.gov/DONKI/view/WSA-ENLIL/33884/1)*
 
 
 # Getting to Earth
