@@ -285,7 +285,7 @@ As an example:
 
 ## Geomagnetic storm
 
-If the IMF is deflected far enough south (~ >10 nT), a **geomagnetic storm** gets created on the Earth surface. It is measured in a Kp level which ranges from 1 to 9. The G (of the GSR) scale complements it by doing G1 for Kp=5, G2 for Kp=6, G3 for Kp=7, G4 for Kp=8, G5 for Kp=9.
+If the IMF is deflected far enough south (~ >10 nT), a **geomagnetic storm** can develop on the Earth surface. It is measured in a Kp level which ranges from 1 to 9. The G (of the GSR) scale complements it by doing G1 for Kp=5, G2 for Kp=6, G3 for Kp=7, G4 for Kp=8, G5 for Kp=9.
 
 Kp values also feature intermediate levels with - and + -> i.e. Kp0, Kp0+, Kp1-, Kp1, Kp1+ etc.
 
