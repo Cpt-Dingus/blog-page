@@ -76,7 +76,7 @@ The class magnitude is the most useful part, while it looks daunting it is not d
 A Beta-Gamma-Delta magnitude is the most complex, whereas an Alpha magnitude is the simplest.
 
 ![As described below](../assets/images/space-weather/sunspot-list.jpg) <br>
-*SpaceWeatherLive dashboard showing the current active time slots at 04-05-2024. See how AR13663 has the most complex, Beta-Gamma-Delta magnitude, AR13664 has the less complex Beta-Gamma magnitude, and others have Beta or Alpha magnitudes. [Wayback machine snapshot](https://web.archive.org/web/20240504102615/https://www.spaceweatherlive.com/)*
+*SpaceWeatherLive dashboard showing the current active sun spots at 04-05-2024. See how AR13663 has the most complex, Beta-Gamma-Delta magnitude, AR13664 has the less complex Beta-Gamma magnitude, and others have Beta or Alpha magnitudes. [Wayback machine snapshot](https://web.archive.org/web/20240504102615/https://www.spaceweatherlive.com/)*
 
 You can find more information about the classes [here](https://www.spaceweatherlive.com/en/help/the-magnetic-classification-of-sunspots.html)
 
