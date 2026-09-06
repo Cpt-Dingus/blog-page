@@ -321,10 +321,10 @@ Hemispheric power is a measure of how much power is stored within Earth's magnet
 
 A couple of the current (Live) conditions can be accessed here for your convenience:
 
-<details>
+<details markdown="1">
 <summary>Current solar conditions</summary>
 
-![Color intensitygram from SDO](https://jsoc1.stanford.edu/data/hmi/images/latest/HMI_latest_colInt_4096x4096.jpg) <br>
+![Color intensitygram from SDO](https://jsoc1.stanford.edu/data/hmi/images/latest/HMI_latest_colInt_1024x1024.jpg) <br>
 *Latest SDO Color intensitygram*
 
 ![Coronagraph image from CCOR-2 on Solar-1](https://services.swpc.noaa.gov/images/animations/ccor2/latest.jpg)<br>
