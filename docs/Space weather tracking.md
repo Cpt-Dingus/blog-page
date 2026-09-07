@@ -145,7 +145,7 @@ The cage can sometimes be overpowered by a strong enough flare, however it takes
 A good example:
 
 ![As described below](../assets/images/space-weather/Eruptive-flare-3.webp)
-*SDO AIA 171 Å animation showing a massive eruptive X8.1 flare from [AR14366](https://www.spaceweatherlive.com/en/solar-activity/region/14366.html) on 1-2-2026. The magnetic cage consists of the long loops covering the spot. You can see it buckled with the tremendous size of the flare, but didn't break - it absorbed a lot of kinetic energy of the ejected corona making it fall right back to the surface. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260202_1201/index.html#AR_4366_X8.1_N13E34_Significant_Eruption_EUVCME_Signatures_Large_Volume_Ejecta_)*
+*SDO AIA 171 Å animation showing a massive eruptive X8.1 flare from [AR14366](https://www.spaceweatherlive.com/en/solar-activity/region/14366.html) on 1-2-2026. The magnetic cage consists of the long loops covering the active region. You can see it buckled with the tremendous size of the flare, but didn't break - it absorbed a lot of kinetic energy of the ejected corona making it fall right back to the surface. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260202_1201/index.html#AR_4366_X8.1_N13E34_Significant_Eruption_EUVCME_Signatures_Large_Volume_Ejecta_)*
 
 ### Coronal mass ejections
 
