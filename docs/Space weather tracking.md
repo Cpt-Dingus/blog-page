@@ -330,7 +330,7 @@ Hemispheric power is a measure of how much power is stored within Earth's magnet
 - [Lmsal SolarSoft](https://www.lmsal.com/solarsoft/latest_events/) - The Latest significant events as well as a bunch of useful charts
 - [Solar demon](https://www.sidc.be/solardemon/dimmings.php) (Dimming) - Near real-time dimming detection
 - [Solar Demon](https://www.sidc.be/solardemon/flares.php?min_seq=1&min_flux_est=0.000000001&days=14&science=0) (Flares) - Near real-time flare detection
-- [SHARP](defn.nict.go.jp/sharp/index_sharp.html) - Vector magnetogram
+- [SHARP](https://defn.nict.go.jp/sharp/index_sharp.html) - Vector magnetogram
 - [GONG](https://gong2.nso.edu/products/mainView/table.php?configFile=configs/mainView.cfg) - Alternative magnetogram, intensitygram, as well as far side sun spot detection
 - [CCMC DONKI Lookup](https://kauai.ccmc.gsfc.nasa.gov/DONKI/search/) - Catalog of NOAA observations and model runs
 
