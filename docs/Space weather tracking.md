@@ -86,7 +86,12 @@ You can find more information about the classes [here](https://www.spaceweatherl
 
 You can also check the development of a sun spot by using a so-called **Vector magnetogram**. This is essentially a map which shows movement vectors of how the magnetic field of a sun spot has been moving. An example of this is SHARP which you can access [here](https://defn.nict.go.jp/sharp/index_sharp.html).
 
-> Please note that SHARP uses HARP numbers for active regions, instead of NOAA numbers which is what this guide includes. See the image on the bottom of the SHARP page and check the top right corner, it includes both NOAA and HARP numbers there.
+![As described below](../assets/images/space-weather/sharp.jpg)
+*A SHARP Vector magnetogram image showing the complex [AR14366](https://www.spaceweatherlive.com/en/solar-activity/region/14366.html) at 1-2-2026. White color indicates a negative polarity, whereas black indicates a positive polarity. The red arrows describe local movement, green indicates places where opposing polarities meet. [Source](https://defn.nict.go.jp/sharp/index_sharp.html) (no snapshot of this particular sun spot available online, I had this image saved)*
+
+Please note that SHARP uses HARP (12345) numbers for active regions, instead of NOAA numbers (AR12345) which is what this guide describes. See the image on the bottom of the SHARP page and check the top right corner, it includes both NOAA and HARP numbers there.
+
+
 
 #### Far side detection
 
@@ -137,6 +142,11 @@ Sometimes, magnetic fields can grow strong enough to create a so-called **magnet
 
 The cage can sometimes be overpowered by a strong enough flare, however it takes a tremendous amount of power to break through it. If a cage forms, a sun spot is generally likely to fizzle out before it produces any CMEs.
 
+A good example:
+
+![As described below](../assets/images/space-weather/Eruptive-flare-3.webp)
+*SDO AIA 171 Å animation showing a massive eruptive X8.1 flare from [AR14366](https://www.spaceweatherlive.com/en/solar-activity/region/14366.html) on 1-2-2026. The magnetic cage consists of the long loops covering the spot. You can see it buckled with the tremendous size of the flare, but didn't break - it absorbed a lot of kinetic energy of the ejected corona making it fall right back to the surface. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260202_1201/index.html#AR_4366_X8.1_N13E34_Significant_Eruption_EUVCME_Signatures_Large_Volume_Ejecta_)*
+
 ### Coronal mass ejections
 
 The thing that you should arguably be the most interested are CMEs, as they are the cause of Northern lights. These are detected in a couple of ways:
@@ -153,7 +163,7 @@ When an eruption happens, you can sometimes see the filament actually lifting of
 
 An example of such an event is included in the above animation, where you can see the whole right-hand side of the image lift off of the surface. It is clearer when viewed from the side, here's an example of an eruptive flare happening closer to the solar limb (edge):
 ![As described below](../assets/images/space-weather/Eruptive-flare-2.webp)<br>
-*SDO AIA 193 Å animation showing an eruptive flare on 05-09-2026. You can see a lot of material getting ejected from the flare. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260906_0001/index.html#Large_Volume_Eruption_M1.0_AR_4520_S12W68_EUVME_Canopy_blow_back_Dimming_CME)*
+*SDO AIA 193 Å animation showing an eruptive flare from [AR14520](https://www.spaceweatherlive.com/en/solar-activity/region/14520.html) on 05-09-2026. You can see a lot of material getting ejected from the flare. [Source](https://www.lmsal.com/solarsoft/ssw/last_events-2026/last_events_20260906_0001/index.html#Large_Volume_Eruption_M1.0_AR_4520_S12W68_EUVME_Canopy_blow_back_Dimming_CME)*
 
 
 #### 2 - Coronal dimming
